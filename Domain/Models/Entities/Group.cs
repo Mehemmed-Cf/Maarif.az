@@ -1,0 +1,20 @@
+﻿using Domain.Models.Concrates;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Domain.Models.Entities
+{
+    public class Group : AuditableEntity
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }        // e.g. "IT-101"
+        public byte Year { get; set; }          // 1st, 2nd year etc.
+        public int DepartmentId { get; set; }
+        public Department Department { get; set; }
+
+        public ICollection<StudentGroup> StudentGroups { get; set; }
+        public ICollection<Lesson> Lessons { get; set; }
+
+        [NotMapped]
+        public int StudentCount => StudentGroups?.Count ?? 0;
+    }
+}
