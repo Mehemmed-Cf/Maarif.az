@@ -1574,7 +1574,6 @@
   },
   "projectFileDependencyGroups": {
     "net8.0": [
-      "C:\\Users\\user\\source\\repos\\Persistance\\Infrastructure\\Infrastructure.csproj",
       "Domain >= 1.0.0",
       "Microsoft.AspNetCore.Http >= 2.3.9",
       "Microsoft.EntityFrameworkCore >= 8.0.0"
@@ -1615,9 +1614,6 @@
           "projectReferences": {
             "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj": {
               "projectPath": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj"
-            },
-            "C:\\Users\\user\\source\\repos\\Persistance\\Infrastructure\\Infrastructure.csproj": {
-              "projectPath": "C:\\Users\\user\\source\\repos\\Persistance\\Infrastructure\\Infrastructure.csproj"
             }
           }
         }
@@ -1668,15 +1664,6 @@
     }
   },
   "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'C:\\Users\\user\\source\\repos\\Persistance\\Infrastructure\\Infrastructure.csproj'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "C:\\Users\\user\\source\\repos\\Persistance\\Infrastructure\\Infrastructure.csproj",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
     {
       "code": "NU1701",
       "level": "Warning",

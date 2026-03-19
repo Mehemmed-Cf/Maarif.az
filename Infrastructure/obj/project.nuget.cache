@@ -1,7 +1,7 @@
 {
   "version": 2,
-  "dgSpecHash": "iq6pji11UeY=",
-  "success": false,
+  "dgSpecHash": "tFYMbuLqBX0=",
+  "success": true,
   "projectFilePath": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Infrastructure.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\entityframework\\6.1.0\\entityframework.6.1.0.nupkg.sha512",
@@ -41,17 +41,6 @@
     "C:\\Users\\user\\.nuget\\packages\\system.text.encodings.web\\8.0.0\\system.text.encodings.web.8.0.0.nupkg.sha512"
   ],
   "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'C:\\Users\\user\\source\\repos\\Persistance\\Infrastructure\\Infrastructure.csproj'. Check that the project reference is valid and that the project file exists.",
-      "projectPath": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Infrastructure.csproj",
-      "filePath": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Infrastructure.csproj",
-      "libraryId": "C:\\Users\\user\\source\\repos\\Persistance\\Infrastructure\\Infrastructure.csproj",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
     {
       "code": "NU1701",
       "level": "Warning",

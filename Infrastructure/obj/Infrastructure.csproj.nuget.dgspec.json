@@ -115,9 +115,6 @@
             "projectReferences": {
               "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj": {
                 "projectPath": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj"
-              },
-              "C:\\Users\\user\\source\\repos\\Persistance\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "C:\\Users\\user\\source\\repos\\Persistance\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }

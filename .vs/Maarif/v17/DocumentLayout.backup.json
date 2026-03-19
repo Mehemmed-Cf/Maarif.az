@@ -3,8 +3,116 @@
   "WorkspaceRootPath": "C:\\Users\\user\\source\\repos\\Maarif\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\valueobjects\\fincode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\valueobjects\\fincode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\valueobjects\\findata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\valueobjects\\findata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\stables\\gendertype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\stables\\gendertype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\stables\\educationtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\stables\\educationtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\stables\\departmenttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\stables\\departmenttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\teacherdepartment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\teacherdepartment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\teacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\teacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\faculty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\faculty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\lesson.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\group.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\group.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\studentgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\studentgroup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\subject.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\membership\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\membership\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\membership\\appusertoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\membership\\appusertoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\membership\\appuserrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\membership\\appuserrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\membership\\appuserlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\membership\\appuserlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\membership\\appuserclaim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\membership\\appuserclaim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\membership\\approleclaim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\membership\\approleclaim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\membership\\approle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\membership\\approle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\abstracts\\iauditableentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\abstracts\\iauditableentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|c:\\users\\user\\source\\repos\\maarif\\infrastructure\\abstracts\\ifinservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\abstracts\\ifinservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\concrates\\auditableentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\concrates\\auditableentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|c:\\users\\user\\source\\repos\\maarif\\infrastructure\\abstracts\\iasyncrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\abstracts\\iasyncrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|c:\\users\\user\\source\\repos\\maarif\\infrastructure\\concrates\\asyncrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\concrates\\asyncrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|c:\\users\\user\\source\\repos\\maarif\\infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\infrastructure.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|c:\\users\\user\\source\\repos\\maarif\\infrastructure\\abstracts\\ijwtservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -15,24 +123,12 @@
       "RelativeMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\abstracts\\iidentityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|c:\\users\\user\\source\\repos\\maarif\\infrastructure\\abstracts\\ifinservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\abstracts\\ifinservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|c:\\users\\user\\source\\repos\\maarif\\infrastructure\\abstracts\\ifileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\abstracts\\ifileservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|c:\\users\\user\\source\\repos\\maarif\\infrastructure\\abstracts\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\abstracts\\iemailservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|c:\\users\\user\\source\\repos\\maarif\\infrastructure\\abstracts\\iasyncrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\abstracts\\iasyncrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|c:\\users\\user\\source\\repos\\maarif\\infrastructure\\abstracts\\iauditableentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\abstracts\\iauditableentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|c:\\users\\user\\source\\repos\\maarif\\infrastructure\\abstracts\\icryptoservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -67,46 +163,6 @@
       "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\services\\validatorinterceptor.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\valueobjects\\findata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\valueobjects\\findata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\valueobjects\\fincode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\valueobjects\\fincode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\membership\\approle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\membership\\approle.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\membership\\appusertoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\membership\\appusertoken.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\membership\\appuserrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\membership\\appuserrole.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\membership\\appuserlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\membership\\appuserlogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\membership\\appuserclaim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\membership\\appuserclaim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\membership\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\membership\\appuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\membership\\approleclaim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\membership\\approleclaim.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\stables\\statustype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\stables\\statustype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -115,44 +171,12 @@
       "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\stables\\gradetype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\stables\\gendertype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\stables\\gendertype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\stables\\facultytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\stables\\facultytype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\stables\\educationtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\stables\\educationtype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\stables\\departmenttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\stables\\departmenttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\department.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\faculty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\faculty.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\teacherdepartment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\teacherdepartment.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\teacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\teacher.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D2BE9C5A-5250-4DD0-8E91-68060073B5F9}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\user\\source\\repos\\maarif\\dataaccesslayer\\dataaccesslayer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
       "RelativeMoniker": "D:0:0:{D2BE9C5A-5250-4DD0-8E91-68060073B5F9}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\dataaccesslayer.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\domain.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\application.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
@@ -161,14 +185,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{D2BE9C5A-5250-4DD0-8E91-68060073B5F9}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\user\\source\\repos\\maarif\\dataaccesslayer\\datacontexts\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D2BE9C5A-5250-4DD0-8E91-68060073B5F9}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\datacontexts\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|c:\\users\\user\\source\\repos\\maarif\\infrastructure\\concrates\\auditableentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\concrates\\auditableentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|c:\\users\\user\\source\\repos\\maarif\\infrastructure\\concrates\\asyncrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|solutionrelative:infrastructure\\concrates\\asyncrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\applicationmodule.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -234,72 +250,319 @@
             },
             {
               "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "Student.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Student.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Student.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Student.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\Student.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAIwBcAAABEAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T18:08:12.196Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Teacher.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Teacher.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Teacher.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Teacher.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\Teacher.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAADwvxAAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T18:42:43.931Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "TeacherDepartment.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\TeacherDepartment.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\TeacherDepartment.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\TeacherDepartment.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\TeacherDepartment.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAyAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T18:57:51.833Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DepartmentType.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\DepartmentType.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Stables\\DepartmentType.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\DepartmentType.cs",
+              "RelativeToolTip": "Domain\\Models\\Stables\\DepartmentType.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAAAAwCMAAAAzAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T18:57:20.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
               "DocumentIndex": 3,
+              "Title": "EducationType.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\EducationType.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Stables\\EducationType.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\EducationType.cs",
+              "RelativeToolTip": "Domain\\Models\\Stables\\EducationType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T18:31:08.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GenderType.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\GenderType.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Stables\\GenderType.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\GenderType.cs",
+              "RelativeToolTip": "Domain\\Models\\Stables\\GenderType.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T18:26:12.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "FinCode.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\ValueObjects\\FinCode.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\ValueObjects\\FinCode.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\ValueObjects\\FinCode.cs",
+              "RelativeToolTip": "Domain\\Models\\ValueObjects\\FinCode.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T19:17:43.29Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "FinData.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\ValueObjects\\FinData.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\ValueObjects\\FinData.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\ValueObjects\\FinData.cs",
+              "RelativeToolTip": "Domain\\Models\\ValueObjects\\FinData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T19:18:08.605Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Department.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Department.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Department.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Department.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\Department.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T14:23:10.176Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Faculty.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Faculty.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Faculty.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Faculty.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\Faculty.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T19:01:11.672Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "Lesson.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Lesson.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Lesson.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Lesson.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\Lesson.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABQAAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T20:08:11.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Group.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Group.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Group.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Group.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\Group.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAxwA4AAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T20:07:17.068Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "StudentGroup.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\StudentGroup.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\StudentGroup.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\StudentGroup.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\StudentGroup.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAoAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T20:08:38.299Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Subject.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Subject.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Subject.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Subject.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\Subject.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAA4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T20:07:47.079Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AppUserToken.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUserToken.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Membership\\AppUserToken.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUserToken.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\Membership\\AppUserToken.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T13:03:05.686Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "AppUser.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUser.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Membership\\AppUser.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUser.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\Membership\\AppUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T13:00:49.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "AppUserRole.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUserRole.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Membership\\AppUserRole.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUserRole.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\Membership\\AppUserRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T13:03:02.527Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "AppUserLogin.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUserLogin.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Membership\\AppUserLogin.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUserLogin.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\Membership\\AppUserLogin.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T13:02:59.296Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "AppUserClaim.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUserClaim.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Membership\\AppUserClaim.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUserClaim.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\Membership\\AppUserClaim.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T13:02:55.873Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "AppRoleClaim.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppRoleClaim.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Membership\\AppRoleClaim.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppRoleClaim.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\Membership\\AppRoleClaim.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T13:02:51.07Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "AppRole.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppRole.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Membership\\AppRole.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppRole.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\Membership\\AppRole.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T12:58:52.218Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "IAuditableEntity.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Abstracts\\IAuditableEntity.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Abstracts\\IAuditableEntity.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Abstracts\\IAuditableEntity.cs",
+              "RelativeToolTip": "Domain\\Models\\Abstracts\\IAuditableEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAApAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-18T19:44:53.178Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
               "Title": "IFinService.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IFinService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Abstracts\\IFinService.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IFinService.cs",
               "RelativeToolTip": "Infrastructure\\Abstracts\\IFinService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-03-18T19:19:51.973Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "IIdentityService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IIdentityService.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Abstracts\\IIdentityService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IIdentityService.cs",
-              "RelativeToolTip": "Infrastructure\\Abstracts\\IIdentityService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 23,
+              "Title": "AuditableEntity.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Concrates\\AuditableEntity.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Concrates\\AuditableEntity.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Concrates\\AuditableEntity.cs",
+              "RelativeToolTip": "Domain\\Models\\Concrates\\AuditableEntity.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T14:32:28.335Z",
+              "WhenOpened": "2026-03-18T19:43:55.009Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "IJwtService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IJwtService.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Abstracts\\IJwtService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IJwtService.cs",
-              "RelativeToolTip": "Infrastructure\\Abstracts\\IJwtService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T14:32:39.373Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "IFileService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IFileService.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Abstracts\\IFileService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IFileService.cs",
-              "RelativeToolTip": "Infrastructure\\Abstracts\\IFileService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T14:31:59.311Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "IEmailService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IEmailService.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Abstracts\\IEmailService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IEmailService.cs",
-              "RelativeToolTip": "Infrastructure\\Abstracts\\IEmailService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T14:31:57.559Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 24,
               "Title": "IAsyncRepository.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IAsyncRepository.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Abstracts\\IAsyncRepository.cs",
@@ -312,33 +575,98 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 25,
+              "Title": "AsyncRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Concrates\\AsyncRepository.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Concrates\\AsyncRepository.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Concrates\\AsyncRepository.cs",
+              "RelativeToolTip": "Infrastructure\\Concrates\\AsyncRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T14:32:48.667Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
               "Title": "Infrastructure.csproj",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Infrastructure.csproj",
               "RelativeDocumentMoniker": "Infrastructure\\Infrastructure.csproj",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Infrastructure.csproj",
               "RelativeToolTip": "Infrastructure\\Infrastructure.csproj",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAKAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
               "WhenOpened": "2026-03-18T19:24:42.813Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "IAuditableEntity.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IAuditableEntity.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Abstracts\\IAuditableEntity.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IAuditableEntity.cs",
-              "RelativeToolTip": "Infrastructure\\Abstracts\\IAuditableEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T14:31:51.733Z",
+              "DocumentIndex": 27,
+              "Title": "Domain.csproj",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj",
+              "RelativeDocumentMoniker": "Domain\\Domain.csproj",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj",
+              "RelativeToolTip": "Domain\\Domain.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-17T14:15:20.913Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
+              "DocumentIndex": 28,
+              "Title": "IJwtService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IJwtService.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Abstracts\\IJwtService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IJwtService.cs",
+              "RelativeToolTip": "Infrastructure\\Abstracts\\IJwtService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T14:32:39.373Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "IIdentityService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IIdentityService.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Abstracts\\IIdentityService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IIdentityService.cs",
+              "RelativeToolTip": "Infrastructure\\Abstracts\\IIdentityService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T14:32:28.335Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "IFileService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IFileService.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Abstracts\\IFileService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IFileService.cs",
+              "RelativeToolTip": "Infrastructure\\Abstracts\\IFileService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T14:31:59.311Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "IEmailService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IEmailService.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Abstracts\\IEmailService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IEmailService.cs",
+              "RelativeToolTip": "Infrastructure\\Abstracts\\IEmailService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-17T14:31:57.559Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
               "Title": "ICryptoService.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\ICryptoService.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Abstracts\\ICryptoService.cs",
@@ -351,7 +679,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 36,
               "Title": "EmailService.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\EmailService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\EmailService.cs",
@@ -363,7 +691,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 35,
               "Title": "FakeIdentityService.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\FakeIdentityService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\FakeIdentityService.cs",
@@ -375,7 +703,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 34,
               "Title": "FileService.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\FileService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\FileService.cs",
@@ -387,7 +715,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 33,
               "Title": "JwtService.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\JwtService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\JwtService.cs",
@@ -399,7 +727,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 39,
               "Title": "ValidatorInterceptor.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\ValidatorInterceptor.cs",
               "RelativeDocumentMoniker": "Application\\Services\\ValidatorInterceptor.cs",
@@ -411,7 +739,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 37,
               "Title": "EmailSenderService.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\EmailSenderService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\EmailSenderService.cs",
@@ -423,7 +751,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 38,
               "Title": "CryptoService.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\CryptoService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\CryptoService.cs",
@@ -435,67 +763,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "FinData.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\ValueObjects\\FinData.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\ValueObjects\\FinData.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\ValueObjects\\FinData.cs",
-              "RelativeToolTip": "Domain\\Models\\ValueObjects\\FinData.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T19:18:08.605Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "FinCode.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\ValueObjects\\FinCode.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\ValueObjects\\FinCode.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\ValueObjects\\FinCode.cs",
-              "RelativeToolTip": "Domain\\Models\\ValueObjects\\FinCode.cs",
-              "ViewState": "AgIAAA4AAAAAAAAAAAAgwAYAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T19:17:43.29Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
-              "Title": "AppUserLogin.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUserLogin.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Membership\\AppUserLogin.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUserLogin.cs",
-              "RelativeToolTip": "Domain\\Models\\Entities\\Membership\\AppUserLogin.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T13:02:59.296Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "AppUserClaim.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUserClaim.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Membership\\AppUserClaim.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUserClaim.cs",
-              "RelativeToolTip": "Domain\\Models\\Entities\\Membership\\AppUserClaim.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T13:02:55.873Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "AppUser.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUser.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Membership\\AppUser.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUser.cs",
-              "RelativeToolTip": "Domain\\Models\\Entities\\Membership\\AppUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T13:00:49.731Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 40,
               "Title": "StatusType.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\StatusType.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Stables\\StatusType.cs",
@@ -507,67 +775,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "AppUserRole.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUserRole.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Membership\\AppUserRole.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUserRole.cs",
-              "RelativeToolTip": "Domain\\Models\\Entities\\Membership\\AppUserRole.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T13:03:02.527Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "AppRole.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppRole.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Membership\\AppRole.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppRole.cs",
-              "RelativeToolTip": "Domain\\Models\\Entities\\Membership\\AppRole.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T12:58:52.218Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "Student.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Student.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Student.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Student.cs",
-              "RelativeToolTip": "Domain\\Models\\Entities\\Student.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAADwvxkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T18:08:12.196Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "AppRoleClaim.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppRoleClaim.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Membership\\AppRoleClaim.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppRoleClaim.cs",
-              "RelativeToolTip": "Domain\\Models\\Entities\\Membership\\AppRoleClaim.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T13:02:51.07Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "AppUserToken.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUserToken.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Membership\\AppUserToken.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Membership\\AppUserToken.cs",
-              "RelativeToolTip": "Domain\\Models\\Entities\\Membership\\AppUserToken.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T13:03:05.686Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 41,
               "Title": "GradeType.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\GradeType.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Stables\\GradeType.cs",
@@ -579,19 +787,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "GenderType.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\GenderType.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Stables\\GenderType.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\GenderType.cs",
-              "RelativeToolTip": "Domain\\Models\\Stables\\GenderType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T18:26:12.218Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 42,
               "Title": "FacultyType.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\FacultyType.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Stables\\FacultyType.cs",
@@ -603,79 +799,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "EducationType.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\EducationType.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Stables\\EducationType.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\EducationType.cs",
-              "RelativeToolTip": "Domain\\Models\\Stables\\EducationType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAYAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T18:31:08.707Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "DepartmentType.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\DepartmentType.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Stables\\DepartmentType.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\DepartmentType.cs",
-              "RelativeToolTip": "Domain\\Models\\Stables\\DepartmentType.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAAwCMAAAAzAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T18:57:20.94Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Department.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Department.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Department.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Department.cs",
-              "RelativeToolTip": "Domain\\Models\\Entities\\Department.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T14:23:10.176Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 33,
-              "Title": "Faculty.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Faculty.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Faculty.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Faculty.cs",
-              "RelativeToolTip": "Domain\\Models\\Entities\\Faculty.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T19:01:11.672Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "TeacherDepartment.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\TeacherDepartment.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\TeacherDepartment.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\TeacherDepartment.cs",
-              "RelativeToolTip": "Domain\\Models\\Entities\\TeacherDepartment.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T18:57:51.833Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
-              "Title": "Teacher.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Teacher.cs",
-              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Teacher.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Teacher.cs",
-              "RelativeToolTip": "Domain\\Models\\Entities\\Teacher.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAAwAkAAAAqAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-18T18:42:43.931Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 43,
               "Title": "DataAccessLayer.csproj",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\DataAccessLayer.csproj",
               "RelativeDocumentMoniker": "DataAccessLayer\\DataAccessLayer.csproj",
@@ -688,7 +812,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 45,
               "Title": "DataContext.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\DataContexts\\DataContext.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\DataContexts\\DataContext.cs",
@@ -700,7 +824,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 46,
               "Title": "ApplicationModule.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\ApplicationModule.cs",
               "RelativeDocumentMoniker": "Application\\ApplicationModule.cs",
@@ -712,31 +836,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "AsyncRepository.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Concrates\\AsyncRepository.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Concrates\\AsyncRepository.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Concrates\\AsyncRepository.cs",
-              "RelativeToolTip": "Infrastructure\\Concrates\\AsyncRepository.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAXAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T14:32:48.667Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 40,
-              "Title": "AuditableEntity.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Concrates\\AuditableEntity.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Concrates\\AuditableEntity.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Concrates\\AuditableEntity.cs",
-              "RelativeToolTip": "Infrastructure\\Concrates\\AuditableEntity.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-17T14:34:50.367Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 47,
               "Title": "IApplicationReferance.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\IApplicationReferance.cs",
               "RelativeDocumentMoniker": "Application\\IApplicationReferance.cs",
@@ -748,7 +848,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 44,
               "Title": "Application.csproj",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Application.csproj",
               "RelativeDocumentMoniker": "Application\\Application.csproj",
@@ -761,7 +861,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 48,
               "Title": "IRepositoryReference.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Repository\\IRepositoryReference.cs",
               "RelativeDocumentMoniker": "Repository\\IRepositoryReference.cs",
@@ -773,7 +873,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 49,
               "Title": "PagingExtension.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Extensions\\PagingExtension.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Extensions\\PagingExtension.cs",
@@ -785,20 +885,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
-              "Title": "Domain.csproj",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj",
-              "RelativeDocumentMoniker": "Domain\\Domain.csproj",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj",
-              "RelativeToolTip": "Domain\\Domain.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2026-03-17T14:15:20.913Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 52,
               "Title": "JwtConfigurationOptions.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Configurations\\JwtConfigurationOptions.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Configurations\\JwtConfigurationOptions.cs",
@@ -810,7 +897,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 51,
               "Title": "NotFoundException.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Exceptions\\NotFoundException.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Exceptions\\NotFoundException.cs",
@@ -822,7 +909,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 50,
               "Title": "UserNotFoundException.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Exceptions\\UserNotFoundException.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Exceptions\\UserNotFoundException.cs",
@@ -834,7 +921,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 53,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Class1.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Class1.cs",
@@ -846,7 +933,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 54,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Class1.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\Class1.cs",

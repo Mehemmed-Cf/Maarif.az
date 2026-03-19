@@ -665,7 +665,6 @@
         "type": "project",
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
-          "C:\\Users\\user\\source\\repos\\Persistance\\Infrastructure\\Infrastructure.csproj": "1.0.0",
           "Domain": "1.0.0",
           "Microsoft.AspNetCore.Http": "2.3.9",
           "Microsoft.EntityFrameworkCore": "8.0.0"
@@ -1747,15 +1746,6 @@
     }
   },
   "logs": [
-    {
-      "code": "NU1104",
-      "level": "Error",
-      "message": "Unable to find project 'C:\\Users\\user\\source\\repos\\Persistance\\Infrastructure\\Infrastructure.csproj'. Check that the project reference is valid and that the project file exists.",
-      "libraryId": "C:\\Users\\user\\source\\repos\\Persistance\\Infrastructure\\Infrastructure.csproj",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
     {
       "code": "NU1701",
       "level": "Warning",
