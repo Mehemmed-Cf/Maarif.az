@@ -1,0 +1,43 @@
+﻿using Domain.Models.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace DataAccessLayer.Configurations
+{
+    public class DepartmentEntityTypeConfiguration : IEntityTypeConfiguration<Department>
+    {
+        public void Configure(EntityTypeBuilder<Department> builder)
+        {
+            builder.Property(d => d.Id).HasColumnType("int").UseIdentityColumn(1, 1);
+            builder.Property(d => d.Name).HasColumnType("nvarchar").HasMaxLength(200).IsRequired();
+            builder.Property(d => d.FacultyId).HasColumnType("int").IsRequired();
+
+            builder.HasOne(d => d.Faculty)
+                   .WithMany(f => f.Departments)
+                   .HasForeignKey(d => d.FacultyId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasMany(d => d.TeacherDepartments)
+                   .WithOne(td => td.Department)
+                   .HasForeignKey(td => td.DepartmentId)
+                   .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasMany(d => d.Students)
+                   .WithOne(s => s.Department)
+                   .HasForeignKey(s => s.DepartmentId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasMany(d => d.Groups)
+                   .WithOne(g => g.Department)
+                   .HasForeignKey(g => g.DepartmentId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasMany(d => d.Subjects)
+                   .WithOne(s => s.Department)
+                   .HasForeignKey(s => s.DepartmentId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            builder.ToTable("Departments", "dbo");
+        }
+    }
+}

@@ -7,7 +7,39 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="DepartmentsModule\**" />
+    <Compile Remove="FacultiesModule\**" />
+    <Compile Remove="GroupsModule\**" />
+    <Compile Remove="LessonsModule\**" />
+    <Compile Remove="StudentGroupsModule\**" />
+    <Compile Remove="StudentsModule\**" />
+    <Compile Remove="SubjectsModule\**" />
+    <Compile Remove="TeacherDepartmentsModule\**" />
+    <Compile Remove="TeachersModule\**" />
+    <EmbeddedResource Remove="DepartmentsModule\**" />
+    <EmbeddedResource Remove="FacultiesModule\**" />
+    <EmbeddedResource Remove="GroupsModule\**" />
+    <EmbeddedResource Remove="LessonsModule\**" />
+    <EmbeddedResource Remove="StudentGroupsModule\**" />
+    <EmbeddedResource Remove="StudentsModule\**" />
+    <EmbeddedResource Remove="SubjectsModule\**" />
+    <EmbeddedResource Remove="TeacherDepartmentsModule\**" />
+    <EmbeddedResource Remove="TeachersModule\**" />
+    <None Remove="DepartmentsModule\**" />
+    <None Remove="FacultiesModule\**" />
+    <None Remove="GroupsModule\**" />
+    <None Remove="LessonsModule\**" />
+    <None Remove="StudentGroupsModule\**" />
+    <None Remove="StudentsModule\**" />
+    <None Remove="SubjectsModule\**" />
+    <None Remove="TeacherDepartmentsModule\**" />
+    <None Remove="TeachersModule\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Autofac" Version="9.1.0" />
+    <PackageReference Include="AutoMapper" Version="16.1.1" />
+    <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="12.0.1" />
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.1" />
     <PackageReference Include="MediatR" Version="14.1.0" />
     <PackageReference Include="Microsoft.AspNetCore.Authentication.JwtBearer" Version="8.0.0" />

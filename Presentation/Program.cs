@@ -11,6 +11,7 @@ using Microsoft.EntityFrameworkCore;
 using Presentation.AppCode.DI;
 using Presentation.AppCode.Pipeline;
 using Application;
+using Application.Mappings;
 
 internal class Program
 {
@@ -54,6 +55,8 @@ internal class Program
         });
 
         builder.Services.AddCustomIdentity(builder.Configuration);
+
+        builder.Services.AddAutoMapper(typeof(MappingProfile));
 
         builder.Services.AddSingleton(typeof(IPipelineBehavior<,>), typeof(HeaderBinderBehaviour<,>));
 
