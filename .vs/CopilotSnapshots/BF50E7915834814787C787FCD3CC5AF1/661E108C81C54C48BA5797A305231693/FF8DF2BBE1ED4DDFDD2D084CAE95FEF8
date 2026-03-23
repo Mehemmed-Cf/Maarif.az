@@ -1,0 +1,6 @@
+﻿namespace Application.Modules.StudentModule.Queries.StudentGetByIdQuery
+{
+ public class StudentGetByIdRequestHandler
+ {
+ }
+}

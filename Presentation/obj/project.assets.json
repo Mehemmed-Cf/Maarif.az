@@ -2071,6 +2071,7 @@
         "framework": ".NETCoreApp,Version=v8.0",
         "dependencies": {
           "Application": "1.0.0",
+          "DataAccessLayer": "1.0.0",
           "Infrastructure": "1.0.0"
         },
         "compile": {

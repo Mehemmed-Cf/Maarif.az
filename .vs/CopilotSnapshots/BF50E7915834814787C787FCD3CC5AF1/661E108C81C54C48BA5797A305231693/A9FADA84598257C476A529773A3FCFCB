@@ -1,0 +1,6 @@
+﻿namespace Application.Modules.StudentModule.Commands.StudentRemoveCommand
+{
+ public class StudentRemoveRequest
+ {
+ }
+}

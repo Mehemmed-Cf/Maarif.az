@@ -1,0 +1,6 @@
+﻿namespace Application.Modules.TeacherModule.Queries.TeacherGetByIdQuery
+{
+ public class TeacherGetByIdRequest
+ {
+ }
+}

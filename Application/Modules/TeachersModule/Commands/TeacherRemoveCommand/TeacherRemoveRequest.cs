@@ -1,0 +1,6 @@
+namespace Application.Modules.TeachersModule.Commands.TeacherRemoveCommand
+{
+ internal class TeacherRemoveRequest
+ {
+ }
+}

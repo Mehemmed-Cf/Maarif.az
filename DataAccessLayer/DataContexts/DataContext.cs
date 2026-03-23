@@ -1,14 +1,16 @@
-﻿using Infrastructure.Abstracts;
-using Microsoft.EntityFrameworkCore;
+﻿using Domain.Models.Abstract;
+using Domain.Models.Entities;
 using Domain.Models.Entities.Membership;
+using Infrastructure.Abstracts;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Domain.Models.Abstract;
+using Microsoft.EntityFrameworkCore;
 
 namespace DataAccessLayer.Migrations
 {
     public class DataContext : IdentityDbContext<AppUser, AppRole, int, AppUserClaim, AppUserRole, AppUserLogin, AppRoleClaim, AppUserToken> //DbContext
     {
         private readonly IIdentityService identityService;
+        public DbSet<Department> Departments { get; set; }
 
         public DataContext(DbContextOptions<DataContext> options, IIdentityService? identityService = null)
             :base(options)
@@ -30,7 +32,7 @@ namespace DataAccessLayer.Migrations
         {
             var changes = ChangeTracker.Entries<IAuditableEntity>();
 
-            var userId = identityService?.GetPrincipialId(); // 
+            var userId = identityService?.GetPrincipialId();
 
             if (changes != null)
             {

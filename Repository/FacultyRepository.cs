@@ -10,5 +10,10 @@ namespace Repository
         public FacultyRepository(DbContext db) : base(db)
         {
         }
+
+        public async Task<Department?> GetByIdWithDetailsAsync(int id, CancellationToken ct = default)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,0 +1,6 @@
+namespace Application.Modules.SubjectsModule.Commands.SubjectAddCommand
+{
+ internal class SubjectAddRequest
+ {
+ }
+}

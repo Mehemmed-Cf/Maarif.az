@@ -1,0 +1,6 @@
+﻿namespace Application.Modules.StudentModule.Commands.StudentEditCommand
+{
+ public class StudentEditRequest
+ {
+ }
+}

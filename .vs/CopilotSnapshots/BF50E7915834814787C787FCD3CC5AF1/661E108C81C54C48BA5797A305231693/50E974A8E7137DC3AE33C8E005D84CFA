@@ -1,0 +1,6 @@
+﻿namespace Application.Modules.TeacherModule.Commands.TeacherEditCommand
+{
+ public class TeacherEditRequestDto
+ {
+ }
+}

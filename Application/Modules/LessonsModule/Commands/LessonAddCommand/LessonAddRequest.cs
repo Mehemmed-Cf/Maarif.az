@@ -1,0 +1,6 @@
+namespace Application.Modules.LessonsModule.Commands.LessonAddCommand
+{
+ internal class LessonAddRequest
+ {
+ }
+}

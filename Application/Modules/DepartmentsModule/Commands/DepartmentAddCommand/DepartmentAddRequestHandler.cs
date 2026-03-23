@@ -23,8 +23,6 @@ namespace Application.Modules.DepartmentsModule.Commands.DepartmentsAddCommand
             {
                 Name = request.Name,
                 FacultyId = request.FacultyId,
-                CreatedBy = 1,
-                CreatedAt = DateTime.UtcNow,
             };
 
             await departmentRepository.AddAsync(entity);

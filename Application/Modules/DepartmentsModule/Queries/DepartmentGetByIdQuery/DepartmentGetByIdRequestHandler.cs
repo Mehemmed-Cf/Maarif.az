@@ -1,5 +1,6 @@
 ﻿using Application.Repositories;
 using AutoMapper;
+using Infrastructure.Exceptions;
 using MediatR;
 
 namespace Application.Modules.DepartmentsModule.Queries.DepartmentGetByIdQuery
@@ -17,10 +18,8 @@ namespace Application.Modules.DepartmentsModule.Queries.DepartmentGetByIdQuery
 
         public async Task<DepartmentGetByIdResponseDto> Handle(DepartmentGetByIdRequest request, CancellationToken cancellationToken)
         {
-            var entity = await departmentRepository.GetAsync(m => m.Id == request.Id && m.DeletedAt == null, cancellationToken);
-
-            if(entity == null)
-                throw new Exception("Departament tapılmadı");
+            var entity = await departmentRepository.GetByIdWithDetailsAsync(request.Id, cancellationToken)
+                ?? throw new NotFoundException("Departament tapılmadı");
 
             return mapper.Map<DepartmentGetByIdResponseDto>(entity);
         }

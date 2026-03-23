@@ -1,0 +1,6 @@
+namespace Application.Modules.StudentsModule.Commands.StudentAddCommand
+{
+ internal class StudentAddRequestValidator
+ {
+ }
+}
