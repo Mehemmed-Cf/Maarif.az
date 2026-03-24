@@ -1,6 +1,10 @@
+﻿using MediatR;
+
 namespace Application.Modules.LessonsModule.Commands.LessonAddCommand
 {
- internal class LessonAddRequest
- {
- }
+    public class LessonAddRequest : IRequest<LessonResponseDto>
+    {
+        public int TeacherId { get; set; }
+        public int SubjectId { get; set; }
+    }
 }

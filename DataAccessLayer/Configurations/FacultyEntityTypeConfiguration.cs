@@ -4,19 +4,21 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataAccessLayer.Configurations
 {
-    public class FacultyEntityTypeConfiguration : IEntityTypeConfiguration<Faculty>
+    public class FacultyConfiguration : IEntityTypeConfiguration<Faculty>
     {
         public void Configure(EntityTypeBuilder<Faculty> builder)
         {
-            builder.Property(f => f.Id).HasColumnType("int").UseIdentityColumn(1, 1);
-            builder.Property(f => f.Name).HasColumnType("nvarchar").HasMaxLength(200).IsRequired();
+            builder.ToTable("Faculties");
 
-            builder.HasMany(f => f.Departments)
-                .WithOne(d => d.Faculty)
-                .HasForeignKey(d => d.FacultyId)
-                .OnDelete(DeleteBehavior.Restrict);
+            builder.HasKey(f => f.Id);
 
-            builder.ToTable("Faculties", "dbo");
+            builder.Property(f => f.Name)
+                   .IsRequired()
+                   .HasMaxLength(200);
+
+            builder.HasQueryFilter(f => f.DeletedAt == null);
+
+            builder.HasIndex(f => f.Name).IsUnique();
         }
     }
 }

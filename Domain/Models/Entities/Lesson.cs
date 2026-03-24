@@ -1,9 +1,4 @@
 ﻿using Domain.Models.Concrates;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Domain.Models.Entities
 {
@@ -17,7 +12,6 @@ namespace Domain.Models.Entities
         public int SubjectId { get; set; }
         public Subject Subject { get; set; }
 
-        public int GroupId { get; set; }
-        public Group Group { get; set; }
+        public ICollection<LessonGroup> LessonGroups { get; set; }
     }
 }

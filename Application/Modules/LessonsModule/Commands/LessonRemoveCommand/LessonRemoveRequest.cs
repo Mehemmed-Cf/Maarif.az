@@ -1,6 +1,9 @@
+﻿using MediatR;
+
 namespace Application.Modules.LessonsModule.Commands.LessonRemoveCommand
 {
- internal class LessonRemoveRequest
- {
- }
+    public class LessonRemoveRequest : IRequest
+    {
+        public int Id { get; set; }
+    }
 }

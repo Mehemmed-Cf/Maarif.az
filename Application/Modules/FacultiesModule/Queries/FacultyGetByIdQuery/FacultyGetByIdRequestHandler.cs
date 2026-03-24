@@ -1,10 +1,7 @@
-﻿using Application.Modules.DepartmentsModule.Queries.DepartmentGetByIdQuery;
-using Application.Repositories;
+﻿using Application.Repositories;
 using AutoMapper;
-using AutoMapper.QueryableExtensions;
 using Infrastructure.Exceptions;
 using MediatR;
-using Microsoft.EntityFrameworkCore;
 
 namespace Application.Modules.FacultiesModule.Queries.FacultyGetByIdQuery
 {
@@ -19,24 +16,16 @@ namespace Application.Modules.FacultiesModule.Queries.FacultyGetByIdQuery
             this.mapper = mapper;
         }
 
-        public async Task<FacultyGetByIdResponseDto> Handle(FacultyGetByIdRequest request, CancellationToken cancellationToken)
+        public async Task<FacultyGetByIdResponseDto> Handle(
+            FacultyGetByIdRequest request,
+            CancellationToken cancellationToken)
         {
-            //var faculty = await facultyRepository.GetAll()
-            //    .Include(f => f.Departments)
-            //    .FirstOrDefaultAsync(f => f.Id == request.Id && f.DeletedAt == null, cancellationToken);
-
-            //return await facultyRepository.GetAll()
-            //.Where(f => f.Id == request.Id && f.DeletedAt == null)
-            //.ProjectTo<FacultyGetByIdResponseDto>(mapper.ConfigurationProvider)
-            //.FirstOrDefaultAsync(cancellationToken);
-
             var faculty = await facultyRepository.GetByIdWithDetailsAsync(request.Id, cancellationToken)
                 ?? throw new NotFoundException("Fakültə tapılmadı");
 
-            if (faculty == null) return null;
-
-            // The Mapper transforms the Faculty + Department Entities 
-            // into the FacultyGetByIdResponseDto + List<FacultyDepartmentDto>
+            // FIX #7: Removed `if (faculty == null) return null` — it was dead code.
+            // The ?? throw above already guarantees faculty is non-null here.
+            // Keeping a null-return path after a throw confuses readers and hides intent.
             return mapper.Map<FacultyGetByIdResponseDto>(faculty);
         }
     }

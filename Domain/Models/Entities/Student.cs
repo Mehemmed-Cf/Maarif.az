@@ -19,8 +19,11 @@ namespace Domain.Models.Entities
         public GradeType Grade { get; set; }
         public int DepartmentId { get; set; }
         public Department Department { get; set; }
-        public int FacultyId { get; set; }
-        public Faculty Faculty { get; set; }
+
+        // BUG FIX: Removed FacultyId — Faculty is already reachable via Department.Faculty.
+        // Storing it here was a 3NF violation that would cause data drift if a
+        // department is ever reassigned to a different faculty.
+        // Use: student.Department.Faculty or join through Department in queries.
 
         public ICollection<StudentGroup> StudentGroups { get; set; }
     }

@@ -4,40 +4,27 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataAccessLayer.Configurations
 {
-    public class DepartmentEntityTypeConfiguration : IEntityTypeConfiguration<Department>
+    public class DepartmentConfiguration : IEntityTypeConfiguration<Department>
     {
         public void Configure(EntityTypeBuilder<Department> builder)
         {
-            builder.Property(d => d.Id).HasColumnType("int").UseIdentityColumn(1, 1);
-            builder.Property(d => d.Name).HasColumnType("nvarchar").HasMaxLength(200).IsRequired();
-            builder.Property(d => d.FacultyId).HasColumnType("int").IsRequired();
+            builder.ToTable("Departments");
+
+            builder.HasKey(d => d.Id);
+
+            builder.Property(d => d.Name)
+                   .IsRequired()
+                   .HasMaxLength(200);
+
+            builder.HasQueryFilter(d => d.DeletedAt == null);
 
             builder.HasOne(d => d.Faculty)
                    .WithMany(f => f.Departments)
                    .HasForeignKey(d => d.FacultyId)
                    .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasMany(d => d.TeacherDepartments)
-                   .WithOne(td => td.Department)
-                   .HasForeignKey(td => td.DepartmentId)
-                   .OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasMany(d => d.Students)
-                   .WithOne(s => s.Department)
-                   .HasForeignKey(s => s.DepartmentId)
-                   .OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasMany(d => d.Groups)
-                   .WithOne(g => g.Department)
-                   .HasForeignKey(g => g.DepartmentId)
-                   .OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasMany(d => d.Subjects)
-                   .WithOne(s => s.Department)
-                   .HasForeignKey(s => s.DepartmentId)
-                   .OnDelete(DeleteBehavior.Restrict);
-
-            builder.ToTable("Departments", "dbo");
+            builder.HasIndex(d => d.FacultyId);
+            builder.HasIndex(d => d.Name);
         }
     }
 }

@@ -1,44 +1,60 @@
 using Domain.Models.Entities;
+using Domain.Models.Stables;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataAccessLayer.Configurations
 {
-    public class StudentEntityTypeConfiguration : IEntityTypeConfiguration<Student>
+    public class StudentConfiguration : IEntityTypeConfiguration<Student>
     {
         public void Configure(EntityTypeBuilder<Student> builder)
         {
-            builder.Property(s => s.Id).HasColumnType("int").UseIdentityColumn(1, 1);
-            builder.Property(s => s.FullName).HasColumnType("nvarchar").HasMaxLength(100).IsRequired();
-            builder.Property(s => s.FatherName).HasColumnType("nvarchar").HasMaxLength(20).IsRequired();
-            builder.Property(s => s.StudentNumber).HasColumnType("nvarchar").HasMaxLength(20).IsRequired();
-            builder.Property(s => s.Gender).HasColumnType("tinyint").IsRequired();
-            builder.Property(s => s.MobileNumber).HasColumnType("nvarchar").HasMaxLength(15).IsRequired();
-            builder.Property(s => s.BirthDate).HasColumnType("datetime2").IsRequired();
-            builder.Property(s => s.EducationType).HasColumnType("tinyint").IsRequired();
-            builder.Property(s => s.Status).HasColumnType("tinyint").IsRequired();
-            builder.Property(s => s.Year).HasColumnType("tinyint").IsRequired();
-            builder.Property(s => s.UserId).HasColumnType("int").IsRequired();
-            builder.Property(s => s.Grade).HasColumnType("tinyint").IsRequired();
-            builder.Property(s => s.DepartmentId).HasColumnType("int").IsRequired();
-            builder.Property(s => s.FacultyId).HasColumnType("int").IsRequired();
+            builder.ToTable("Students");
 
+            builder.HasKey(s => s.Id);
+
+            builder.Property(s => s.FullName)
+                   .IsRequired()
+                   .HasMaxLength(300);
+
+            builder.Property(s => s.FatherName)
+                   .HasMaxLength(200);
+
+            builder.Property(s => s.StudentNumber)
+                   .IsRequired()
+                   .HasMaxLength(50);
+
+            builder.Property(s => s.MobileNumber)
+                   .HasMaxLength(20);
+
+            builder.Property(s => s.Gender)
+                   .HasConversion<string>()
+                   .HasMaxLength(20);
+
+            builder.Property(s => s.EducationType)
+                   .HasConversion<string>()
+                   .HasMaxLength(30);
+
+            builder.Property(s => s.Status)
+                   .HasConversion<string>()
+                   .HasMaxLength(30);
+
+            builder.Property(s => s.Grade)
+                   .HasConversion<string>()
+                   .HasMaxLength(10);
+
+            builder.HasQueryFilter(s => s.DeletedAt == null);
+
+            // Department is the single source of truth for faculty.
+            // No FacultyId column here — derive via Department.Faculty when needed.
             builder.HasOne(s => s.Department)
-                .WithMany(d => d.Students)
-                .HasForeignKey(s => s.DepartmentId)
-                .OnDelete(DeleteBehavior.Restrict);
+                   .WithMany(d => d.Students)
+                   .HasForeignKey(s => s.DepartmentId)
+                   .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasOne(s => s.Faculty)
-                .WithMany()
-                .HasForeignKey(s => s.FacultyId)
-                .OnDelete(DeleteBehavior.Restrict);
-
-            builder.HasMany(s => s.StudentGroups)
-                .WithOne(sg => sg.Student)
-                .HasForeignKey(sg => sg.StudentId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            builder.ToTable("Students", "dbo");
+            builder.HasIndex(s => s.StudentNumber).IsUnique();
+            builder.HasIndex(s => s.DepartmentId);
+            builder.HasIndex(s => s.UserId);
         }
     }
 }

@@ -17,17 +17,20 @@ namespace Application.Modules.DepartmentsModule.Queries.DepartmentGetAllQuery
             this.mapper = mapper;
         }
 
-        public async Task<IEnumerable<DepartmentGetAllResponseDto>> Handle(DepartmentGetAllRequest request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<DepartmentGetAllResponseDto>> Handle(
+            DepartmentGetAllRequest request,
+            CancellationToken cancellationToken)
         {
-            var query = departmentRepository.GetAll();
-
-            query = query.Where(m => m.DeletedAt == null);
-
-            var result = await query
-                    .ProjectTo<DepartmentGetAllResponseDto>(mapper.ConfigurationProvider)
-                    .ToListAsync(cancellationToken);
-
-            return mapper.Map<IEnumerable<DepartmentGetAllResponseDto>>(query);
+            // FIX #1: Previous code built a ProjectTo query into `result`, then threw
+            // it away and returned mapper.Map(query) on a raw IQueryable — causing two
+            // round-trips and an in-memory mapping of an unmaterialized sequence.
+            // ProjectTo is the correct approach: it translates the entire mapping to SQL
+            // so Students/Subjects/Groups counts become SQL COUNT subqueries, not
+            // C# collection loads. HasQueryFilter handles soft-delete automatically.
+            return await departmentRepository
+                .GetAll()
+                .ProjectTo<DepartmentGetAllResponseDto>(mapper.ConfigurationProvider)
+                .ToListAsync(cancellationToken);
         }
     }
 }

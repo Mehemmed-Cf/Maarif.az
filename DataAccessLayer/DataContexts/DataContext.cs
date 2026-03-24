@@ -28,6 +28,23 @@ namespace DataAccessLayer.Migrations
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly);
+
+            modelBuilder.Entity<StudentGroup>()
+                .HasKey(sg => new { sg.StudentId, sg.GroupId });
+
+            // Configure the Join Table
+            modelBuilder.Entity<LessonGroup>()
+                .HasKey(lg => new { lg.LessonId, lg.GroupId }); // Composite Key
+
+            modelBuilder.Entity<LessonGroup>()
+                .HasOne(lg => lg.Lesson)
+                .WithMany(l => l.LessonGroups)
+                .HasForeignKey(lg => lg.LessonId);
+
+            modelBuilder.Entity<LessonGroup>()
+                .HasOne(lg => lg.Group)
+                .WithMany(g => g.LessonGroups)
+                .HasForeignKey(lg => lg.GroupId);
         }
 
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)

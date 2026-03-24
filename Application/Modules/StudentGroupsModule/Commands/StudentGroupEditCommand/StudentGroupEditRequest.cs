@@ -1,6 +1,0 @@
-namespace Application.Modules.StudentGroupsModule.Commands.StudentGroupEditCommand
-{
- internal class StudentGroupEditRequest
- {
- }
-}

@@ -2,7 +2,7 @@
 {
     public class GroupStudentDto
     {
-        public int Id { get; set; }
+        public int StudentId { get; set; }
         public string FullName { get; set; }
         public string StudentNumber { get; set; }
     }

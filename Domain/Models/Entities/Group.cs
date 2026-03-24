@@ -12,7 +12,8 @@ namespace Domain.Models.Entities
         public Department Department { get; set; }
 
         public ICollection<StudentGroup> StudentGroups { get; set; }
-        public ICollection<Lesson> Lessons { get; set; }
+        public ICollection<LessonGroup> LessonGroups { get; set; }
+        //public ICollection<Lesson> Lessons { get; set; }
 
         [NotMapped]
         public int StudentCount => StudentGroups?.Count ?? 0;

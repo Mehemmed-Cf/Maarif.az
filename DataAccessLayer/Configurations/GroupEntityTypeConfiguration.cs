@@ -4,31 +4,33 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataAccessLayer.Configurations
 {
-    public class GroupEntityTypeConfiguration : IEntityTypeConfiguration<Group>
+    public class GroupConfiguration : IEntityTypeConfiguration<Group>
     {
         public void Configure(EntityTypeBuilder<Group> builder)
         {
-            builder.Property(g => g.Id).HasColumnType("int").UseIdentityColumn(1, 1);
-            builder.Property(g => g.Name).HasColumnType("nvarchar").HasMaxLength(100).IsRequired();
-            builder.Property(g => g.Year).HasColumnType("tinyint").IsRequired();
-            builder.Property(g => g.DepartmentId).HasColumnType("int").IsRequired();
+            builder.ToTable("Groups");
+
+            builder.HasKey(g => g.Id);
+
+            builder.Property(g => g.Name)
+                   .IsRequired()
+                   .HasMaxLength(50);
+
+            builder.Property(g => g.Year)
+                   .IsRequired();
+
+            // StudentCount is [NotMapped] — EF ignores it automatically.
+
+            builder.HasQueryFilter(g => g.DeletedAt == null);
 
             builder.HasOne(g => g.Department)
-                .WithMany(d => d.Groups)
-                .HasForeignKey(g => g.DepartmentId)
-                .OnDelete(DeleteBehavior.Restrict);
+                   .WithMany(d => d.Groups)
+                   .HasForeignKey(g => g.DepartmentId)
+                   .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasMany(g => g.StudentGroups)
-                .WithOne(sg => sg.Group)
-                .HasForeignKey(sg => sg.GroupId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            builder.HasMany(g => g.Lessons)
-                .WithOne(l => l.Group)
-                .HasForeignKey(l => l.GroupId)
-                .OnDelete(DeleteBehavior.Cascade);
-
-            builder.ToTable("Groups", "dbo");
+            builder.HasIndex(g => g.DepartmentId);
+            // A group name like "IT-101" should be unique within a department
+            builder.HasIndex(g => new { g.DepartmentId, g.Name }).IsUnique();
         }
     }
 }

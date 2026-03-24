@@ -163,9 +163,6 @@ namespace DataAccessLayer.Migrations
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
 
-                    b.Property<int>("GroupId")
-                        .HasColumnType("int");
-
                     b.Property<DateTime?>("LastModifiedAt")
                         .HasColumnType("datetime2");
 
@@ -180,13 +177,26 @@ namespace DataAccessLayer.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("GroupId");
-
                     b.HasIndex("SubjectId");
 
                     b.HasIndex("TeacherId");
 
                     b.ToTable("Lessons", "dbo");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.LessonGroup", b =>
+                {
+                    b.Property<int>("LessonId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.HasKey("LessonId", "GroupId");
+
+                    b.HasIndex("GroupId");
+
+                    b.ToTable("LessonGroup");
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.Membership.AppRole", b =>
@@ -675,12 +685,6 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("Domain.Models.Entities.Lesson", b =>
                 {
-                    b.HasOne("Domain.Models.Entities.Group", "Group")
-                        .WithMany("Lessons")
-                        .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("Domain.Models.Entities.Subject", "Subject")
                         .WithMany("Lessons")
                         .HasForeignKey("SubjectId")
@@ -693,11 +697,28 @@ namespace DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.Navigation("Group");
-
                     b.Navigation("Subject");
 
                     b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.LessonGroup", b =>
+                {
+                    b.HasOne("Domain.Models.Entities.Group", "Group")
+                        .WithMany("LessonGroups")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Entities.Lesson", "Lesson")
+                        .WithMany("LessonGroups")
+                        .HasForeignKey("LessonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Lesson");
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.Membership.AppRoleClaim", b =>
@@ -837,9 +858,14 @@ namespace DataAccessLayer.Migrations
 
             modelBuilder.Entity("Domain.Models.Entities.Group", b =>
                 {
-                    b.Navigation("Lessons");
+                    b.Navigation("LessonGroups");
 
                     b.Navigation("StudentGroups");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Lesson", b =>
+                {
+                    b.Navigation("LessonGroups");
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.Student", b =>

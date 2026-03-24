@@ -1,0 +1,1780 @@
+﻿
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Mappings\GroupProfile.cs
+--------------------------------------------------------------
+
+using Application.Modules.GroupsModule;
+using Application.Modules.GroupsModule.Commands.GroupAddCommand;
+using Application.Modules.GroupsModule.Commands.GroupEditCommand;
+using Application.Modules.GroupsModule.Queries.GroupGetByIdQuery;
+using AutoMapper;
+using Domain.Models.Entities;
+
+namespace Application.Mappings
+{
+    public class GroupProfile : Profile
+    {
+        public GroupProfile()
+        {
+            // Mapping for GetAll
+            CreateMap<Group, GroupResponseDto>()
+                .ForMember(d => d.DepartmentName, o => o.MapFrom(s => s.Department.Name))
+                .ForMember(d => d.StudentCount, o => o.MapFrom(s => s.StudentGroups.Count));
+
+            // Mapping for GetById
+            CreateMap<Group, GroupDetailsResponseDto>()
+                .ForMember(d => d.DepartmentName, o => o.MapFrom(s => s.Department.Name))
+                .ForMember(d => d.Students, o => o.MapFrom(s => s.StudentGroups.Select(sg => sg.Student)));
+
+            // Helper mapping for the student list
+            //CreateMap<Student, StudentSmallDto>()
+            //    .ForMember(d => d.FullName, o => o.MapFrom(s => $"{s.FirstName} {s.LastName}"));
+
+            CreateMap<Student, StudentSmallDto>();
+
+            CreateMap<GroupAddRequest, Group>();
+            CreateMap<GroupEditRequest, Group>();
+        }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\DepartmentsModule\Queries\DepartmentGetByIdQuery\DepartmentGroupDto.cs
+--------------------------------------------------------------
+
+namespace Application.Modules.DepartmentsModule.Queries.DepartmentGetByIdQuery
+{
+    public class DepartmentGroupDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public byte Year { get; set; }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\Commands\GroupAddCommand\GroupAddRequest.cs
+--------------------------------------------------------------
+
+using MediatR;
+
+namespace Application.Modules.GroupsModule.Commands.GroupAddCommand
+{
+    public class GroupAddRequest : IRequest<GroupResponseDto>
+    {
+        public string Name { get; set; }
+        public byte Year { get; set; }
+        public int DepartmentId { get; set; }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\Commands\GroupAddCommand\GroupAddRequestHandler.cs
+--------------------------------------------------------------
+
+using Application.Repositories;
+using AutoMapper;
+using Domain.Models.Entities;
+using MediatR;
+
+namespace Application.Modules.GroupsModule.Commands.GroupAddCommand
+{
+    public class GroupAddRequestHandler : IRequestHandler<GroupAddRequest, GroupResponseDto>
+    {
+        private readonly IGroupRepository groupRepository;
+        private readonly IMapper mapper;
+
+        public GroupAddRequestHandler(IGroupRepository groupRepository, IMapper mapper)
+        {
+            this.groupRepository = groupRepository;
+            this.mapper = mapper;
+        }
+        public async Task<GroupResponseDto> Handle(GroupAddRequest request, CancellationToken cancellationToken)
+        {
+            //var group = new Group
+            //{
+            //    Name = request.Name,
+            //    Year = request.Year,
+            //    DepartmentId = request.DepartmentId
+            //};
+
+            //await groupRepository.AddAsync(group, cancellationToken);
+            //return new GroupResponseDto(group.Id, group.Name);
+
+            var group = mapper.Map<Group>(request);
+
+            await groupRepository.AddAsync(group, cancellationToken);
+            await groupRepository.SaveAsync(cancellationToken);
+
+            // 4. Map back to DTO
+            // Note: Since this is a brand new group, DepartmentName might be null 
+            // unless you include the Department or map it manually.
+            var response = mapper.Map<GroupResponseDto>(group);
+
+            return response;
+        }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\Commands\GroupAddCommand\GroupAddRequestValidator.cs
+--------------------------------------------------------------
+
+using FluentValidation;
+
+namespace Application.Modules.GroupsModule.Commands.GroupAddCommand
+{
+    public class GroupAddRequestValidator : AbstractValidator<GroupAddRequest>
+    {
+        public GroupAddRequestValidator()
+        {
+            RuleFor(x => x.Name)
+                .NotEmpty().WithMessage("Group name is required.")
+                .MaximumLength(100).WithMessage("Group name cannot exceed 100 characters.");
+
+            RuleFor(x => x.Year)
+                .InclusiveBetween((byte)1, (byte)6)
+                .WithMessage("Year must be between 1 and 6.");
+
+            RuleFor(x => x.DepartmentId)
+                .GreaterThan(0)
+                .WithMessage("DepartmentId must be a valid positive number.");
+        }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\Commands\GroupEditCommand\GroupEditRequest.cs
+--------------------------------------------------------------
+
+using MediatR;
+
+namespace Application.Modules.GroupsModule.Commands.GroupEditCommand
+{
+    public class GroupEditRequest : IRequest<GroupResponseDto>
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public byte Year { get; set; }
+        public int DepartmentId { get; set; }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\Commands\GroupEditCommand\GroupEditRequestHandler.cs
+--------------------------------------------------------------
+
+using Application.Repositories;
+using AutoMapper;
+using Infrastructure.Exceptions;
+using MediatR;
+
+namespace Application.Modules.GroupsModule.Commands.GroupEditCommand
+{
+    public class GroupEditRequestHandler : IRequestHandler<GroupEditRequest, GroupResponseDto>
+    {
+        private readonly IGroupRepository groupRepository;
+        private readonly IMapper mapper;
+
+        public GroupEditRequestHandler(IGroupRepository groupRepository, IMapper mapper)
+        {
+            this.groupRepository = groupRepository;
+            this.mapper = mapper;
+        }
+
+        public async Task<GroupResponseDto> Handle(GroupEditRequest request, CancellationToken cancellationToken)
+        {
+            var group = await groupRepository.GetAsync(m => m.Id == request.Id && m.DeletedAt == null, cancellationToken)
+                ?? throw new NotFoundException($"Group with id {request.Id} was not found.");
+
+            mapper.Map(request, group);
+
+            await groupRepository.EditAsync(group);
+            await groupRepository.SaveAsync(cancellationToken);
+
+            var response = mapper.Map<GroupResponseDto>(group);
+
+            return response;
+        }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\Commands\GroupEditCommand\GroupEditRequestValidator.cs
+--------------------------------------------------------------
+
+using FluentValidation;
+
+namespace Application.Modules.GroupsModule.Commands.GroupEditCommand
+{
+    public class GroupEditRequestValidator : AbstractValidator<GroupEditRequest>
+    {
+        public GroupEditRequestValidator()
+        {
+            RuleFor(x => x.Id)
+                .GreaterThan(0)
+                .WithMessage("Group Id must be a valid positive number.");
+
+            RuleFor(x => x.Name)
+                .NotEmpty().WithMessage("Group name is required.")
+                .MaximumLength(100).WithMessage("Group name cannot exceed 100 characters.");
+
+            RuleFor(x => x.Year)
+                .InclusiveBetween((byte)1, (byte)6)
+                .WithMessage("Year must be between 1 and 6.");
+
+            RuleFor(x => x.DepartmentId)
+                .GreaterThan(0)
+                .WithMessage("DepartmentId must be a valid positive number.");
+        }
+    }
+}
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\Commands\GroupRemoveCommand\GroupRemoveRequest.cs
+--------------------------------------------------------------
+
+using MediatR;
+
+namespace Application.Modules.GroupsModule.Commands.GroupRemoveCommand
+{
+    public class GroupRemoveRequest : IRequest
+    {
+        public int Id { get; set; }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\Commands\GroupRemoveCommand\GroupRemoveRequestHandler.cs
+--------------------------------------------------------------
+
+using Application.Repositories;
+using AutoMapper;
+using Domain.Models.Entities;
+using MediatR;
+
+namespace Application.Modules.GroupsModule.Commands.GroupRemoveCommand
+{
+    public class GroupRemoveRequestHandler : IRequestHandler<GroupRemoveRequest>
+    {
+        private readonly IGroupRepository groupRepository;
+
+        public GroupRemoveRequestHandler(IGroupRepository groupRepository)
+        {
+            this.groupRepository = groupRepository;
+        }
+
+        public async Task Handle(GroupRemoveRequest request, CancellationToken cancellationToken)
+        {
+            Group entity;
+
+            entity = await groupRepository.GetAsync(m => m.Id == request.Id && m.DeletedAt == null, cancellationToken);
+
+            groupRepository.Remove(entity);
+            await groupRepository.SaveAsync(cancellationToken);
+        }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\Commands\GroupRemoveCommand\GroupRemoveRequestValidator.cs
+--------------------------------------------------------------
+
+using FluentValidation;
+
+namespace Application.Modules.GroupsModule.Commands.GroupRemoveCommand
+{
+    public class GroupRemoveRequestValidator : AbstractValidator<GroupRemoveRequest>
+    {
+        public GroupRemoveRequestValidator()
+        {
+            RuleFor(x => x.Id)
+            .GreaterThan(0)
+            .WithMessage("Group Id must be a valid positive number.");
+        }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\Queries\GroupGetAllQuery\GroupGetAllRequest.cs
+--------------------------------------------------------------
+
+using MediatR;
+
+namespace Application.Modules.GroupsModule.Queries.GroupGetAllQuery
+{
+    public class GroupGetAllRequest : IRequest<IEnumerable<GroupResponseDto>>
+    {
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\Queries\GroupGetAllQuery\GroupGetAllRequestHandler.cs
+--------------------------------------------------------------
+
+using Application.Modules.FacultiesModule.Queries.FacultyGetAllQuery;
+using Application.Repositories;
+using AutoMapper;
+using AutoMapper.QueryableExtensions;
+using MediatR;
+
+namespace Application.Modules.GroupsModule.Queries.GroupGetAllQuery
+{
+    public class GroupGetAllRequestHandler : IRequestHandler<GroupGetAllRequest, IEnumerable<GroupResponseDto>>
+    {
+        private readonly IGroupRepository groupRepository;
+        private readonly IMapper mapper;
+
+        public GroupGetAllRequestHandler(IGroupRepository groupRepository, IMapper mapper)
+        {
+            this.groupRepository = groupRepository;
+            this.mapper = mapper;
+        }
+
+        public async Task<IEnumerable<GroupResponseDto>> Handle(GroupGetAllRequest request, CancellationToken cancellationToken)
+        {
+            var result = await groupRepository.GetAllAsync(cancellationToken);
+            return result;
+        }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\Queries\GroupGetByIdQuery\GroupDetailsResponseDto.cs
+--------------------------------------------------------------
+
+namespace Application.Modules.GroupsModule.Queries.GroupGetByIdQuery
+{
+    public class GroupDetailsResponseDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public byte Year { get; set; }
+        public string DepartmentName { get; set; }
+        public List<StudentSmallDto> Students { get; set; }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\Queries\GroupGetByIdQuery\GroupGetByIdRequest.cs
+--------------------------------------------------------------
+
+using MediatR;
+
+namespace Application.Modules.GroupsModule.Queries.GroupGetByIdQuery
+{
+    public class GroupGetByIdRequest : IRequest<GroupDetailsResponseDto>
+    {
+        public int Id { get; set; }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\Queries\GroupGetByIdQuery\GroupGetByIdRequestHandler.cs
+--------------------------------------------------------------
+
+using Application.Repositories;
+using AutoMapper;
+using Infrastructure.Exceptions;
+using MediatR;
+
+namespace Application.Modules.GroupsModule.Queries.GroupGetByIdQuery
+{
+    public class GroupGetByIdRequestHandler : IRequestHandler<GroupGetByIdRequest, GroupDetailsResponseDto>
+    {
+        private readonly IGroupRepository groupRepository;
+        private readonly IMapper mapper;
+
+        public GroupGetByIdRequestHandler(IGroupRepository groupRepository, IMapper mapper)
+        {
+            this.groupRepository = groupRepository;
+            this.mapper = mapper;
+        }
+
+        public async Task<GroupDetailsResponseDto> Handle(GroupGetByIdRequest request, CancellationToken cancellationToken)
+        {
+            var result = await groupRepository.GetDetailsByIdAsync(request.Id, cancellationToken)
+                ?? throw new NotFoundException($"Group with id {request.Id} was not found.");
+
+            return result;
+        }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\GroupDetailsDto.cs
+--------------------------------------------------------------
+
+namespace Application.Modules.GroupsModule
+{
+    public class GroupDetailsDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public byte Year { get; set; }
+        public int DepartmentId { get; set; }
+
+        // Linked Students
+        public List<GroupStudentDto> Students { get; set; }
+        // NEW: Linked Lessons
+        public List<GroupLessonDto> Lessons { get; set; }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\GroupLessonDto.cs
+--------------------------------------------------------------
+
+namespace Application.Modules.GroupsModule
+{
+    public class GroupLessonDto
+    {
+        public int LessonId { get; set; }
+        // Assuming Lesson has a Subject or Name property you want to show
+        public string SubjectName { get; set; }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\GroupListDto.cs
+--------------------------------------------------------------
+
+namespace Application.Modules.GroupsModule
+{
+    public class GroupListDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public byte Year { get; set; }
+        public int StudentCount { get; set; }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\GroupResponseDto.cs
+--------------------------------------------------------------
+
+namespace Application.Modules.GroupsModule
+{
+    public class GroupResponseDto
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public byte Year { get; set; }
+        public string DepartmentName { get; set; } // Flattened from Department.Name
+        public int StudentCount { get; set; } = 0;      // Calculated via AutoMapper
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\GroupsModule\GroupStudentDto.cs
+--------------------------------------------------------------
+
+namespace Application.Modules.GroupsModule
+{
+    public class GroupStudentDto
+    {
+        public int StudentId { get; set; }
+        public string FullName { get; set; }
+        public string StudentNumber { get; set; }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Modules\StudentsModule\StudentGroupSmallDto.cs
+--------------------------------------------------------------
+
+namespace Application.Modules.StudentsModule
+{
+    public class StudentGroupSmallDto
+    {
+        public int GroupId { get; set; }
+        public string GroupName { get; set; }
+        public byte Year { get; set; }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Application\Repositories\IGroupRepository.cs
+--------------------------------------------------------------
+
+using Application.Modules.GroupsModule;
+using Application.Modules.GroupsModule.Queries.GroupGetByIdQuery;
+using Domain.Models.Entities;
+using Infrastructure.Abstracts;
+
+namespace Application.Repositories
+{
+    public interface IGroupRepository : IAsyncRepository<Group>
+    {
+        Task<IReadOnlyList<GroupResponseDto>> GetAllAsync(CancellationToken ct = default);
+        Task<GroupDetailsResponseDto?> GetDetailsByIdAsync(int id, CancellationToken ct = default);
+    }
+}
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\DataAccessLayer\Configurations\GroupEntityTypeConfiguration.cs
+--------------------------------------------------------------
+
+using Domain.Models.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace DataAccessLayer.Configurations
+{
+    public class GroupConfiguration : IEntityTypeConfiguration<Group>
+    {
+        public void Configure(EntityTypeBuilder<Group> builder)
+        {
+            builder.ToTable("Groups");
+
+            builder.HasKey(g => g.Id);
+
+            builder.Property(g => g.Name)
+                   .IsRequired()
+                   .HasMaxLength(50);
+
+            builder.Property(g => g.Year)
+                   .IsRequired();
+
+            // StudentCount is [NotMapped] — EF ignores it automatically.
+
+            builder.HasQueryFilter(g => g.DeletedAt == null);
+
+            builder.HasOne(g => g.Department)
+                   .WithMany(d => d.Groups)
+                   .HasForeignKey(g => g.DepartmentId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasIndex(g => g.DepartmentId);
+            // A group name like "IT-101" should be unique within a department
+            builder.HasIndex(g => new { g.DepartmentId, g.Name }).IsUnique();
+        }
+    }
+}
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\DataAccessLayer\Configurations\LessonGroupEntityTypeConfiguration.cs
+--------------------------------------------------------------
+
+using Domain.Models.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace DataAccessLayer.Configurations
+{
+    public class LessonGroupConfiguration : IEntityTypeConfiguration<LessonGroup>
+    {
+        public void Configure(EntityTypeBuilder<LessonGroup> builder)
+        {
+            builder.ToTable("LessonGroups");
+
+            // Composite PK — a lesson can only be assigned to a specific group once.
+            builder.HasKey(lg => new { lg.LessonId, lg.GroupId });
+
+            builder.HasOne(lg => lg.Lesson)
+                   .WithMany(l => l.LessonGroups)
+                   .HasForeignKey(lg => lg.LessonId)
+                   .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(lg => lg.Group)
+                   .WithMany(g => g.LessonGroups)
+                   .HasForeignKey(lg => lg.GroupId)
+                   .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasIndex(lg => lg.GroupId);
+        }
+    }
+}
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\DataAccessLayer\Configurations\StudentGroupEntityTypeConfiguration.cs
+--------------------------------------------------------------
+
+using Domain.Models.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace DataAccessLayer.Configurations
+{
+    public class StudentGroupConfiguration : IEntityTypeConfiguration<StudentGroup>
+    {
+        public void Configure(EntityTypeBuilder<StudentGroup> builder)
+        {
+            builder.ToTable("StudentGroups");
+
+            // Composite PK — a student can only be in a specific group once.
+            builder.HasKey(sg => new { sg.StudentId, sg.GroupId });
+
+            builder.HasOne(sg => sg.Student)
+                   .WithMany(s => s.StudentGroups)
+                   .HasForeignKey(sg => sg.StudentId)
+                   .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(sg => sg.Group)
+                   .WithMany(g => g.StudentGroups)
+                   .HasForeignKey(sg => sg.GroupId)
+                   .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasIndex(sg => sg.GroupId);
+
+            // StudentGroup inherits AuditableEntity — configure audit columns
+            builder.Property(sg => sg.CreatedAt).IsRequired();
+            builder.Property(sg => sg.CreatedBy).HasMaxLength(100);
+            builder.Property(sg => sg.LastModifiedBy).HasMaxLength(100);
+            builder.Property(sg => sg.DeletedBy).HasMaxLength(100);
+
+            builder.HasQueryFilter(sg => sg.DeletedAt == null);
+        }
+    }
+}
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\DataAccessLayer\Migrations\20260324203413_LessenGroupAdded.cs
+--------------------------------------------------------------
+
+using Microsoft.EntityFrameworkCore.Migrations;
+
+#nullable disable
+
+namespace DataAccessLayer.Migrations
+{
+    /// <inheritdoc />
+    public partial class LessenGroupAdded : Migration
+    {
+        /// <inheritdoc />
+        protected override void Up(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Lessons_Groups_GroupId",
+                schema: "dbo",
+                table: "Lessons");
+
+            migrationBuilder.DropIndex(
+                name: "IX_Lessons_GroupId",
+                schema: "dbo",
+                table: "Lessons");
+
+            migrationBuilder.DropColumn(
+                name: "GroupId",
+                schema: "dbo",
+                table: "Lessons");
+
+            migrationBuilder.CreateTable(
+                name: "LessonGroup",
+                columns: table => new
+                {
+                    LessonId = table.Column<int>(type: "int", nullable: false),
+                    GroupId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_LessonGroup", x => new { x.LessonId, x.GroupId });
+                    table.ForeignKey(
+                        name: "FK_LessonGroup_Groups_GroupId",
+                        column: x => x.GroupId,
+                        principalSchema: "dbo",
+                        principalTable: "Groups",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_LessonGroup_Lessons_LessonId",
+                        column: x => x.LessonId,
+                        principalSchema: "dbo",
+                        principalTable: "Lessons",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_LessonGroup_GroupId",
+                table: "LessonGroup",
+                column: "GroupId");
+        }
+
+        /// <inheritdoc />
+        protected override void Down(MigrationBuilder migrationBuilder)
+        {
+            migrationBuilder.DropTable(
+                name: "LessonGroup");
+
+            migrationBuilder.AddColumn<int>(
+                name: "GroupId",
+                schema: "dbo",
+                table: "Lessons",
+                type: "int",
+                nullable: false,
+                defaultValue: 0);
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Lessons_GroupId",
+                schema: "dbo",
+                table: "Lessons",
+                column: "GroupId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Lessons_Groups_GroupId",
+                schema: "dbo",
+                table: "Lessons",
+                column: "GroupId",
+                principalSchema: "dbo",
+                principalTable: "Groups",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Restrict);
+        }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\DataAccessLayer\Migrations\20260324203413_LessenGroupAdded.Designer.cs
+--------------------------------------------------------------
+
+// <auto-generated />
+using System;
+using DataAccessLayer.Migrations;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Infrastructure;
+using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
+using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
+
+#nullable disable
+
+namespace DataAccessLayer.Migrations
+{
+    [DbContext(typeof(DataContext))]
+    [Migration("20260324203413_LessenGroupAdded")]
+    partial class LessenGroupAdded
+    {
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
+        {
+#pragma warning disable 612, 618
+            modelBuilder
+                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+
+            SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("Domain.Models.Entities.Department", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<int>("FacultyId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("LastModifiedBy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("FacultyId");
+
+                    b.ToTable("Departments", "dbo");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Faculty", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("LastModifiedBy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Faculties", "dbo");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Group", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("LastModifiedBy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<byte>("Year")
+                        .HasColumnType("tinyint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.ToTable("Groups", "dbo");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Lesson", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("LastModifiedBy")
+                        .HasColumnType("int");
+
+                    b.Property<int>("SubjectId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("SubjectId");
+
+                    b.HasIndex("TeacherId");
+
+                    b.ToTable("Lessons", "dbo");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.LessonGroup", b =>
+                {
+                    b.Property<int>("LessonId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.HasKey("LessonId", "GroupId");
+
+                    b.HasIndex("GroupId");
+
+                    b.ToTable("LessonGroup");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Membership.AppRole", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("NormalizedName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("varchar");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedName")
+                        .IsUnique()
+                        .HasDatabaseName("RoleNameIndex");
+
+                    b.ToTable("Roles", "Membership");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Membership.AppRoleClaim", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("ClaimValue")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("RoleClaims", "Membership");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Membership.AppUser", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("AccessFailedCount")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ConcurrencyStamp")
+                        .IsConcurrencyToken()
+                        .IsRequired()
+                        .HasMaxLength(400)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<bool>("EmailConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<bool>("LockoutEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTimeOffset?>("LockoutEnd")
+                        .HasColumnType("datetimeoffset");
+
+                    b.Property<string>("NormalizedEmail")
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
+
+                    b.Property<string>("NormalizedUserName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasMaxLength(400)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("PhoneNumber")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("PhoneNumberConfirmed")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("SecurityStamp")
+                        .IsRequired()
+                        .HasMaxLength(400)
+                        .HasColumnType("varchar");
+
+                    b.Property<bool>("TwoFactorEnabled")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("UserName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("varchar");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("NormalizedEmail")
+                        .HasDatabaseName("EmailIndex");
+
+                    b.HasIndex("NormalizedUserName")
+                        .IsUnique()
+                        .HasDatabaseName("UserNameIndex");
+
+                    b.ToTable("Users", "Membership");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Membership.AppUserClaim", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("ClaimType")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("varchar");
+
+                    b.Property<string>("ClaimValue")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserClaims", "Membership");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Membership.AppUserLogin", b =>
+                {
+                    b.Property<string>("LoginProvider")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<string>("ProviderKey")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<string>("ProviderDisplayName")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("LoginProvider", "ProviderKey");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("UserLogins", "Membership");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Membership.AppUserRole", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoleId")
+                        .HasColumnType("int");
+
+                    b.HasKey("UserId", "RoleId");
+
+                    b.HasIndex("RoleId");
+
+                    b.ToTable("UserRoles", "Membership");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Membership.AppUserToken", b =>
+                {
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("LoginProvider")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<string>("Name")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<string>("Value")
+                        .HasMaxLength(450)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<DateTime>("Expired")
+                        .HasColumnType("datetime");
+
+                    b.Property<bool>("IsActive")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("bit")
+                        .HasDefaultValue(true);
+
+                    b.HasKey("UserId", "LoginProvider", "Name", "Value");
+
+                    b.ToTable("UserTokens", "Membership");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Student", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<byte>("EducationType")
+                        .HasColumnType("tinyint");
+
+                    b.Property<int>("FacultyId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("FatherName")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<byte>("Gender")
+                        .HasColumnType("tinyint");
+
+                    b.Property<byte>("Grade")
+                        .HasColumnType("tinyint");
+
+                    b.Property<DateTime?>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("LastModifiedBy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MobileNumber")
+                        .IsRequired()
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<byte>("Status")
+                        .HasColumnType("tinyint");
+
+                    b.Property<string>("StudentNumber")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.Property<byte>("Year")
+                        .HasColumnType("tinyint");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.HasIndex("FacultyId");
+
+                    b.ToTable("Students", "dbo");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.StudentGroup", b =>
+                {
+                    b.Property<int>("StudentId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("LastModifiedBy")
+                        .HasColumnType("int");
+
+                    b.HasKey("StudentId", "GroupId");
+
+                    b.HasIndex("GroupId");
+
+                    b.ToTable("StudentGroups", "dbo");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Subject", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("LastModifiedBy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.ToTable("Subjects", "dbo");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Teacher", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("ActiveLessons")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("BirthDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("CreatedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Email")
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<double>("Experience")
+                        .HasColumnType("float");
+
+                    b.Property<string>("FullName")
+                        .IsRequired()
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<int>("GroupCount")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int?>("LastModifiedBy")
+                        .HasColumnType("int");
+
+                    b.Property<string>("MobileNumber")
+                        .HasMaxLength(15)
+                        .HasColumnType("nvarchar");
+
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Teachers", "dbo");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.TeacherDepartment", b =>
+                {
+                    b.Property<int>("TeacherId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
+
+                    b.HasKey("TeacherId", "DepartmentId");
+
+                    b.HasIndex("DepartmentId");
+
+                    b.ToTable("TeacherDepartments", "dbo");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Department", b =>
+                {
+                    b.HasOne("Domain.Models.Entities.Faculty", "Faculty")
+                        .WithMany("Departments")
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Faculty");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Group", b =>
+                {
+                    b.HasOne("Domain.Models.Entities.Department", "Department")
+                        .WithMany("Groups")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Lesson", b =>
+                {
+                    b.HasOne("Domain.Models.Entities.Subject", "Subject")
+                        .WithMany("Lessons")
+                        .HasForeignKey("SubjectId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Entities.Teacher", "Teacher")
+                        .WithMany("Lessons")
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Subject");
+
+                    b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.LessonGroup", b =>
+                {
+                    b.HasOne("Domain.Models.Entities.Group", "Group")
+                        .WithMany("LessonGroups")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Entities.Lesson", "Lesson")
+                        .WithMany("LessonGroups")
+                        .HasForeignKey("LessonId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Lesson");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Membership.AppRoleClaim", b =>
+                {
+                    b.HasOne("Domain.Models.Entities.Membership.AppRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Membership.AppUserClaim", b =>
+                {
+                    b.HasOne("Domain.Models.Entities.Membership.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Membership.AppUserLogin", b =>
+                {
+                    b.HasOne("Domain.Models.Entities.Membership.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Membership.AppUserRole", b =>
+                {
+                    b.HasOne("Domain.Models.Entities.Membership.AppRole", null)
+                        .WithMany()
+                        .HasForeignKey("RoleId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Entities.Membership.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Membership.AppUserToken", b =>
+                {
+                    b.HasOne("Domain.Models.Entities.Membership.AppUser", null)
+                        .WithMany()
+                        .HasForeignKey("UserId")
+                        .OnDelete(DeleteBehavior.NoAction)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Student", b =>
+                {
+                    b.HasOne("Domain.Models.Entities.Department", "Department")
+                        .WithMany("Students")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Entities.Faculty", "Faculty")
+                        .WithMany()
+                        .HasForeignKey("FacultyId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Department");
+
+                    b.Navigation("Faculty");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.StudentGroup", b =>
+                {
+                    b.HasOne("Domain.Models.Entities.Group", "Group")
+                        .WithMany("StudentGroups")
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Entities.Student", "Student")
+                        .WithMany("StudentGroups")
+                        .HasForeignKey("StudentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Student");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Subject", b =>
+                {
+                    b.HasOne("Domain.Models.Entities.Department", "Department")
+                        .WithMany("Subjects")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Department");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.TeacherDepartment", b =>
+                {
+                    b.HasOne("Domain.Models.Entities.Department", "Department")
+                        .WithMany("TeacherDepartments")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Entities.Teacher", "Teacher")
+                        .WithMany("TeacherDepartments")
+                        .HasForeignKey("TeacherId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Department");
+
+                    b.Navigation("Teacher");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Department", b =>
+                {
+                    b.Navigation("Groups");
+
+                    b.Navigation("Students");
+
+                    b.Navigation("Subjects");
+
+                    b.Navigation("TeacherDepartments");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Faculty", b =>
+                {
+                    b.Navigation("Departments");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Group", b =>
+                {
+                    b.Navigation("LessonGroups");
+
+                    b.Navigation("StudentGroups");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Lesson", b =>
+                {
+                    b.Navigation("LessonGroups");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Student", b =>
+                {
+                    b.Navigation("StudentGroups");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Subject", b =>
+                {
+                    b.Navigation("Lessons");
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Teacher", b =>
+                {
+                    b.Navigation("Lessons");
+
+                    b.Navigation("TeacherDepartments");
+                });
+#pragma warning restore 612, 618
+        }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Domain\Models\Entities\Group.cs
+--------------------------------------------------------------
+
+using Domain.Models.Concrates;
+using System.ComponentModel.DataAnnotations.Schema;
+
+namespace Domain.Models.Entities
+{
+    public class Group : AuditableEntity
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }        // e.g. "IT-101"
+        public byte Year { get; set; }          // 1st, 2nd year etc.
+        public int DepartmentId { get; set; }
+        public Department Department { get; set; }
+
+        public ICollection<StudentGroup> StudentGroups { get; set; }
+        public ICollection<LessonGroup> LessonGroups { get; set; }
+        //public ICollection<Lesson> Lessons { get; set; }
+
+        [NotMapped]
+        public int StudentCount => StudentGroups?.Count ?? 0;
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Domain\Models\Entities\LessonGroup.cs
+--------------------------------------------------------------
+
+namespace Domain.Models.Entities
+{
+    public class LessonGroup
+    {
+        public int LessonId { get; set; }
+        public Lesson Lesson { get; set; }
+
+        public int GroupId { get; set; }
+        public Group Group { get; set; }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Domain\Models\Entities\StudentGroup.cs
+--------------------------------------------------------------
+
+using Domain.Models.Concrates;
+
+namespace Domain.Models.Entities
+{
+    public class StudentGroup : AuditableEntity
+    {
+        public int StudentId { get; set; }
+        public Student Student { get; set; }
+
+        public int GroupId { get; set; }
+        public Group Group { get; set; }
+    }
+}
+
+
+--------------------------------------------------------------
+File: C:\Users\user\source\repos\Maarif\Repository\GroupRepository.cs
+--------------------------------------------------------------
+
+using Application.Modules.GroupsModule;
+using Application.Modules.GroupsModule.Queries.GroupGetByIdQuery;
+using Application.Repositories;
+using DataAccessLayer.Migrations;
+using Domain.Models.Entities;
+using Infrastructure.Concrates;
+using Microsoft.EntityFrameworkCore;
+
+namespace Repository
+{
+    public class GroupRepository : AsyncRepository<Group>, IGroupRepository
+    {
+        private readonly DataContext _context;
+
+        public GroupRepository(DataContext db) : base(db)
+        {
+            _context = db;
+        }
+
+        // GetAll — projection-only, no student details, StudentCount via Count()
+        public async Task<IReadOnlyList<GroupResponseDto>> GetAllAsync(CancellationToken ct = default)
+        {
+            return await _context.Set<Group>()
+                .AsNoTracking()
+                .Include(g => g.Department)
+                .Include(g => g.StudentGroups)
+                .Select(g => new GroupResponseDto
+                {
+                    Id = g.Id,
+                    Name = g.Name,
+                    Year = g.Year,
+                    DepartmentName = g.Department.Name,
+                    StudentCount = g.StudentGroups.Count()
+                })
+                .ToListAsync(ct);
+        }
+
+        // GetById — full details with students via StudentGroups → Student
+        public async Task<GroupDetailsResponseDto?> GetDetailsByIdAsync(int id, CancellationToken ct = default)
+        {
+            return await _context.Set<Group>()
+                .AsNoTracking()
+                .Include(g => g.Department)
+                .Include(g => g.StudentGroups)
+                    .ThenInclude(sg => sg.Student)
+                .Where(g => g.Id == id)
+                .Select(g => new GroupDetailsResponseDto
+                {
+                    Id = g.Id,
+                    Name = g.Name,
+                    Year = g.Year,
+                    DepartmentName = g.Department.Name,
+                    Students = g.StudentGroups
+                        .Select(sg => new StudentSmallDto
+                        {
+                            Id = sg.Student.Id,
+                            FullName = sg.Student.FullName,
+                            StudentNumber = sg.Student.StudentNumber
+                        }).ToList()
+                })
+                .FirstOrDefaultAsync(ct);
+        }
+    }
+}
+

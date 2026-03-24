@@ -4,31 +4,35 @@ using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
 namespace DataAccessLayer.Configurations
 {
-    public class TeacherEntityTypeConfiguration : IEntityTypeConfiguration<Teacher>
+    public class TeacherConfiguration : IEntityTypeConfiguration<Teacher>
     {
         public void Configure(EntityTypeBuilder<Teacher> builder)
         {
-            builder.Property(t => t.Id).HasColumnType("int").UseIdentityColumn(1, 1);
-            builder.Property(t => t.FullName).HasColumnType("nvarchar").HasMaxLength(200).IsRequired();
-            builder.Property(t => t.MobileNumber).HasColumnType("nvarchar").HasMaxLength(15);
-            builder.Property(t => t.Email).HasColumnType("nvarchar").HasMaxLength(200);
-            builder.Property(t => t.BirthDate).HasColumnType("datetime2").IsRequired();
-            builder.Property(t => t.GroupCount).HasColumnType("int").IsRequired();
-            builder.Property(t => t.ActiveLessons).HasColumnType("int").IsRequired();
-            builder.Property(t => t.Experience).HasColumnType("float").IsRequired();
-            builder.Property(t => t.UserId).HasColumnType("int").IsRequired();
+            builder.ToTable("Teachers");
 
-            builder.HasMany(t => t.TeacherDepartments)
-                .WithOne(td => td.Teacher)
-                .HasForeignKey(td => td.TeacherId)
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.HasKey(t => t.Id);
 
-            builder.HasMany(t => t.Lessons)
-                .WithOne(l => l.Teacher)
-                .HasForeignKey(l => l.TeacherId)
-                .OnDelete(DeleteBehavior.Cascade);
+            builder.Property(t => t.FullName)
+                   .IsRequired()
+                   .HasMaxLength(300);
 
-            builder.ToTable("Teachers", "dbo");
+            builder.Property(t => t.MobileNumber)
+                   .HasMaxLength(20);
+
+            builder.Property(t => t.Email)
+                   .HasMaxLength(256);
+
+            builder.Property(t => t.Experience)
+                   .HasColumnType("decimal(5,2)");
+
+            // GroupCount and ActiveLessons are [NotMapped] — EF will ignore them.
+            // They are computed in memory from navigation collections, or via
+            // dedicated Dapper aggregation queries in the repository for list views.
+
+            builder.HasQueryFilter(t => t.DeletedAt == null);
+
+            builder.HasIndex(t => t.Email).IsUnique();
+            builder.HasIndex(t => t.UserId);
         }
     }
 }

@@ -1,4 +1,4 @@
-namespace Application.Modules.StudentsModule.Commands.StudentAddCommand
+﻿namespace Application.Modules.StudentsModule.Commands.StudentAddCommand
 {
     internal class StudentAddRequest
     {

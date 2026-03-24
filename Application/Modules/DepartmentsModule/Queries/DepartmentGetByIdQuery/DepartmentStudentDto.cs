@@ -14,6 +14,7 @@ namespace Application.Modules.DepartmentsModule.Queries.DepartmentGetByIdQuery
         public StatusType Status { get; set; }
         public byte Year { get; set; }
         public GradeType Grade { get; set; }
-        public int FacultyId { get; set; }
+        // FIX #3: Removed FacultyId — no longer stored on Student.
+        // Faculty is reachable via Student.Department.Faculty when needed.
     }
 }

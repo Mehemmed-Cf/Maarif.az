@@ -17,18 +17,17 @@ namespace Application.Modules.FacultiesModule.Queries.FacultyGetAllQuery
             this.mapper = mapper;
         }
 
-        public async Task<IEnumerable<FacultyGetAllResponseDto>> Handle(FacultyGetAllRequest request, CancellationToken cancellationToken)
+        public async Task<IEnumerable<FacultyGetAllResponseDto>> Handle(
+            FacultyGetAllRequest request,
+            CancellationToken cancellationToken)
         {
-            var query = facultyRepository.GetAll();
-
-            query = query.Where(m => m.DeletedAt == null);
-
-            var result = await facultyRepository.GetAll()
-                .Where(m => m.DeletedAt == null)
+            // FIX #6: Previous code called GetAll() twice — first built a `query` variable
+            // with a Where filter (then abandoned it), then built a second chain on a fresh
+            // GetAll() call. HasQueryFilter handles soft-delete; ProjectTo handles mapping.
+            return await facultyRepository
+                .GetAll()
                 .ProjectTo<FacultyGetAllResponseDto>(mapper.ConfigurationProvider)
                 .ToListAsync(cancellationToken);
-
-            return result;
         }
     }
 }
