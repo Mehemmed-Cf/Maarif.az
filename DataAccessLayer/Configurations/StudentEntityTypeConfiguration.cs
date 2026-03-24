@@ -9,8 +9,9 @@ namespace DataAccessLayer.Configurations
         public void Configure(EntityTypeBuilder<Student> builder)
         {
             builder.Property(s => s.Id).HasColumnType("int").UseIdentityColumn(1, 1);
-            builder.Property(s => s.FullName).HasColumnType("nvarchar").HasMaxLength(200).IsRequired();
-            builder.Property(s => s.FatherName).HasColumnType("nvarchar").HasMaxLength(200).IsRequired();
+            builder.Property(s => s.FullName).HasColumnType("nvarchar").HasMaxLength(100).IsRequired();
+            builder.Property(s => s.FatherName).HasColumnType("nvarchar").HasMaxLength(20).IsRequired();
+            builder.Property(s => s.StudentNumber).HasColumnType("nvarchar").HasMaxLength(20).IsRequired();
             builder.Property(s => s.Gender).HasColumnType("tinyint").IsRequired();
             builder.Property(s => s.MobileNumber).HasColumnType("nvarchar").HasMaxLength(15).IsRequired();
             builder.Property(s => s.BirthDate).HasColumnType("datetime2").IsRequired();

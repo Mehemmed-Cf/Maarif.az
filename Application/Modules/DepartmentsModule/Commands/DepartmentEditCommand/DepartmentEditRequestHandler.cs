@@ -18,9 +18,6 @@ namespace Application.Modules.DepartmentsModule.Commands.DepartmentsEditCommand
         {
             var entity = await departmentRepository.GetAsync(m => m.Id == request.Id && m.DeletedAt == null, cancellationToken);
 
-            if (entity is null)
-                throw new Exception("Departament tapılmadı");
-
             entity.Name = request.Name;
             entity.FacultyId = request.FacultyId;
             entity.LastModifiedAt = DateTime.UtcNow;

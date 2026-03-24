@@ -1,6 +1,9 @@
+using MediatR;
+
 namespace Application.Modules.TeachersModule.Commands.TeacherRemoveCommand
 {
- internal class TeacherRemoveRequest
- {
- }
+    public class TeacherRemoveRequest : IRequest
+    {
+        public int Id { get; set; }
+    }
 }

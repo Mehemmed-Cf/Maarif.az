@@ -455,12 +455,12 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<string>("FatherName")
                         .IsRequired()
-                        .HasMaxLength(200)
+                        .HasMaxLength(20)
                         .HasColumnType("nvarchar");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasMaxLength(200)
+                        .HasMaxLength(100)
                         .HasColumnType("nvarchar");
 
                     b.Property<byte>("Gender")
@@ -482,6 +482,11 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<byte>("Status")
                         .HasColumnType("tinyint");
+
+                    b.Property<string>("StudentNumber")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");

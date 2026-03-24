@@ -1,19 +1,26 @@
+using Application.Repositories;
+using DataAccessLayer.Migrations;
 using Domain.Models.Entities;
 using Infrastructure.Concrates;
-using Application.Repositories;
 using Microsoft.EntityFrameworkCore;
 
 namespace Repository
 {
     public class FacultyRepository : AsyncRepository<Faculty>, IFacultyRepository
     {
-        public FacultyRepository(DbContext db) : base(db)
+        private readonly DataContext _context;
+
+        public FacultyRepository(DataContext db) : base(db)
         {
+            _context = db;
         }
 
-        public async Task<Department?> GetByIdWithDetailsAsync(int id, CancellationToken ct = default)
+        public async Task<Faculty?> GetByIdWithDetailsAsync(int id, CancellationToken ct = default)
         {
-            throw new NotImplementedException();
+            return await _context.Faculties
+            .AsNoTracking()
+            .Include(f => f.Departments)
+            .FirstOrDefaultAsync(f => f.Id == id && f.DeletedAt == null, ct);
         }
     }
 }

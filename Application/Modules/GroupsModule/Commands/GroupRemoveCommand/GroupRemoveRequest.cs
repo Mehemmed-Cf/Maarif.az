@@ -1,6 +1,9 @@
+﻿using MediatR;
+
 namespace Application.Modules.GroupsModule.Commands.GroupRemoveCommand
 {
- internal class GroupRemoveRequest
- {
- }
+    public class GroupRemoveRequest : IRequest
+    {
+        public int Id { get; set; }
+    }
 }

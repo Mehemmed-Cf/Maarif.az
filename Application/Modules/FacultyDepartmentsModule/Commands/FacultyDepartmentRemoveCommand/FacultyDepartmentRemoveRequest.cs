@@ -1,6 +1,0 @@
-namespace Application.Modules.FacultyDepartmentsModule.Commands.FacultyDepartmentRemoveCommand
-{
- internal class FacultyDepartmentRemoveRequest
- {
- }
-}

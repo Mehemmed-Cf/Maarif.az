@@ -1,6 +1,12 @@
+﻿using MediatR;
+
 namespace Application.Modules.GroupsModule.Commands.GroupEditCommand
 {
- internal class GroupEditRequest
- {
- }
+    public class GroupEditRequest : IRequest<GroupResponseDto>
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public byte Year { get; set; }
+        public int DepartmentId { get; set; }
+    }
 }

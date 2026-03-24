@@ -19,9 +19,6 @@ namespace Application.Modules.FacultiesModule.Commands.FacultyEditCommand
         {
             var entity = await facultyRepository.GetAsync(m => m.Id == request.Id && m.DeletedAt == null, cancellationToken);
 
-            if (entity is null)
-                throw new Exception("Faculty tapılmadı");
-
             entity.Name = request.Name;
             entity.LastModifiedAt = DateTime.UtcNow;
 

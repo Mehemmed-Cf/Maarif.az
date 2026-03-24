@@ -11,6 +11,8 @@ namespace DataAccessLayer.Migrations
     {
         private readonly IIdentityService identityService;
         public DbSet<Department> Departments { get; set; }
+        public DbSet<Faculty> Faculties { get; set; }
+
 
         public DataContext(DbContextOptions<DataContext> options, IIdentityService? identityService = null)
             :base(options)
