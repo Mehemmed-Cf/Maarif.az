@@ -1,0 +1,8 @@
+C:\Users\user\source\repos\Maarif\Tests\Application\bin\Debug\net9.0\.msCoverageSourceRootsMapping_Tests.Application
+C:\Users\user\source\repos\Maarif\Tests\Application\bin\Debug\net9.0\CoverletSourceRootsMapping_Tests.Application
+C:\Users\user\source\repos\Maarif\Tests\Application\obj\Debug\net9.0\Tests.Application.csproj.AssemblyReference.cache
+C:\Users\user\source\repos\Maarif\Tests\Application\obj\Debug\net9.0\Tests.Application.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\user\source\repos\Maarif\Tests\Application\obj\Debug\net9.0\Tests.Application.AssemblyInfoInputs.cache
+C:\Users\user\source\repos\Maarif\Tests\Application\obj\Debug\net9.0\Tests.Application.AssemblyInfo.cs
+C:\Users\user\source\repos\Maarif\Tests\Application\obj\Debug\net9.0\Tests.Application.csproj.CoreCompileInputs.cache
+C:\Users\user\source\repos\Maarif\Tests\Application\obj\Debug\net9.0\Tests.Application.sourcelink.json

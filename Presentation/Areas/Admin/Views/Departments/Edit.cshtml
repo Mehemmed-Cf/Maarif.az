@@ -1,0 +1,137 @@
+﻿@using Application.Modules.DepartmentsModule.Queries.DepartmentGetByIdQuery
+@model DepartmentGetByIdResponseDto
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Basic Form Inputs</h4>
+                    <span>
+                        Lorem ipsum dolor sit <code>amet</code>, consectetur
+                        adipisicing elit
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="../index.html"> <i class="feather icon-home"></i> </a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Form Components</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Form Components</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Basic Form Inputs</h5>
+                    <span>
+                        Add class of <code>.form-control</code> with
+                        <code>&lt;input&gt;</code> tag
+                    </span>
+
+
+                    <div class="card-header-right">
+                        <i class="icofont icofont-spinner-alt-5"></i>
+                    </div>
+
+                </div>
+
+                <div class="card-block">
+                    <h4 class="sub-title">General Information</h4>
+
+                    <form asp-action="Edit" method="post">
+                        @* IMPORTANT: You need the Id for the Edit to work! *@
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="row">
+
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" asp-for="Name">Department Name</label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" asp-for="FacultyId">Faculty</label>
+                                    <select asp-for="FacultyId" class="form-control" asp-items="ViewBag.Faculties">
+                                        <option value="">-- Select Faculty --</option>
+                                    </select>
+                                    <span asp-validation-for="FacultyId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="sub-title">Teachers</h4>
+                                <div class="form-group">
+                                    <select name="TeacherIds" class="form-control select2" multiple="multiple" asp-items="ViewBag.Teachers">
+                                    </select>
+                                    <small class="form-text text-muted">Select teachers assigned to this department.</small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h4 class="sub-title">Students</h4>
+                                <div class="form-group">
+                                    <select name="StudentIds" class="form-control select2" multiple="multiple" asp-items="ViewBag.Students">
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h4 class="sub-title">Groups</h4>
+                                <div class="form-group">
+                                    <select name="GroupIds" class="form-control select2" multiple="multiple" asp-items="ViewBag.Groups">
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h4 class="sub-title">Subjects</h4>
+                                <div class="form-group">
+                                    <select name="SubjectIds" class="form-control select2" multiple="multiple" asp-items="ViewBag.Subjects">
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="form-group text-right m-t-20">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <a class="btn btn-inverse" asp-action="index">Cancel</a>
+                        </div>
+
+                    </form>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section addcss {
+    <link rel="stylesheet" href="~/libs/single-image-chooser/single-image-chooser.css" />
+}

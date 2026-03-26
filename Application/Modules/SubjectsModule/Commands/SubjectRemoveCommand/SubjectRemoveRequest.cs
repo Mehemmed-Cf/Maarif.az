@@ -1,6 +1,9 @@
+﻿using MediatR;
+
 namespace Application.Modules.SubjectsModule.Commands.SubjectRemoveCommand
 {
- internal class SubjectRemoveRequest
- {
- }
+    public class SubjectRemoveRequest : IRequest
+    {
+        public int Id { get; set; }
+    }
 }

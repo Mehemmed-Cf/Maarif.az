@@ -1,0 +1,161 @@
+﻿@using Application.Modules.DepartmentsModule.Queries.DepartmentGetByIdQuery
+@model DepartmentGetByIdResponseDto
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Basic Form Inputs</h4>
+                    <span>
+                        Lorem ipsum dolor sit <code>amet</code>, consectetur
+                        adipisicing elit
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="../index.html"> <i class="feather icon-home"></i> </a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Form Components</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Form Components</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Basic Form Inputs</h5>
+                    <span>
+                        Add class of <code>.form-control</code> with
+                        <code>&lt;input&gt;</code> tag
+                    </span>
+
+
+                    <div class="card-header-right">
+                        <i class="icofont icofont-spinner-alt-5"></i>
+                    </div>
+
+                </div>
+                <div class="card-block">
+                    <h4 class="sub-title">Basic Inputs</h4>
+
+                    <div class="card-block">
+
+                        <h4 class="sub-title">General Information</h4>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">Name</label>
+                                    <p class="form-control">@Model.Name</p>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label">Faculty</label>
+                                    <p class="form-control">@Model.Faculty.Name</p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="sub-title">Teachers</h4>
+                                <div class="border p-3 bg-light rounded mb-4">
+                                    <ul class="list-unstyled mb-0">
+                                        @foreach (var teacher in Model.Teachers)
+                                        {
+                                            <li class="mb-1"><i class="feather icon-user text-primary mr-2"></i>@teacher.FullName</li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h4 class="sub-title">Students</h4>
+                                <div class="border p-3 bg-light rounded mb-4">
+                                    <ul class="list-unstyled mb-0">
+                                        @foreach (var student in Model.Students)
+                                        {
+                                            <li class="mb-1"><i class="feather icon-users text-info mr-2"></i>@student.FullName</li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h4 class="sub-title">Groups</h4>
+                                <div class="border p-3 bg-light rounded mb-4">
+                                    @foreach (var group in Model.Groups)
+                                    {
+                                        <span class="badge badge-inverse-primary">@group.Name</span>
+                                    }
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h4 class="sub-title">Subjects</h4>
+                                <div class="border p-3 bg-light rounded mb-4">
+                                    <ul class="list-unstyled mb-0">
+                                        @foreach (var subject in Model.Subjects)
+                                        {
+                                            <li class="mb-1"><i class="feather icon-book text-success mr-2"></i>@subject.Name</li>
+                                        }
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+
+                    </div>
+
+                    <div class="form-group text-right m-0">
+                        <input type="hidden" class="form-control" asp-for="Id">
+                        <a class="btn btn-sm btn-warning" asp-action="edit" asp-route-id="@Model.Id">Edit</a>
+                        <a class="btn btn-sm btn-primary" asp-action="index">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+@section addcss {
+    <link rel="stylesheet" href="~/libs/single-image-chooser/single-image-chooser.css" />
+}
+
+@section addjs {
+    <script src="~/libs/ckeditor5/ckeditor.min.js"></script>
+    <script src="~/libs/single-image-chooser/single-image-chooser.js"></script>
+    <script>
+        $(document).ready(function () {
+
+            $('#cover-image').singleImageChooser();
+
+            ClassicEditor
+                .create(document.querySelector('#body-editor'))
+                .then(editor => { })
+                .catch(error => { console.error(error); });
+
+        });
+    </script>
+}

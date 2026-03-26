@@ -37,6 +37,10 @@ namespace DataAccessLayer.Migrations
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            // Picks up all IEntityTypeConfiguration<T> classes in the assembly automatically.
+            // Composite PKs and relationships for junction tables without a config class
+            // are defined inline below.
             modelBuilder.ApplyConfigurationsFromAssembly(typeof(DataContext).Assembly);
 
             modelBuilder.Entity<StudentGroup>()
