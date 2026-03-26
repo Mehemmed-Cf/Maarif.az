@@ -29,24 +29,28 @@ namespace Presentation.Areas.Admin.Controllers
             return View(response);
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Details([FromRoute] FacultyGetByIdRequest request)
         {
             var response = await mediator.Send(request);
             return View(response);
         }
-
+        
+        [AllowAnonymous]
         public IActionResult Create()
         {
             return View();
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Create([FromForm] FacultyAddRequest request)
         {
             await mediator.Send(request);
             return RedirectToAction(nameof(Index));
         }
 
+        [AllowAnonymous]
         public async Task<IActionResult> Edit([FromRoute] FacultyGetByIdRequest request)
         {
             var response = await mediator.Send(request);
@@ -54,6 +58,7 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Edit([FromForm] FacultyEditRequest request)
         {
             await mediator.Send(request);
@@ -61,6 +66,7 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
+        [AllowAnonymous]
         public async Task<IActionResult> Remove([FromRoute] FacultyRemoveRequest request)
         {
             await mediator.Send(request);

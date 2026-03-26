@@ -10,8 +10,18 @@ namespace DataAccessLayer.Migrations
     public class DataContext : IdentityDbContext<AppUser, AppRole, int, AppUserClaim, AppUserRole, AppUserLogin, AppRoleClaim, AppUserToken> //DbContext
     {
         private readonly IIdentityService identityService;
-        public DbSet<Department> Departments { get; set; }
+        // FIX: Added all missing DbSets. Without these EF cannot track, query,
+        // or migrate these tables — it would throw at startup or on first query.
         public DbSet<Faculty> Faculties { get; set; }
+        public DbSet<Department> Departments { get; set; }
+        public DbSet<Student> Students { get; set; }
+        public DbSet<Teacher> Teachers { get; set; }
+        public DbSet<Subject> Subjects { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<Lesson> Lessons { get; set; }
+        public DbSet<StudentGroup> StudentGroups { get; set; }
+        public DbSet<LessonGroup> LessonGroups { get; set; }
+        public DbSet<TeacherDepartment> TeacherDepartments { get; set; }
 
 
         public DataContext(DbContextOptions<DataContext> options, IIdentityService? identityService = null)

@@ -6,7 +6,10 @@ namespace Application.Repositories
 {
     public interface IStudentRepository : IAsyncRepository<Student>
     {
-        Task<IReadOnlyList<StudentDetailsResponseDto>> GetAllAsync(CancellationToken ct = default);
-        Task<StudentDetailsResponseDto?> GetDetailsByIdAsync(int id, CancellationToken ct = default);
+        // FIX: Removed DTO-returning methods (GetAllAsync / GetDetailsByIdAsync).
+        // Repositories return entities — DTOs are the Application layer's concern.
+        // GetAll() (inherited) feeds ProjectTo<T> in the GetAll handler.
+        // GetByIdWithDetailsAsync loads the entity with navigations for the GetById handler.
+        Task<Student?> GetByIdWithDetailsAsync(int id, CancellationToken ct = default);
     }
 }

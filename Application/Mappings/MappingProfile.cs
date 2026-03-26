@@ -1,13 +1,4 @@
-﻿using Application.Modules.DepartmentsModule.Commands.DepartmentAddCommand;
-using Application.Modules.DepartmentsModule.Commands.DepartmentsEditCommand;
-using Application.Modules.DepartmentsModule.Queries.DepartmentGetAllQuery;
-using Application.Modules.DepartmentsModule.Queries.DepartmentGetByIdQuery;
-using Application.Modules.FacultiesModule.Commands.FacultyAddCommand;
-using Application.Modules.FacultiesModule.Commands.FacultyEditCommand;
-using Application.Modules.FacultiesModule.Queries.FacultyGetAllQuery;
-using Application.Modules.FacultiesModule.Queries.FacultyGetByIdQuery;
-using AutoMapper;
-using Domain.Models.Entities;
+﻿using AutoMapper;
 
 namespace Application.Mappings
 {
@@ -15,9 +6,6 @@ namespace Application.Mappings
     {
         public MappingProfile()
         {
-            //Departments
-
-            //Faculties 
         }
     }
 }

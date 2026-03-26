@@ -27,7 +27,7 @@ namespace Application.Modules.TeachersModule.Queries.TeacherGetAllQuery
 
             var query = teacherRepository.GetAll();
 
-            query = query.Where(m => m.DeletedAt == null);
+            //query = query.Where(m => m.DeletedAt == null);
 
             var result = await teacherRepository.GetAll()
                 .Where(m => m.DeletedAt == null)

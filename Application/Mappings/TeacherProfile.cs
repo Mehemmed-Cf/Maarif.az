@@ -1,5 +1,6 @@
 ﻿using Application.Modules.TeachersModule;
 using Application.Modules.TeachersModule.Commands.TeacherAddCommand;
+using Application.Modules.TeachersModule.Commands.TeacherEditCommand;
 using AutoMapper;
 using Domain.Models.Entities;
 
@@ -17,6 +18,7 @@ namespace Application.Mappings
             // It ensures only Id and Name are pulled from the Department entity
             CreateMap<Department, TeacherDepartmentDto>();
             CreateMap<TeacherAddRequest, Teacher>();
+            CreateMap<TeacherEditRequest, Teacher>();
         }
     }
 }

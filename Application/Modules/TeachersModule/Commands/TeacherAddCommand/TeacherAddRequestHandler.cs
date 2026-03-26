@@ -8,16 +8,19 @@ namespace Application.Modules.TeachersModule.Commands.TeacherAddCommand
     public class TeacherAddRequestHandler : IRequestHandler<TeacherAddRequest, TeacherResponseDto>
     {
         private readonly ITeacherRepository teacherRepository;
+        private readonly IDepartmentRepository departmentRepository;
         private readonly IMapper mapper;
 
         public TeacherAddRequestHandler(ITeacherRepository teacherRepository, IMapper mapper)
         {
             this.teacherRepository = teacherRepository;
+            this.departmentRepository = departmentRepository;
             this.mapper = mapper;
         }
         public async Task<TeacherResponseDto> Handle(TeacherAddRequest request, CancellationToken cancellationToken)
         {
             var teacher = mapper.Map<Teacher>(request);
+
 
             // Convert the list of IDs into the TeacherDepartment join entities
             teacher.TeacherDepartments = request.DepartmentIds.Select(id => new TeacherDepartment
