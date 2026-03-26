@@ -1,6 +1,9 @@
+using Application;
+using Application.Mappings;
 using Application.Services;
 using DataAccessLayer.Migrations;
 using Domain.Models.Entities.Membership;
+using FluentValidation.AspNetCore;
 using Infrastructure.Abstracts;
 using Infrastructure.Configurations;
 using MediatR;
@@ -8,10 +11,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
 using Presentation.AppCode.DI;
 using Presentation.AppCode.Pipeline;
-using Application;
-using Application.Mappings;
 
 internal class Program
 {
@@ -56,7 +58,13 @@ internal class Program
 
         builder.Services.AddCustomIdentity(builder.Configuration);
 
-        builder.Services.AddAutoMapper(typeof(MappingProfile));
+        // This scans the entire Assembly where your MappingProfile class is defined
+        //builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+        // Clean and simple for the new version
+        builder.Services.AddAutoMapper(cfg =>
+        {
+            cfg.AddMaps(typeof(MappingProfile).Assembly);
+        });
 
         builder.Services.AddSingleton(typeof(IPipelineBehavior<,>), typeof(HeaderBinderBehaviour<,>));
 
@@ -82,7 +90,7 @@ internal class Program
         //builder.Services.Configure<EmailServiceOptions>(builder.Configuration.GetSection("EmailServiceOptions"));
         //builder.Services.AddTransient<EmailService>();
 
-        /*builder.Services.AddFluentValidationAutoValidation(cfg => cfg.DisableDataAnnotationsValidation = false);*/
+        builder.Services.AddFluentValidationAutoValidation(cfg => cfg.DisableDataAnnotationsValidation = false);
 
         builder.Services.AddMediatR(cfg => cfg.RegisterServicesFromAssemblyContaining<IApplicationReferance>());
 
