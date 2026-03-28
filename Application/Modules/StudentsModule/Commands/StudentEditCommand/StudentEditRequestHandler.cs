@@ -1,8 +1,10 @@
-﻿using Application.Repositories;
+﻿using Application.Modules.StudentsModule.Queries.StudentGetByIdQuery;
+using Application.Repositories;
 using AutoMapper;
 using Domain.Models.Entities;
 using Infrastructure.Exceptions;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
 
 namespace Application.Modules.StudentsModule.Commands.StudentEditCommand
 {
@@ -32,6 +34,7 @@ namespace Application.Modules.StudentsModule.Commands.StudentEditCommand
             // If department is changing, verify the new department exists first.
             if (entity.DepartmentId != request.DepartmentId)
                 _ = await departmentRepository.GetAsync(d => d.Id == request.DepartmentId, cancellationToken);
+
 
             mapper.Map(request, entity);
 

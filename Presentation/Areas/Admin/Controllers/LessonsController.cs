@@ -80,8 +80,8 @@ namespace Presentation.Areas.Admin.Controllers
         {
             var response = await mediator.Send(new LessonGetByIdRequest { Id = id });
 
-            // We use the Detail DTO for the view because it has the SubjectName/TeacherName 
-            // strings we want to display as readonly.
+            await PopulateViewBagsAsync(response.SubjectId, response.TeacherId);
+
             return View(response);
         }
 
@@ -92,8 +92,9 @@ namespace Presentation.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                // If validation fails, we might need the details again to show the readonly fields
-                return RedirectToAction(nameof(Edit), new { id = request.Id });
+                // Re-fill the dropdowns so the page doesn't crash on reload
+                await PopulateViewBagsAsync(request.SubjectId, request.TeacherId);
+                return View(request);
             }
 
             await mediator.Send(request);

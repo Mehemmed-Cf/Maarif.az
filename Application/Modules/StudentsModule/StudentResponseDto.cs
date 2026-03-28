@@ -17,6 +17,6 @@ namespace Application.Modules.StudentsModule
         public string Grade { get; set; }
         public string Status { get; set; }
         public string Gender { get; set; }
-        public int GroupCount { get; set; }
+        //public int GroupCount { get; set; }
     }
 }

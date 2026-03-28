@@ -16,6 +16,7 @@ namespace Application.Modules.StudentsModule.Queries.StudentGetAllQuery
         public GradeType Grade { get; set; }
         public int DepartmentId { get; set; }
         public string DepartmentName { get; set; }
-        public string FacultyName { get; set; }
+        public int? GroupId { get; set; }
+        public string GroupName { get; set; }
     }
 }

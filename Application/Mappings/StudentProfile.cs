@@ -11,33 +11,30 @@ namespace Application.Mappings
     {
         public StudentProfile()
         {
-            // Add / Edit command responses — flat maps, no navigation needed
-            // because the entity was just created/updated and navigations aren't loaded.
+            CreateMap<StudentAddRequest, Student>();
+            CreateMap<StudentEditRequest, Student>();
+
             CreateMap<Student, StudentAddResponseDto>();
             CreateMap<Student, StudentEditResponseDto>();
 
-            // GetAll — ProjectTo translates these paths to SQL JOINs.
-            // Department and Faculty must be included in GetAll SQL via ProjectTo;
-            // no explicit Include() needed in the repository for this query.
             CreateMap<Student, StudentGetAllResponseDto>()
                 .ForMember(dest => dest.DepartmentName,
-                    opt => opt.MapFrom(src => src.Department.Name))
-                .ForMember(dest => dest.FacultyName,
-                    opt => opt.MapFrom(src => src.Department.Faculty.Name));
-
-            // GetById — entity is loaded with navigations by GetByIdWithDetailsAsync.
+                    opt => opt.MapFrom(src => src.Department.Name));
             CreateMap<Student, StudentGetByIdResponseDto>()
                 .ForMember(dest => dest.Department,
                     opt => opt.MapFrom(src => src.Department))
                 .ForMember(dest => dest.Groups,
                     opt => opt.MapFrom(src => src.StudentGroups));
 
-            // Nested DTOs
+            // Map from the Request (Command) to the Response (DTO) 
+            // for when validation fails and we need to return to the View
+            CreateMap<StudentEditRequest, StudentGetByIdResponseDto>()
+                .ForMember(dest => dest.Department, opt => opt.MapFrom(src => new StudentDepartmentDto { Id = src.DepartmentId }));
+
             CreateMap<Department, StudentDepartmentDto>()
                 .ForMember(dest => dest.FacultyName,
                     opt => opt.MapFrom(src => src.Faculty.Name));
 
-            // StudentGroup junction → GroupDto: unwrap the Group navigation.
             CreateMap<StudentGroup, StudentGroupDto>()
                 .ForMember(dest => dest.Id,
                     opt => opt.MapFrom(src => src.Group.Id))

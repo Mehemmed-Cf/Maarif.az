@@ -1,0 +1,109 @@
+@using Application.Modules.TeachersModule
+@model TeacherResponseDto
+@{
+    ViewData["Title"] = "Details";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Teacher Details</h4>
+                    <span>View all information about this teacher</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="../index.html"><i class="feather icon-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Teachers</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Details</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Teacher Details</h5>
+                    <div class="card-header-right">
+                        <i class="icofont icofont-spinner-alt-5"></i>
+                    </div>
+                </div>
+
+                <div class="card-block">
+                    <h4 class="sub-title">General Information</h4>
+
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label">Full Name</label>
+                                <p class="form-control">@Model.FullName</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label">Email</label>
+                                <p class="form-control">@Model.Email</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label">Birth Date</label>
+                                <p class="form-control">@Model.BirthDate.ToString("dd.MM.yyyy")</p>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-6">
+                            <div class="form-group">
+                                <label class="control-label">Experience</label>
+                                <p class="form-control">@Model.Experience</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <h4 class="sub-title">Departments</h4>
+                    <div class="border p-3 bg-light rounded mb-4">
+                        @if (Model.Departments != null && Model.Departments.Any())
+                        {
+                            <ul class="list-unstyled mb-0">
+                                @foreach (var department in Model.Departments)
+                                {
+                                    <li class="mb-1">
+                                        <i class="feather icon-briefcase text-primary mr-2"></i>
+                                        @department.Name
+                                    </li>
+                                }
+                            </ul>
+                        }
+                        else
+                        {
+                            <span class="text-muted">No departments assigned.</span>
+                        }
+                    </div>
+
+                    <div class="form-group text-right m-0">
+                        <a class="btn btn-sm btn-warning" asp-action="edit" asp-route-id="@Model.Id">Edit</a>
+                        <a class="btn btn-sm btn-primary" asp-action="index">Cancel</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

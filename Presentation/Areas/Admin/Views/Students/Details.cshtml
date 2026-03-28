@@ -1,0 +1,51 @@
+@using Application.Modules.StudentsModule.Queries.StudentGetByIdQuery
+@model StudentGetByIdResponseDto
+@{
+    ViewData["Title"] = "Student Details";
+}
+
+<div class="page-body">
+    <div class="card">
+        <div class="card-header">
+            <h5>Details for: @Model.FullName</h5>
+        </div>
+        <div class="card-block">
+            <div class="row">
+                <div class="col-sm-4">
+                    <label class="font-weight-bold">Student Number:</label>
+                    <p>@Model.StudentNumber</p>
+                </div>
+                <div class="col-sm-4">
+                    <label class="font-weight-bold">Faculty:</label>
+                    <p>@Model.Department?.FacultyName</p> @* Fixed property path *@
+                </div>
+                <div class="col-sm-4">
+                    <label class="font-weight-bold">Department:</label>
+                    <p>@Model.Department?.Name</p>
+                </div>
+                <div class="col-sm-4">
+                    <label class="font-weight-bold">Education Type:</label>
+                    <p>@Model.EducationType</p>
+                </div>
+                <div class="col-sm-4">
+                    <label class="font-weight-bold">Grade:</label>
+                    <p>@Model.Grade</p>
+                </div>
+                <div class="col-sm-12">
+                    <label class="font-weight-bold">Groups:</label>
+                    <div>
+                        @foreach (var group in Model.Groups)
+                        {
+                            <span class="badge badge-primary mr-1">@group.Name (Year @group.Year)</span>
+                        }
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-right mt-4">
+                <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                <a class="btn btn-primary" asp-action="Index">Back to List</a>
+            </div>
+        </div>
+    </div>
+</div>

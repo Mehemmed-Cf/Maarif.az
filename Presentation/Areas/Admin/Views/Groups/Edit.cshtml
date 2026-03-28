@@ -1,0 +1,147 @@
+@using Application.Modules.GroupsModule.Queries.GroupGetByIdQuery
+@model GroupDetailsResponseDto
+@{
+    ViewData["Title"] = "Edit Group";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Edit Group</h4>
+                    <span>Update group information</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="../index.html"><i class="feather icon-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-action="Index">Groups</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Edit</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Group Information</h5>
+                </div>
+                <div class="card-block">
+
+                    <form asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="Id" />
+
+                        <h4 class="sub-title">General Information</h4>
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" asp-for="Name">Group Name</label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" asp-for="Year">Year</label>
+                                    <input type="number" asp-for="Year" class="form-control" />
+                                    <span asp-validation-for="Year" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label class="control-label" asp-for="DepartmentId">Department</label>
+                                    <select asp-for="DepartmentId" class="form-control"
+                                            asp-items="ViewBag.Departments">
+                                        <option value="">-- Select Department --</option>
+                                    </select>
+                                    <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="sub-title">Students</h4>
+                                <div class="form-group">
+                                    @{
+                                        // Pre-select students already in this group
+                                        var selectedStudentIds = Model.Students?
+                                        .Select(s => s.Id.ToString())
+                                        .ToList() ?? new List<string>();
+                                    }
+                                    <select name="StudentIds" class="form-control select2"
+                                            multiple="multiple">
+                                        @foreach (var item in (IEnumerable<SelectListItem>)ViewBag.Students)
+                                        {
+                                            <option value="@item.Value"
+                                                    selected="@(selectedStudentIds.Contains(item.Value) ? "selected" : null)">
+                                                @item.Text
+                                            </option>
+                                        }
+                                    </select>
+                                    <small class="form-text text-muted">Select students assigned to this group.</small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h4 class="sub-title">Lessons</h4>
+                                <div class="form-group">
+                                    @{
+                                        // Pre-select lessons already linked to this group
+                                        var selectedLessonIds = Model.Lessons?
+                                        .Select(l => l.Id.ToString())
+                                        .ToList() ?? new List<string>();
+                                    }
+                                    <select name="LessonIds" class="form-control select2"
+                                            multiple="multiple">
+                                        @foreach (var item in (IEnumerable<SelectListItem>)ViewBag.Lessons)
+                                        {
+                                            <option value="@item.Value"
+                                                    selected="@(selectedLessonIds.Contains(item.Value) ? "selected" : null)">
+                                                @item.Text
+                                            </option>
+                                        }
+                                    </select>
+                                    <small class="form-text text-muted">Select lessons linked to this group.</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group text-right m-t-20">
+                            <a class="btn btn-inverse" asp-action="Index">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                        </div>
+                    </form>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section addcss {
+    <link rel="stylesheet" href="~/libs/select2/select2.min.css" />
+}
+@section addjs {
+    <script src="~/libs/select2/select2.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('.select2').select2({ width: '100%' });
+        });
+    </script>
+}

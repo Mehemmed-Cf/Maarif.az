@@ -1,0 +1,125 @@
+@using Application.Modules.TeachersModule
+@model TeacherResponseDto
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Edit Teacher</h4>
+                    <span>Update teacher information</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="../index.html"> <i class="feather icon-home"></i> </a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Teachers</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Edit</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Teacher Information</h5>
+                    <div class="card-header-right">
+                        <i class="icofont icofont-spinner-alt-5"></i>
+                    </div>
+                </div>
+
+                <div class="card-block">
+                    <h4 class="sub-title">General Information</h4>
+
+                    <form asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="Id" />
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" asp-for="FullName">Full Name</label>
+                                    <input asp-for="FullName" class="form-control" />
+                                    <span asp-validation-for="FullName" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" asp-for="Email">Email</label>
+                                    <input asp-for="Email" class="form-control" />
+                                    <span asp-validation-for="Email" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" asp-for="BirthDate">Birth Date</label>
+                                    <input type="date" asp-for="BirthDate" class="form-control" />
+                                    <span asp-validation-for="BirthDate" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label class="control-label" asp-for="Experience">Experience (years)</label>
+                                    <input type="number" asp-for="Experience" class="form-control" />
+                                    <span asp-validation-for="Experience" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="sub-title">Departments</h4>
+                                <div class="form-group">
+                                    <select name="DepartmentIds" class="form-control select2" multiple="multiple" asp-items="ViewBag.Departments">
+                                    </select>
+                                    <small class="form-text text-muted">Select departments assigned to this teacher.</small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h4 class="sub-title">Groups</h4>
+                                <div class="form-group">
+                                    <select name="GroupIds" class="form-control select2" multiple="multiple" asp-items="ViewBag.Groups">
+                                    </select>
+                                </div>
+                            </div>
+
+                            <div class="col-md-12">
+                                <h4 class="sub-title">Lessons</h4>
+                                <div class="form-group">
+                                    <select name="LessonIds" class="form-control select2" multiple="multiple" asp-items="ViewBag.Lessons">
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group text-right m-t-20">
+                            <button type="submit" class="btn btn-primary">Save Changes</button>
+                            <a class="btn btn-inverse" asp-action="index">Cancel</a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section addcss {
+    <link rel="stylesheet" href="~/libs/single-image-chooser/single-image-chooser.css" />
+}

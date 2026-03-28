@@ -6,6 +6,8 @@
         public string Name { get; set; }
         public byte Year { get; set; }
         public string DepartmentName { get; set; }
+        public int DepartmentId { get; set; } //
         public List<StudentSmallDto> Students { get; set; }
+        public List<LessonSmallDto> Lessons { get; set; }
     }
 }

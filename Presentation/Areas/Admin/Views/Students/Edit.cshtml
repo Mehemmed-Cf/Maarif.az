@@ -1,0 +1,142 @@
+@using Application.Modules.StudentsModule.Queries.StudentGetByIdQuery
+@model StudentGetByIdResponseDto
+
+<div class="page-body">
+    <div class="card">
+        <div class="card-block">
+            @* The summary helps you see if any other hidden field is failing validation *@
+            <div asp-validation-summary="All" class="text-danger"></div>
+
+            <form asp-action="Edit" method="post">
+                <input type="hidden" asp-for="Id" />
+
+                <div class="row">
+                    @* Full Name *@
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="FullName">Full Name</label>
+                            <input asp-for="FullName" class="form-control" />
+                            <span asp-validation-for="FullName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @* Student Number *@
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="StudentNumber">Student Number</label>
+                            <input asp-for="StudentNumber" class="form-control" />
+                            <span asp-validation-for="StudentNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @* Father Name - Added *@
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="FatherName">Father Name</label>
+                            <input asp-for="FatherName" class="form-control" />
+                            <span asp-validation-for="FatherName" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @* Mobile Number - Added *@
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="MobileNumber">Mobile Number</label>
+                            <input asp-for="MobileNumber" class="form-control" />
+                            <span asp-validation-for="MobileNumber" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @* Birth Date - Assuming it exists in your model *@
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="BirthDate">Birth Date</label>
+                            <input asp-for="BirthDate" type="date" class="form-control" />
+                            <span asp-validation-for="BirthDate" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @* --- Add these to the <div class="row"> in Edit.cshtml --- *@
+
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label asp-for="Year">Year</label>
+                            @* Use 'name' to match the StudentEditRequest property *@
+                            <input type="number" name="Year" class="form-control" value="@Model.Year">
+                            <span asp-validation-for="Year" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-2">
+                        <div class="form-group">
+                            <label asp-for="Grade">Grade</label>
+                            @* name="Grade" ensures it maps to StudentEditRequest.Grade *@
+                            <select name="Grade" class="form-control"
+                                    asp-items="Html.GetEnumSelectList<Domain.Models.Stables.GradeType>()"
+                                    asp-for="Grade">
+                                <option value="">-- Select Grade --</option>
+                            </select>
+                            <span asp-validation-for="Grade" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label asp-for="Status">Status</label>
+                            <select name="Status" class="form-control"
+                                    asp-items="Html.GetEnumSelectList<Domain.Models.Stables.StatusType>()">
+                            </select>
+                            <span asp-validation-for="Status" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @* Add Gender as well if it's editable *@
+                    <div class="col-sm-4">
+                        <div class="form-group">
+                            <label asp-for="Gender">Gender</label>
+                            <select name="Gender" class="form-control"
+                                    asp-items="Html.GetEnumSelectList<Domain.Models.Stables.GenderType>()">
+                            </select>
+                            <span asp-validation-for="Gender" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @* Department *@
+                    <div class="col-sm-6">
+                        <div class="form-group">
+                            <label asp-for="Department.Id">Department</label>
+                            @* name="DepartmentId" must match the property in StudentEditRequest *@
+                            <select name="DepartmentId" class="form-control"
+                                    asp-items="ViewBag.Departments"
+                                    asp-for="Department.Id">
+                                <option value="">-- Select Department --</option>
+                            </select>
+                            <span asp-validation-for="Department.Id" class="text-danger"></span>
+                        </div>
+                    </div>
+
+                    @* Groups Multi-Select *@
+                    <div class="col-sm-12">
+                        <div class="form-group">
+                            <label>Groups</label>
+                            <select name="GroupIds" class="form-control select2" multiple="multiple" asp-items="ViewBag.Groups">
+                                @if (Model.Groups != null)
+                                {
+                                    foreach (var group in Model.Groups)
+                                    {
+                                        <option value="@group.Id" selected>@group.Name</option>
+                                    }
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group text-right">
+                    <button type="submit" class="btn btn-success">Update Student</button>
+                    <a class="btn btn-primary" asp-action="Index">Cancel</a>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

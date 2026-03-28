@@ -32,6 +32,8 @@
         <link href="~/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
 
         @await RenderSectionAsync("addcss", required: false)
+        <script src="~/js/site.js"></script>
+
     </head>
 
     <body>
@@ -534,5 +536,8 @@
         <script type="text/javascript" src="~/admin/js/script.min.js"></script>
 
         @await RenderSectionAsync("addjs", required: false)
+        <script src="~/js/site.js"></script>
+
+        @await RenderSectionAsync("Scripts", required: false)
     </body>
 </html>

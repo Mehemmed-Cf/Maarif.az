@@ -6,6 +6,8 @@
         public string Name { get; set; }
         public byte Year { get; set; }
         public string DepartmentName { get; set; } // Flattened from Department.Name
+        public int DepartmentId { get; set; } //
         public int StudentCount { get; set; } = 0;      // Calculated via AutoMapper
+        public int LessonCount { get; set; } = 0;      // Calculated via AutoMapper
     }
 }

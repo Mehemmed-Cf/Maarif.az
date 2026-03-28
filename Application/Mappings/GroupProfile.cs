@@ -14,18 +14,17 @@ namespace Application.Mappings
             // Mapping for GetAll
             CreateMap<Group, GroupResponseDto>()
                 .ForMember(d => d.DepartmentName, o => o.MapFrom(s => s.Department.Name))
-                .ForMember(d => d.StudentCount, o => o.MapFrom(s => s.StudentGroups.Count));
+                .ForMember(d => d.StudentCount, o => o.MapFrom(s => s.StudentGroups.Count))
+                .ForMember(d => d.LessonCount, o => o.MapFrom(s => s.LessonGroups.Count));
 
             // Mapping for GetById
             CreateMap<Group, GroupDetailsResponseDto>()
                 .ForMember(d => d.DepartmentName, o => o.MapFrom(s => s.Department.Name))
                 .ForMember(d => d.Students, o => o.MapFrom(s => s.StudentGroups.Select(sg => sg.Student)));
 
-            // Helper mapping for the student list
-            //CreateMap<Student, StudentSmallDto>()
-            //    .ForMember(d => d.FullName, o => o.MapFrom(s => $"{s.FirstName} {s.LastName}"));
 
             CreateMap<Student, StudentSmallDto>();
+            CreateMap<Student, LessonSmallDto>();
 
             CreateMap<GroupAddRequest, Group>();
             CreateMap<GroupEditRequest, Group>();

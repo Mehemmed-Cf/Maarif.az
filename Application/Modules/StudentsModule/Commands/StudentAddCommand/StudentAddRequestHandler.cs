@@ -33,24 +33,6 @@ namespace Application.Modules.StudentsModule.Commands.StudentAddCommand
 
             var student = mapper.Map<Student>(request);
 
-            //var entity = new Student
-            //{
-            //    FullName = request.FullName,
-            //    FatherName = request.FatherName,
-            //    StudentNumber = request.StudentNumber,
-            //    Gender = request.Gender,
-            //    MobileNumber = request.MobileNumber,
-            //    BirthDate = request.BirthDate,
-            //    EducationType = request.EducationType,
-            //    Status = request.Status,
-            //    Year = request.Year,
-            //    Grade = request.Grade,
-            //    DepartmentId = request.DepartmentId,
-            //    //UserId = request.UserId,
-            //    // Audit fields (CreatedAt, CreatedBy) are set automatically
-            //    // by DataContext.SaveChangesAsync — do not set them here.
-            //};
-
             await studentRepository.AddAsync(student, cancellationToken);
             await studentRepository.SaveAsync(cancellationToken);
 

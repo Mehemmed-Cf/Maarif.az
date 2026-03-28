@@ -1,0 +1,107 @@
+@using Application.Modules.GroupsModule.Commands.GroupAddCommand
+@model GroupAddRequest
+@{
+    ViewData["Title"] = "Create Group";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Add Group</h4>
+                    <span>Create a new group record</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="../index.html"><i class="feather icon-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-action="Index">Groups</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Create</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Group Information</h5>
+                    <span>Fill in the details for the new group</span>
+                </div>
+                <div class="card-block">
+                    <form asp-action="Create" method="post">
+
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="Name">Qrup Adı</label>
+                                    <input type="text" class="form-control" asp-for="Name"
+                                           placeholder="Məsələn: IT-101" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="form-group">
+                                    <label asp-for="Year">İl</label>
+                                    <input type="number" class="form-control" asp-for="Year"
+                                           placeholder="Məsələn: 1" />
+                                    <span asp-validation-for="Year" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <hr />
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h4 class="sub-title">Students</h4>
+                                <div class="form-group">
+                                    <select asp-for="StudentIds" class="form-control select2"
+                                            multiple="multiple" asp-items="ViewBag.Students">
+                                    </select>
+                                    <small class="form-text text-muted">Select students for this group.</small>
+                                </div>
+                            </div>
+
+                            <div class="col-md-6">
+                                <h4 class="sub-title">Lessons</h4>
+                                <div class="form-group">
+                                    <select asp-for="LessonIds" class="form-control select2"
+                                            multiple="multiple" asp-items="ViewBag.Lessons">
+                                    </select>
+                                    <small class="form-text text-muted">Select lessons for this group.</small>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="DepartmentId">Departament</label>
+                            <select class="form-control" asp-for="DepartmentId"
+                                    asp-items="ViewBag.Departments">
+                                <option value="">-- Departament seçin --</option>
+                            </select>
+                            <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group text-right">
+                            <a asp-action="Index" class="btn btn-sm btn-inverse">Ləğv et</a>
+                            <button type="submit" class="btn btn-sm btn-success">Yadda saxla</button>
+                        </div>
+
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

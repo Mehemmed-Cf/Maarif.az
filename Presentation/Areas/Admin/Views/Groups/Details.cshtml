@@ -1,0 +1,129 @@
+@using Application.Modules.GroupsModule.Queries.GroupGetByIdQuery
+@model GroupDetailsResponseDto
+@{
+    ViewData["Title"] = "Group Details";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Group Details</h4>
+                    <span>View all information about this group</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="../index.html"><i class="feather icon-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-action="Index">Groups</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Details</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>@Model.Name</h5>
+                </div>
+                <div class="card-block">
+
+                    <h4 class="sub-title">General Information</h4>
+                    <div class="row">
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label">Name</label>
+                                <p class="form-control">@Model.Name</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label">Year</label>
+                                <p class="form-control">@Model.Year</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="form-group">
+                                <label class="control-label">Department</label>
+                                <p class="form-control">@Model.DepartmentName</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr />
+
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h4 class="sub-title">
+                                Students
+                                <span class="badge badge-info ml-2">@(Model.Students?.Count ?? 0)</span>
+                            </h4>
+                            <div class="border p-3 bg-light rounded mb-4">
+                                @if (Model.Students != null && Model.Students.Any())
+                                {
+                                    <ul class="list-unstyled mb-0">
+                                        @foreach (var student in Model.Students)
+                                        {
+                                            <li class="mb-1">
+                                                <i class="feather icon-user text-info mr-2"></i>
+                                                <strong>@student.StudentNumber</strong> — @student.FullName
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <p class="text-muted mb-0">No students assigned.</p>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="col-md-6">
+                            <h4 class="sub-title">
+                                Lessons
+                                <span class="badge badge-success ml-2">@(Model.Lessons?.Count ?? 0)</span>
+                            </h4>
+                            <div class="border p-3 bg-light rounded mb-4">
+                                @if (Model.Lessons != null && Model.Lessons.Any())
+                                {
+                                    <ul class="list-unstyled mb-0">
+                                        @foreach (var lesson in Model.Lessons)
+                                        {
+                                            <li class="mb-1">
+                                                <i class="feather icon-book text-success mr-2"></i>
+                                                @lesson.SubjectName
+                                            </li>
+                                        }
+                                    </ul>
+                                }
+                                else
+                                {
+                                    <p class="text-muted mb-0">No lessons assigned.</p>
+                                }
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-right m-0">
+                        <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@Model.Id">Edit</a>
+                        <a class="btn btn-sm btn-primary" asp-action="Index">Back to List</a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

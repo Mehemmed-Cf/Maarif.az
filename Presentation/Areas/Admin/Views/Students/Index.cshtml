@@ -1,0 +1,165 @@
+@using Application.Modules.StudentsModule.Queries.StudentGetAllQuery
+@model IEnumerable<StudentGetAllResponseDto>
+@{
+    ViewData["Title"] = "Index";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Students</h4>
+                    <span>Manage all students in the system</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="../index.html"> <i class="feather icon-home"></i> </a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Students</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">List</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="card">
+        <div class="card-header">
+            <h5>Students List</h5>
+            <span>use class <code>table</code> inside table element</span>
+        </div>
+        <div class="card-block table-border-style">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>Id</th>
+                            <th>Full Name</th>
+                            <th>Father Name</th>
+                            <th>Student No</th>
+                            <th>Department</th>
+                            <th>Year</th>
+                            <th>Grade</th>
+                            <th>Status</th>
+                            <th>GroupName</th>
+                            <th>GroupId</th>
+                            <th class="operation">
+                                <a class="btn btn-sm btn-success" asp-action="create">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+
+                                <td>
+                                    <a target="_blank" asp-controller="students" asp-action="details" asp-route-id="@item.Id">
+                                        @item.FullName
+                                    </a>
+                                </td>
+
+                                <td>@item.FatherName</td>
+                                <td>@item.StudentNumber</td>
+                                <td>@item.DepartmentName</td>
+                                <td>@item.Year</td>
+                                <td>@item.Grade</td>
+                                <td>@item.Status</td>
+                                <td>@item.GroupName</td>
+                                <td>@item.GroupId</td>
+
+                                <td class="operation">
+                                    <a class="btn btn-sm btn-primary" asp-action="details" asp-route-id="@item.Id">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+
+                                    <a class="btn btn-sm btn-warning" asp-action="edit" asp-route-id="@item.Id">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+
+                                    <a class="btn btn-sm btn-danger"
+                                       asp-action="Remove"
+                                       asp-route-id="@item.Id"
+                                       data-entity-title="@item.FullName" onclick="removeEntity(event)">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section addcss {
+    <link href="~/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <link href="~/libs/sweetalert2/sweetalert2.css" rel="stylesheet" />
+}
+@section addjs {
+    <script src="~/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <script>
+        function removeEntity(e) {
+            e.preventDefault();
+            let element = e.currentTarget;
+
+            $(element).attr('disabled', 'disable');
+
+            const link = $(element).attr('href');
+            const Name = $(element).data('entity-title');
+
+            const bigonSwal = Swal.mixin({
+                customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                },
+                buttonsStyling: false
+            });
+
+            bigonSwal.fire({
+                title: `Diqqət`,
+                text: `${Name} - adli melumatin silmek istediyinizden eminsinizmi??`,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Bəli",
+                cancelButtonText: "Xeyr",
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: link,
+                        type: 'POST',
+                        success: function (response) {
+                            alert(`${Name} silindi`);
+                            window.location.reload();
+                        },
+                        error: function (errResponse) {
+                            console.log(errResponse);
+                        }
+                    }).always(function () {
+                        $(element).removeAttr('disabled').trigger('blur');
+                    });
+                }
+                else {
+                    $(element).removeAttr('disabled').trigger('blur');
+                    $(document).trigger('click');
+                }
+            });
+        }
+    </script>
+}

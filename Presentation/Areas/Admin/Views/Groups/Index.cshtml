@@ -1,0 +1,153 @@
+@using Application.Modules.GroupsModule
+@model IEnumerable<GroupResponseDto>
+@{
+    ViewData["Title"] = "Groups";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Groups</h4>
+                    <span>Manage all groups in the system</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="../index.html"><i class="feather icon-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Groups</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">List</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="card">
+        <div class="card-header">
+            <h5>Groups List</h5>
+        </div>
+        <div class="card-block table-border-style">
+            <div class="table-responsive">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Year</th>
+                            <th>Department</th>
+                            <th>Students</th>
+                            <th>Lessons</th>
+                            <th class="operation">
+                                <a class="btn btn-sm btn-success" asp-action="Create">
+                                    <i class="fa fa-plus"></i>
+                                </a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Id</td>
+
+                                <td>
+                                    <a asp-action="Details" asp-route-id="@item.Id">
+                                        @item.Name
+                                    </a>
+                                </td>
+
+                                <td>@item.Year</td>
+
+                                <td>
+                                    <a asp-controller="Departments" asp-action="Details" asp-route-id="@item.DepartmentId">
+                                        @item.DepartmentName
+                                    </a>
+                                </td>
+
+                                <td>@item.StudentCount</td>
+
+                                <td>@item.LessonCount</td>
+
+                                <td class="operation">
+                                    <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.Id">
+                                        <i class="fa fa-eye"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">
+                                        <i class="fa fa-pencil"></i>
+                                    </a>
+                                    <a class="btn btn-sm btn-danger"
+                                       asp-action="Remove"
+                                       asp-route-id="@item.Id"
+                                       data-entity-title="@item.Name"
+                                       onclick="removeEntity(event)">
+                                        <i class="fa fa-trash"></i>
+                                    </a>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section addcss {
+    <link href="~/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+}
+@section addjs {
+    <script src="~/libs/sweetalert2/sweetalert2.min.js"></script>
+    <script>
+        function removeEntity(e) {
+            e.preventDefault();
+            const element = e.currentTarget;
+            $(element).attr('disabled', 'disabled');
+
+            const link = $(element).attr('href');
+            const name = $(element).data('entity-title');
+
+            Swal.mixin({
+                customClass: { confirmButton: 'btn btn-success', cancelButton: 'btn btn-danger' },
+                buttonsStyling: false
+            }).fire({
+                title: 'Diqqət',
+                text: `${name} - adlı məlumatı silmək istədiyinizdən əminsinizmi?`,
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonText: 'Bəli',
+                cancelButtonText: 'Xeyr',
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: link,
+                        type: 'POST',
+                        success: function () {
+                            Swal.fire('Silindi!', `${name} uğurla silindi.`, 'success')
+                                .then(() => window.location.reload());
+                        },
+                        error: function (err) {
+                            console.error(err);
+                            $(element).removeAttr('disabled').trigger('blur');
+                        }
+                    }).always(function () {
+                        $(element).removeAttr('disabled').trigger('blur');
+                    });
+                } else {
+                    $(element).removeAttr('disabled').trigger('blur');
+                }
+            });
+        }
+    </script>
+}
