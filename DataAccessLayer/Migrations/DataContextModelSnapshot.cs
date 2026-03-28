@@ -54,13 +54,15 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar");
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("FacultyId");
 
-                    b.ToTable("Departments", "dbo");
+                    b.HasIndex("Name");
+
+                    b.ToTable("Departments", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.Faculty", b =>
@@ -92,11 +94,14 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar");
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Faculties", "dbo");
+                    b.HasIndex("Name")
+                        .IsUnique();
+
+                    b.ToTable("Faculties", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.Group", b =>
@@ -130,8 +135,8 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<byte>("Year")
                         .HasColumnType("tinyint");
@@ -140,7 +145,10 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Groups", "dbo");
+                    b.HasIndex("DepartmentId", "Name")
+                        .IsUnique();
+
+                    b.ToTable("Groups", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.Lesson", b =>
@@ -179,9 +187,10 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("SubjectId");
 
-                    b.HasIndex("TeacherId");
+                    b.HasIndex("TeacherId", "SubjectId")
+                        .IsUnique();
 
-                    b.ToTable("Lessons", "dbo");
+                    b.ToTable("Lessons", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.LessonGroup", b =>
@@ -196,7 +205,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("GroupId");
 
-                    b.ToTable("LessonGroup");
+                    b.ToTable("LessonGroups", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.Membership.AppRole", b =>
@@ -457,27 +466,30 @@ namespace DataAccessLayer.Migrations
                     b.Property<int>("DepartmentId")
                         .HasColumnType("int");
 
-                    b.Property<byte>("EducationType")
-                        .HasColumnType("tinyint");
-
-                    b.Property<int>("FacultyId")
-                        .HasColumnType("int");
+                    b.Property<string>("EducationType")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("FatherName")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar");
+                        .HasMaxLength(200)
+                        .HasColumnType("nvarchar(200)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
-                    b.Property<byte>("Gender")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("Gender")
+                        .IsRequired()
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
-                    b.Property<byte>("Grade")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("Grade")
+                        .IsRequired()
+                        .HasMaxLength(10)
+                        .HasColumnType("nvarchar(10)");
 
                     b.Property<DateTime?>("LastModifiedAt")
                         .HasColumnType("datetime2");
@@ -487,16 +499,18 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<string>("MobileNumber")
                         .IsRequired()
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
-                    b.Property<byte>("Status")
-                        .HasColumnType("tinyint");
+                    b.Property<string>("Status")
+                        .IsRequired()
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<string>("StudentNumber")
                         .IsRequired()
-                        .HasMaxLength(20)
-                        .HasColumnType("nvarchar");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
@@ -508,9 +522,12 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.HasIndex("FacultyId");
+                    b.HasIndex("StudentNumber")
+                        .IsUnique();
 
-                    b.ToTable("Students", "dbo");
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Students", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.StudentGroup", b =>
@@ -525,25 +542,28 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("CreatedBy")
+                        .HasMaxLength(100)
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("DeletedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("DeletedBy")
+                        .HasMaxLength(100)
                         .HasColumnType("int");
 
                     b.Property<DateTime?>("LastModifiedAt")
                         .HasColumnType("datetime2");
 
                     b.Property<int?>("LastModifiedBy")
+                        .HasMaxLength(100)
                         .HasColumnType("int");
 
                     b.HasKey("StudentId", "GroupId");
 
                     b.HasIndex("GroupId");
 
-                    b.ToTable("StudentGroups", "dbo");
+                    b.ToTable("StudentGroups", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.Subject", b =>
@@ -578,13 +598,16 @@ namespace DataAccessLayer.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasMaxLength(200)
-                        .HasColumnType("nvarchar");
+                        .HasColumnType("nvarchar(200)");
 
                     b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("Subjects", "dbo");
+                    b.HasIndex("DepartmentId", "Name")
+                        .IsUnique();
+
+                    b.ToTable("Subjects", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.Teacher", b =>
@@ -594,9 +617,6 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
-
-                    b.Property<int>("ActiveLessons")
-                        .HasColumnType("int");
 
                     b.Property<DateTime>("BirthDate")
                         .HasColumnType("datetime2");
@@ -614,19 +634,16 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("Email")
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar");
+                        .HasMaxLength(256)
+                        .HasColumnType("nvarchar(256)");
 
-                    b.Property<double>("Experience")
-                        .HasColumnType("float");
+                    b.Property<decimal>("Experience")
+                        .HasColumnType("decimal(5,2)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
-                        .HasMaxLength(200)
-                        .HasColumnType("nvarchar");
-
-                    b.Property<int>("GroupCount")
-                        .HasColumnType("int");
+                        .HasMaxLength(300)
+                        .HasColumnType("nvarchar(300)");
 
                     b.Property<DateTime?>("LastModifiedAt")
                         .HasColumnType("datetime2");
@@ -635,15 +652,21 @@ namespace DataAccessLayer.Migrations
                         .HasColumnType("int");
 
                     b.Property<string>("MobileNumber")
-                        .HasMaxLength(15)
-                        .HasColumnType("nvarchar");
+                        .HasMaxLength(20)
+                        .HasColumnType("nvarchar(20)");
 
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Teachers", "dbo");
+                    b.HasIndex("Email")
+                        .IsUnique()
+                        .HasFilter("[Email] IS NOT NULL");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Teachers", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.TeacherDepartment", b =>
@@ -658,7 +681,7 @@ namespace DataAccessLayer.Migrations
 
                     b.HasIndex("DepartmentId");
 
-                    b.ToTable("TeacherDepartments", "dbo");
+                    b.ToTable("TeacherDepartments", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.Department", b =>
@@ -688,13 +711,13 @@ namespace DataAccessLayer.Migrations
                     b.HasOne("Domain.Models.Entities.Subject", "Subject")
                         .WithMany("Lessons")
                         .HasForeignKey("SubjectId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.HasOne("Domain.Models.Entities.Teacher", "Teacher")
                         .WithMany("Lessons")
                         .HasForeignKey("TeacherId")
-                        .OnDelete(DeleteBehavior.Cascade)
+                        .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
                     b.Navigation("Subject");
@@ -780,15 +803,7 @@ namespace DataAccessLayer.Migrations
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
 
-                    b.HasOne("Domain.Models.Entities.Faculty", "Faculty")
-                        .WithMany()
-                        .HasForeignKey("FacultyId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.Navigation("Department");
-
-                    b.Navigation("Faculty");
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.StudentGroup", b =>
@@ -796,7 +811,7 @@ namespace DataAccessLayer.Migrations
                     b.HasOne("Domain.Models.Entities.Group", "Group")
                         .WithMany("StudentGroups")
                         .HasForeignKey("GroupId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domain.Models.Entities.Student", "Student")
@@ -826,7 +841,7 @@ namespace DataAccessLayer.Migrations
                     b.HasOne("Domain.Models.Entities.Department", "Department")
                         .WithMany("TeacherDepartments")
                         .HasForeignKey("DepartmentId")
-                        .OnDelete(DeleteBehavior.Restrict)
+                        .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.HasOne("Domain.Models.Entities.Teacher", "Teacher")

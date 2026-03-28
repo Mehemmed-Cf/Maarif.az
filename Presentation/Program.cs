@@ -45,13 +45,21 @@ internal class Program
             cfg.Filters.Add(new AuthorizeFilter(policy));
         });
 
-        builder.Services.AddDbContext<DataContext>(cfg => //DbContext, 
-        {
-            string cs = builder.Configuration.GetConnectionString("cString");
+        string? connectionString = builder.Configuration.GetConnectionString("cString");
 
-            cfg.UseSqlServer(cs, opt =>
+        if (string.IsNullOrWhiteSpace(connectionString))
+            throw new InvalidOperationException("Connection string 'cString' was not found.");
+
+        builder.Services.AddDbContext<DataContext>(cfg =>
+        {
+            cfg.UseSqlServer(connectionString, sqlOptions =>
             {
-                opt.MigrationsHistoryTable("MigrationHistory");
+                sqlOptions.EnableRetryOnFailure(
+                    maxRetryCount: 5,
+                    maxRetryDelay: TimeSpan.FromSeconds(10),
+                    errorNumbersToAdd: null);
+
+                sqlOptions.MigrationsHistoryTable("MigrationHistory");
             });
         });
 
@@ -97,11 +105,20 @@ internal class Program
 
         var app = builder.Build();
 
+        using (var scope = app.Services.CreateScope())
+        {
+            var dbContext = scope.ServiceProvider.GetRequiredService<DataContext>();
+            dbContext.Database.Migrate();
+        }
+
         if (!app.Environment.IsDevelopment())
         {
             app.UseExceptionHandler("/Error");
             app.UseHsts();
-            app.UseDeveloperExceptionPage(); //
+        }
+        else
+        {
+            app.UseDeveloperExceptionPage();
         }
 
         app.UseHttpsRedirection();

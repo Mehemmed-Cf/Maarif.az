@@ -1,0 +1,107 @@
+﻿@model Application.Modules.LessonsModule.LessonDetailResponseDto
+@{
+    ViewData["Title"] = "Lesson Details";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Lesson Details</h4>
+                    <span>Detailed view of the specific lesson, including the assigned teacher and student groups.</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-controller="Dashboard" asp-action="Index"> <i class="feather icon-home"></i> </a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-action="Index">Lessons</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Details</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Lesson Information</h5>
+                    <span>General details about the subject and teaching staff.</span>
+                </div>
+                <div class="card-block">
+                    <h4 class="sub-title">Main Information</h4>
+                    <div class="row mb-4">
+                        <div class="col-sm-6">
+                            <label class="control-label text-primary">Subject Name</label>
+                            <p class="form-control">@Model.SubjectName</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="control-label text-primary">Assigned Teacher</label>
+                            <p class="form-control">@Model.TeacherFullName</p>
+                        </div>
+                    </div>
+
+                    <h4 class="sub-title">Assigned Groups</h4>
+                    <div class="row">
+                        <div class="col-md-12">
+                            @if (Model.Groups == null || !Model.Groups.Any())
+                            {
+                                <div class="alert alert-info">
+                                    <i class="feather icon-info mr-2"></i> No groups are currently assigned to this lesson.
+                                </div>
+                            }
+                            else
+                            {
+                                <div class="table-responsive">
+                                    <table class="table table-bordered table-striped">
+                                        <thead class="table-light">
+                                            <tr>
+                                                <th>Group Name</th>
+                                                <th>Year (Kurs)</th>
+                                                <th>Department</th>
+                                                <th>Student Count</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            @foreach (var g in Model.Groups)
+                                            {
+                                                <tr>
+                                                    <td><strong>@g.Name</strong></td>
+                                                    <td>@g.Year</td>
+                                                    <td>@g.DepartmentName</td>
+                                                    <td>
+                                                        <span class="badge badge-primary">@g.StudentCount students</span>
+                                                    </td>
+                                                </tr>
+                                            }
+                                        </tbody>
+                                    </table>
+                                </div>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="form-group text-right m-t-20">
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.Id">
+                            <i class="fa fa-pencil"></i> Edit Lesson
+                        </a>
+                        <a class="btn btn-primary" asp-action="Index">
+                            <i class="fa fa-arrow-left"></i> Back to List
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,176 @@
+﻿@model IReadOnlyList<Application.Modules.LessonsModule.LessonResponseDto>
+@{
+    ViewData["Title"] = "Lessons List";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Lessons Management</h4>
+                    <span>List of all active lessons, assigned teachers, and group counts.</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-controller="Dashboard" asp-action="Index"> <i class="feather icon-home"></i> </a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Academic</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Lessons</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="card">
+        <div class="card-header">
+            <h5>All Lessons</h5>
+            <span>Use the operations column to view details, edit, or remove records.</span>
+        </div>
+        <div class="card-block table-border-style">
+            <div class="table-responsive">
+                <table class="table table-hover">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Subject</th>
+                            <th>Teacher</th>
+                            <th>Group Count</th>
+                            <th class="operation">
+                                <a class="btn btn-sm btn-success" asp-action="Create">
+                                    <i class="fa fa-plus"></i> Add New
+                                </a>
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @if (Model != null && Model.Any())
+                        {
+                            foreach (var item in Model)
+                            {
+                                <tr>
+                                    <td>@item.Id</td>
+                                    <td>
+                                        <strong>@item.SubjectName</strong>
+                                    </td>
+                                    <td>
+                                        @item.TeacherFullName
+                                    </td>
+                                    <td>
+                                        <span class="label label-info">@item.GroupCount Groups</span>
+                                    </td>
+                                    <td class="operation">
+                                        <a class="btn btn-sm btn-primary" asp-action="Details" asp-route-id="@item.Id">
+                                            <i class="fa fa-eye"></i>
+                                        </a>
+
+                                        <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">
+                                            <i class="fa fa-pencil"></i>
+                                        </a>
+
+                                        <a class="btn btn-sm btn-danger"
+                                           asp-action="Remove"
+                                           asp-route-id="@item.Id"
+                                           data-entity-title="@item.SubjectName (@item.TeacherFullName)"
+                                           onclick="removeEntity(event)">
+                                            <i class="fa fa-trash"></i>
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        }
+                        else
+                        {
+                            <tr>
+                                <td colspan="5" class="text-center">
+                                    <div class="alert alert-warning mb-0">No lessons available.</div>
+                                </td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section addcss {
+    <link href="~/libs/sweetalert2/sweetalert2.min.css" rel="stylesheet" />
+    <style>
+        /* Optional: Style adjustments for the operations column */
+        .operation {
+            text-align: right;
+            white-space: nowrap;
+        }
+
+            .operation .btn {
+                margin-left: 2px;
+            }
+    </style>
+}
+
+@section addjs {
+    <script src="~/libs/sweetalert2/sweetalert2.min.js"></script>
+
+    <script>
+        function removeEntity(e) {
+            e.preventDefault();
+            let element = e.currentTarget;
+
+            $(element).attr('disabled', 'disabled');
+
+            const link = $(element).attr('href');
+            const entityTitle = $(element).data('entity-title');
+
+            const bigonSwal = Swal.mixin({
+                customClass: {
+                    confirmButton: "btn btn-success",
+                    cancelButton: "btn btn-danger"
+                },
+                buttonsStyling: false
+            });
+
+            bigonSwal.fire({
+                title: `Diqqət`,
+                text: `${entityTitle} məlumatını silmək istədiyinizdən əminsinizmi?`,
+                icon: "warning",
+                showCancelButton: true,
+                confirmButtonText: "Bəli",
+                cancelButtonText: "Xeyr",
+                reverseButtons: true
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    $.ajax({
+                        url: link,
+                        type: 'POST',
+                        success: function (response) {
+                            // Using a toast or simple alert for success
+                            Swal.fire('Silindi!', `${entityTitle} uğurla silindi.`, 'success')
+                                .then(() => {
+                                    window.location.reload();
+                                });
+                        },
+                        error: function (errResponse) {
+                            Swal.fire('Xəta!', 'Məlumat silinərkən xəta baş verdi.', 'error');
+                            console.log(errResponse);
+                        }
+                    }).always(function () {
+                        $(element).removeAttr('disabled').trigger('blur');
+                    });
+                } else {
+                    $(element).removeAttr('disabled').trigger('blur');
+                }
+            });
+        }
+    </script>
+}
