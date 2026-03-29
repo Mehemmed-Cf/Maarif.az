@@ -1,7 +1,15 @@
 @using Application.Modules.GroupsModule.Queries.GroupGetByIdQuery
 @model GroupDetailsResponseDto
+
 @{
     ViewData["Title"] = "Edit Group";
+    var selectedStudentIds = Model.Students?
+        .Select(s => s.Id.ToString())
+        .ToList() ?? new List<string>();
+
+    var selectedLessonIds = Model.Lessons?
+        .Select(l => l.Id.ToString())
+        .ToList() ?? new List<string>();
 }
 
 <div class="page-header">
@@ -135,13 +143,20 @@
 </div>
 
 @section addcss {
-    <link rel="stylesheet" href="~/libs/select2/select2.min.css" />
+    <link rel="stylesheet" href="~/libs/select2/css/select2.min.css" />
 }
 @section addjs {
-    <script src="~/libs/select2/select2.min.js"></script>
+    <script src="~/libs/select2/js/select2.min.js"></script>
     <script>
         $(document).ready(function () {
             $('.select2').select2({ width: '100%' });
+
+            // Re-apply pre-selected values after Select2 init
+            var selectedStudents = @Html.Raw(Json.Serialize(selectedStudentIds));
+            var selectedLessons = @Html.Raw(Json.Serialize(selectedLessonIds));
+
+            $('select[name="StudentIds"]').val(selectedStudents).trigger('change');
+            $('select[name="LessonIds"]').val(selectedLessons).trigger('change');
         });
     </script>
 }

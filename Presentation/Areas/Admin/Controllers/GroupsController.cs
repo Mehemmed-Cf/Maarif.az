@@ -1,8 +1,9 @@
-using Application.Modules.GroupsModule.Commands.GroupAddCommand;
+﻿using Application.Modules.GroupsModule.Commands.GroupAddCommand;
 using Application.Modules.GroupsModule.Commands.GroupEditCommand;
 using Application.Modules.GroupsModule.Commands.GroupRemoveCommand;
 using Application.Modules.GroupsModule.Queries.GroupGetAllQuery;
 using Application.Modules.GroupsModule.Queries.GroupGetByIdQuery;
+using Application.Modules.LessonsModule;
 using Application.Repositories;
 using Domain.Models.Entities;
 using MediatR;
@@ -35,15 +36,22 @@ namespace Presentation.Areas.Admin.Controllers
             this.mediator = mediator;
         }
 
-        private void PopulateViewBags(int? selectedDepartmentId = null)
+        private async Task PopulateViewBagsAsync(int? selectedDepartmentId = null)
         {
             var departments = departmentRepository.GetAll()?.ToList() ?? new List<Department>();
             var students = studentRepository.GetAll()?.ToList() ?? new List<Student>();
-            var lessons = lessonRepository.GetAll()?.ToList() ?? new List<Lesson>();
+            var lessons = (await lessonRepository.GetAllAsync())?.ToList() ?? new List<LessonResponseDto>();
 
             ViewBag.Departments = new SelectList(departments, "Id", "Name", selectedDepartmentId);
             ViewBag.Students = new SelectList(students, "Id", "FullName");
-            ViewBag.Lessons = new SelectList(lessons, "Id", "Name"); // Ensure "Name" exists on Lesson entity
+            ViewBag.Lessons = new SelectList(
+                lessons.Select(l => new {
+                    l.Id,
+                    DisplayName = $"{l.SubjectName} - {l.TeacherFullName}"
+                }),
+                "Id",
+                "DisplayName"
+            );
         }
 
         [AllowAnonymous]
@@ -61,9 +69,9 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [AllowAnonymous]
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
-            PopulateViewBags();
+            await PopulateViewBagsAsync();
             return View();
         }
 
@@ -73,7 +81,7 @@ namespace Presentation.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                PopulateViewBags(request.DepartmentId);
+                await PopulateViewBagsAsync(request.DepartmentId);
                 return View(request);
             }
 
@@ -89,7 +97,7 @@ namespace Presentation.Areas.Admin.Controllers
             // Safety check: if group doesn't exist, don't try to show the view
             if (response == null) return NotFound();
 
-            PopulateViewBags(response.DepartmentId);
+            await PopulateViewBagsAsync(response.DepartmentId);
             return View(response);
         }
 
@@ -99,7 +107,7 @@ namespace Presentation.Areas.Admin.Controllers
         {
             if (!ModelState.IsValid)
             {
-                PopulateViewBags(request.DepartmentId);
+                await PopulateViewBagsAsync(request.DepartmentId);
                 //return View(request);
                 return RedirectToAction(nameof(Edit), new { id = request.Id });
             }
