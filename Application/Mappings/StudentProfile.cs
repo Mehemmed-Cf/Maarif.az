@@ -1,5 +1,7 @@
-﻿using Application.Modules.StudentsModule.Commands.StudentAddCommand;
+﻿using Application.Modules.StudentsModule;
+using Application.Modules.StudentsModule.Commands.StudentAddCommand;
 using Application.Modules.StudentsModule.Commands.StudentEditCommand;
+using Application.Modules.StudentsModule.Commands.StudentRegisterCommand;
 using Application.Modules.StudentsModule.Queries.StudentGetAllQuery;
 using Application.Modules.StudentsModule.Queries.StudentGetByIdQuery;
 using AutoMapper;
@@ -11,6 +13,28 @@ namespace Application.Mappings
     {
         public StudentProfile()
         {
+
+            // Student → StudentListDto
+            CreateMap<Student, StudentListDto>()
+                .ForMember(d => d.Gender,
+                    o => o.MapFrom(s => s.Gender.ToString()))
+                .ForMember(d => d.EducationType,
+                    o => o.MapFrom(s => s.EducationType.ToString()))
+                .ForMember(d => d.Status,
+                    o => o.MapFrom(s => s.Status.ToString()))
+                .ForMember(d => d.Grade,
+                    o => o.MapFrom(s => s.Grade.ToString()))
+                .ForMember(d => d.Department,
+                    o => o.MapFrom(s => s.Department.Name));
+
+            // Student → StudentRegisterResponseDto
+            // (used only if you ever map an entity to the response — optional)
+            CreateMap<Student, StudentRegisterResponseDto>()
+                .ForMember(d => d.StudentNumber,
+                    o => o.MapFrom(s => s.StudentNumber))
+                .ForMember(d => d.DefaultPassword,
+                    o => o.Ignore()); // password is never on the entity
+
             CreateMap<StudentAddRequest, Student>();
             CreateMap<StudentEditRequest, Student>();
 

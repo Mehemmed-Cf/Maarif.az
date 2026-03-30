@@ -17,7 +17,12 @@ namespace Presentation.AppCode.DI
             builder.RegisterAssemblyModules(typeof(ApplicationModule).Assembly);
 
             builder.RegisterAssemblyTypes(typeof(IRepositoryReference).Assembly)
-                .AsImplementedInterfaces();
+                .Where(t => t.Name.EndsWith("Repository") || t.Name.EndsWith("Service"))
+                .AsImplementedInterfaces()
+                .InstancePerLifetimeScope();
+
+            //builder.RegisterAssemblyTypes(typeof(IRepositoryReference).Assembly)
+            //    .AsImplementedInterfaces();
         }
     }
 }

@@ -476,6 +476,11 @@ namespace DataAccessLayer.Migrations
                         .HasMaxLength(200)
                         .HasColumnType("nvarchar(200)");
 
+                    b.Property<string>("FinCode")
+                        .IsRequired()
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
+
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasMaxLength(300)
@@ -521,6 +526,9 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
+
+                    b.HasIndex("FinCode")
+                        .IsUnique();
 
                     b.HasIndex("StudentNumber")
                         .IsUnique();

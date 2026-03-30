@@ -158,10 +158,10 @@ C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\staticwebassets.
 C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\staticwebassets.build.json.cache
 C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\staticwebassets.development.json
 C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\staticwebassets.build.endpoints.json
-C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\Presenta.BC777DBE.Up2Date
 C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\Presentation.dll
 C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\refint\Presentation.dll
 C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\Presentation.pdb
 C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\Presentation.genruntimeconfig.cache
 C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\ref\Presentation.dll
+C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

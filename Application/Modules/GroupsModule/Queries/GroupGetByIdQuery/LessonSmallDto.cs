@@ -9,8 +9,8 @@ namespace Application.Modules.GroupsModule.Queries.GroupGetByIdQuery
     public class LessonSmallDto
     {
         public int Id { get; set; }
+        public string Name { get; set; }
         public string GroupNumber { get; set; }
         public string SubjectName { get; set; } //
-        public string Name { get; set; }
     }
 }

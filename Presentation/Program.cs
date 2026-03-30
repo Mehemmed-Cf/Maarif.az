@@ -2,12 +2,14 @@ using Application;
 using Application.Mappings;
 using Application.Services;
 using DataAccessLayer.Migrations;
+using Domain.Models.Entities;
 using Domain.Models.Entities.Membership;
 using FluentValidation.AspNetCore;
 using Infrastructure.Abstracts;
 using Infrastructure.Configurations;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
@@ -16,7 +18,7 @@ using Presentation.AppCode.Pipeline;
 
 internal class Program
 {
-    private static void Main(string[] args)
+    private static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
 
@@ -77,7 +79,15 @@ internal class Program
 
         builder.Services.Configure<CryptoServiceOptions>(cfg => builder.Configuration.Bind(nameof(CryptoServiceOptions), cfg));
 
-        builder.Services.AddIdentity<AppUser, Microsoft.AspNetCore.Identity.IdentityRole>(options => //User
+        //builder.Services.AddIdentity<AppUser, Microsoft.AspNetCore.Identity.IdentityRole>(options => //User
+        //{
+        //    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+        //    options.Password.RequiredLength = 6;
+        //    options.Password.RequireNonAlphanumeric = true;
+        //});
+
+
+        builder.Services.AddIdentity<AppUser, Microsoft.AspNetCore.Identity.IdentityRole<int>>(options => //User
         {
             options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
             options.Password.RequiredLength = 6;
@@ -85,6 +95,12 @@ internal class Program
         });
 
         builder.Services.AddScoped<IIdentityService, FakeIdentityService>();
+
+        builder.Services.AddScoped<IGovernmentIdentityService, FakeGovernmentIdentityService>();
+        //builder.RegisterType<FakeGovernmentIdentityService>()
+        //       .As<IGovernmentIdentityService>()
+        //       .InstancePerLifetimeScope();
+
 
         builder.Services.AddSingleton<IFileService, FileService>();
 
@@ -121,6 +137,11 @@ internal class Program
             app.UseDeveloperExceptionPage();
         }
 
+        //using (var scope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
+        //{
+        //    await RoleAndAdminSeeder.SeedAsync(scope.ServiceProvider);
+        //}
+
         app.UseHttpsRedirection();
 
         app.UseStaticFiles();
@@ -141,6 +162,15 @@ internal class Program
 
         app.MapControllerRoute(name: "default", pattern: "{controller=home}/{action=index}/{id?}");
 
+        using (var scope = app.Services.CreateScope())
+        {
+
+            await RoleAndAdminSeeder.SeedAsync(scope.ServiceProvider);
+        }
+
+
         app.Run();
     }
 }
+
+

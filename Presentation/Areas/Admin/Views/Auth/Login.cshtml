@@ -1,0 +1,80 @@
+﻿@using Application.Modules.StudentsModule.Commands.StudentLoginCommand
+@model StudentLoginRequest
+@{
+    ViewData["Title"] = "Daxil ol";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Daxil ol</h4>
+                    <span>LMS-ə xoş gəldiniz</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="row justify-content-center">
+        <div class="col-sm-6">
+            <div class="card">
+                <div class="card-block">
+
+                    <div asp-validation-summary="All" class="alert alert-danger"></div>
+
+                    <form asp-action="Login" method="post">
+                        @Html.AntiForgeryToken()
+
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label asp-for="StudentNumber">Tələbə nömrəsi</label>
+                                    <input type="text"
+                                           class="form-control"
+                                           asp-for="StudentNumber"
+                                           placeholder="202506181"
+                                           autocomplete="username" />
+                                    <span asp-validation-for="StudentNumber" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12">
+                                <div class="form-group">
+                                    <label asp-for="Password">Şifrə</label>
+                                    <input type="password"
+                                           class="form-control"
+                                           asp-for="Password"
+                                           autocomplete="current-password" />
+                                    <span asp-validation-for="Password" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="form-group text-right">
+                            <button type="submit" class="btn btn-success">
+                                Daxil ol
+                            </button>
+                        </div>
+                    </form>
+
+                    <div class="text-center mt-2">
+                        <small>
+                            Hesabınız yoxdur?
+                            <a asp-action="Register">Qeydiyyat</a>
+                        </small>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

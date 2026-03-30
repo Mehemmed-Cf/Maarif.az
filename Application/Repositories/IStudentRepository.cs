@@ -11,5 +11,7 @@ namespace Application.Repositories
         // GetAll() (inherited) feeds ProjectTo<T> in the GetAll handler.
         // GetByIdWithDetailsAsync loads the entity with navigations for the GetById handler.
         Task<Student?> GetByIdWithDetailsAsync(int id, CancellationToken ct = default);
+        Task<Student?> GetByFinCodeAsync(string finCode, CancellationToken ct = default);
+        Task<Student?> GetByStudentNumberAsync(string studentNumber, CancellationToken ct = default);
     }
 }

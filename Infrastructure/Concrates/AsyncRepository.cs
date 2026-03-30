@@ -39,6 +39,26 @@ namespace Infrastructure.Concrates
             return query;
         }
 
+        public async Task<T> GetAsync(
+            Expression<Func<T, bool>>? expression = null,
+            CancellationToken cancellationToken = default,
+            Func<IQueryable<T>, IQueryable<T>>? include = null)
+        {
+            var query = db.Set<T>().AsQueryable();
+
+            if (include != null)
+                query = include(query);
+
+            T? entity = expression is not null
+                ? await query.FirstOrDefaultAsync(expression, cancellationToken)
+                : await query.FirstOrDefaultAsync(cancellationToken);
+
+            if (entity == null)
+                throw new DirectoryNotFoundException($"{typeof(T).Name} not found");
+
+            return entity;
+        }
+
         public async Task<T> GetAsync(Expression<Func<T, bool>> expression = null, CancellationToken cancellationToken = default)
         {
             //var query = db.Set<T>().AsQueryable();

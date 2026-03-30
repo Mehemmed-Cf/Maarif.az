@@ -8,5 +8,7 @@ namespace Application.Modules.GroupsModule.Commands.GroupEditCommand
         public string Name { get; set; }
         public byte Year { get; set; }
         public int DepartmentId { get; set; }
+        public List<int> StudentIds { get; set; } = new();
+        public List<int> LessonIds { get; set; } = new();
     }
 }

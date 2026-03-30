@@ -26,7 +26,12 @@ namespace Application.Mappings
             CreateMap<Student, StudentSmallDto>();
             CreateMap<Student, LessonSmallDto>();
 
-            CreateMap<GroupAddRequest, Group>();
+            CreateMap<GroupAddRequest, Group>()
+            .ForMember(d => d.StudentGroups, o => o.MapFrom(s =>
+                s.StudentIds.Select(id => new StudentGroup { StudentId = id }).ToList()))
+            .ForMember(d => d.LessonGroups, o => o.MapFrom(s =>
+                s.LessonIds.Select(id => new LessonGroup { LessonId = id }).ToList()));
+
             CreateMap<GroupEditRequest, Group>();
         }
     }

@@ -20,6 +20,13 @@ namespace DataAccessLayer.Configurations
             builder.Property(s => s.FatherName)
                    .HasMaxLength(200);
 
+            builder.Property(s => s.FinCode)
+            .IsRequired()
+            .HasMaxLength(7);
+
+            builder.HasIndex(s => s.FinCode)
+            .IsUnique();  // one student per FIN, enforced at DB level too
+
             builder.Property(s => s.StudentNumber)
                    .IsRequired()
                    .HasMaxLength(50);
