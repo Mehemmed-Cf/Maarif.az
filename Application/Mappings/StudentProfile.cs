@@ -25,7 +25,7 @@ namespace Application.Mappings
                 .ForMember(d => d.Grade,
                     o => o.MapFrom(s => s.Grade.ToString()))
                 .ForMember(d => d.Department,
-                    o => o.MapFrom(s => s.Department.Name));
+                    o => o.MapFrom(s => s.Department != null ? s.Department.Name : "Təyin edilməyib"));
 
             // Student → StudentRegisterResponseDto
             // (used only if you ever map an entity to the response — optional)

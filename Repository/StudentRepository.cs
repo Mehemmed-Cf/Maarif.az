@@ -47,7 +47,7 @@ namespace Repository
             // without a second round-trip.
             return await db.Set<Student>()
                 .AsNoTracking()
-                .Include(s => s.Department)
+                .Include(s => s.Department!)
                     .ThenInclude(d => d.Faculty)
                 .Include(s => s.StudentGroups)
                     .ThenInclude(sg => sg.Group)

@@ -3,8 +3,6 @@ using Application.Modules.StudentsModule.Commands.StudentEditCommand;
 using Application.Modules.StudentsModule.Commands.StudentRemoveCommand;
 using Application.Modules.StudentsModule.Queries.StudentGetAllQuery;
 using Application.Modules.StudentsModule.Queries.StudentGetByIdQuery;
-using Application.Modules.SubjectsModule.Commands.SubjectEditCommand;
-using Application.Modules.SubjectsModule.Queries.SubjectGetByIdQuery;
 using Application.Repositories;
 using AutoMapper;
 using Domain.Models.Entities;
@@ -12,7 +10,6 @@ using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Repository;
 
 namespace Presentation.Areas.Admin.Controllers
 {

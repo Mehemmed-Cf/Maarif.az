@@ -32,7 +32,8 @@ namespace DataAccessLayer.Configurations
                    .HasMaxLength(50);
 
             builder.Property(s => s.MobileNumber)
-                   .HasMaxLength(20);
+                   .HasMaxLength(20)
+                    .IsRequired(false); //
 
             builder.Property(s => s.Gender)
                    .HasConversion<string>()
@@ -57,6 +58,7 @@ namespace DataAccessLayer.Configurations
             builder.HasOne(s => s.Department)
                    .WithMany(d => d.Students)
                    .HasForeignKey(s => s.DepartmentId)
+                   .IsRequired(false)
                    .OnDelete(DeleteBehavior.Restrict);
 
             builder.HasIndex(s => s.StudentNumber).IsUnique();

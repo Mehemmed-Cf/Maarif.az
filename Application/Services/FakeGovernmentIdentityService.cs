@@ -116,6 +116,11 @@ public class FakeGovernmentIdentityService : IGovernmentIdentityService
     {
         var key = (serialNumber.Trim().ToUpper(), finCode.Trim().ToUpper());
         _seed.TryGetValue(key, out var result);
+
+        // Normalize FinCode to uppercase so it matches DB lookup
+        if (result != null)
+            result.FinCode = result.FinCode.ToUpper();
+
         return Task.FromResult(result);
     }
 }

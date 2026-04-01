@@ -62,7 +62,7 @@ namespace Application.Modules.StudentsModule.Commands.StudentRegisterCommand
                 throw new BadRequestException(
                     string.Join(", ", result.Errors.Select(e => e.Description)));
 
-            await userManager.AddToRoleAsync(user, "Student");
+            await userManager.AddToRoleAsync(user, "STUDENT");
 
             // 4. Create student entity (audit fields set by DataContext.SaveChangesAsync)
             var student = new Student
@@ -74,10 +74,12 @@ namespace Application.Modules.StudentsModule.Commands.StudentRegisterCommand
                 FinCode = finData.FinCode,
                 StudentNumber = studentNumber,
                 Status = StatusType.Active,
+                MobileNumber = string.Empty,
                 UserId = user.Id,
             };
 
             await studentRepository.AddAsync(student, cancellationToken);
+            await studentRepository.SaveAsync(cancellationToken);
 
             return new StudentRegisterResponseDto(studentNumber, defaultPassword);
         }

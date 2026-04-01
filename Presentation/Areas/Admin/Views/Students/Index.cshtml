@@ -46,6 +46,7 @@
                             <th>Id</th>
                             <th>Full Name</th>
                             <th>Father Name</th>
+                            <th>FinCode</th>
                             <th>Student No</th>
                             <th>Department</th>
                             <th>Year</th>
@@ -73,8 +74,9 @@
                                 </td>
 
                                 <td>@item.FatherName</td>
+                                <td>@item.FinCode</td>
                                 <td>@item.StudentNumber</td>
-                                <td>@item.DepartmentName</td>
+                                <td>@(item.DepartmentName != null ? item.DepartmentName : "Təyin edilməyib")</td>
                                 <td>@item.Year</td>
                                 <td>@item.Grade</td>
                                 <td>@item.Status</td>

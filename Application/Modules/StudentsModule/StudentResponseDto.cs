@@ -10,6 +10,7 @@ namespace Application.Modules.StudentsModule
     {
         public int Id { get; set; }
         public string FullName { get; set; }
+        public string FinCode { get; set; }
         public string StudentNumber { get; set; }
         public string DepartmentName { get; set; }
         public string FacultyName { get; set; }

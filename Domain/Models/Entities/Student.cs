@@ -18,8 +18,8 @@ namespace Domain.Models.Entities
         public byte Year { get; set; }
         public int UserId { get; set; }
         public GradeType Grade { get; set; }
-        public int DepartmentId { get; set; }
-        public Department Department { get; set; }
+        public int? DepartmentId { get; set; }
+        public Department? Department { get; set; }
 
         // BUG FIX: Removed FacultyId — Faculty is already reachable via Department.Faculty.
         // Storing it here was a 3NF violation that would cause data drift if a

@@ -16,6 +16,10 @@ namespace Application.Modules.StudentsModule.Commands.StudentEditCommand
             RuleFor(x => x.FatherName)
                 .MaximumLength(200).WithMessage("Ata adı 200 simvoldan çox ola bilməz");
 
+            RuleFor(x => x.FullName)
+            .NotEmpty().WithMessage("FinCode mütləqdir")
+            .MaximumLength(7).WithMessage("FinCode 7 simvoldan çox ola bilməz");
+
             RuleFor(x => x.StudentNumber)
                 .NotEmpty().WithMessage("Tələbə nömrəsi mütləqdir")
                 .MaximumLength(50).WithMessage("Tələbə nömrəsi 50 simvoldan çox ola bilməz");

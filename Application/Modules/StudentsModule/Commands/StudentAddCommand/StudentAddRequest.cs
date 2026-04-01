@@ -7,6 +7,7 @@ namespace Application.Modules.StudentsModule.Commands.StudentAddCommand
     {
         public string FullName { get; set; }
         public string FatherName { get; set; }
+        public string FinCode { get; set; }
         public string StudentNumber { get; set; }
         public GenderType Gender { get; set; }
         public string MobileNumber { get; set; }
