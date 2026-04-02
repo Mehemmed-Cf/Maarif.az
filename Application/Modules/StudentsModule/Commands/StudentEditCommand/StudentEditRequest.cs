@@ -11,7 +11,7 @@ namespace Application.Modules.StudentsModule.Commands.StudentEditCommand
         public string FinCode { get; set; }
         public string StudentNumber { get; set; }
         public GenderType Gender { get; set; }
-        public string MobileNumber { get; set; }
+        public string? MobileNumber { get; set; }
         public DateTime BirthDate { get; set; }
         public EducationType EducationType { get; set; }
         public StatusType Status { get; set; }

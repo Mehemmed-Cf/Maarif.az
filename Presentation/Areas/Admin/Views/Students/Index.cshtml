@@ -52,8 +52,8 @@
                             <th>Year</th>
                             <th>Grade</th>
                             <th>Status</th>
-                            <th>GroupName</th>
-                            <th>GroupId</th>
+                            @* <th>GroupName</th>
+                            <th>GroupId</th> *@
                             <th class="operation">
                                 <a class="btn btn-sm btn-success" asp-action="create">
                                     <i class="fa fa-plus"></i>
@@ -80,8 +80,8 @@
                                 <td>@item.Year</td>
                                 <td>@item.Grade</td>
                                 <td>@item.Status</td>
-                                <td>@item.GroupName</td>
-                                <td>@item.GroupId</td>
+                                @* <td>@item.GroupName</td>
+                                <td>@item.GroupId</td> *@
 
                                 <td class="operation">
                                     <a class="btn btn-sm btn-primary" asp-action="details" asp-route-id="@item.Id">

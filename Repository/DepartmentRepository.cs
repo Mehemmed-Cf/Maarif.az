@@ -15,6 +15,11 @@ namespace Repository
             _context = db;
         }
 
+        public async Task<Department?> GetByNameAsync(string name, CancellationToken ct = default)
+            => await _context.Departments
+                .AsNoTracking()
+                .FirstOrDefaultAsync(d => d.Name == name, ct);
+
         public async Task<Department?> GetByIdWithDetailsAsync(int id, CancellationToken ct = default)
         {
             return await _context.Departments

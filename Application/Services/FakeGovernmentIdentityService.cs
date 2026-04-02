@@ -14,7 +14,9 @@ public class FakeGovernmentIdentityService : IGovernmentIdentityService
             FullName = "Əli Həsənov",
             FatherName = "Murad",
             BirthDate = new DateTime(2000, 5, 12),
-            Gender = GenderType.Male
+            Gender = GenderType.Male,
+            Department = DepartmentType.TransportEquipmentAndManagementTechnologies,
+            Education = EducationType.StateFunded
         },
         [("AZE7654321", "XYZ9876")] = new FinData
         {
@@ -22,17 +24,19 @@ public class FakeGovernmentIdentityService : IGovernmentIdentityService
             FullName = "Aytən Məmmədova",
             FatherName = "Cavid",
             BirthDate = new DateTime(2001, 3, 20),
-            Gender = GenderType.Female
+            Gender = GenderType.Female,
+            Department = DepartmentType.TransportLogisticsAndTrafficSafety,
+            Education = EducationType.Paid
         },
-        // add more seed records as needed
-
         [("AZE2489137", "QW1948A")] = new FinData
         {
             FinCode = "QW1948A",
             FullName = "Elvin Məmmədli",
             FatherName = "Rauf",
             BirthDate = new DateTime(1998, 4, 17),
-            Gender = GenderType.Male
+            Gender = GenderType.Male,
+            Department = DepartmentType.ElectricalEngineering,
+            Education = EducationType.StateFunded
         },
         [("AZE3917642", "TR5821K")] = new FinData
         {
@@ -40,7 +44,9 @@ public class FakeGovernmentIdentityService : IGovernmentIdentityService
             FullName = "Aysu Əliyeva",
             FatherName = "Cavid",
             BirthDate = new DateTime(2001, 9, 8),
-            Gender = GenderType.Female
+            Gender = GenderType.Female,
+            Department = DepartmentType.EngineeringPhysicsAndElectronics,
+            Education = EducationType.Paid
         },
         [("AZE5271849", "MN7304P")] = new FinData
         {
@@ -48,7 +54,9 @@ public class FakeGovernmentIdentityService : IGovernmentIdentityService
             FullName = "Tural Hüseynov",
             FatherName = "Elman",
             BirthDate = new DateTime(1997, 12, 26),
-            Gender = GenderType.Male
+            Gender = GenderType.Male,
+            Department = DepartmentType.EnergyEfficiencyAndGreenEnergyTechnologies,
+            Education = EducationType.StateFunded
         },
         [("AZE6842391", "LP4617D")] = new FinData
         {
@@ -56,7 +64,9 @@ public class FakeGovernmentIdentityService : IGovernmentIdentityService
             FullName = "Nərmin Quliyeva",
             FatherName = "Fərid",
             BirthDate = new DateTime(2002, 2, 14),
-            Gender = GenderType.Female
+            Gender = GenderType.Female,
+            Department = DepartmentType.MachineDesignMechatronicsAndIndustrialTechnologies,
+            Education = EducationType.Paid
         },
         [("AZE7391582", "VK9053H")] = new FinData
         {
@@ -64,7 +74,9 @@ public class FakeGovernmentIdentityService : IGovernmentIdentityService
             FullName = "Orxan Əliyev",
             FatherName = "Kamran",
             BirthDate = new DateTime(1999, 6, 3),
-            Gender = GenderType.Male
+            Gender = GenderType.Male,
+            Department = DepartmentType.MechanicalEngineeringTechnology,
+            Education = EducationType.StateFunded
         },
         [("AZE8457629", "SD2846N")] = new FinData
         {
@@ -72,7 +84,9 @@ public class FakeGovernmentIdentityService : IGovernmentIdentityService
             FullName = "Lalə Məmmədova",
             FatherName = "Rəşad",
             BirthDate = new DateTime(2000, 11, 21),
-            Gender = GenderType.Female
+            Gender = GenderType.Female,
+            Department = DepartmentType.MetallurgyAndMaterialsTechnology,
+            Education = EducationType.Paid
         },
         [("AZE9124685", "PX6731R")] = new FinData
         {
@@ -80,7 +94,9 @@ public class FakeGovernmentIdentityService : IGovernmentIdentityService
             FullName = "Murad İsmayılov",
             FatherName = "Natiq",
             BirthDate = new DateTime(1996, 8, 30),
-            Gender = GenderType.Male
+            Gender = GenderType.Male,
+            Department = DepartmentType.ChemistryTechnologyRecyclingAndEcology,
+            Education = EducationType.Paid
         },
         [("AZE1647398", "HZ4189C")] = new FinData
         {
@@ -88,7 +104,9 @@ public class FakeGovernmentIdentityService : IGovernmentIdentityService
             FullName = "Günay Rzayeva",
             FatherName = "Səməd",
             BirthDate = new DateTime(2003, 5, 12),
-            Gender = GenderType.Female
+            Gender = GenderType.Female,
+            Department = DepartmentType.Mechanics,
+            Education = EducationType.StateFunded
         },
         [("AZE2759461", "JK5927T")] = new FinData
         {
@@ -96,7 +114,9 @@ public class FakeGovernmentIdentityService : IGovernmentIdentityService
             FullName = "Eldar Kərimov",
             FatherName = "Tofiq",
             BirthDate = new DateTime(1995, 1, 19),
-            Gender = GenderType.Male
+            Gender = GenderType.Male,
+            Department = DepartmentType.EngineeringMathematicsAndArtificialIntelligence,
+            Education = EducationType.StateFunded
         },
         [("AZE6083147", "NC8472V")] = new FinData
         {
@@ -104,7 +124,9 @@ public class FakeGovernmentIdentityService : IGovernmentIdentityService
             FullName = "Sevda Abbasova",
             FatherName = "Vüqar",
             BirthDate = new DateTime(2001, 7, 27),
-            Gender = GenderType.Female
+            Gender = GenderType.Female,
+            Department = DepartmentType.RadioEngineeringAndTelecommunicationsEngineering,
+            Education = EducationType.Paid
         },
 
     };

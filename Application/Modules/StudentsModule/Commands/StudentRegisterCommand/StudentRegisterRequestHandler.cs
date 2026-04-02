@@ -13,6 +13,7 @@ namespace Application.Modules.StudentsModule.Commands.StudentRegisterCommand
     {
         private readonly IStudentRepository studentRepository;
         private readonly IGovernmentIdentityService governmentIdentityService;
+        private readonly IDepartmentRepository departmentRepository;
         private readonly UserManager<AppUser> userManager;
 
         private static string GenerateStudentNumber()
@@ -23,10 +24,11 @@ namespace Application.Modules.StudentsModule.Commands.StudentRegisterCommand
             return $"{today:yyyyMMdd}{seq}";
         }
 
-        public StudentRegisterRequestHandler(IStudentRepository studentRepository, IGovernmentIdentityService governmentIdentityService, UserManager<AppUser> userManager)
+        public StudentRegisterRequestHandler(IStudentRepository studentRepository, IGovernmentIdentityService governmentIdentityService, IDepartmentRepository departmentRepository, UserManager<AppUser> userManager)
         {
             this.studentRepository = studentRepository;
             this.governmentIdentityService = governmentIdentityService;
+            this.departmentRepository = departmentRepository;
             this.userManager = userManager;
         }
         public async Task<StudentRegisterResponseDto> Handle(StudentRegisterRequest request, CancellationToken cancellationToken)
@@ -46,6 +48,14 @@ namespace Application.Modules.StudentsModule.Commands.StudentRegisterCommand
             if (existing is not null)
                 throw new ConflictException(
                     "Bu FIN kod artıq qeydiyyatdan keçmişdir.");
+
+            var departmentName = finData.Department.ToString();
+            var department = await departmentRepository
+                .GetByNameAsync(departmentName, cancellationToken);
+
+            if (department is null)
+                throw new BadRequestException(
+                    $"'{departmentName}' şöbəsi sistemdə mövcud deyil.");
 
             // 3. Create Identity user
             const string defaultPassword = "Education123!";
@@ -76,6 +86,10 @@ namespace Application.Modules.StudentsModule.Commands.StudentRegisterCommand
                 Status = StatusType.Active,
                 MobileNumber = string.Empty,
                 UserId = user.Id,
+                DepartmentId = department.Id,
+                EducationType = finData.Education,
+                Year = 1,
+                Grade = GradeType.F
             };
 
             await studentRepository.AddAsync(student, cancellationToken);

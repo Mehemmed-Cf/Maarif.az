@@ -9,5 +9,8 @@ namespace Domain.Models.ValueObjects
         public string FatherName { get; set; }
         public DateTime BirthDate { get; set; }
         public GenderType Gender { get; set; }
+
+        public DepartmentType Department { get; set; }
+        public EducationType Education { get; set; }
     }
 }
