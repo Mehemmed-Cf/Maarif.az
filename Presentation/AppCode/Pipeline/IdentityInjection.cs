@@ -38,16 +38,31 @@ namespace Presentation.AppCode.Pipeline
                 options.Cookie.Name = "MyAppAuthCookie";
                 options.Cookie.HttpOnly = true;
                 options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
-                options.LoginPath = "/Login";
-                options.AccessDeniedPath = "/NotAllowed";
+                //options.LoginPath = "/Login";
+                //options.AccessDeniedPath = "/NotAllowed";
+                options.LoginPath = "/auth/login";
+                options.AccessDeniedPath = "/auth/login";
                 options.SlidingExpiration = true;
             });
 
-            services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
-                .AddCookie(options =>
+            //services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationScheme)
+            //    .AddCookie(options =>
+            //    {
+            //        //options.LoginPath = "/Login";
+            //        //options.AccessDeniedPath = "/NotAllowed";
+            //        options.LoginPath = "/auth/login";
+            //        options.AccessDeniedPath = "/auth/login";
+            //    });
+
+            services.AddAuthentication(IdentityConstants.ApplicationScheme) // Use Identity's scheme name
+                .AddCookie(IdentityConstants.ApplicationScheme, options => // Explicitly name it
                 {
-                    options.LoginPath = "/Login";
-                    options.AccessDeniedPath = "/NotAllowed";
+                    options.Cookie.Name = "MyAppAuthCookie";
+                    options.Cookie.HttpOnly = true;
+                    options.LoginPath = "/auth/login";
+                    options.AccessDeniedPath = "/auth/login";
+                    options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
+                    options.SlidingExpiration = true;
                 });
 
             services.AddScoped<SignInManager<AppUser>>();

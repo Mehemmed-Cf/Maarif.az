@@ -7,9 +7,8 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
-namespace Presentation.Areas.Admin.Controllers
+namespace Presentation.Controllers
 {
-    [Area("admin")]
     [AllowAnonymous]
     public class AuthController : Controller
     {

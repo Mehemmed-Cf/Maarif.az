@@ -1,0 +1,216 @@
+﻿<!DOCTYPE html>
+<html lang="az">
+<head>
+    <title>@ViewData["Title"] - Maarif LMS</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=0, minimal-ui">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <link rel="icon" href="~/admin/images/favicon.ico" type="image/x-icon">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="~/libs/bootstrap/dist/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="~/admin/icon/feather/css/feather.css">
+    <link rel="stylesheet" type="text/css" href="~/admin/css/style.css">
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1a1a2e 0%, #16213e 50%, #0f3460 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Open Sans', sans-serif;
+        }
+
+        .auth-wrapper {
+            width: 100%;
+            max-width: 440px;
+            padding: 20px;
+        }
+
+        .auth-card {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 48px 40px;
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
+        }
+
+        .auth-logo {
+            text-align: center;
+            margin-bottom: 32px;
+        }
+
+            .auth-logo .logo-icon {
+                width: 64px;
+                height: 64px;
+                background: linear-gradient(135deg, #4776E6, #8E54E9);
+                border-radius: 16px;
+                display: inline-flex;
+                align-items: center;
+                justify-content: center;
+                margin-bottom: 16px;
+            }
+
+                .auth-logo .logo-icon i {
+                    font-size: 28px;
+                    color: #fff;
+                }
+
+            .auth-logo h4 {
+                font-size: 22px;
+                font-weight: 700;
+                color: #1a1a2e;
+                margin: 0 0 4px;
+            }
+
+            .auth-logo p {
+                font-size: 13px;
+                color: #8a8a8a;
+                margin: 0;
+            }
+
+        .auth-card .form-group {
+            margin-bottom: 20px;
+        }
+
+        .auth-card label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #444;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .auth-card .form-control {
+            height: 48px;
+            border-radius: 10px;
+            border: 1.5px solid #e0e0e0;
+            font-size: 14px;
+            padding: 0 16px;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            color: #333;
+        }
+
+            .auth-card .form-control:focus {
+                border-color: #4776E6;
+                box-shadow: 0 0 0 3px rgba(71, 118, 230, 0.12);
+                outline: none;
+            }
+
+            .auth-card .form-control::placeholder {
+                color: #bbb;
+            }
+
+        .btn-auth {
+            width: 100%;
+            height: 48px;
+            background: linear-gradient(135deg, #4776E6, #8E54E9);
+            border: none;
+            border-radius: 10px;
+            color: #fff;
+            font-size: 15px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s, transform 0.1s;
+            margin-top: 8px;
+        }
+
+            .btn-auth:hover {
+                opacity: 0.92;
+                transform: translateY(-1px);
+            }
+
+            .btn-auth:active {
+                transform: translateY(0);
+            }
+
+        .auth-footer {
+            text-align: center;
+            margin-top: 24px;
+            font-size: 13px;
+            color: #888;
+        }
+
+            .auth-footer a {
+                color: #4776E6;
+                font-weight: 600;
+                text-decoration: none;
+            }
+
+                .auth-footer a:hover {
+                    text-decoration: underline;
+                }
+
+        .alert-danger {
+            border-radius: 10px;
+            font-size: 13px;
+            padding: 12px 16px;
+            margin-bottom: 20px;
+            border: none;
+            background: #fff0f0;
+            color: #d63031;
+        }
+
+        .text-danger {
+            font-size: 12px;
+        }
+
+        .small-hint {
+            font-size: 12px;
+            color: #aaa;
+            margin-top: 4px;
+        }
+
+        .divider {
+            text-align: center;
+            color: #ccc;
+            font-size: 12px;
+            margin: 20px 0;
+            position: relative;
+        }
+
+            .divider::before,
+            .divider::after {
+                content: '';
+                position: absolute;
+                top: 50%;
+                width: 42%;
+                height: 1px;
+                background: #eee;
+            }
+
+            .divider::before {
+                left: 0;
+            }
+
+            .divider::after {
+                right: 0;
+            }
+    </style>
+</head>
+<body>
+    <div class="auth-wrapper">
+        <div class="auth-card">
+            <div class="auth-logo">
+                <div class="logo-icon">
+                    <i class="feather icon-book-open"></i>
+                </div>
+                <h4>Maarif LMS</h4>
+                <p>@ViewData["Title"]</p>
+            </div>
+            @RenderBody()
+        </div>
+    </div>
+
+    <script src="https://kit.fontawesome.com/1154e1d6ee.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="~/libs/jquery/jquery.min.js"></script>
+    <script type="text/javascript" src="~/libs/popper.js/dist/umd/popper.min.js"></script>
+    <script type="text/javascript" src="~/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script src="~/js/site.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>

@@ -1,0 +1,36 @@
+﻿@using Application.Modules.StudentsModule.Commands.StudentLoginCommand
+@model StudentLoginRequest
+
+@{
+    ViewData["Title"] = "Daxil ol";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<div asp-validation-summary="All" class="alert alert-danger"></div>
+
+<form asp-action="Login" method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label asp-for="StudentNumber">Tələbə nömrəsi</label>
+        <input type="text" class="form-control" asp-for="StudentNumber"
+               placeholder="202506181" autocomplete="username" />
+        <span asp-validation-for="StudentNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="Password">Şifrə</label>
+        <input type="password" class="form-control" asp-for="Password"
+               autocomplete="current-password" />
+        <span asp-validation-for="Password" class="text-danger"></span>
+    </div>
+    <button type="submit" class="btn-auth">Daxil ol</button>
+</form>
+
+<div class="auth-footer">
+    Hesabınız yoxdur? <a asp-action="Register">Qeydiyyat</a>
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

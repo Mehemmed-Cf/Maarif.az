@@ -79,20 +79,13 @@ internal class Program
 
         builder.Services.Configure<CryptoServiceOptions>(cfg => builder.Configuration.Bind(nameof(CryptoServiceOptions), cfg));
 
-        //builder.Services.AddIdentity<AppUser, Microsoft.AspNetCore.Identity.IdentityRole>(options => //User
+
+        //builder.Services.AddIdentity<AppUser, Microsoft.AspNetCore.Identity.IdentityRole<int>>(options => //User
         //{
         //    options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
         //    options.Password.RequiredLength = 6;
         //    options.Password.RequireNonAlphanumeric = true;
         //});
-
-
-        builder.Services.AddIdentity<AppUser, Microsoft.AspNetCore.Identity.IdentityRole<int>>(options => //User
-        {
-            options.User.AllowedUserNameCharacters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
-            options.Password.RequiredLength = 6;
-            options.Password.RequireNonAlphanumeric = true;
-        });
 
         builder.Services.AddScoped<IIdentityService, FakeIdentityService>();
 

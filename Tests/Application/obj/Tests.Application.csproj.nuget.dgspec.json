@@ -321,10 +321,6 @@
               "target": "Package",
               "version": "[16.1.1, )"
             },
-            "AutoMapper.Extensions.Microsoft.DependencyInjection": {
-              "target": "Package",
-              "version": "[12.0.1, )"
-            },
             "FluentAssertions": {
               "target": "Package",
               "version": "[8.9.0, )"

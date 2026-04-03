@@ -19,7 +19,6 @@ C:\Users\user\source\repos\Maarif\Tests\Application\bin\Debug\net9.0\Autofac.dll
 C:\Users\user\source\repos\Maarif\Tests\Application\bin\Debug\net9.0\Autofac.Extensions.DependencyInjection.dll
 C:\Users\user\source\repos\Maarif\Tests\Application\bin\Debug\net9.0\AutoFixture.dll
 C:\Users\user\source\repos\Maarif\Tests\Application\bin\Debug\net9.0\AutoMapper.dll
-C:\Users\user\source\repos\Maarif\Tests\Application\bin\Debug\net9.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\Users\user\source\repos\Maarif\Tests\Application\bin\Debug\net9.0\Castle.Core.dll
 C:\Users\user\source\repos\Maarif\Tests\Application\bin\Debug\net9.0\Fare.dll
 C:\Users\user\source\repos\Maarif\Tests\Application\bin\Debug\net9.0\FluentAssertions.dll
