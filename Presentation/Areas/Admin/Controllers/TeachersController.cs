@@ -13,9 +13,7 @@ using Repository;
 
 namespace Presentation.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = "SUPERADMIN", AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    [Area("admin")]
-    public class TeachersController : Controller
+    public class TeachersController : AdminBaseController
     {
         private readonly ITeacherRepository teacherRepository;
         private readonly IDepartmentRepository departmentRepository;
@@ -64,21 +62,18 @@ namespace Presentation.Areas.Admin.Controllers
                 "Id", "Id");
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var response = await mediator.Send(new TeacherGetAllRequest { });
             return View(response);
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Details([FromRoute] TeacherGetByIdRequest request)
         {
             var response = await mediator.Send(request);
             return View(response);
         }
 
-        [AllowAnonymous]
         public IActionResult Create()
         {
             PopulateViewBags();
@@ -86,7 +81,6 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Create([FromForm] TeacherAddRequest request)
         {
             if (!ModelState.IsValid)
@@ -99,7 +93,6 @@ namespace Presentation.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Edit([FromRoute] TeacherGetByIdRequest request)
         {
             var response = await mediator.Send(request);
@@ -108,7 +101,6 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Edit([FromForm] TeacherEditRequest request)
         {
             if (!ModelState.IsValid)
@@ -122,7 +114,6 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Remove([FromRoute] TeacherRemoveRequest request)
         {
             await mediator.Send(request);

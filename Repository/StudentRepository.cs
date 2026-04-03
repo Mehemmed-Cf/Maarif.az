@@ -1,11 +1,13 @@
 ﻿using Application.Modules.StudentsModule;
 using Application.Repositories;
+using AutoMapper;
 using AutoMapper.QueryableExtensions;
 using DataAccessLayer.Migrations;
 using Domain.Models.Entities;
 using Infrastructure.Concrates;
 using Microsoft.EntityFrameworkCore;
-using AutoMapper;
+using Microsoft.EntityFrameworkCore.Storage;
+using Polly;
 
 namespace Repository
 {
@@ -52,6 +54,11 @@ namespace Repository
                 .Include(s => s.StudentGroups)
                     .ThenInclude(sg => sg.Group)
                 .FirstOrDefaultAsync(s => s.Id == id, ct);
+        }
+
+        public async Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken = default)
+        {
+            return await context.Database.BeginTransactionAsync(cancellationToken);
         }
     }
 }

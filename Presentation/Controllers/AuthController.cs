@@ -1,4 +1,5 @@
-﻿// Presentation/Areas/Admin/Controllers/AuthController.cs
+// Presentation/Areas/Admin/Controllers/AuthController.cs
+using Application.Modules.AdminModule.Commands.AdminLoginCommand;
 using Application.Modules.StudentsModule.Commands.StudentLoginCommand;
 using Application.Modules.StudentsModule.Commands.StudentRegisterCommand;
 using Infrastructure.Exceptions;
@@ -91,6 +92,45 @@ namespace Presentation.Controllers
                 ModelState.AddModelError(string.Empty, ex.Message);
                 return View(request);
             }
+        }
+
+        // ── Admin Login ──────────────────────────────────────────────
+        
+        [HttpGet]
+        public IActionResult AdminLogin(string? returnUrl = null)
+        {
+            if (User.Identity != null && User.Identity.IsAuthenticated)
+            {
+                return RedirectToAction("Index", "Dashboard", new { area = "admin" });
+            }
+
+            ViewData["ReturnUrl"] = returnUrl;
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> AdminLogin(AdminLoginRequest request, string? returnUrl = null)
+        {
+            ViewData["ReturnUrl"] = returnUrl;
+
+            if (!ModelState.IsValid)
+                return View(request);
+
+            var result = await mediator.Send(request);
+
+            if (!result.Succeeded)
+            {
+                ModelState.AddModelError(string.Empty, result.ErrorMessage ?? "Login failed.");
+                return View(request);
+            }
+
+            if (!string.IsNullOrEmpty(returnUrl) && Url.IsLocalUrl(returnUrl))
+            {
+                return LocalRedirect(returnUrl);
+            }
+
+            return RedirectToAction("Index", "Dashboard", new { area = "admin" });
         }
 
         // ── Logout ───────────────────────────────────────────────────

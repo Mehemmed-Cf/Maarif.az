@@ -11,9 +11,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Presentation.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = "SUPERADMIN", AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    [Area("admin")]
-    public class LessonsController : Controller
+    public class LessonsController : AdminBaseController
     {
         private readonly ILessonRepository lessonRepository;
         private readonly ITeacherRepository teacherRepository;
@@ -39,21 +37,18 @@ namespace Presentation.Areas.Admin.Controllers
             ViewBag.Teachers = new SelectList(teachers, "Id", "FullName", selectedTeacherId);
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var response = await mediator.Send(new LessonGetAllRequest { });
             return View(response);
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Details([FromRoute] LessonGetByIdRequest request)
         {
             var response = await mediator.Send(request);
             return View(response);
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Create()
         {
             await PopulateViewBagsAsync();
@@ -62,7 +57,6 @@ namespace Presentation.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AllowAnonymous]
         public async Task<IActionResult> Create(LessonAddRequest request)
         {
             if (!ModelState.IsValid)
@@ -75,7 +69,6 @@ namespace Presentation.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Edit(int id)
         {
             var response = await mediator.Send(new LessonGetByIdRequest { Id = id });
@@ -87,7 +80,6 @@ namespace Presentation.Areas.Admin.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [AllowAnonymous]
         public async Task<IActionResult> Edit(LessonEditRequest request)
         {
             if (!ModelState.IsValid)
@@ -102,7 +94,6 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Remove(int id)
         {
             await mediator.Send(new LessonRemoveRequest { Id = id });

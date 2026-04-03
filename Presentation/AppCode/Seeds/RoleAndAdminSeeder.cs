@@ -1,4 +1,4 @@
-﻿using DataAccessLayer.Migrations;
+using DataAccessLayer.Migrations;
 using Domain.Models.Entities.Membership;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -58,19 +58,31 @@ public static class RoleAndAdminSeeder
             await db.Set<AppUser>().AddAsync(admin);
             await db.SaveChangesAsync();
 
-            // Assign SUPERADMIN role
+        }
+
+        // Ensure SUPERADMIN role is assigned regardless of when the user was created
+        var existingAdmin = await db.Set<AppUser>()
+            .FirstOrDefaultAsync(u => u.NormalizedEmail == adminEmail.ToUpper());
+
+        if (existingAdmin != null)
+        {
             var superAdminRole = await db.Set<AppRole>()
                 .FirstOrDefaultAsync(r => r.NormalizedName == "SUPERADMIN");
 
             if (superAdminRole != null)
             {
-                await db.Set<AppUserRole>().AddAsync(new AppUserRole
-                {
-                    UserId = admin.Id,
-                    RoleId = superAdminRole.Id
-                });
+                var roleAssigned = await db.Set<AppUserRole>()
+                    .AnyAsync(ur => ur.UserId == existingAdmin.Id && ur.RoleId == superAdminRole.Id);
 
-                await db.SaveChangesAsync();
+                if (!roleAssigned)
+                {
+                    await db.Set<AppUserRole>().AddAsync(new AppUserRole
+                    {
+                        UserId = existingAdmin.Id,
+                        RoleId = superAdminRole.Id
+                    });
+                    await db.SaveChangesAsync();
+                }
             }
         }
     }

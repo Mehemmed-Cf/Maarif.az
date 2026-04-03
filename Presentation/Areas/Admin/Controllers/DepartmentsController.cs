@@ -6,16 +6,12 @@ using Application.Modules.DepartmentsModule.Queries.DepartmentGetByIdQuery;
 using Application.Repositories;
 using Domain.Models.Entities;
 using MediatR;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Repository;
 
 namespace Presentation.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = "SUPERADMIN", AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    [Area("admin")]
-    public class DepartmentsController : Controller
+    public class DepartmentsController : AdminBaseController
     {
         private readonly IDepartmentRepository departmentRepository;
         private readonly IFacultyRepository facultyRepository;
@@ -50,21 +46,18 @@ namespace Presentation.Areas.Admin.Controllers
             ViewBag.Subjects = new SelectList(subjectRepository.GetAll()?.ToList() ?? new List<Subject>(), "Id", "Name");
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var response = await mediator.Send(new DepartmentGetAllRequest{});
             return View(response);
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Details([FromRoute] DepartmentGetByIdRequest request)
         {
             var response = await mediator.Send(request);
             return View(response);
         }
 
-        [AllowAnonymous]
         public IActionResult Create()
         {
             PopulateViewBags();
@@ -72,7 +65,6 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Create([FromForm] DepartmentAddRequest request)
         {
             if (!ModelState.IsValid)
@@ -85,8 +77,6 @@ namespace Presentation.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
-        [AllowAnonymous]
         public async Task<IActionResult> Edit([FromRoute] DepartmentGetByIdRequest request)
         {
             //PopulateViewBags();
@@ -100,7 +90,6 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Edit([FromForm] DepartmentEditRequest request)
         {
             if (!ModelState.IsValid)
@@ -115,7 +104,6 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Remove([FromRoute] DepartmentRemoveRequest request)
         {
             await mediator.Send(request);

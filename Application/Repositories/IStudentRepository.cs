@@ -1,6 +1,7 @@
 using Application.Modules.StudentsModule;
 using Domain.Models.Entities;
 using Infrastructure.Abstracts;
+using Microsoft.EntityFrameworkCore.Storage;
 
 namespace Application.Repositories
 {
@@ -13,5 +14,6 @@ namespace Application.Repositories
         Task<Student?> GetByIdWithDetailsAsync(int id, CancellationToken ct = default);
         Task<Student?> GetByFinCodeAsync(string finCode, CancellationToken ct = default);
         Task<Student?> GetByStudentNumberAsync(string studentNumber, CancellationToken ct = default);
+        Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken);
     }
 }

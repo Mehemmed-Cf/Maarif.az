@@ -3,11 +3,89 @@
   "WorkspaceRootPath": "C:\\Users\\user\\source\\repos\\Maarif\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\areas\\admin\\controllers\\adminbasecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\controllers\\adminbasecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\views\\auth\\adminlogin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\views\\auth\\adminlogin.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\areas\\admin\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\areas\\admin\\controllers\\subjectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\controllers\\subjectscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\areas\\admin\\controllers\\teacherscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\controllers\\teacherscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\areas\\admin\\controllers\\lessonscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\controllers\\lessonscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\areas\\admin\\controllers\\groupscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\controllers\\groupscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\areas\\admin\\controllers\\facultiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\controllers\\facultiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\areas\\admin\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\areas\\admin\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{70D755B7-DEEC-4070-8C1F-79328EAAEEAF}|Repository\\Repository.csproj|c:\\users\\user\\source\\repos\\maarif\\repository\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{70D755B7-DEEC-4070-8C1F-79328EAAEEAF}|Repository\\Repository.csproj|solutionrelative:repository\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\adminmodule\\commands\\adminlogincommand\\adminloginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\adminmodule\\commands\\adminlogincommand\\adminloginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\AppData\\Local\\Temp\\3bbf142e-653a-419b-b9a2-0cf5c1e7dbf7_files.zip.bf7\\AdminLoginRequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\AppData\\Local\\Temp\\fb317385-1024-4ee7-a75b-18a01edab131_files.zip.131\\AdminLoginRequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\studentsmodule\\commands\\studentregistercommand\\studentregisterrequesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\studentsmodule\\commands\\studentregistercommand\\studentregisterrequesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\repositories\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\repositories\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\studentsmodule\\commands\\studentregistercommand\\studentregisterrequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\studentsmodule\\commands\\studentregistercommand\\studentregisterrequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\studentsmodule\\commands\\studentregistercommand\\studentregisterrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\studentsmodule\\commands\\studentregistercommand\\studentregisterrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\presentation.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
+      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\presentation.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\views\\auth\\registersuccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -26,20 +104,12 @@
       "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\views\\auth\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\views\\auth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\views\\shared\\_authlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\views\\shared\\_authlayout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
@@ -56,10 +126,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\presentation.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}",
-      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\presentation.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{77FD8349-C2E4-4962-A76F-362EE890E3E4}|Infrastructure\\Infrastructure.csproj|c:\\users\\user\\source\\repos\\maarif\\infrastructure\\configurations\\cryptoserviceoptions.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -126,20 +192,12 @@
       "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\views\\students\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\areas\\admin\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\controllers\\studentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\studentsmodule\\commands\\studenteditcommand\\studenteditresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\studentsmodule\\commands\\studenteditcommand\\studenteditresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\studentsmodule\\commands\\studenteditcommand\\studenteditrequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\studentsmodule\\commands\\studenteditcommand\\studenteditrequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\studentsmodule\\commands\\studentregistercommand\\studentregisterrequesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\studentsmodule\\commands\\studentregistercommand\\studentregisterrequesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\valueobjects\\findata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -164,10 +222,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\studentsmodule\\queries\\studentgetallquery\\studentgetallresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\studentsmodule\\queries\\studentgetallquery\\studentgetallresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\studentsmodule\\commands\\studentregistercommand\\studentregisterrequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\studentsmodule\\commands\\studentregistercommand\\studentregisterrequestvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\mappings\\studentprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -246,10 +300,6 @@
       "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\views\\students\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{70D755B7-DEEC-4070-8C1F-79328EAAEEAF}|Repository\\Repository.csproj|c:\\users\\user\\source\\repos\\maarif\\repository\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{70D755B7-DEEC-4070-8C1F-79328EAAEEAF}|Repository\\Repository.csproj|solutionrelative:repository\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\studentsmodule\\studentlistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\studentsmodule\\studentlistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -260,10 +310,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\studentsmodule\\commands\\studentregistercommand\\studentregisterresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\studentsmodule\\commands\\studentregistercommand\\studentregisterresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\studentsmodule\\commands\\studentregistercommand\\studentregisterrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\studentsmodule\\commands\\studentregistercommand\\studentregisterrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\studentsmodule\\commands\\studentlogincommand\\studentloginrequesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -342,10 +388,6 @@
       "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\areas\\admin\\controllers\\facultiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\controllers\\facultiescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D2BE9C5A-5250-4DD0-8E91-68060073B5F9}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\user\\source\\repos\\maarif\\dataaccesslayer\\migrations\\20260329181216_student_fincode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D2BE9C5A-5250-4DD0-8E91-68060073B5F9}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\migrations\\20260329181216_student_fincode.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -385,7 +427,7 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 11,
           "Children": [
             {
               "$type": "Bookmark",
@@ -413,92 +455,98 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Container.targets",
-              "DocumentMoniker": "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets",
-              "RelativeDocumentMoniker": "..\\..\\..\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets",
-              "ToolTip": "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets",
-              "RelativeToolTip": "..\\..\\..\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets",
-              "ViewState": "AgIAAMoAAAAAAAAAAAAAwNkAAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2026-04-02T17:01:22.942Z",
+              "DocumentIndex": 4,
+              "Title": "TeachersController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\TeachersController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Controllers\\TeachersController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\TeachersController.cs",
+              "RelativeToolTip": "Presentation\\Areas\\Admin\\Controllers\\TeachersController.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAHQAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T19:39:41.263Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "_AuthLayout.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Shared\\_AuthLayout.cshtml",
-              "RelativeDocumentMoniker": "Presentation\\Views\\Shared\\_AuthLayout.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Shared\\_AuthLayout.cshtml",
-              "RelativeToolTip": "Presentation\\Views\\Shared\\_AuthLayout.cshtml",
-              "ViewState": "AgIAALYAAAAAAAAAAAAiwNcAAAAHAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-02T11:45:01.074Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Login.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Auth\\Login.cshtml",
-              "RelativeDocumentMoniker": "Presentation\\Views\\Auth\\Login.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Auth\\Login.cshtml",
-              "RelativeToolTip": "Presentation\\Views\\Auth\\Login.cshtml",
-              "ViewState": "AgIAABUAAAAAAAAAAAAAACMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-29T22:00:00.294Z"
+              "DocumentIndex": 3,
+              "Title": "SubjectsController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\SubjectsController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Controllers\\SubjectsController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\SubjectsController.cs",
+              "RelativeToolTip": "Presentation\\Areas\\Admin\\Controllers\\SubjectsController.cs",
+              "ViewState": "AgIAAFUAAAAAAAAAAADwvwgAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T19:39:10.803Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 5,
-              "Title": "Register.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Auth\\Register.cshtml",
-              "RelativeDocumentMoniker": "Presentation\\Views\\Auth\\Register.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Auth\\Register.cshtml",
-              "RelativeToolTip": "Presentation\\Views\\Auth\\Register.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-29T17:36:07.212Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "RegisterSuccess.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Auth\\RegisterSuccess.cshtml",
-              "RelativeDocumentMoniker": "Presentation\\Views\\Auth\\RegisterSuccess.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Auth\\RegisterSuccess.cshtml",
-              "RelativeToolTip": "Presentation\\Views\\Auth\\RegisterSuccess.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAMAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-29T17:36:41.903Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Program.cs",
-              "RelativeDocumentMoniker": "Presentation\\Program.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Program.cs",
-              "RelativeToolTip": "Presentation\\Program.cs",
-              "ViewState": "AgIAAI0AAAAAAAAAAAAiwKkAAAAAAAAAAAAAAA==",
+              "Title": "LessonsController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\LessonsController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Controllers\\LessonsController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\LessonsController.cs",
+              "RelativeToolTip": "Presentation\\Areas\\Admin\\Controllers\\LessonsController.cs",
+              "ViewState": "AgIAAFIAAAAAAAAAAAAwwGAAAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T20:10:18.393Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "IdentityInjection.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\AppCode\\Pipeline\\IdentityInjection.cs",
-              "RelativeDocumentMoniker": "Presentation\\AppCode\\Pipeline\\IdentityInjection.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\AppCode\\Pipeline\\IdentityInjection.cs",
-              "RelativeToolTip": "Presentation\\AppCode\\Pipeline\\IdentityInjection.cs",
-              "ViewState": "AgIAAEMAAAAAAAAAAAAiwFEAAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T11:27:08.844Z"
+              "WhenOpened": "2026-04-03T19:38:07.962Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "AdminLogin.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Auth\\AdminLogin.cshtml",
+              "RelativeDocumentMoniker": "Presentation\\Views\\Auth\\AdminLogin.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Auth\\AdminLogin.cshtml",
+              "RelativeToolTip": "Presentation\\Views\\Auth\\AdminLogin.cshtml",
+              "ViewState": "AgIAAC0AAAAAAAAAAAAAADIAAAB4AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-03T19:14:07.898Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "StudentsController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\StudentsController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Controllers\\StudentsController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\StudentsController.cs",
+              "RelativeToolTip": "Presentation\\Areas\\Admin\\Controllers\\StudentsController.cs",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAwwA8AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T22:51:10.918Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AdminBaseController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\AdminBaseController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Controllers\\AdminBaseController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\AdminBaseController.cs",
+              "RelativeToolTip": "Presentation\\Areas\\Admin\\Controllers\\AdminBaseController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAGAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T19:31:59.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "GroupsController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\GroupsController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Controllers\\GroupsController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\GroupsController.cs",
+              "RelativeToolTip": "Presentation\\Areas\\Admin\\Controllers\\GroupsController.cs",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAAA8AAAA3AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T19:37:24.117Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
               "Title": "DashboardController.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\DashboardController.cs",
               "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Controllers\\DashboardController.cs",
@@ -510,144 +558,164 @@
               "EditorCaption": ""
             },
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
-            },
-            {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "_ValidationScriptsPartial.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "RelativeDocumentMoniker": "Presentation\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "RelativeToolTip": "Presentation\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-02T11:41:28.601Z"
+              "DocumentIndex": 7,
+              "Title": "FacultiesController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\FacultiesController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Controllers\\FacultiesController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\FacultiesController.cs",
+              "RelativeToolTip": "Presentation\\Areas\\Admin\\Controllers\\FacultiesController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T20:08:48.209Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 9,
+              "Title": "DepartmentsController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\DepartmentsController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Controllers\\DepartmentsController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\DepartmentsController.cs",
+              "RelativeToolTip": "Presentation\\Areas\\Admin\\Controllers\\DepartmentsController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T19:36:03.484Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "AuthController.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Controllers\\AuthController.cs",
               "RelativeDocumentMoniker": "Presentation\\Controllers\\AuthController.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Controllers\\AuthController.cs",
               "RelativeToolTip": "Presentation\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAAgwAsAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAH8AAAAAAAAAAAAuwH0AAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T17:35:17.993Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Presentation\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Presentation\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAABYAAAAAAAAAAAAiwCcAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-02T11:41:27.921Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "Presentation\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAMCAAAAAAAAAAAiwB8CAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-02T11:41:18.515Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "FakeIdentityService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\FakeIdentityService.cs",
-              "RelativeDocumentMoniker": "Application\\Services\\FakeIdentityService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\FakeIdentityService.cs",
-              "RelativeToolTip": "Application\\Services\\FakeIdentityService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T22:32:01.533Z"
+              "WhenOpened": "2026-03-29T17:35:17.993Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "Presentation\\Controllers\\HomeController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "Presentation\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "AdminLoginRequest.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AdminModule\\Commands\\AdminLoginCommand\\AdminLoginRequest.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\AdminModule\\Commands\\AdminLoginCommand\\AdminLoginRequest.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AdminModule\\Commands\\AdminLoginCommand\\AdminLoginRequest.cs",
+              "RelativeToolTip": "Application\\Modules\\AdminModule\\Commands\\AdminLoginCommand\\AdminLoginRequest.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAAtwBIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T11:25:50.756Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "CryptoServiceOptions.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Configurations\\CryptoServiceOptions.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Configurations\\CryptoServiceOptions.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Configurations\\CryptoServiceOptions.cs",
-              "RelativeToolTip": "Infrastructure\\Configurations\\CryptoServiceOptions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T11:25:33.548Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "EmailServiceOptions.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Configurations\\EmailServiceOptions.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Configurations\\EmailServiceOptions.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Configurations\\EmailServiceOptions.cs",
-              "RelativeToolTip": "Infrastructure\\Configurations\\EmailServiceOptions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T11:25:32.564Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "JwtConfigurationOptions.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Configurations\\JwtConfigurationOptions.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Configurations\\JwtConfigurationOptions.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Configurations\\JwtConfigurationOptions.cs",
-              "RelativeToolTip": "Infrastructure\\Configurations\\JwtConfigurationOptions.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T11:25:31.748Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "IJwtService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IJwtService.cs",
-              "RelativeDocumentMoniker": "Infrastructure\\Abstracts\\IJwtService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IJwtService.cs",
-              "RelativeToolTip": "Infrastructure\\Abstracts\\IJwtService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T11:25:23.563Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "SignInRequestHandler.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AccountsModule\\Commands\\SignInCommand\\SignInRequestHandler.cs",
-              "RelativeDocumentMoniker": "Application\\Modules\\AccountsModule\\Commands\\SignInCommand\\SignInRequestHandler.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AccountsModule\\Commands\\SignInCommand\\SignInRequestHandler.cs",
-              "RelativeToolTip": "Application\\Modules\\AccountsModule\\Commands\\SignInCommand\\SignInRequestHandler.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T11:24:57.838Z"
+              "WhenOpened": "2026-04-03T18:40:20.97Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
+              "Title": "AdminLoginRequest.cs",
+              "DocumentMoniker": "C:\\Users\\user\\AppData\\Local\\Temp\\3bbf142e-653a-419b-b9a2-0cf5c1e7dbf7_files.zip.bf7\\AdminLoginRequest.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\3bbf142e-653a-419b-b9a2-0cf5c1e7dbf7_files.zip.bf7\\AdminLoginRequest.cs",
+              "ToolTip": "C:\\Users\\user\\AppData\\Local\\Temp\\3bbf142e-653a-419b-b9a2-0cf5c1e7dbf7_files.zip.bf7\\AdminLoginRequest.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\3bbf142e-653a-419b-b9a2-0cf5c1e7dbf7_files.zip.bf7\\AdminLoginRequest.cs [Read Only]",
+              "ViewState": "AgIAADMAAAAAAAAAAAAiwEgAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T18:40:23.711Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "StudentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Repository\\StudentRepository.cs",
+              "RelativeDocumentMoniker": "Repository\\StudentRepository.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Repository\\StudentRepository.cs",
+              "RelativeToolTip": "Repository\\StudentRepository.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAcwD8AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T17:24:05.535Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "AdminLoginRequest.cs",
+              "DocumentMoniker": "C:\\Users\\user\\AppData\\Local\\Temp\\fb317385-1024-4ee7-a75b-18a01edab131_files.zip.131\\AdminLoginRequest.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\fb317385-1024-4ee7-a75b-18a01edab131_files.zip.131\\AdminLoginRequest.cs",
+              "ToolTip": "C:\\Users\\user\\AppData\\Local\\Temp\\fb317385-1024-4ee7-a75b-18a01edab131_files.zip.131\\AdminLoginRequest.cs [Read Only]",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\fb317385-1024-4ee7-a75b-18a01edab131_files.zip.131\\AdminLoginRequest.cs [Read Only]",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T18:38:30.212Z",
+              "EditorCaption": " [Read Only]"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Auth\\Login.cshtml",
+              "RelativeDocumentMoniker": "Presentation\\Views\\Auth\\Login.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Auth\\Login.cshtml",
+              "RelativeToolTip": "Presentation\\Views\\Auth\\Login.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAACMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-29T22:00:00.294Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "IStudentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Repositories\\IStudentRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Repositories\\IStudentRepository.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Repositories\\IStudentRepository.cs",
+              "RelativeToolTip": "Application\\Repositories\\IStudentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAABfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-03T18:36:20.615Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "StudentRegisterRequest.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequest.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequest.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequest.cs",
+              "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T17:32:19.595Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "StudentRegisterRequestValidator.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequestValidator.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequestValidator.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequestValidator.cs",
+              "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequestValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T17:32:30.324Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "StudentRegisterRequestHandler.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequestHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequestHandler.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequestHandler.cs",
+              "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequestHandler.cs",
+              "ViewState": "AgIAAEYAAAAAAAAAAAAiwD8AAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T17:21:17.807Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "Presentation.csproj",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Presentation.csproj",
               "RelativeDocumentMoniker": "Presentation\\Presentation.csproj",
@@ -660,7 +728,215 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 20,
+              "DocumentIndex": 21,
+              "Title": "Container.targets",
+              "DocumentMoniker": "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets",
+              "RelativeDocumentMoniker": "..\\..\\..\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets",
+              "ToolTip": "C:\\Users\\user\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets",
+              "RelativeToolTip": "..\\..\\..\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.22.1\\build\\Container.targets",
+              "ViewState": "AgIAAKYAAAAAAAAAAAAAwLkAAABgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
+              "WhenOpened": "2026-04-02T17:01:22.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "IdentityInjection.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\AppCode\\Pipeline\\IdentityInjection.cs",
+              "RelativeDocumentMoniker": "Presentation\\AppCode\\Pipeline\\IdentityInjection.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\AppCode\\Pipeline\\IdentityInjection.cs",
+              "RelativeToolTip": "Presentation\\AppCode\\Pipeline\\IdentityInjection.cs",
+              "ViewState": "AgIAAEMAAAAAAAAAAAAiwFEAAAAVAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T11:27:08.844Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Program.cs",
+              "RelativeDocumentMoniker": "Presentation\\Program.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Program.cs",
+              "RelativeToolTip": "Presentation\\Program.cs",
+              "ViewState": "AgIAAI0AAAAAAAAAAAAiwKkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-29T20:10:18.393Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "RegisterSuccess.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Auth\\RegisterSuccess.cshtml",
+              "RelativeDocumentMoniker": "Presentation\\Views\\Auth\\RegisterSuccess.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Auth\\RegisterSuccess.cshtml",
+              "RelativeToolTip": "Presentation\\Views\\Auth\\RegisterSuccess.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBJwAMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-29T17:36:41.903Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Auth\\Register.cshtml",
+              "RelativeDocumentMoniker": "Presentation\\Views\\Auth\\Register.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Auth\\Register.cshtml",
+              "RelativeToolTip": "Presentation\\Views\\Auth\\Register.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-03-29T17:36:07.212Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "_AuthLayout.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Shared\\_AuthLayout.cshtml",
+              "RelativeDocumentMoniker": "Presentation\\Views\\Shared\\_AuthLayout.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Shared\\_AuthLayout.cshtml",
+              "RelativeToolTip": "Presentation\\Views\\Shared\\_AuthLayout.cshtml",
+              "ViewState": "AgIAALYAAAAAAAAAAAAiwNcAAAAHAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-02T11:45:01.074Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "Presentation\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "Presentation\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-02T11:41:28.601Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Presentation\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Presentation\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAABYAAAAAAAAAAAAiwCcAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-02T11:41:27.921Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "Presentation\\Areas\\Admin\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAAAMCAAAAAAAAAAAiwB8CAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-02T11:41:18.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "FakeIdentityService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\FakeIdentityService.cs",
+              "RelativeDocumentMoniker": "Application\\Services\\FakeIdentityService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\FakeIdentityService.cs",
+              "RelativeToolTip": "Application\\Services\\FakeIdentityService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-01T22:32:01.533Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Controllers\\HomeController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "Presentation\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T11:25:50.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "CryptoServiceOptions.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Configurations\\CryptoServiceOptions.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Configurations\\CryptoServiceOptions.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Configurations\\CryptoServiceOptions.cs",
+              "RelativeToolTip": "Infrastructure\\Configurations\\CryptoServiceOptions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T11:25:33.548Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "EmailServiceOptions.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Configurations\\EmailServiceOptions.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Configurations\\EmailServiceOptions.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Configurations\\EmailServiceOptions.cs",
+              "RelativeToolTip": "Infrastructure\\Configurations\\EmailServiceOptions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T11:25:32.564Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "JwtConfigurationOptions.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Configurations\\JwtConfigurationOptions.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Configurations\\JwtConfigurationOptions.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Configurations\\JwtConfigurationOptions.cs",
+              "RelativeToolTip": "Infrastructure\\Configurations\\JwtConfigurationOptions.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T11:25:31.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 35,
+              "Title": "IJwtService.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IJwtService.cs",
+              "RelativeDocumentMoniker": "Infrastructure\\Abstracts\\IJwtService.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IJwtService.cs",
+              "RelativeToolTip": "Infrastructure\\Abstracts\\IJwtService.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T11:25:23.563Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "SignInRequestHandler.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AccountsModule\\Commands\\SignInCommand\\SignInRequestHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\AccountsModule\\Commands\\SignInCommand\\SignInRequestHandler.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AccountsModule\\Commands\\SignInCommand\\SignInRequestHandler.cs",
+              "RelativeToolTip": "Application\\Modules\\AccountsModule\\Commands\\SignInCommand\\SignInRequestHandler.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAYwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-02T11:24:57.838Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 37,
               "Title": "SignInRequest.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AccountsModule\\Commands\\SignInCommand\\SignInRequest.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\AccountsModule\\Commands\\SignInCommand\\SignInRequest.cs",
@@ -668,11 +944,12 @@
               "RelativeToolTip": "Application\\Modules\\AccountsModule\\Commands\\SignInCommand\\SignInRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T11:24:56.581Z"
+              "WhenOpened": "2026-04-02T11:24:56.581Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 21,
+              "DocumentIndex": 38,
               "Title": "CryptoService.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\CryptoService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\CryptoService.cs",
@@ -680,11 +957,12 @@
               "RelativeToolTip": "Application\\Services\\CryptoService.cs",
               "ViewState": "AgIAAEsAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T11:24:37.454Z"
+              "WhenOpened": "2026-04-02T11:24:37.454Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 39,
               "Title": "EmailService.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\EmailService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\EmailService.cs",
@@ -692,23 +970,25 @@
               "RelativeToolTip": "Application\\Services\\EmailService.cs",
               "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T11:24:35.19Z"
+              "WhenOpened": "2026-04-02T11:24:35.19Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
+              "DocumentIndex": 40,
               "Title": "FileService.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\FileService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\FileService.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\FileService.cs",
               "RelativeToolTip": "Application\\Services\\FileService.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAzwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T11:24:32.508Z"
+              "WhenOpened": "2026-04-02T11:24:32.508Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
+              "DocumentIndex": 41,
               "Title": "ValidatorInterceptor.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\ValidatorInterceptor.cs",
               "RelativeDocumentMoniker": "Application\\Services\\ValidatorInterceptor.cs",
@@ -716,35 +996,38 @@
               "RelativeToolTip": "Application\\Services\\ValidatorInterceptor.cs",
               "ViewState": "AgIAAA4AAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T11:24:29.1Z"
+              "WhenOpened": "2026-04-02T11:24:29.1Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 42,
               "Title": "JwtService.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\JwtService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\JwtService.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\JwtService.cs",
               "RelativeToolTip": "Application\\Services\\JwtService.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBJwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T11:24:19.703Z"
+              "WhenOpened": "2026-04-02T11:24:19.703Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 44,
               "Title": "StudentEntityTypeConfiguration.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Configurations\\StudentEntityTypeConfiguration.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\Configurations\\StudentEntityTypeConfiguration.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Configurations\\StudentEntityTypeConfiguration.cs",
               "RelativeToolTip": "DataAccessLayer\\Configurations\\StudentEntityTypeConfiguration.cs",
-              "ViewState": "AgIAABMAAAAAAAAAAAAAADwAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAABAAAAAAAAAAAIBJwDwAAAATAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T17:34:32.031Z"
+              "WhenOpened": "2026-03-29T17:34:32.031Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
+              "DocumentIndex": 43,
               "Title": "FakeGovernmentIdentityService.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\FakeGovernmentIdentityService.cs",
               "RelativeDocumentMoniker": "Application\\Services\\FakeGovernmentIdentityService.cs",
@@ -752,11 +1035,12 @@
               "RelativeToolTip": "Application\\Services\\FakeGovernmentIdentityService.cs",
               "ViewState": "AgIAACwAAAAAAAAAAAAiwD0AAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-31T07:10:44.223Z"
+              "WhenOpened": "2026-03-31T07:10:44.223Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 30,
+              "DocumentIndex": 47,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Views\\Students\\Edit.cshtml",
               "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Views\\Students\\Edit.cshtml",
@@ -764,23 +1048,12 @@
               "RelativeToolTip": "Presentation\\Areas\\Admin\\Views\\Students\\Edit.cshtml",
               "ViewState": "AgIAAHoAAAAAAAAAAAAiwJYAAAAGAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-01T21:58:42.917Z"
+              "WhenOpened": "2026-04-01T21:58:42.917Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "StudentsController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\StudentsController.cs",
-              "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Controllers\\StudentsController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\StudentsController.cs",
-              "RelativeToolTip": "Presentation\\Areas\\Admin\\Controllers\\StudentsController.cs",
-              "ViewState": "AgIAAFcAAAAAAAAAAAAswGcAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T22:51:10.918Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
+              "DocumentIndex": 46,
               "Title": "StudentEditRequestHandler.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentEditCommand\\StudentEditRequestHandler.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentEditCommand\\StudentEditRequestHandler.cs",
@@ -788,23 +1061,25 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentEditCommand\\StudentEditRequestHandler.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAcwCoAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T14:23:49.847Z"
+              "WhenOpened": "2026-04-01T14:23:49.847Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 28,
+              "DocumentIndex": 45,
               "Title": "StudentEditRequest.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentEditCommand\\StudentEditRequest.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentEditCommand\\StudentEditRequest.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentEditCommand\\StudentEditRequest.cs",
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentEditCommand\\StudentEditRequest.cs",
-              "ViewState": "AgIAAAUAAAAAAAAAAAAuwA0AAAAWAAAAAAAAAA==",
+              "ViewState": "AgIAAAUAAAAAAAAAAAA+wA0AAAAWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T14:23:41.342Z"
+              "WhenOpened": "2026-04-01T14:23:41.342Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 32,
+              "DocumentIndex": 48,
               "Title": "StudentEditResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentEditCommand\\StudentEditResponseDto.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentEditCommand\\StudentEditResponseDto.cs",
@@ -812,11 +1087,12 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentEditCommand\\StudentEditResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T14:25:10.849Z"
+              "WhenOpened": "2026-04-01T14:25:10.849Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 49,
               "Title": "StudentEditRequestValidator.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentEditCommand\\StudentEditRequestValidator.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentEditCommand\\StudentEditRequestValidator.cs",
@@ -824,23 +1100,12 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentEditCommand\\StudentEditRequestValidator.cs",
               "ViewState": "AgIAAAwAAAAAAAAAAAAiwCgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T14:23:54.805Z"
+              "WhenOpened": "2026-04-01T14:23:54.805Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
-              "Title": "StudentRegisterRequestHandler.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequestHandler.cs",
-              "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequestHandler.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequestHandler.cs",
-              "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequestHandler.cs",
-              "ViewState": "AgIAAEcAAAAAAAAAAAAIwFkAAAAyAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T17:21:17.807Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 35,
+              "DocumentIndex": 50,
               "Title": "FinData.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\ValueObjects\\FinData.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\ValueObjects\\FinData.cs",
@@ -848,23 +1113,25 @@
               "RelativeToolTip": "Domain\\Models\\ValueObjects\\FinData.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAuwA0AAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T10:17:14.542Z"
+              "WhenOpened": "2026-04-02T10:17:14.542Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 36,
+              "DocumentIndex": 51,
               "Title": "StudentGetAllRequestHandler.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Queries\\StudentGetAllQuery\\StudentGetAllRequestHandler.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Queries\\StudentGetAllQuery\\StudentGetAllRequestHandler.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Queries\\StudentGetAllQuery\\StudentGetAllRequestHandler.cs",
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Queries\\StudentGetAllQuery\\StudentGetAllRequestHandler.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAIwCEAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAgAAAAAAAAAAAAywCEAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T22:00:12.135Z"
+              "WhenOpened": "2026-04-01T22:00:12.135Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 37,
+              "DocumentIndex": 52,
               "Title": "EducationType.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\EducationType.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Stables\\EducationType.cs",
@@ -872,23 +1139,25 @@
               "RelativeToolTip": "Domain\\Models\\Stables\\EducationType.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T10:31:59.788Z"
+              "WhenOpened": "2026-04-02T10:31:59.788Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 38,
+              "DocumentIndex": 53,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Views\\Students\\Index.cshtml",
               "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Views\\Students\\Index.cshtml",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Views\\Students\\Index.cshtml",
               "RelativeToolTip": "Presentation\\Areas\\Admin\\Views\\Students\\Index.cshtml",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAADYAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAIBJwDYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-01T21:58:19.489Z"
+              "WhenOpened": "2026-04-01T21:58:19.489Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 39,
+              "DocumentIndex": 54,
               "Title": "StudentGetByIdRequestHandler.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Queries\\StudentGetByIdQuery\\StudentGetByIdRequestHandler.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Queries\\StudentGetByIdQuery\\StudentGetByIdRequestHandler.cs",
@@ -896,35 +1165,25 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Queries\\StudentGetByIdQuery\\StudentGetByIdRequestHandler.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T21:59:42.349Z"
+              "WhenOpened": "2026-04-01T21:59:42.349Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 40,
+              "DocumentIndex": 55,
               "Title": "StudentGetAllResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Queries\\StudentGetAllQuery\\StudentGetAllResponseDto.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Queries\\StudentGetAllQuery\\StudentGetAllResponseDto.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Queries\\StudentGetAllQuery\\StudentGetAllResponseDto.cs",
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Queries\\StudentGetAllQuery\\StudentGetAllResponseDto.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAA3wBQAAAAvAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAA1wBQAAAAvAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T22:00:13.008Z"
+              "WhenOpened": "2026-04-01T22:00:13.008Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 41,
-              "Title": "StudentRegisterRequestValidator.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequestValidator.cs",
-              "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequestValidator.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequestValidator.cs",
-              "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequestValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T17:32:30.324Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 42,
+              "DocumentIndex": 56,
               "Title": "StudentProfile.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Mappings\\StudentProfile.cs",
               "RelativeDocumentMoniker": "Application\\Mappings\\StudentProfile.cs",
@@ -932,11 +1191,12 @@
               "RelativeToolTip": "Application\\Mappings\\StudentProfile.cs",
               "ViewState": "AgIAADAAAAAAAAAAAAAiwDsAAABBAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T17:33:18.556Z"
+              "WhenOpened": "2026-03-29T17:33:18.556Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 43,
+              "DocumentIndex": 57,
               "Title": "DepartmentProfile.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Mappings\\DepartmentProfile.cs",
               "RelativeDocumentMoniker": "Application\\Mappings\\DepartmentProfile.cs",
@@ -944,11 +1204,12 @@
               "RelativeToolTip": "Application\\Mappings\\DepartmentProfile.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T10:47:34.92Z"
+              "WhenOpened": "2026-04-02T10:47:34.92Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 44,
+              "DocumentIndex": 58,
               "Title": "StudentGetAllRequest.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Queries\\StudentGetAllQuery\\StudentGetAllRequest.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Queries\\StudentGetAllQuery\\StudentGetAllRequest.cs",
@@ -956,23 +1217,25 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Queries\\StudentGetAllQuery\\StudentGetAllRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T22:00:11.328Z"
+              "WhenOpened": "2026-04-01T22:00:11.328Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 45,
+              "DocumentIndex": 59,
               "Title": "GroupProfile.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Mappings\\GroupProfile.cs",
               "RelativeDocumentMoniker": "Application\\Mappings\\GroupProfile.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Mappings\\GroupProfile.cs",
               "RelativeToolTip": "Application\\Mappings\\GroupProfile.cs",
-              "ViewState": "AgIAAAsAAAAAAAAAAAAAwAAAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAxwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T10:46:56.564Z"
+              "WhenOpened": "2026-04-02T10:46:56.564Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 46,
+              "DocumentIndex": 60,
               "Title": "StatusType.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\StatusType.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Stables\\StatusType.cs",
@@ -980,11 +1243,12 @@
               "RelativeToolTip": "Domain\\Models\\Stables\\StatusType.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T10:31:50.554Z"
+              "WhenOpened": "2026-04-02T10:31:50.554Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 47,
+              "DocumentIndex": 61,
               "Title": "GradeType.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\GradeType.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Stables\\GradeType.cs",
@@ -992,11 +1256,12 @@
               "RelativeToolTip": "Domain\\Models\\Stables\\GradeType.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T10:31:33.319Z"
+              "WhenOpened": "2026-04-02T10:31:33.319Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 48,
+              "DocumentIndex": 62,
               "Title": "GenderType.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\GenderType.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Stables\\GenderType.cs",
@@ -1004,11 +1269,12 @@
               "RelativeToolTip": "Domain\\Models\\Stables\\GenderType.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T10:31:46.792Z"
+              "WhenOpened": "2026-04-02T10:31:46.792Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 49,
+              "DocumentIndex": 63,
               "Title": "DepartmentType.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\DepartmentType.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Stables\\DepartmentType.cs",
@@ -1016,11 +1282,12 @@
               "RelativeToolTip": "Domain\\Models\\Stables\\DepartmentType.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T10:13:00.253Z"
+              "WhenOpened": "2026-04-02T10:13:00.253Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 50,
+              "DocumentIndex": 64,
               "Title": "FacultyType.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\FacultyType.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Stables\\FacultyType.cs",
@@ -1028,11 +1295,12 @@
               "RelativeToolTip": "Domain\\Models\\Stables\\FacultyType.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T10:32:16.655Z"
+              "WhenOpened": "2026-04-02T10:32:16.655Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 51,
+              "DocumentIndex": 65,
               "Title": "SubjectTypes.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Stables\\SubjectTypes.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Stables\\SubjectTypes.cs",
@@ -1040,11 +1308,12 @@
               "RelativeToolTip": "Domain\\Models\\Stables\\SubjectTypes.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T10:31:50.023Z"
+              "WhenOpened": "2026-04-02T10:31:50.023Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 53,
+              "DocumentIndex": 67,
               "Title": "IDepartmentRepository.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Repositories\\IDepartmentRepository.cs",
               "RelativeDocumentMoniker": "Application\\Repositories\\IDepartmentRepository.cs",
@@ -1052,11 +1321,12 @@
               "RelativeToolTip": "Application\\Repositories\\IDepartmentRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAABWAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T10:24:43.557Z"
+              "WhenOpened": "2026-04-02T10:24:43.557Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 52,
+              "DocumentIndex": 66,
               "Title": "DepartmentRepository.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Repository\\DepartmentRepository.cs",
               "RelativeDocumentMoniker": "Repository\\DepartmentRepository.cs",
@@ -1064,11 +1334,12 @@
               "RelativeToolTip": "Repository\\DepartmentRepository.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAxwBIAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T17:24:25.671Z"
+              "WhenOpened": "2026-03-29T17:24:25.671Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 55,
+              "DocumentIndex": 69,
               "Title": "Department.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Department.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Department.cs",
@@ -1076,11 +1347,12 @@
               "RelativeToolTip": "Domain\\Models\\Entities\\Department.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-02T10:12:58.466Z"
+              "WhenOpened": "2026-04-02T10:12:58.466Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 57,
+              "DocumentIndex": 71,
               "Title": "StudentGetByIdResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Queries\\StudentGetByIdQuery\\StudentGetByIdResponseDto.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Queries\\StudentGetByIdQuery\\StudentGetByIdResponseDto.cs",
@@ -1088,11 +1360,12 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Queries\\StudentGetByIdQuery\\StudentGetByIdResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T21:59:33.615Z"
+              "WhenOpened": "2026-04-01T21:59:33.615Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 54,
+              "DocumentIndex": 68,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\appsettings.json",
               "RelativeDocumentMoniker": "Presentation\\appsettings.json",
@@ -1100,11 +1373,12 @@
               "RelativeToolTip": "Presentation\\appsettings.json",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-03-29T18:13:46.109Z"
+              "WhenOpened": "2026-03-29T18:13:46.109Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 56,
+              "DocumentIndex": 70,
               "Title": "StudentGetByIdRequest.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Queries\\StudentGetByIdQuery\\StudentGetByIdRequest.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Queries\\StudentGetByIdQuery\\StudentGetByIdRequest.cs",
@@ -1112,11 +1386,12 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Queries\\StudentGetByIdQuery\\StudentGetByIdRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T21:59:31.158Z"
+              "WhenOpened": "2026-04-01T21:59:31.158Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 92,
+              "DocumentIndex": 103,
               "Title": "20260401225727_StudentDepartmentUpdate.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Migrations\\20260401225727_StudentDepartmentUpdate.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\Migrations\\20260401225727_StudentDepartmentUpdate.cs",
@@ -1124,11 +1399,12 @@
               "RelativeToolTip": "DataAccessLayer\\Migrations\\20260401225727_StudentDepartmentUpdate.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T22:57:27.945Z"
+              "WhenOpened": "2026-04-01T22:57:27.945Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 58,
+              "DocumentIndex": 72,
               "Title": "StudentAddRequestValidator.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentAddCommand\\StudentAddRequestValidator.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentAddCommand\\StudentAddRequestValidator.cs",
@@ -1136,23 +1412,25 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentAddCommand\\StudentAddRequestValidator.cs",
               "ViewState": "AgIAAAcAAAAAAAAAAAAQwBEAAAA0AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T14:22:50.118Z"
+              "WhenOpened": "2026-04-01T14:22:50.118Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 59,
+              "DocumentIndex": 73,
               "Title": "Details.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Views\\Students\\Details.cshtml",
               "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Views\\Students\\Details.cshtml",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Views\\Students\\Details.cshtml",
               "RelativeToolTip": "Presentation\\Areas\\Admin\\Views\\Students\\Details.cshtml",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAoAAAAOAAAAAAAAAA==",
+              "ViewState": "AgIAAAYAAAAAAAAAAIBJwAoAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-04-01T22:00:38Z"
+              "WhenOpened": "2026-04-01T22:00:38Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 60,
+              "DocumentIndex": 74,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Views\\Students\\Create.cshtml",
               "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Views\\Students\\Create.cshtml",
@@ -1160,35 +1438,25 @@
               "RelativeToolTip": "Presentation\\Areas\\Admin\\Views\\Students\\Create.cshtml",
               "ViewState": "AgIAABsAAAAAAAAAAAAIwCwAAAAqAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-29T17:34:41.897Z"
+              "WhenOpened": "2026-03-29T17:34:41.897Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 61,
-              "Title": "StudentRepository.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Repository\\StudentRepository.cs",
-              "RelativeDocumentMoniker": "Repository\\StudentRepository.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Repository\\StudentRepository.cs",
-              "RelativeToolTip": "Repository\\StudentRepository.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAADwvzMAAAAuAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T17:24:05.535Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 63,
+              "DocumentIndex": 76,
               "Title": "Student.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Student.cs",
               "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Student.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Student.cs",
               "RelativeToolTip": "Domain\\Models\\Entities\\Student.cs",
-              "ViewState": "AgIAAAwAAAAAAAAAAAAowBUAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAwAAAAAAAAAAAA7wBUAAAAaAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T22:47:36.446Z"
+              "WhenOpened": "2026-04-01T22:47:36.446Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 93,
+              "DocumentIndex": 104,
               "Title": "20260401224020_StudentMobileNumnber.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Migrations\\20260401224020_StudentMobileNumnber.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\Migrations\\20260401224020_StudentMobileNumnber.cs",
@@ -1196,11 +1464,12 @@
               "RelativeToolTip": "DataAccessLayer\\Migrations\\20260401224020_StudentMobileNumnber.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T22:40:20.578Z"
+              "WhenOpened": "2026-04-01T22:40:20.578Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 62,
+              "DocumentIndex": 75,
               "Title": "StudentListDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\StudentListDto.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\StudentListDto.cs",
@@ -1208,23 +1477,12 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\StudentListDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T17:28:58.795Z"
+              "WhenOpened": "2026-03-29T17:28:58.795Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 65,
-              "Title": "StudentRegisterRequest.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequest.cs",
-              "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequest.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequest.cs",
-              "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterRequest.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T17:32:19.595Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 64,
+              "DocumentIndex": 77,
               "Title": "StudentRegisterResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterResponseDto.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterResponseDto.cs",
@@ -1232,11 +1490,12 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentRegisterCommand\\StudentRegisterResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T17:23:07.802Z"
+              "WhenOpened": "2026-03-29T17:23:07.802Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 66,
+              "DocumentIndex": 78,
               "Title": "StudentLoginRequestHandler.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequestHandler.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequestHandler.cs",
@@ -1244,11 +1503,12 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequestHandler.cs",
               "ViewState": "AgIAABEAAAAAAAAAAADwvzYAAAA+AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T21:58:16.475Z"
+              "WhenOpened": "2026-03-29T21:58:16.475Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 67,
+              "DocumentIndex": 79,
               "Title": "AsyncRepository.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Concrates\\AsyncRepository.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Concrates\\AsyncRepository.cs",
@@ -1256,11 +1516,12 @@
               "RelativeToolTip": "Infrastructure\\Concrates\\AsyncRepository.cs",
               "ViewState": "AgIAAD4AAAAAAAAAAAAswBEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T22:32:39.286Z"
+              "WhenOpened": "2026-04-01T22:32:39.286Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 68,
+              "DocumentIndex": 80,
               "Title": "IAsyncRepository.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Abstracts\\IAsyncRepository.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Abstracts\\IAsyncRepository.cs",
@@ -1268,11 +1529,12 @@
               "RelativeToolTip": "Infrastructure\\Abstracts\\IAsyncRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T22:32:32.438Z"
+              "WhenOpened": "2026-04-01T22:32:32.438Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 69,
+              "DocumentIndex": 81,
               "Title": "StudentDetailsResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\StudentDetailsResponseDto.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\StudentDetailsResponseDto.cs",
@@ -1280,11 +1542,12 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\StudentDetailsResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T21:59:46.59Z"
+              "WhenOpened": "2026-04-01T21:59:46.59Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 70,
+              "DocumentIndex": 82,
               "Title": "StudentResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\StudentResponseDto.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\StudentResponseDto.cs",
@@ -1292,11 +1555,12 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\StudentResponseDto.cs",
               "ViewState": "AgIAAAgAAAAAAAAAAAAxwAwAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T21:59:56.692Z"
+              "WhenOpened": "2026-04-01T21:59:56.692Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 71,
+              "DocumentIndex": 83,
               "Title": "StudentGroupSmallDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\StudentGroupSmallDto.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\StudentGroupSmallDto.cs",
@@ -1304,11 +1568,12 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\StudentGroupSmallDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T21:59:53.815Z"
+              "WhenOpened": "2026-04-01T21:59:53.815Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 73,
+              "DocumentIndex": 85,
               "Title": "StudentLoginRequestValidator.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequestValidator.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequestValidator.cs",
@@ -1316,11 +1581,12 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequestValidator.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T21:57:56.308Z"
+              "WhenOpened": "2026-03-29T21:57:56.308Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 72,
+              "DocumentIndex": 84,
               "Title": "StudentLoginResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginResponseDto.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginResponseDto.cs",
@@ -1328,11 +1594,12 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T21:57:39.397Z"
+              "WhenOpened": "2026-03-29T21:57:39.397Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 74,
+              "DocumentIndex": 86,
               "Title": "StudentLoginRequest.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequest.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequest.cs",
@@ -1340,11 +1607,12 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequest.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T21:57:29.039Z"
+              "WhenOpened": "2026-03-29T21:57:29.039Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 75,
+              "DocumentIndex": 87,
               "Title": "StudentAddRequestHandler.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentAddCommand\\StudentAddRequestHandler.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentAddCommand\\StudentAddRequestHandler.cs",
@@ -1352,11 +1620,12 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentAddCommand\\StudentAddRequestHandler.cs",
               "ViewState": "AgIAABMAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T14:23:31.378Z"
+              "WhenOpened": "2026-04-01T14:23:31.378Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 76,
+              "DocumentIndex": 88,
               "Title": "StudentAddResponseDto.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentAddCommand\\StudentAddResponseDto.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentAddCommand\\StudentAddResponseDto.cs",
@@ -1364,35 +1633,38 @@
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentAddCommand\\StudentAddResponseDto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAdAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T14:23:20.164Z"
+              "WhenOpened": "2026-04-01T14:23:20.164Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 77,
+              "DocumentIndex": 89,
               "Title": "StudentAddRequest.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentAddCommand\\StudentAddRequest.cs",
               "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentAddCommand\\StudentAddRequest.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentAddCommand\\StudentAddRequest.cs",
               "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentAddCommand\\StudentAddRequest.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAAkAAAArAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAIBJwAkAAAArAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-01T14:22:37.306Z"
+              "WhenOpened": "2026-04-01T14:22:37.306Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 78,
+              "DocumentIndex": 90,
               "Title": "ConflictException.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Exceptions\\ConflictException.cs",
               "RelativeDocumentMoniker": "Infrastructure\\Exceptions\\ConflictException.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Exceptions\\ConflictException.cs",
               "RelativeToolTip": "Infrastructure\\Exceptions\\ConflictException.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAA9wAkAAAAFAAAAAAAAAA==",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAowAkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T23:02:57.293Z"
+              "WhenOpened": "2026-03-30T23:02:57.293Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 82,
+              "DocumentIndex": 94,
               "Title": "Dockerfile",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Dockerfile",
               "RelativeDocumentMoniker": "Presentation\\Dockerfile",
@@ -1400,23 +1672,25 @@
               "RelativeToolTip": "Presentation\\Dockerfile",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAB0AAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-03-30T22:22:12.825Z"
+              "WhenOpened": "2026-03-30T22:22:12.825Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 79,
+              "DocumentIndex": 91,
               "Title": "RoleAndAdminSeeder.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\AppCode\\Seeds\\RoleAndAdminSeeder.cs",
               "RelativeDocumentMoniker": "Presentation\\AppCode\\Seeds\\RoleAndAdminSeeder.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\AppCode\\Seeds\\RoleAndAdminSeeder.cs",
               "RelativeToolTip": "Presentation\\AppCode\\Seeds\\RoleAndAdminSeeder.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEwAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAFgAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T19:19:44.91Z"
+              "WhenOpened": "2026-03-30T19:19:44.91Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 83,
+              "DocumentIndex": 95,
               "Title": "Presentation",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Presentation.csproj",
               "RelativeDocumentMoniker": "Presentation\\Presentation.csproj",
@@ -1428,7 +1702,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 81,
+              "DocumentIndex": 93,
               "Title": "MaarifModule.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\AppCode\\DI\\MaarifModule.cs",
               "RelativeDocumentMoniker": "Presentation\\AppCode\\DI\\MaarifModule.cs",
@@ -1436,35 +1710,25 @@
               "RelativeToolTip": "Presentation\\AppCode\\DI\\MaarifModule.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAsAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T22:40:26.919Z"
+              "WhenOpened": "2026-03-30T22:40:26.919Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 80,
+              "DocumentIndex": 92,
               "Title": "DataContext.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\DataContexts\\DataContext.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\DataContexts\\DataContext.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\DataContexts\\DataContext.cs",
               "RelativeToolTip": "DataAccessLayer\\DataContexts\\DataContext.cs",
-              "ViewState": "AgIAAEwAAAAAAAAAAAAAAGkAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAEkAAAAAAAAAAIBJwGkAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-30T22:56:19.014Z"
+              "WhenOpened": "2026-03-30T22:56:19.014Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 85,
-              "Title": "FacultiesController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\FacultiesController.cs",
-              "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Controllers\\FacultiesController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\FacultiesController.cs",
-              "RelativeToolTip": "Presentation\\Areas\\Admin\\Controllers\\FacultiesController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T20:08:48.209Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 84,
+              "DocumentIndex": 96,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
               "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
@@ -1472,11 +1736,12 @@
               "RelativeToolTip": "Presentation\\Areas\\Admin\\Views\\Dashboard\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-29T20:13:06.626Z"
+              "WhenOpened": "2026-03-29T20:13:06.626Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 86,
+              "DocumentIndex": 97,
               "Title": "20260329181216_Student_FinCode.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Migrations\\20260329181216_Student_FinCode.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\Migrations\\20260329181216_Student_FinCode.cs",
@@ -1484,11 +1749,12 @@
               "RelativeToolTip": "DataAccessLayer\\Migrations\\20260329181216_Student_FinCode.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T19:56:02.715Z"
+              "WhenOpened": "2026-03-29T19:56:02.715Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 87,
+              "DocumentIndex": 98,
               "Title": "20260329173954_FinCodeAdded.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Migrations\\20260329173954_FinCodeAdded.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\Migrations\\20260329173954_FinCodeAdded.cs",
@@ -1496,11 +1762,12 @@
               "RelativeToolTip": "DataAccessLayer\\Migrations\\20260329173954_FinCodeAdded.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T17:39:54.441Z"
+              "WhenOpened": "2026-03-29T17:39:54.441Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 88,
+              "DocumentIndex": 99,
               "Title": "20260329180834_Student_AddFinCode.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Migrations\\20260329180834_Student_AddFinCode.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\Migrations\\20260329180834_Student_AddFinCode.cs",
@@ -1508,11 +1775,12 @@
               "RelativeToolTip": "DataAccessLayer\\Migrations\\20260329180834_Student_AddFinCode.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T19:56:21.802Z"
+              "WhenOpened": "2026-03-29T19:56:21.802Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 89,
+              "DocumentIndex": 100,
               "Title": "20260327204828_check.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Migrations\\20260327204828_check.cs",
               "RelativeDocumentMoniker": "DataAccessLayer\\Migrations\\20260327204828_check.cs",
@@ -1520,11 +1788,12 @@
               "RelativeToolTip": "DataAccessLayer\\Migrations\\20260327204828_check.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T20:02:29.985Z"
+              "WhenOpened": "2026-03-29T20:02:29.985Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 90,
+              "DocumentIndex": 101,
               "Title": "Create.cshtml",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Views\\Groups\\Create.cshtml",
               "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Views\\Groups\\Create.cshtml",
@@ -1532,11 +1801,12 @@
               "RelativeToolTip": "Presentation\\Areas\\Admin\\Views\\Groups\\Create.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-03-29T17:34:39.113Z"
+              "WhenOpened": "2026-03-29T17:34:39.113Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 91,
+              "DocumentIndex": 102,
               "Title": "SubjectRepository.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Repository\\SubjectRepository.cs",
               "RelativeDocumentMoniker": "Repository\\SubjectRepository.cs",
@@ -1544,7 +1814,12 @@
               "RelativeToolTip": "Repository\\SubjectRepository.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-03-29T17:24:23.049Z"
+              "WhenOpened": "2026-03-29T17:24:23.049Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{56df62a4-05a3-4e5b-aa1a-99371ccfb997}"
             }
           ]
         }

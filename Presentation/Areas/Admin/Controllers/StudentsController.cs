@@ -13,9 +13,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Presentation.Areas.Admin.Controllers
 {
-    //[Authorize(Roles = "SUPERADMIN", AuthenticationSchemes = CookieAuthenticationDefaults.AuthenticationScheme)]
-    [Area("admin")]
-    public class StudentsController : Controller
+    public class StudentsController : AdminBaseController
     {
         private readonly IStudentRepository studentRepository;
         private readonly IDepartmentRepository departmentRepository;
@@ -48,21 +46,18 @@ namespace Presentation.Areas.Admin.Controllers
                 "Id", "Name");
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var response = await mediator.Send(new StudentGetAllRequest { });
             return View(response);
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Details([FromRoute] StudentGetByIdRequest request)
         {
             var response = await mediator.Send(request);
             return View(response);
         }
 
-        [AllowAnonymous]
         public IActionResult Create()
         {
             PopulateViewBags();
@@ -70,7 +65,6 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Create([FromForm] StudentAddRequest request)
         {
             if (!ModelState.IsValid)
@@ -84,7 +78,6 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpGet] // Fixes AmbiguousMatchException
-        [AllowAnonymous]
         public async Task<IActionResult> Edit([FromRoute] StudentGetByIdRequest request)
         {
             PopulateViewBags();
@@ -96,7 +89,6 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Edit([FromForm] StudentEditRequest request)
         {
             if (!ModelState.IsValid)
@@ -113,7 +105,6 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Remove([FromRoute] StudentRemoveRequest request)
         {
             await mediator.Send(request);

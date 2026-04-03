@@ -163,5 +163,7 @@ C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\refint\Presentat
 C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\Presentation.pdb
 C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\Presentation.genruntimeconfig.cache
 C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\ref\Presentation.dll
-C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\scopedcss\Views\Shared\_Layout.cshtml.rz.scp.css
+C:\Users\user\source\repos\Maarif\Presentation\bin\Debug\net8.0\Polly.dll
+C:\Users\user\source\repos\Maarif\Presentation\bin\Debug\net8.0\Polly.Core.dll
+C:\Users\user\source\repos\Maarif\Presentation\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

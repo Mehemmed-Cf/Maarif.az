@@ -13,8 +13,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace Presentation.Areas.Admin.Controllers
 {
-    [Area("admin")]
-    public class GroupsController : Controller
+    public class GroupsController : AdminBaseController
     {
         private readonly IGroupRepository groupRepository;
         private readonly IDepartmentRepository departmentRepository;
@@ -54,21 +53,18 @@ namespace Presentation.Areas.Admin.Controllers
             );
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Index()
         {
             var response = await mediator.Send(new GroupGetAllRequest());
             return View(response);
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Details([FromRoute] GroupGetByIdRequest request)
         {
             var response = await mediator.Send(request);
             return View(response);
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Create()
         {
             await PopulateViewBagsAsync();
@@ -76,7 +72,6 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Create([FromForm] GroupAddRequest request)
         {
             if (!ModelState.IsValid)
@@ -89,7 +84,6 @@ namespace Presentation.Areas.Admin.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-        [AllowAnonymous]
         public async Task<IActionResult> Edit([FromRoute] GroupGetByIdRequest request)
         {
             var response = await mediator.Send(request);
@@ -102,7 +96,6 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Edit([FromForm] GroupEditRequest request)
         {
             if (!ModelState.IsValid)
@@ -117,7 +110,6 @@ namespace Presentation.Areas.Admin.Controllers
         }
 
         [HttpPost]
-        [AllowAnonymous]
         public async Task<IActionResult> Remove([FromRoute] GroupRemoveRequest request)
         {
             await mediator.Send(request);
