@@ -127,15 +127,37 @@ internal class Program
 
         using (var scope = app.Services.CreateScope())
         {
-            var seeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
-            await seeder.SeedAsync();
+            var services = scope.ServiceProvider;
+            try
+            {
+                var context = services.GetRequiredService<DataContext>();
+
+                // 1. Sync the schema (Fixes 'Invalid Column' errors)
+                await context.Database.MigrateAsync();
+
+                // 2. Seed the data
+                var seeder = services.GetRequiredService<DataSeeder>();
+                await seeder.SeedAsync();
+            }
+            catch (Exception ex)
+            {
+                var logger = services.GetRequiredService<ILogger<Program>>();
+                logger.LogError(ex, "An error occurred during database migration or seeding.");
+                // Optional: throw; if you want the container to restart on failure
+            }
         }
 
-        using (var scope = app.Services.CreateScope())
-        {
-            var dbContext = scope.ServiceProvider.GetRequiredService<DataContext>();
-            dbContext.Database.Migrate();
-        }
+        //using (var scope = app.Services.CreateScope())
+        //{
+        //    var seeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
+        //    await seeder.SeedAsync();
+        //}
+
+        //using (var scope = app.Services.CreateScope())
+        //{
+        //    var dbContext = scope.ServiceProvider.GetRequiredService<DataContext>();
+        //    dbContext.Database.Migrate();
+        //}
 
         if (!app.Environment.IsDevelopment())
         {
@@ -176,7 +198,6 @@ internal class Program
 
         using (var scope = app.Services.CreateScope())
         {
-
             await RoleAndAdminSeeder.SeedAsync(scope.ServiceProvider);
         }
 
