@@ -2,8 +2,6 @@ using Application;
 using Application.Mappings;
 using Application.Services;
 using DataAccessLayer.Migrations;
-using Domain.Models.Entities;
-using Domain.Models.Entities.Membership;
 using FluentValidation.AspNetCore;
 using Infrastructure.Abstracts;
 using Infrastructure.Configurations;
@@ -15,6 +13,7 @@ using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
 using Presentation.AppCode.DI;
 using Presentation.AppCode.Pipeline;
+using Presentation.AppCode.Seeds;
 
 internal class Program
 {
@@ -97,6 +96,8 @@ internal class Program
 
         builder.Services.AddSingleton<IFileService, FileService>();
 
+        builder.Services.AddScoped<IWeekCalculatorService, WeekCalculatorService>();
+
         builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
         builder.Services.AddControllersWithViews();
@@ -112,7 +113,23 @@ internal class Program
 
         builder.Services.AddRazorPages();
 
+        builder.Services.AddDistributedMemoryCache();
+        builder.Services.AddSession(cfg =>
+        {
+            cfg.IdleTimeout = TimeSpan.FromHours(24);
+            cfg.Cookie.HttpOnly = true;
+            cfg.Cookie.IsEssential = true;
+        });
+
+        builder.Services.AddScoped<DataSeeder>();
+
         var app = builder.Build();
+
+        using (var scope = app.Services.CreateScope())
+        {
+            var seeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
+            await seeder.SeedAsync();
+        }
 
         using (var scope = app.Services.CreateScope())
         {
@@ -141,6 +158,8 @@ internal class Program
 
         app.UseRouting();
 
+        app.UseSession();
+
         app.UseCors("allowAll");
 
         app.UseAuthentication();
@@ -153,14 +172,13 @@ internal class Program
 
         app.MapControllerRoute(name: "areas", pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
 
-        app.MapControllerRoute(name: "default", pattern: "{controller=home}/{action=index}/{id?}");
+        app.MapControllerRoute(name: "default", pattern: "{controller=auth}/{action=login}/{id?}");
 
         using (var scope = app.Services.CreateScope())
         {
 
             await RoleAndAdminSeeder.SeedAsync(scope.ServiceProvider);
         }
-
 
         app.Run();
     }

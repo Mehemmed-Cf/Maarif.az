@@ -1,0 +1,35 @@
+﻿using Application.Repositories;
+using Domain.Models.Entities;
+using MediatR;
+
+namespace Application.Modules.LessonSchedulesModule.Commands.LessonScheduleAddCommand
+{
+    public class LessonScheduleAddRequestHandler : IRequestHandler<LessonScheduleAddRequest, Unit>
+    {
+        private readonly ILessonScheduleRepository lessonScheduleRepository;
+
+        public LessonScheduleAddRequestHandler(ILessonScheduleRepository lessonScheduleRepository)
+        {
+            this.lessonScheduleRepository = lessonScheduleRepository;
+        }
+
+        public async Task<Unit> Handle(LessonScheduleAddRequest request, CancellationToken cancellationToken)
+        {
+            var entity = new LessonSchedule
+            {
+                LessonId = request.LessonId,
+                GroupId = request.GroupId,
+                DayOfWeek = request.DayOfWeek,
+                StartTime = request.StartTime,
+                EndTime = request.EndTime,
+                LessonType = request.LessonType,
+                WeekType = request.WeekType
+            };
+
+            await lessonScheduleRepository.AddAsync(entity, cancellationToken);
+            await lessonScheduleRepository.SaveAsync(cancellationToken);
+
+            return Unit.Value;
+        }
+    }
+}

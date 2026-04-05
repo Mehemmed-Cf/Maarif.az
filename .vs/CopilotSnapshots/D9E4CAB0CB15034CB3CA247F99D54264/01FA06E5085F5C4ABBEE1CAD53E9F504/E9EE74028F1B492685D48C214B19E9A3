@@ -1,0 +1,29 @@
+﻿using Application.Repositories;
+using Infrastructure.Exceptions;
+using MediatR;
+
+namespace Application.Modules.LessonSchedulesModule.Commands.LessonScheduleRemoveCommand
+{
+    public class LessonScheduleRemoveRequestHandler : IRequestHandler<LessonScheduleRemoveRequest>
+    {
+        private readonly ILessonScheduleRepository lessonScheduleRepository;
+
+        public LessonScheduleRemoveRequestHandler(ILessonScheduleRepository lessonScheduleRepository)
+        {
+            this.lessonScheduleRepository = lessonScheduleRepository;
+        }
+
+        public async Task Handle(LessonScheduleRemoveRequest request, CancellationToken cancellationToken)
+        {
+            var entity = await lessonScheduleRepository.GetAsync(x => x.Id == request.Id && x.DeletedAt == null, cancellationToken);
+
+            if (entity == null)
+            {
+                throw new NotFoundException("LessonSchedule not found.");
+            }
+
+            lessonScheduleRepository.Remove(entity);
+            await lessonScheduleRepository.SaveAsync(cancellationToken);
+        }
+    }
+}

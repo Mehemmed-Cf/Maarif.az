@@ -1,0 +1,36 @@
+@using Application.Modules.TeachersModule.Commands.TeacherRegisterCommand
+@model TeacherRegisterRequest
+@{
+    ViewData["Title"] = "Müəllim qeydiyyatı";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<div asp-validation-summary="All" class="alert alert-danger"></div>
+
+<form asp-action="TeacherRegister" method="post">
+    @Html.AntiForgeryToken()
+    <div class="form-group">
+        <label asp-for="SerialNumber">Sənədin seriya nömrəsi</label>
+        <input type="text" class="form-control" asp-for="SerialNumber"
+               placeholder="MUE0100001" autocomplete="off" />
+        <span asp-validation-for="SerialNumber" class="text-danger"></span>
+    </div>
+    <div class="form-group">
+        <label asp-for="FinCode">FİN kod</label>
+        <input type="text" class="form-control" asp-for="FinCode"
+               placeholder="TM01001" autocomplete="off" maxlength="7" />
+        <span asp-validation-for="FinCode" class="text-danger"></span>
+        <div class="small-hint">7 simvol — hərf və rəqəmlərdən ibarət</div>
+    </div>
+    <button type="submit" class="btn-auth">Müəllim kabineti yarat</button>
+</form>
+
+<div class="auth-footer">
+    Artıq hesabınız var? <a asp-action="TeacherLogin">Daxil olun</a>
+    &nbsp;·&nbsp;
+    <a asp-action="Register">Tələbə qeydiyyatı</a>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

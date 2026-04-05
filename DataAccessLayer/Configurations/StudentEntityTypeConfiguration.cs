@@ -24,8 +24,15 @@ namespace DataAccessLayer.Configurations
             .IsRequired()
             .HasMaxLength(7);
 
+            builder.Property(s => s.DocumentSerialNumber)
+                .HasMaxLength(40);
+
             builder.HasIndex(s => s.FinCode)
             .IsUnique();  // one student per FIN, enforced at DB level too
+
+            builder.HasIndex(s => s.DocumentSerialNumber)
+                .IsUnique()
+                .HasFilter("[DocumentSerialNumber] IS NOT NULL");
 
             builder.Property(s => s.StudentNumber)
                    .IsRequired()

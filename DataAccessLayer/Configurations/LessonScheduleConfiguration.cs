@@ -1,0 +1,38 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace DataAccessLayer.Configurations
+{
+    public class LessonScheduleConfiguration : IEntityTypeConfiguration<Domain.Models.Entities.LessonSchedule>
+    {
+        public void Configure(EntityTypeBuilder<Domain.Models.Entities.LessonSchedule> builder)
+        {
+            builder.ToTable("LessonSchedules");
+            builder.HasKey(s => s.Id);
+            builder.Property(s => s.DayOfWeek).IsRequired();
+            builder.Property(s => s.StartTime).IsRequired();
+            builder.Property(s => s.EndTime).IsRequired();
+            builder.Property(s => s.LessonType).IsRequired();
+            builder.Property(s => s.WeekType).IsRequired();
+
+            builder.HasOne(s => s.Lesson)
+                   .WithMany(l => l.LessonSchedules)
+                   .HasForeignKey(s => s.LessonId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(s => s.Group)
+                   .WithMany()
+                   .HasForeignKey(s => s.GroupId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasOne(s => s.Room)
+                   .WithMany()
+                   .HasForeignKey(s => s.RoomId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasQueryFilter(s => s.DeletedAt == null);
+
+            builder.ConfigureAuditable();
+        }
+    }
+}

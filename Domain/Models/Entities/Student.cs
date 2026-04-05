@@ -1,4 +1,4 @@
-﻿using Domain.Models.Concrates;
+using Domain.Models.Concrates;
 using Domain.Models.Stables;
 
 namespace Domain.Models.Entities
@@ -9,6 +9,8 @@ namespace Domain.Models.Entities
         public string FullName { get; set; }
         public string FatherName { get; set; }
         public string FinCode { get; set; } // new
+        /// <summary>Normalized identity document serial from self-registration (AZE…); null for admin-created rows.</summary>
+        public string? DocumentSerialNumber { get; set; }
         public string StudentNumber { get; set; }
         public GenderType Gender { get; set; }
         public string MobileNumber { get; set; }

@@ -1,0 +1,99 @@
+﻿@model IEnumerable<Application.Modules.LessonSchedulesModule.Queries.LessonScheduleGetAllQuery.LessonScheduleGetAllResponseDto>
+@{
+    ViewData["Title"] = "Lesson Schedules";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Lesson Schedules</h4>
+                    <span>List of all lesson schedules.</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-controller="Dashboard" asp-action="Index"> <i class="feather icon-home"></i> </a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Lesson Schedules</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Lesson Schedules</h5>
+                    <span>All schedules currently active in the system.</span>
+                    <div class="card-header-right">
+                        <a class="btn btn-sm btn-primary" asp-action="Create">
+                            <i class="fa fa-plus"></i> Add New Schedule
+                        </a>
+                    </div>
+                </div>
+                <div class="card-block">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Id</th>
+                                    <th>Lesson (Subject - Teacher)</th>
+                                    <th>Group</th>
+                                    <th>Day</th>
+                                    <th>Start</th>
+                                    <th>End</th>
+                                    <th>Room</th>
+                                    <th>Lesson Type</th>
+                                    <th>Week Type</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.Id</td>
+                                        <td>@item.LessonName</td>
+                                        <td>@item.GroupName</td>
+                                        <td>@item.DayOfWeek</td>
+                                        <td>@item.StartTime.ToString(@"hh\:mm")</td>
+                                        <td>@item.EndTime.ToString(@"hh\:mm")</td>
+                                        <td><span class="badge badge-inverse-info">@item.RoomDisplay</span></td>
+                                        <td>@item.LessonType</td>
+                                        <td>@item.WeekType</td>
+                                        <td class="text-right">
+                                            <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.Id">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.Id">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                            <button class="btn btn-sm btn-danger" onclick="removeEntity(@item.Id, 'LessonSchedules', 'Remove')">
+                                                <i class="fa fa-trash"></i>
+                                            </button>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section addjs {
+    <script src="~/admin/js/sweetalert2.min.js"></script>
+    <script src="~/admin/js/custom.js"></script>
+}

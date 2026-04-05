@@ -1,0 +1,12 @@
+@model Presentation.AppCode.ViewModels.PortalViewModel
+@using Presentation.AppCode.ViewModels
+@{
+    ViewBag.Title = "Dərs cədvəli";
+    ViewBag.PortalFullName = Model.FullName;
+    ViewBag.PortalBadge = Model.StudentNumber;
+    ViewBag.PortalInitials = Model.Initials;
+    ViewBag.PortalActiveNav = "schedule";
+    ViewBag.PortalIsTeacher = false;
+    ViewBag.PortalBreadcrumb = "Dərs cədvəli";
+}
+@await Html.PartialAsync("~/Views/Shared/_PortalScheduleGrid.cshtml", (IWeeklyScheduleViewModel)Model)

@@ -5,6 +5,7 @@ using Application.Modules.TeachersModule.Queries.TeacherGetAllQuery;
 using Application.Modules.TeachersModule.Queries.TeacherGetByIdQuery;
 using Application.Repositories;
 using Domain.Models.Entities;
+using Infrastructure.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -89,7 +90,23 @@ namespace Presentation.Areas.Admin.Controllers
                 return View(request);
             }
 
-            await mediator.Send(request);
+            try
+            {
+                await mediator.Send(request);
+            }
+            catch (BadRequestException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                PopulateViewBags(request.DepartmentIds);
+                return View(request);
+            }
+            catch (ConflictException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                PopulateViewBags(request.DepartmentIds);
+                return View(request);
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

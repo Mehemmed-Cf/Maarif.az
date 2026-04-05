@@ -1,0 +1,476 @@
+using Application.Modules.DepartmentsModule.Commands.DepartmentsAddCommand;
+using Application.Modules.FacultiesModule.Commands.FacultyAddCommand;
+using Application.Modules.GroupsModule.Commands.GroupAddCommand;
+using Application.Modules.LessonSchedulesModule.Commands.LessonScheduleAddCommand;
+using Application.Modules.LessonsModule.Commands.LessonAddCommand;
+using Application.Modules.RoomsModule.Commands.RoomAddCommand;
+using Application.Modules.StudentsModule.Commands.StudentRegisterCommand;
+using Application.Modules.SubjectsModule.Commands.SubjectAddCommand;
+using Application.Modules.TeachersModule.Commands.TeacherRegisterCommand;
+using Application.Repositories;
+using Domain.Models.Stables;
+using Infrastructure.Exceptions;
+using MediatR;
+
+namespace Presentation.AppCode.Seeds
+{
+    public class DataSeeder
+    {
+        private readonly IMediator mediator;
+        private readonly IFacultyRepository facultyRepository;
+        private readonly IStudentRepository studentRepository;
+        private readonly IDepartmentRepository departmentRepository;
+        private readonly IGroupRepository groupRepository;
+        private readonly ITeacherRepository teacherRepository;
+        private readonly IRoomRepository roomRepository;
+        private readonly ISubjectRepository subjectRepository;
+        private readonly ILessonRepository lessonRepository;
+        private readonly ILessonScheduleRepository lessonScheduleRepository;
+
+        public DataSeeder(
+            IMediator mediator,
+            IFacultyRepository facultyRepository,
+            IStudentRepository studentRepository,
+            IDepartmentRepository departmentRepository,
+            IGroupRepository groupRepository,
+            ITeacherRepository teacherRepository,
+            IRoomRepository roomRepository,
+            ISubjectRepository subjectRepository,
+            ILessonRepository lessonRepository,
+            ILessonScheduleRepository lessonScheduleRepository)
+        {
+            this.mediator = mediator;
+            this.facultyRepository = facultyRepository;
+            this.studentRepository = studentRepository;
+            this.departmentRepository = departmentRepository;
+            this.groupRepository = groupRepository;
+            this.teacherRepository = teacherRepository;
+            this.roomRepository = roomRepository;
+            this.subjectRepository = subjectRepository;
+            this.lessonRepository = lessonRepository;
+            this.lessonScheduleRepository = lessonScheduleRepository;
+        }
+
+        public async Task SeedAsync()
+        {
+            await SeedFacultiesAsync();
+            await SeedDepartmentsAsync();
+            await SeedTeachersAsync();
+            await SeedStudentsAsync();
+            await SeedGroupsAsync();
+            await SeedRoomsAsync();
+            await SeedSubjectsAsync();
+            await SeedLessonsAsync();
+            await SeedLessonSchedulesAsync();
+        }
+
+        private async Task SeedFacultiesAsync()
+        {
+            if (facultyRepository.GetAll().Any())
+                return;
+
+            var faculties = new List<string>
+            {
+                "Transport və Logistika",
+                "Energetika",
+                "Maşınqayırma və Metallurgiya",
+                "İnformasiya Texnologiyaları və Telekommunikasiya",
+                "Xüsusi Texnika və Texnologiya",
+                "Sənaye İqtisadiyyatı və İdarəetmə"
+            };
+
+            foreach (var name in faculties)
+            {
+                await mediator.Send(new FacultyAddRequest { Name = name });
+            }
+        }
+
+        private async Task SeedDepartmentsAsync()
+        {
+            if (departmentRepository.GetAll().Any())
+                return;
+
+            // Get seeded faculty ids in order
+            var facultyList = facultyRepository.GetAll()
+                .OrderBy(f => f.Id)
+                .ToList();
+
+            // Map by name to be safe
+            var transport = facultyList.First(f => f.Name == "Transport və Logistika").Id;
+            var energy = facultyList.First(f => f.Name == "Energetika").Id;
+            var mechanical = facultyList.First(f => f.Name == "Maşınqayırma və Metallurgiya").Id;
+            var it = facultyList.First(f => f.Name == "İnformasiya Texnologiyaları və Telekommunikasiya").Id;
+            var special = facultyList.First(f => f.Name == "Xüsusi Texnika və Texnologiya").Id;
+            var economics = facultyList.First(f => f.Name == "Sənaye İqtisadiyyatı və İdarəetmə").Id;
+
+            var departments = new List<DepartmentAddRequest>
+            {
+                // Transport və Logistika
+                new() { Name = "Nəqliyyat texnikası və idarəetmə texnologiyaları", FacultyId = transport },
+                new() { Name = "Nəqliyyat logistikası və yol hərəkətinin təhlükəsizliyi", FacultyId = transport },
+
+                // Energetika
+                new() { Name = "Elektrotexnika", FacultyId = energy },
+                new() { Name = "Mühəndis fizikası və elektronika", FacultyId = energy },
+                new() { Name = "Enerji səmərəliliyi və yaşıl enerji texnologiyaları", FacultyId = energy },
+
+                // Maşınqayırma və Metallurgiya
+                new() { Name = "Maşın konstruksiyası, mexatronika və sənaye texnologiyaları", FacultyId = mechanical },
+                new() { Name = "Maşınqayırma texnologiyası", FacultyId = mechanical },
+                new() { Name = "Metallurgiya və materiallar texnologiyası", FacultyId = mechanical },
+                new() { Name = "Kimya texnologiyası, emal və ekologiya", FacultyId = mechanical },
+                new() { Name = "Mexanika", FacultyId = mechanical },
+
+                // İnformasiya Texnologiyaları və Telekommunikasiya
+                new() { Name = "Mühəndis riyaziyyatı və süni intellekt", FacultyId = it },
+                new() { Name = "Radioelektronika və telekommunikasiya mühəndisliyi", FacultyId = it },
+                new() { Name = "Kompüter texnologiyaları", FacultyId = it },
+                new() { Name = "Kibertəhlükəsizlik", FacultyId = it },
+
+                // Xüsusi Texnika və Texnologiya
+                new() { Name = "Xüsusi texnologiyalar və avadanlıq", FacultyId = special },
+                new() { Name = "Müdafiə sistemləri və texnoloji inteqrasiya", FacultyId = special },
+                new() { Name = "Humanitar fənlər", FacultyId = special },
+                new() { Name = "Xarici dillər", FacultyId = special },
+
+                // Sənaye İqtisadiyyatı və İdarəetmə
+                new() { Name = "Sənaye mühəndisliyi və davamlı iqtisadiyyat", FacultyId = economics },
+                new() { Name = "Biznes idarəetməsi", FacultyId = economics },
+                new() { Name = "Rəqəmsal iqtisadiyyat və maliyyə texnologiyaları", FacultyId = economics },
+            };
+
+            foreach (var request in departments)
+            {
+                await mediator.Send(request);
+            }
+        }
+
+        private async Task SeedTeachersAsync()
+        {
+            // Do not use GetAll().Any() — one manually registered teacher would skip all 21 seed rows.
+            // Skip only when this seed FIN already exists (same idea as idempotent student seed per FIN).
+            var teachers = new List<TeacherRegisterRequest>
+            {
+                new() { SerialNumber = "MUE0100001", FinCode = "TM01001" },
+                new() { SerialNumber = "MUE0100002", FinCode = "TM01002" },
+                new() { SerialNumber = "MUE0100003", FinCode = "TM01003" },
+                new() { SerialNumber = "MUE0100004", FinCode = "TM01004" },
+                new() { SerialNumber = "MUE0100005", FinCode = "TM01005" },
+                new() { SerialNumber = "MUE0100006", FinCode = "TM01006" },
+                new() { SerialNumber = "MUE0100007", FinCode = "TM01007" },
+                new() { SerialNumber = "MUE0100008", FinCode = "TM01008" },
+                new() { SerialNumber = "MUE0100009", FinCode = "TM01009" },
+                new() { SerialNumber = "MUE0100010", FinCode = "TM01010" },
+                new() { SerialNumber = "MUE0100011", FinCode = "TM01011" },
+                new() { SerialNumber = "MUE0100012", FinCode = "TM01012" },
+                new() { SerialNumber = "MUE0100013", FinCode = "TM01013" },
+                new() { SerialNumber = "MUE0100014", FinCode = "TM01014" },
+                new() { SerialNumber = "MUE0100015", FinCode = "TM01015" },
+                new() { SerialNumber = "MUE0100016", FinCode = "TM01016" },
+                new() { SerialNumber = "MUE0100017", FinCode = "TM01017" },
+                new() { SerialNumber = "MUE0100018", FinCode = "TM01018" },
+                new() { SerialNumber = "MUE0100019", FinCode = "TM01019" },
+                new() { SerialNumber = "MUE0100020", FinCode = "TM01020" },
+                new() { SerialNumber = "MUE0100021", FinCode = "TM01021" }
+            };
+
+            foreach (var request in teachers)
+            {
+                var fin = request.FinCode.Trim().ToUpperInvariant();
+                if (await teacherRepository.GetByFinCodeAsync(fin, CancellationToken.None) is not null)
+                    continue;
+
+                try
+                {
+                    await mediator.Send(request);
+                }
+                catch (ConflictException)
+                {
+                    // Already registered — skip
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Teacher seed failed for {request.FinCode}: {ex.Message}");
+                }
+            }
+        }
+
+        public async Task SeedStudentsAsync()
+        {
+            if (studentRepository.GetAll().Any())
+                return;
+
+            var students = new List<StudentRegisterRequest>
+            {
+                new() { SerialNumber = "AZE8392014", FinCode = "AB8392K" },
+                new() { SerialNumber = "AZE7482931", FinCode = "CD7482M" },
+                new() { SerialNumber = "AZE5928374", FinCode = "EF5928P" },
+                new() { SerialNumber = "AZE1029384", FinCode = "GH1029R" },
+                new() { SerialNumber = "AZE5839201", FinCode = "IJ5839T" },
+                new() { SerialNumber = "AZE4728193", FinCode = "KL4728V" },
+                new() { SerialNumber = "AZE3617284", FinCode = "MN3617X" },
+                new() { SerialNumber = "AZE2506173", FinCode = "OP2506Z" },
+                new() { SerialNumber = "AZE1495062", FinCode = "QR1495B" },
+                new() { SerialNumber = "AZE9384751", FinCode = "ST9384D" },
+                new() { SerialNumber = "AZE8273640", FinCode = "UV8273F" },
+                new() { SerialNumber = "AZE7162539", FinCode = "WX7162H" },
+                new() { SerialNumber = "AZE6051428", FinCode = "YZ6051J" },
+                new() { SerialNumber = "AZE5940317", FinCode = "AA5940L" },
+                new() { SerialNumber = "AZE4839206", FinCode = "BB4839N" },
+                new() { SerialNumber = "AZE3728195", FinCode = "CC3728Q" },
+                new() { SerialNumber = "AZE2617084", FinCode = "DD2617S" },
+                new() { SerialNumber = "AZE1506973", FinCode = "EE1506U" },
+                new() { SerialNumber = "AZE0495862", FinCode = "FF0495W" },
+                new() { SerialNumber = "AZE9384750", FinCode = "GG9384Y" },
+                new() { SerialNumber = "AZE8273649", FinCode = "HH8273A" },
+                new() { SerialNumber = "AZE7162538", FinCode = "II7162C" },
+                new() { SerialNumber = "AZE6051427", FinCode = "JJ6051E" },
+                new() { SerialNumber = "AZE5940316", FinCode = "KK5940G" },
+                new() { SerialNumber = "AZE4839205", FinCode = "LL4839I" },
+                new() { SerialNumber = "AZE3728194", FinCode = "MM3728K" },
+                new() { SerialNumber = "AZE2617083", FinCode = "NN2617M" },
+                new() { SerialNumber = "AZE1506972", FinCode = "OO1506O" },
+                new() { SerialNumber = "AZE0495861", FinCode = "PP0495Q" },
+                new() { SerialNumber = "AZE9384759", FinCode = "QQ9384S" },
+                new() { SerialNumber = "AZE8273648", FinCode = "RR8273U" },
+                new() { SerialNumber = "AZE7162537", FinCode = "SS7162W" },
+                new() { SerialNumber = "AZE6051426", FinCode = "TT6051Y" },
+                new() { SerialNumber = "AZE5940315", FinCode = "UU5940A" },
+                new() { SerialNumber = "AZE4839204", FinCode = "VV4839C" },
+                new() { SerialNumber = "AZE3728193", FinCode = "WW3728E" },
+                new() { SerialNumber = "AZE2617082", FinCode = "XX2617G" },
+                new() { SerialNumber = "AZE1506971", FinCode = "YY1506I" },
+                new() { SerialNumber = "AZE0495860", FinCode = "ZZ0495K" },
+                new() { SerialNumber = "AZE9384758", FinCode = "AB9384M" },
+                new() { SerialNumber = "AZE8273647", FinCode = "CD8273O" },
+                new() { SerialNumber = "AZE7162536", FinCode = "EF7162Q" },
+                new() { SerialNumber = "AZE6051425", FinCode = "GH6051S" },
+                new() { SerialNumber = "AZE5940314", FinCode = "IJ5940U" },
+                new() { SerialNumber = "AZE4839203", FinCode = "KL4839W" },
+                new() { SerialNumber = "AZE3728192", FinCode = "MN3728Y" },
+                new() { SerialNumber = "AZE2617081", FinCode = "OP2617A" },
+                new() { SerialNumber = "AZE1506970", FinCode = "QR1506C" },
+                new() { SerialNumber = "AZE0495859", FinCode = "ST0495E" },
+                new() { SerialNumber = "AZE9384757", FinCode = "UV9384G" }
+            };
+
+            foreach (var request in students)
+            {
+                try
+                {
+                    await mediator.Send(request);
+                }
+                catch (ConflictException)
+                {
+                    // Already registered — skip
+                }
+                catch (Exception ex)
+                {
+                    // Log and continue — don't let one failure stop the rest
+                    Console.WriteLine($"Seed failed for {request.FinCode}: {ex.Message}");
+                }
+            }
+        }
+
+        private async Task SeedGroupsAsync()
+        {
+            if (groupRepository.GetAll().Any())
+                return;
+
+            var departments = departmentRepository.GetAll()
+                .OrderBy(d => d.Id)
+                .ToList();
+
+            foreach (var dept in departments)
+            {
+                var studentIds = studentRepository.GetAll()
+                    .Where(s => s.DepartmentId == dept.Id)
+                    .Select(s => s.Id)
+                    .ToList();
+
+                var request = new GroupAddRequest
+                {
+                    Name = "1-ci qrup",
+                    Year = 1,
+                    DepartmentId = dept.Id,
+                    StudentIds = studentIds,
+                    LessonIds = new List<int>()
+                };
+
+                try
+                {
+                    await mediator.Send(request);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Group seed failed for department {dept.Id} ({dept.Name}): {ex.Message}");
+                }
+            }
+        }
+
+        private async Task SeedRoomsAsync()
+        {
+            if (roomRepository.GetAll().Any(r => r.BuildingId == 1 && r.Number == 101))
+                return;
+
+            var rooms = new List<RoomAddRequest>
+            {
+                new() { BuildingId = 1, Number = 101 },
+                new() { BuildingId = 1, Number = 102 },
+                new() { BuildingId = 1, Number = 103 },
+                new() { BuildingId = 2, Number = 201 },
+                new() { BuildingId = 2, Number = 202 },
+                new() { BuildingId = 3, Number = 301 },
+                new() { BuildingId = 3, Number = 302 }
+            };
+
+            foreach (var request in rooms)
+            {
+                try
+                {
+                    await mediator.Send(request);
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Room seed failed {request.BuildingId}-{request.Number}: {ex.Message}");
+                }
+            }
+        }
+
+        private static string SubjectTitleForDepartment(string departmentName)
+        {
+            const string prefix = "Ümumi kurikulum — ";
+            var max = 200 - prefix.Length;
+            if (departmentName.Length <= max)
+                return prefix + departmentName;
+            return prefix + departmentName[..max];
+        }
+
+        private async Task SeedSubjectsAsync()
+        {
+            var departments = departmentRepository.GetAll().OrderBy(d => d.Id).ToList();
+
+            foreach (var dept in departments)
+            {
+                if (subjectRepository.GetAll().Any(s => s.DepartmentId == dept.Id))
+                    continue;
+
+                try
+                {
+                    await mediator.Send(new SubjectAddRequest
+                    {
+                        Name = SubjectTitleForDepartment(dept.Name),
+                        DepartmentId = dept.Id
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Subject seed failed for department {dept.Id}: {ex.Message}");
+                }
+            }
+        }
+
+        private async Task SeedLessonsAsync()
+        {
+            var departments = departmentRepository.GetAll().OrderBy(d => d.Id).ToList();
+
+            foreach (var dept in departments)
+            {
+                var subject = subjectRepository.GetAll()
+                    .FirstOrDefault(s => s.DepartmentId == dept.Id);
+                if (subject is null)
+                    continue;
+
+                var teacher = teacherRepository.GetAll()
+                    .FirstOrDefault(t => t.TeacherDepartments.Any(td => td.DepartmentId == dept.Id));
+                if (teacher is null)
+                    continue;
+
+                if (lessonRepository.GetAll().Any(l =>
+                        l.TeacherId == teacher.Id && l.SubjectId == subject.Id))
+                    continue;
+
+                try
+                {
+                    await mediator.Send(new LessonAddRequest
+                    {
+                        TeacherId = teacher.Id,
+                        SubjectId = subject.Id
+                    });
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Lesson seed failed dept {dept.Id}: {ex.Message}");
+                }
+            }
+        }
+
+        private async Task SeedLessonSchedulesAsync()
+        {
+            var roomIds = roomRepository.GetAll()
+                .Where(r => r.Number > 0)
+                .OrderBy(r => r.Id)
+                .Select(r => r.Id)
+                .ToList();
+
+            if (roomIds.Count == 0)
+            {
+                Console.WriteLine("LessonSchedule seed skipped: no rooms with Number > 0.");
+                return;
+            }
+
+            // Mix week parity so portal Üst/Alt filters show real differences (admin can still edit later).
+            var templates = new (DayOfWeek Dow, TimeSpan Start, TimeSpan End, LessonType Type, WeekType Week)[]
+            {
+                (DayOfWeek.Monday, new TimeSpan(9, 0, 0), new TimeSpan(10, 30, 0), LessonType.Mühazirə, WeekType.Both),
+                (DayOfWeek.Wednesday, new TimeSpan(11, 0, 0), new TimeSpan(12, 30, 0), LessonType.Laboratoriya, WeekType.Upper),
+                (DayOfWeek.Friday, new TimeSpan(14, 0, 0), new TimeSpan(15, 30, 0), LessonType.Məşğələ, WeekType.Lower)
+            };
+
+            var groups = groupRepository.GetAll().OrderBy(g => g.Id).ToList();
+
+            foreach (var group in groups)
+            {
+                if (lessonScheduleRepository.GetAll().Any(s => s.GroupId == group.Id))
+                    continue;
+
+                var subject = subjectRepository.GetAll()
+                    .FirstOrDefault(s => s.DepartmentId == group.DepartmentId);
+                if (subject is null)
+                    continue;
+
+                var lesson = lessonRepository.GetAll()
+                    .FirstOrDefault(l => l.SubjectId == subject.Id);
+                if (lesson is null)
+                    continue;
+
+                var roomIndex = 0;
+                foreach (var slot in templates)
+                {
+                    var roomId = roomIds[roomIndex % roomIds.Count];
+                    roomIndex++;
+
+                    try
+                    {
+                        await mediator.Send(new LessonScheduleAddRequest
+                        {
+                            LessonId = lesson.Id,
+                            GroupId = group.Id,
+                            DayOfWeek = slot.Dow,
+                            StartTime = slot.Start,
+                            EndTime = slot.End,
+                            RoomId = roomId,
+                            LessonType = slot.Type,
+                            WeekType = slot.Week
+                        });
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine(
+                            $"LessonSchedule seed failed group {group.Id} {slot.Dow}: {ex.Message}");
+                    }
+                }
+            }
+        }
+    }
+}

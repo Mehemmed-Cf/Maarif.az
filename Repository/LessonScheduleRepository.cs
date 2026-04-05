@@ -1,0 +1,123 @@
+using Application.Repositories;
+using DataAccessLayer.Migrations;
+using Domain.Models.Stables;
+using Infrastructure.Abstracts;
+using Infrastructure.Concrates;
+using Microsoft.EntityFrameworkCore;
+using System.Linq.Expressions;
+
+namespace Repository
+{
+    public class LessonScheduleRepository
+        : AsyncRepository<Domain.Models.Entities.LessonSchedule>, ILessonScheduleRepository
+    {
+        private readonly DataContext context;
+
+        public LessonScheduleRepository(DataContext context) : base(context)
+        {
+            this.context = context;
+        }
+
+        public async Task<IReadOnlyList<Domain.Models.Entities.LessonSchedule>> GetByGroupAsync(
+            int groupId,
+            WeekType? weekType,
+            CancellationToken ct = default)
+        {
+            var query = context.LessonSchedules
+                .AsNoTracking()
+                .Include(s => s.Lesson)
+                    .ThenInclude(l => l.Teacher)
+                .Include(s => s.Lesson)
+                    .ThenInclude(l => l.Subject)
+                .Include(s => s.Room)
+                    .ThenInclude(r => r.Building)
+                .Include(s => s.Group)
+                .Where(s => s.GroupId == groupId);
+
+            if (weekType.HasValue && weekType.Value != WeekType.Both)
+            {
+                query = query.Where(s =>
+                    s.WeekType == WeekType.Both ||
+                    s.WeekType == weekType.Value);
+            }
+
+            return await query
+                .OrderBy(s => s.DayOfWeek)
+                .ThenBy(s => s.StartTime)
+                .ToListAsync(ct);
+        }
+
+        public async Task<IReadOnlyList<Domain.Models.Entities.LessonSchedule>> GetByTeacherAsync(
+            int teacherId,
+            WeekType? weekType,
+            CancellationToken ct = default)
+        {
+            var query = context.LessonSchedules
+                .AsNoTracking()
+                .Include(s => s.Lesson)
+                    .ThenInclude(l => l.Teacher)
+                .Include(s => s.Lesson)
+                    .ThenInclude(l => l.Subject)
+                .Include(s => s.Room)
+                    .ThenInclude(r => r.Building)
+                .Include(s => s.Group)
+                .Where(s => s.Lesson.TeacherId == teacherId);
+
+            if (weekType.HasValue && weekType.Value != WeekType.Both)
+            {
+                query = query.Where(s =>
+                    s.WeekType == WeekType.Both ||
+                    s.WeekType == weekType.Value);
+            }
+
+            return await query
+                .OrderBy(s => s.DayOfWeek)
+                .ThenBy(s => s.StartTime)
+                .ToListAsync(ct);
+        }
+
+        public async Task<IReadOnlyList<Domain.Models.Entities.LessonSchedule>> GetAllWithIncludesAsync(CancellationToken ct = default)
+        {
+            return await context.LessonSchedules
+                .AsNoTracking()
+                .Include(s => s.Lesson)
+                    .ThenInclude(l => l.Teacher)
+                .Include(s => s.Lesson)
+                    .ThenInclude(l => l.Subject)
+                .Include(s => s.Room)
+                    .ThenInclude(r => r.Building)
+                .Include(s => s.Group)
+                .ToListAsync(ct);
+        }
+
+        public async Task<Domain.Models.Entities.LessonSchedule?> GetByIdWithIncludesAsync(int id, CancellationToken ct = default)
+        {
+            return await context.LessonSchedules
+                .AsNoTracking()
+                .Include(s => s.Lesson)
+                    .ThenInclude(l => l.Teacher)
+                .Include(s => s.Lesson)
+                    .ThenInclude(l => l.Subject)
+                .Include(s => s.Room)
+                    .ThenInclude(r => r.Building)
+                .Include(s => s.Group)
+                .FirstOrDefaultAsync(s => s.Id == id, ct);
+        }
+
+        // Explicit interface implementations to resolve ambiguity and ensure correct type usage
+        IQueryable<Domain.Models.Entities.LessonSchedule> IAsyncRepository<Domain.Models.Entities.LessonSchedule>.GetAll(Expression<Func<Domain.Models.Entities.LessonSchedule, bool>> expression)
+            => base.GetAll(expression);
+
+        Task<Domain.Models.Entities.LessonSchedule> IAsyncRepository<Domain.Models.Entities.LessonSchedule>.GetAsync(Expression<Func<Domain.Models.Entities.LessonSchedule, bool>> expression, CancellationToken cancellationToken)
+            => base.GetAsync(expression, cancellationToken);
+
+        Task<Domain.Models.Entities.LessonSchedule> IAsyncRepository<Domain.Models.Entities.LessonSchedule>.AddAsync(Domain.Models.Entities.LessonSchedule entity, CancellationToken cancellationToken)
+            => base.AddAsync(entity, cancellationToken);
+
+        Task<Domain.Models.Entities.LessonSchedule> IAsyncRepository<Domain.Models.Entities.LessonSchedule>.EditAsync(Domain.Models.Entities.LessonSchedule entity)
+            => base.EditAsync(entity);
+
+        void IAsyncRepository<Domain.Models.Entities.LessonSchedule>.Remove(Domain.Models.Entities.LessonSchedule entity)
+            => base.Remove(entity);
+    }
+}

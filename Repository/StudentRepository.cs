@@ -1,4 +1,4 @@
-﻿using Application.Modules.StudentsModule;
+using Application.Modules.StudentsModule;
 using Application.Repositories;
 using AutoMapper;
 using AutoMapper.QueryableExtensions;
@@ -28,18 +28,35 @@ namespace Repository
             .AsNoTracking()
             .FirstOrDefaultAsync(s => s.FinCode == finCode, ct);
 
-            public async Task<Student?> GetByStudentNumberAsync(
-                string studentNumber, CancellationToken ct = default)
-                => await context.Students
-                    .AsNoTracking()
-                    .FirstOrDefaultAsync(s => s.StudentNumber == studentNumber, ct);
+        public async Task<Student?> GetByDocumentSerialNumberAsync(
+            string normalizedSerial, CancellationToken ct = default)
+            => await context.Students
+                .AsNoTracking()
+                .FirstOrDefaultAsync(
+                    s => s.DocumentSerialNumber != null && s.DocumentSerialNumber == normalizedSerial,
+                    ct);
 
-            public async Task<IReadOnlyList<StudentListDto>> GetAllAsync(
-                CancellationToken ct = default)
-                => await context.Students
-                    .AsNoTracking()
-                    .ProjectTo<StudentListDto>(mapper.ConfigurationProvider)
-                    .ToListAsync(ct);
+        public async Task<Student?> GetByStudentNumberAsync(
+            string studentNumber, CancellationToken ct = default)
+            => await context.Students
+                .AsNoTracking()
+                .FirstOrDefaultAsync(s => s.StudentNumber == studentNumber, ct);
+
+        public async Task<Student?> GetByUserIdWithDetailsAsync(int userId, CancellationToken ct = default)
+            => await db.Set<Student>()
+                .AsNoTracking()
+                .Include(s => s.Department!)
+                    .ThenInclude(d => d.Faculty)
+                .Include(s => s.StudentGroups)
+                    .ThenInclude(sg => sg.Group)
+                .FirstOrDefaultAsync(s => s.UserId == userId, ct);
+
+        public async Task<IReadOnlyList<StudentListDto>> GetAllAsync(
+            CancellationToken ct = default)
+            => await context.Students
+                .AsNoTracking()
+                .ProjectTo<StudentListDto>(mapper.ConfigurationProvider)
+                .ToListAsync(ct);
 
         public async Task<Student?> GetByIdWithDetailsAsync(int id, CancellationToken ct = default)
         {

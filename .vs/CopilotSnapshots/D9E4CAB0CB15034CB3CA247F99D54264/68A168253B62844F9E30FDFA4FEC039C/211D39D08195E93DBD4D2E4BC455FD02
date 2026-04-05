@@ -1,0 +1,49 @@
+﻿using Domain.Models.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace DataAccessLayer.Configurations
+{
+    public class LessonScheduleConfiguration : IEntityTypeConfiguration<LessonSchedule>
+    {
+        public void Configure(EntityTypeBuilder<LessonSchedule> builder)
+        {
+            builder.ToTable("LessonSchedules");
+            builder.HasKey(s => s.Id);
+
+            builder.Property(s => s.Room)
+                   .IsRequired()
+                   .HasMaxLength(50);
+
+            builder.Property(s => s.DayOfWeek)
+                   .HasConversion<string>()
+                   .HasMaxLength(15);
+
+            builder.Property(s => s.LessonType)
+                   .HasConversion<string>()
+                   .HasMaxLength(20);
+
+            builder.Property(s => s.WeekType)
+                   .HasConversion<string>()
+                   .HasMaxLength(10);
+
+            builder.HasQueryFilter(s => s.DeletedAt == null);
+
+            builder.HasOne(s => s.Lesson)
+                   .WithMany(l => l.LessonSchedules)
+                   .HasForeignKey(s => s.LessonId)
+                   .OnDelete(DeleteBehavior.Cascade);
+
+            builder.HasOne(s => s.Group)
+                   .WithMany()
+                   .HasForeignKey(s => s.GroupId)
+                   .OnDelete(DeleteBehavior.Restrict);
+
+            builder.HasIndex(s => new { s.LessonId, s.GroupId, s.DayOfWeek, s.StartTime, s.WeekType })
+                   .IsUnique();
+
+            builder.HasIndex(s => s.GroupId);
+            builder.HasIndex(s => s.DayOfWeek);
+        }
+    }
+}

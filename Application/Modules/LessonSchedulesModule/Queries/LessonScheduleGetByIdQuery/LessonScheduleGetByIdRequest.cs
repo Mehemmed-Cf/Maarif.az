@@ -1,0 +1,9 @@
+using MediatR;
+
+namespace Application.Modules.LessonSchedulesModule.Queries.LessonScheduleGetByIdQuery
+{
+    public class LessonScheduleGetByIdRequest : IRequest<LessonScheduleGetByIdResponseDto>
+    {
+        public int Id { get; set; }
+    }
+}

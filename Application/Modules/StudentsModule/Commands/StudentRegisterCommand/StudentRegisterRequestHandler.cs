@@ -1,4 +1,5 @@
-﻿using Application.Repositories;
+using Application.Identity;
+using Application.Repositories;
 using Application.Services;
 using Domain.Models.Entities;
 using Domain.Models.Entities.Membership;
@@ -6,7 +7,6 @@ using Domain.Models.Stables;
 using Infrastructure.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.EntityFrameworkCore.Storage;
 using Polly;
 using Polly.Retry;
 
@@ -18,7 +18,7 @@ namespace Application.Modules.StudentsModule.Commands.StudentRegisterCommand
         private readonly IGovernmentIdentityService governmentIdentityService;
         private readonly IDepartmentRepository departmentRepository;
         private readonly UserManager<AppUser> userManager;
-        private readonly AsyncRetryPolicy<dynamic> _apiRetryPolicy;
+        //private readonly AsyncRetryPolicy<dynamic> _apiRetryPolicy;
 
         private static string GenerateStudentNumber()
         {
@@ -41,90 +41,162 @@ namespace Application.Modules.StudentsModule.Commands.StudentRegisterCommand
 
             // Recommendation C: Configure Polly Retry Policy
             // Retries 3 times with an exponential backoff if a transient error occurs
-            _apiRetryPolicy = Policy<dynamic>
-                .Handle<Exception>() // In production, narrow this down to HttpRequestException or TimeoutException
-                .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
+            //_apiRetryPolicy = Policy<dynamic>
+            //    .Handle<Exception>() // In production, narrow this down to HttpRequestException or TimeoutException
+            //    .WaitAndRetryAsync(3, retryAttempt => TimeSpan.FromSeconds(Math.Pow(2, retryAttempt)));
         }
+
         public async Task<StudentRegisterResponseDto> Handle(StudentRegisterRequest request, CancellationToken cancellationToken)
         {
-            // 1. Verify identity against government API
-            //var finData = await governmentIdentityService.VerifyAsync(
-            //    request.SerialNumber, request.FinCode, cancellationToken);
-
-            var finData = await _apiRetryPolicy.ExecuteAsync(async () =>
-                await governmentIdentityService.VerifyAsync(request.SerialNumber, request.FinCode, cancellationToken)
-            );
+            var finData = await governmentIdentityService.VerifyAsync(
+                request.SerialNumber, request.FinCode, cancellationToken);
 
             if (finData is null)
-                throw new BadRequestException(
-                    "FIN kod və ya sənədin seriya nömrəsi yanlışdır.");
+                throw new BadRequestException("FIN kod və ya sənədin seriya nömrəsi yanlışdır.");
 
-            using (IDbContextTransaction transaction = await studentRepository.BeginTransactionAsync(cancellationToken))
+            var finNorm = IdentityDocumentSerialNormalizer.Normalize(request.FinCode);
+            var serialNorm = IdentityDocumentSerialNormalizer.Normalize(request.SerialNumber);
+            if (string.IsNullOrEmpty(serialNorm))
+                throw new BadRequestException("Sənədin seriya nömrəsi tələb olunur.");
+
+            var existingByFin = await studentRepository
+                .GetByFinCodeAsync(finNorm, cancellationToken);
+
+            if (existingByFin is not null)
+                throw new ConflictException("Bu FIN kod artıq qeydiyyatdan keçmişdir.");
+
+            var existingBySerial = await studentRepository
+                .GetByDocumentSerialNumberAsync(serialNorm, cancellationToken);
+
+            if (existingBySerial is not null)
+                throw new ConflictException("Bu sənədin seriya nömrəsi artıq qeydiyyatdan keçmişdir.");
+
+            var departmentName = finData.Department.ToSeededDepartmentName();
+            var department = await departmentRepository
+                .GetByNameAsync(departmentName, cancellationToken);
+
+            if (department is null)
+                throw new BadRequestException($"'{departmentName}' şöbəsi sistemdə mövcud deyil.");
+
+            const string defaultPassword = "Education123!";
+            var studentNumber = GenerateStudentNumber();
+
+            var user = new AppUser
             {
-                try
-                {
-                    // 2. Guard: already registered
-                    var existing = await studentRepository
-                        .GetByFinCodeAsync(request.FinCode.Trim().ToUpper(), cancellationToken);
+                UserName = studentNumber,
+                Email = $"{studentNumber}@lms.edu.az"
+            };
 
-                    if (existing is not null)
-                        throw new ConflictException(
-                            "Bu FIN kod artıq qeydiyyatdan keçmişdir.");
+            var result = await userManager.CreateAsync(user, defaultPassword);
+            if (!result.Succeeded)
+                throw new BadRequestException(
+                    string.Join(", ", result.Errors.Select(e => e.Description)));
 
-                    var departmentName = finData.Department.ToString();
-                    var department = await departmentRepository
-                        .GetByNameAsync(departmentName, cancellationToken);
+            await userManager.AddToRoleAsync(user, "STUDENT");
 
-                    if (department is null)
-                        throw new BadRequestException(
-                            $"'{departmentName}' şöbəsi sistemdə mövcud deyil.");
+            var student = new Student
+            {
+                FullName = finData.FullName,
+                FatherName = finData.FatherName,
+                BirthDate = finData.BirthDate,
+                Gender = finData.Gender,
+                FinCode = finNorm,
+                DocumentSerialNumber = serialNorm,
+                StudentNumber = studentNumber,
+                Status = StatusType.Active,
+                MobileNumber = string.Empty,
+                UserId = user.Id,
+                DepartmentId = department.Id,
+                EducationType = finData.Education,
+                Year = 1,
+                Grade = GradeType.F
+            };
 
-                    // 3. Create Identity user
-                    const string defaultPassword = "Education123!";
-                    var studentNumber = GenerateStudentNumber();
+            await studentRepository.AddAsync(student, cancellationToken);
+            await studentRepository.SaveAsync(cancellationToken);
 
-                    var user = new AppUser
-                    {
-                        UserName = studentNumber,
-                        Email = $"{studentNumber}@lms.edu.az"
-                    };
-
-                    var result = await userManager.CreateAsync(user, defaultPassword);
-                    if (!result.Succeeded)
-                        throw new BadRequestException(
-                            string.Join(", ", result.Errors.Select(e => e.Description)));
-
-                    await userManager.AddToRoleAsync(user, "STUDENT");
-
-                    // 4. Create student entity (audit fields set by DataContext.SaveChangesAsync)
-                    var student = new Student
-                    {
-                        FullName = finData.FullName,
-                        FatherName = finData.FatherName,
-                        BirthDate = finData.BirthDate,
-                        Gender = finData.Gender,
-                        FinCode = finData.FinCode,
-                        StudentNumber = studentNumber,
-                        Status = StatusType.Active,
-                        MobileNumber = string.Empty,
-                        UserId = user.Id,
-                        DepartmentId = department.Id,
-                        EducationType = finData.Education,
-                        Year = 1,
-                        Grade = GradeType.F
-                    };
-
-                    await studentRepository.AddAsync(student, cancellationToken);
-                    await studentRepository.SaveAsync(cancellationToken);
-
-                    return new StudentRegisterResponseDto(studentNumber, defaultPassword);
-                } catch (Exception)
-                {
-                    // If any error occurs (DB timeout, constraint violation, etc.), roll back
-                    await transaction.RollbackAsync(cancellationToken);
-                    throw;
-                }
-            }
+            return new StudentRegisterResponseDto(studentNumber, defaultPassword);
         }
+        //public async Task<StudentRegisterResponseDto> Handle(StudentRegisterRequest request, CancellationToken cancellationToken)
+        //{
+        //    // 1. Verify identity against government API
+        //    //var finData = await governmentIdentityService.VerifyAsync(
+        //    //    request.SerialNumber, request.FinCode, cancellationToken);
+
+        //    var finData = await _apiRetryPolicy.ExecuteAsync(async () =>
+        //        await governmentIdentityService.VerifyAsync(request.SerialNumber, request.FinCode, cancellationToken)
+        //    );
+
+        //    if (finData is null)
+        //        throw new BadRequestException(
+        //            "FIN kod və ya sənədin seriya nömrəsi yanlışdır.");
+
+        //    using (IDbContextTransaction transaction = await studentRepository.BeginTransactionAsync(cancellationToken))
+        //    {
+        //        try
+        //        {
+        //            // 2. Guard: already registered
+        //            var existing = await studentRepository
+        //                .GetByFinCodeAsync(request.FinCode.Trim().ToUpper(), cancellationToken);
+
+        //            if (existing is not null)
+        //                throw new ConflictException(
+        //                    "Bu FIN kod artıq qeydiyyatdan keçmişdir.");
+
+        //            var departmentName = finData.Department.ToString();
+        //            var department = await departmentRepository
+        //                .GetByNameAsync(departmentName, cancellationToken);
+
+        //            if (department is null)
+        //                throw new BadRequestException(
+        //                    $"'{departmentName}' şöbəsi sistemdə mövcud deyil.");
+
+        //            // 3. Create Identity user
+        //            const string defaultPassword = "Education123!";
+        //            var studentNumber = GenerateStudentNumber();
+
+        //            var user = new AppUser
+        //            {
+        //                UserName = studentNumber,
+        //                Email = $"{studentNumber}@lms.edu.az"
+        //            };
+
+        //            var result = await userManager.CreateAsync(user, defaultPassword);
+        //            if (!result.Succeeded)
+        //                throw new BadRequestException(
+        //                    string.Join(", ", result.Errors.Select(e => e.Description)));
+
+        //            await userManager.AddToRoleAsync(user, "STUDENT");
+
+        //            // 4. Create student entity (audit fields set by DataContext.SaveChangesAsync)
+        //            var student = new Student
+        //            {
+        //                FullName = finData.FullName,
+        //                FatherName = finData.FatherName,
+        //                BirthDate = finData.BirthDate,
+        //                Gender = finData.Gender,
+        //                FinCode = finData.FinCode,
+        //                StudentNumber = studentNumber,
+        //                Status = StatusType.Active,
+        //                MobileNumber = string.Empty,
+        //                UserId = user.Id,
+        //                DepartmentId = department.Id,
+        //                EducationType = finData.Education,
+        //                Year = 1,
+        //                Grade = GradeType.F
+        //            };
+
+        //            await studentRepository.AddAsync(student, cancellationToken);
+        //            await studentRepository.SaveAsync(cancellationToken);
+
+        //            return new StudentRegisterResponseDto(studentNumber, defaultPassword);
+        //        } catch (Exception)
+        //        {
+        //            // If any error occurs (DB timeout, constraint violation, etc.), roll back
+        //            await transaction.RollbackAsync(cancellationToken);
+        //            throw;
+        //        }
+        //    }
+        //}
     }
 }

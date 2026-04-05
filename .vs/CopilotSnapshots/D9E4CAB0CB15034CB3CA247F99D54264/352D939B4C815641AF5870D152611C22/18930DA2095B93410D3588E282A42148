@@ -1,0 +1,14 @@
+﻿using Domain.Models.Entities;
+using Domain.Models.Stables;
+using Infrastructure.Abstracts;
+
+namespace Application.Repositories
+{
+    public interface ILessonScheduleRepository : IAsyncRepository<LessonSchedule>
+    {
+        Task<IReadOnlyList<LessonSchedule>> GetByGroupAsync(
+            int groupId,
+            WeekType? weekType,
+            CancellationToken ct = default);
+    }
+}

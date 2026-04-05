@@ -12,6 +12,7 @@
           "AutoMapper": "16.1.1",
           "Autofac.Extensions.DependencyInjection": "10.0.0",
           "DataAccessLayer": "1.0.0",
+          "Domain": "1.0.0",
           "MediatR": "14.1.0",
           "Microsoft.EntityFrameworkCore.Design": "8.0.0",
           "Microsoft.VisualStudio.Azure.Containers.Tools.Targets": "1.22.1",

@@ -1,0 +1,192 @@
+@model Presentation.AppCode.ViewModels.IWeeklyScheduleViewModel
+@using Domain.Models.Stables
+@using Presentation.AppCode
+@{
+    var monday = Model.WeekStart;
+    var tuesday = monday.AddDays(1);
+    var wednesday = monday.AddDays(2);
+    var thursday = monday.AddDays(3);
+    var friday = monday.AddDays(4);
+    var today = DateTime.Today;
+    string DayFmt(DateTime d) => d.ToString("MMM d", System.Globalization.CultureInfo.InvariantCulture);
+    bool IsToday(DateTime d) => d.Date == today.Date;
+    string CardTheme(LessonType t) => t switch
+    {
+        LessonType.Mühazirə => "lecture",
+        LessonType.Laboratoriya => "lab",
+        LessonType.Məşğələ => "practical",
+        _ => "lecture"
+    };
+    var currentWeekJs = Model.CurrentWeekType.ToString();
+}
+<style>
+    .page-header {
+        display:flex; justify-content:space-between; align-items:flex-end;
+        margin-bottom:36px; flex-wrap:wrap; gap:20px;
+    }
+    .page-title h1 {
+        font-size:1.85rem; font-weight:700; color:var(--text-main);
+        margin-bottom:6px; letter-spacing:-.02em;
+    }
+    .page-title p { color:var(--text-muted); font-size:1rem; }
+    .filters {
+        display:flex; gap:12px; flex-wrap:wrap;
+        background:white; padding:6px;
+        border-radius:14px; box-shadow:var(--shadow-sm); border:1px solid var(--border);
+    }
+    .filter-pill {
+        background:transparent; border:none; padding:10px 18px; border-radius:10px;
+        font-size:.88rem; font-family:inherit; color:var(--text-muted); font-weight:600;
+        cursor:pointer; transition:all .2s;
+    }
+    .filter-pill:hover:not(.active) { background:var(--bg-body); color:var(--text-main); }
+    .filter-pill.active { background:var(--primary); color:white; box-shadow:0 4px 12px rgba(2,132,199,.25); }
+    .schedule-grid {
+        display:grid; grid-template-columns:repeat(5,1fr); gap:24px;
+    }
+    @@media (max-width:1200px) {
+        .schedule-grid { grid-template-columns:1fr; }
+    }
+    .day-column { display:flex; flex-direction:column; gap:16px; min-height: 60px; }
+    .day-header { text-align:center; padding-bottom:16px; border-bottom:2px solid var(--border); margin-bottom:8px; }
+    .day-name   { font-weight:700; font-size:1.05rem; color:var(--text-main); }
+    .day-date   { font-size:.85rem; color:var(--text-muted); margin-top:4px; font-weight:500; }
+    .day-header.today { border-bottom-color:var(--primary); }
+    .day-header.today .day-name { color:var(--primary); }
+    .lesson-card {
+        background:var(--bg-surface); border-radius:16px; overflow:hidden;
+        box-shadow:var(--shadow-card); border:1px solid var(--border);
+        transition:transform .25s cubic-bezier(.4,0,.2,1), box-shadow .25s;
+    }
+    .lesson-card:hover { transform:translateY(-2px); box-shadow:var(--shadow-hover); }
+    .lesson-card.is-filtered-out { display: none !important; }
+    .card-strip { height:6px; width:100%; }
+    .card-content { padding:20px; }
+    .badge-type {
+        display:inline-flex; align-items:center;
+        padding:6px 10px; border-radius:8px;
+        font-size:.72rem; font-weight:700; letter-spacing:.04em;
+        margin-bottom:14px;
+    }
+    .lesson-title { font-size:1.02rem; font-weight:700; color:var(--text-main); line-height:1.35; margin-bottom:16px; }
+    .lesson-meta  { display:flex; flex-direction:column; gap:10px; font-size:.85rem; color:var(--text-muted); font-weight:500; }
+    .meta-item    { display:flex; align-items:center; gap:8px; }
+    .meta-item i  { color:var(--text-light); font-size:1.1rem; flex-shrink:0; }
+    .card-footer {
+        margin-top:20px; padding-top:16px;
+        border-top:1px dashed var(--border);
+        display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;
+    }
+    .group-code {
+        font-size:.8rem; font-weight:700;
+        background:#f1f5f9; padding:6px 10px; border-radius:8px; color:var(--text-main);
+    }
+    .status-text { font-size:.8rem; font-weight:600; }
+    .lecture   .card-strip { background:var(--lecture-border);   } .lecture   .badge-type { background:var(--lecture-bg);   color:var(--lecture-text);   } .lecture   .status-text { color:var(--lecture-text);   }
+    .lab       .card-strip { background:var(--lab-border);       } .lab       .badge-type { background:var(--lab-bg);       color:var(--lab-text);       } .lab       .status-text { color:var(--lab-text);       }
+    .practical .card-strip { background:var(--practical-border); } .practical .badge-type { background:var(--practical-bg); color:var(--practical-text); } .practical .status-text { color:var(--practical-text); }
+    .day-empty-hint {
+        font-size:.85rem; color:var(--text-muted); text-align:center; padding:20px 12px;
+        border:1px dashed var(--border); border-radius:12px; background:rgba(255,255,255,.6);
+    }
+</style>
+
+<div class="page-header">
+    <div class="page-title">
+        <h1>Həftəlik dərs cədvəli</h1>
+        <p>@monday.ToString("MMMM d", System.Globalization.CultureInfo.InvariantCulture) – @friday.ToString("MMMM d, yyyy", System.Globalization.CultureInfo.InvariantCulture)</p>
+    </div>
+    <div class="filters" role="group" aria-label="Həftə filtri">
+        <button type="button" class="filter-pill" data-filter="all">Hamısı</button>
+        <button type="button" class="filter-pill active" data-filter="current">Cari həftə</button>
+        <button type="button" class="filter-pill" data-filter="upper">Üst həftə</button>
+        <button type="button" class="filter-pill" data-filter="lower">Alt həftə</button>
+    </div>
+</div>
+
+<div class="schedule-grid" id="schedule-grid">
+@{
+    var weekDays = new[] { (DayOfWeek.Monday, monday), (DayOfWeek.Tuesday, tuesday), (DayOfWeek.Wednesday, wednesday), (DayOfWeek.Thursday, thursday), (DayOfWeek.Friday, friday) };
+}
+@foreach (var (dow, date) in weekDays)
+{
+    <div class="day-column" data-day="@dow.ToString()">
+        <div class="day-header @(IsToday(date) ? "today" : "")">
+            <div class="day-name">@dow</div>
+            <div class="day-date">@DayFmt(date)</div>
+        </div>
+        @{
+            var lessons = Model.LessonsFor(dow).ToList();
+        }
+        @if (lessons.Count == 0)
+        {
+            <div class="day-empty-hint" data-empty-hint>Bu gün üçün cədvəl yoxdur.</div>
+        }
+        else
+        {
+            foreach (var lesson in lessons)
+            {
+                var theme = CardTheme(lesson.LessonType);
+                <div class="lesson-card @theme" data-week-type="@lesson.WeekType.ToString()" data-lesson-card>
+                    <div class="card-strip"></div>
+                    <div class="card-content">
+                        <span class="badge-type">@lesson.LessonType</span>
+                        <h3 class="lesson-title">@lesson.SubjectName</h3>
+                        <div class="lesson-meta">
+                            <div class="meta-item"><i class="ph ph-clock"></i>@lesson.StartTime.ToString(@"hh\:mm") – @lesson.EndTime.ToString(@"hh\:mm")</div>
+                            <div class="meta-item"><i class="ph ph-map-pin"></i>@lesson.RoomDisplay</div>
+                            <div class="meta-item"><i class="ph ph-chalkboard-teacher"></i>@lesson.TeacherFullName</div>
+                        </div>
+                        <div class="card-footer">
+                            <span class="group-code">@lesson.GroupName</span>
+                            <span class="status-text">@PortalText.WeekTypeAz(lesson.WeekType)</span>
+                        </div>
+                    </div>
+                </div>
+            }
+            <div class="day-empty-hint" data-filter-empty style="display:none;">Bu filtrə uyğun dərs yoxdur.</div>
+        }
+    </div>
+}
+</div>
+
+<script>
+(function () {
+    const CURRENT_WEEK = @Html.Raw(System.Text.Json.JsonSerializer.Serialize(currentWeekJs));
+    const cards = () => document.querySelectorAll('[data-lesson-card]');
+
+    function weekVisible(filter, weekTypeOnCard) {
+        if (filter === 'all') return true;
+        if (filter === 'upper') return weekTypeOnCard === 'Both' || weekTypeOnCard === 'Upper';
+        if (filter === 'lower') return weekTypeOnCard === 'Both' || weekTypeOnCard === 'Lower';
+        if (filter === 'current') return weekTypeOnCard === 'Both' || weekTypeOnCard === CURRENT_WEEK;
+        return true;
+    }
+
+    function applyFilter(mode) {
+        cards().forEach(card => {
+            const wt = card.getAttribute('data-week-type');
+            const show = weekVisible(mode, wt);
+            card.classList.toggle('is-filtered-out', !show);
+        });
+        document.querySelectorAll('.day-column').forEach(col => {
+            const allCards = col.querySelectorAll('[data-lesson-card]');
+            const visibleCards = col.querySelectorAll('[data-lesson-card]:not(.is-filtered-out)');
+            const filterEmpty = col.querySelector('[data-filter-empty]');
+            if (filterEmpty) {
+                filterEmpty.style.display = (allCards.length > 0 && visibleCards.length === 0) ? 'block' : 'none';
+            }
+        });
+    }
+
+    document.querySelectorAll('.filter-pill').forEach(pill => {
+        pill.addEventListener('click', () => {
+            document.querySelectorAll('.filter-pill').forEach(p => p.classList.remove('active'));
+            pill.classList.add('active');
+            applyFilter(pill.getAttribute('data-filter') || 'all');
+        });
+    });
+
+    applyFilter('current');
+})();
+</script>

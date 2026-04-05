@@ -1,0 +1,16 @@
+﻿using Domain.Models.Stables;
+
+namespace Application.Modules.LessonSchedulesModule.Queries.GetScheduleByGroup
+{
+    public class GetScheduleByGroupResponseDto
+    {
+        public WeekType CurrentWeekType { get; set; }
+        public List<ScheduleDayDto> Days { get; set; } = new();
+    }
+
+    public class ScheduleDayDto
+    {
+        public DayOfWeek DayOfWeek { get; set; }
+        public List<LessonScheduleDto> Lessons { get; set; } = new();
+    }
+}

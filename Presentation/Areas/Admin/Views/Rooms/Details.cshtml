@@ -1,0 +1,72 @@
+@model Application.Modules.RoomsModule.Queries.RoomGetByIdQuery.RoomGetByIdResponseDto
+@{
+    ViewData["Title"] = "Room Details";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Room Details</h4>
+                    <span>Detailed view for room and structural info.</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-controller="Dashboard" asp-action="Index"> <i class="feather icon-home"></i> </a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-action="Index">Rooms</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Details</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Room Information</h5>
+                    <span>Details for tracking where classes are taught.</span>
+                </div>
+                <div class="card-block">
+
+                    <h4 class="sub-title">Structure Information</h4>
+                    <div class="row mb-4">
+                        <div class="col-sm-4">
+                            <label class="control-label text-primary">Room Number</label>
+                            <p class="form-control">@Model.Number</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="control-label text-primary">Floor (Calculated)</label>
+                            <p class="form-control">@Model.Floor - Floor</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="control-label text-primary">Allocated Building</label>
+                            <p class="form-control">@Model.BuildingName</p>
+                        </div>
+                    </div>
+
+                    <div class="form-group text-right m-t-20">
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.Id">
+                            <i class="fa fa-pencil"></i> Edit Room
+                        </a>
+                        <a class="btn btn-primary" asp-action="Index">
+                            <i class="fa fa-arrow-left"></i> Back to List
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

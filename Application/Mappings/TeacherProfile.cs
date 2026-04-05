@@ -1,4 +1,4 @@
-﻿using Application.Modules.TeachersModule;
+using Application.Modules.TeachersModule;
 using Application.Modules.TeachersModule.Commands.TeacherAddCommand;
 using Application.Modules.TeachersModule.Commands.TeacherEditCommand;
 using AutoMapper;
@@ -17,7 +17,9 @@ namespace Application.Mappings
             // This mapping is the "filter"
             // It ensures only Id and Name are pulled from the Department entity
             CreateMap<Department, TeacherDepartmentDto>();
-            CreateMap<TeacherAddRequest, Teacher>();
+            CreateMap<TeacherAddRequest, Teacher>()
+                .ForMember(d => d.FinCode, o => o.Ignore())
+                .ForMember(d => d.TeacherNumber, o => o.Ignore());
             CreateMap<TeacherEditRequest, Teacher>();
         }
     }

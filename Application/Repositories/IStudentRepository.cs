@@ -13,7 +13,9 @@ namespace Application.Repositories
         // GetByIdWithDetailsAsync loads the entity with navigations for the GetById handler.
         Task<Student?> GetByIdWithDetailsAsync(int id, CancellationToken ct = default);
         Task<Student?> GetByFinCodeAsync(string finCode, CancellationToken ct = default);
+        Task<Student?> GetByDocumentSerialNumberAsync(string normalizedSerial, CancellationToken ct = default);
         Task<Student?> GetByStudentNumberAsync(string studentNumber, CancellationToken ct = default);
+        Task<Student?> GetByUserIdWithDetailsAsync(int userId, CancellationToken ct = default);
         Task<IDbContextTransaction> BeginTransactionAsync(CancellationToken cancellationToken);
     }
 }

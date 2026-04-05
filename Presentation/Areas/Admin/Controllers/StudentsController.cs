@@ -1,4 +1,4 @@
-﻿using Application.Modules.StudentsModule.Commands.StudentAddCommand;
+using Application.Modules.StudentsModule.Commands.StudentAddCommand;
 using Application.Modules.StudentsModule.Commands.StudentEditCommand;
 using Application.Modules.StudentsModule.Commands.StudentRemoveCommand;
 using Application.Modules.StudentsModule.Queries.StudentGetAllQuery;
@@ -6,6 +6,7 @@ using Application.Modules.StudentsModule.Queries.StudentGetByIdQuery;
 using Application.Repositories;
 using AutoMapper;
 using Domain.Models.Entities;
+using Infrastructure.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -73,7 +74,23 @@ namespace Presentation.Areas.Admin.Controllers
                 return View(request);
             }
 
-            await mediator.Send(request);
+            try
+            {
+                await mediator.Send(request);
+            }
+            catch (BadRequestException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                PopulateViewBags(request.DepartmentId);
+                return View(request);
+            }
+            catch (ConflictException ex)
+            {
+                ModelState.AddModelError(string.Empty, ex.Message);
+                PopulateViewBags(request.DepartmentId);
+                return View(request);
+            }
+
             return RedirectToAction(nameof(Index));
         }
 

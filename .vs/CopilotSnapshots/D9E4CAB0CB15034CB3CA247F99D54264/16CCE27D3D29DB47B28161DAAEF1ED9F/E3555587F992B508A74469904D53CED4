@@ -1,0 +1,61 @@
+﻿using Application.Repositories;
+using Domain.Models.Stables;
+using Infrastructure.Abstracts;
+using MediatR;
+
+namespace Application.Modules.LessonSchedulesModule.Queries.GetScheduleByGroup
+{
+    public class GetScheduleByGroupQueryHandler
+        : IRequestHandler<GetScheduleByGroupRequest, GetScheduleByGroupResponseDto>
+    {
+        private readonly ILessonScheduleRepository scheduleRepository;
+        private readonly IWeekCalculatorService weekCalculator;
+
+        public GetScheduleByGroupQueryHandler(
+            ILessonScheduleRepository scheduleRepository,
+            IWeekCalculatorService weekCalculator)
+        {
+            this.scheduleRepository = scheduleRepository;
+            this.weekCalculator = weekCalculator;
+        }
+
+        public async Task<GetScheduleByGroupResponseDto> Handle(
+            GetScheduleByGroupRequest request,
+            CancellationToken cancellationToken)
+        {
+            var currentWeek = weekCalculator.GetCurrentWeekType();
+            var filter = request.WeekType ?? WeekType.Both;
+
+            var schedules = await scheduleRepository
+                .GetByGroupAsync(request.GroupId, filter, cancellationToken);
+
+            var days = schedules
+                .GroupBy(s => s.DayOfWeek)
+                .OrderBy(g => g.Key)
+                .Select(g => new ScheduleDayDto
+                {
+                    DayOfWeek = g.Key,
+                    Lessons = g.Select(s => new LessonScheduleDto
+                    {
+                        Id = s.Id,
+                        SubjectName = s.Lesson.Subject.Name,
+                        TeacherFullName = s.Lesson.Teacher.FullName,
+                        GroupName = s.Group.Name,
+                        DayOfWeek = s.DayOfWeek,
+                        StartTime = s.StartTime,
+                        EndTime = s.EndTime,
+                        RoomId = s.RoomId,
+                        RoomDisplay = s.Room != null ? $"{s.Room.Building?.Id}-{s.Room.Number}" : "N/A",
+                        LessonType = s.LessonType,
+                        WeekType = s.WeekType
+                    }).ToList()
+                }).ToList();
+
+            return new GetScheduleByGroupResponseDto
+            {
+                CurrentWeekType = currentWeek,
+                Days = days
+            };
+        }
+    }
+}

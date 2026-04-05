@@ -1,0 +1,175 @@
+@model Application.Modules.StudentsModule.Queries.GetStudentPortalProfileQuery.StudentPortalProfileDto
+@using Presentation.AppCode
+@{
+    ViewBag.Title = "Şəxsi məlumat";
+    ViewBag.PortalFullName = Model.FullName;
+    ViewBag.PortalBadge = Model.StudentNumber;
+    ViewBag.PortalInitials = PortalText.InitialsFrom(Model.FullName);
+    ViewBag.PortalActiveNav = "profile";
+    ViewBag.PortalIsTeacher = false;
+    ViewBag.PortalBreadcrumb = "Şəxsi məlumat";
+}
+
+@section Head {
+<style>
+    .profile-hero {
+        position: relative;
+        margin: -12px -8px 32px -8px;
+        padding: 48px 40px 56px 40px;
+        border-radius: 0 0 24px 24px;
+        background: linear-gradient(135deg, #0c4a6e 0%, #0369a1 45%, #0284c7 100%);
+        color: #fff;
+        display: flex;
+        align-items: flex-end;
+        gap: 28px;
+        flex-wrap: wrap;
+    }
+    .profile-hero-avatar {
+        width: 96px; height: 96px; border-radius: 24px;
+        background: rgba(255,255,255,.2);
+        border: 3px solid rgba(255,255,255,.35);
+        display: flex; align-items: center; justify-content: center;
+        font-size: 2rem; font-weight: 800; letter-spacing: -0.03em;
+        margin-top: -72px;
+        box-shadow: 0 12px 32px rgba(0,0,0,.15);
+    }
+    .profile-hero-text h1 { font-size: 1.65rem; font-weight: 700; letter-spacing: .02em; margin-bottom: 6px; }
+    .profile-hero-text p { font-size: .95rem; opacity: .9; font-weight: 500; }
+    .profile-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 24px;
+        align-items: start;
+    }
+    @@media (max-width: 960px) { .profile-grid { grid-template-columns: 1fr; } }
+    .info-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border);
+        border-radius: 20px;
+        padding: 28px;
+        box-shadow: var(--shadow-card);
+    }
+    .info-card h2 {
+        font-size: 1.1rem; font-weight: 700; color: var(--text-main);
+        margin-bottom: 22px;
+        padding-bottom: 14px;
+        border-bottom: 2px solid var(--border);
+    }
+    .field-row {
+        display: grid;
+        grid-template-columns: minmax(120px, 38%) 1fr;
+        gap: 16px;
+        align-items: center;
+        padding: 14px 0;
+        border-bottom: 1px solid var(--border);
+        font-size: .95rem;
+    }
+    .field-row:last-child { border-bottom: none; }
+    .field-label { color: var(--text-muted); font-weight: 600; }
+    .field-value {
+        background: #f8fafc;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px 14px;
+        color: var(--text-main);
+        font-weight: 500;
+    }
+    .pill-gender {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: var(--primary-light);
+        color: var(--primary);
+        border: 1px solid rgba(2,132,199,.2);
+        border-radius: 999px;
+        padding: 8px 14px;
+        font-weight: 600;
+        font-size: .9rem;
+    }
+    .stat-row {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 16px;
+    }
+    @@media (max-width: 720px) { .stat-row { grid-template-columns: 1fr; } }
+    .stat-box {
+        background: linear-gradient(180deg, #f8fafc, #fff);
+        border: 1px solid var(--border);
+        border-radius: 16px;
+        padding: 20px;
+        text-align: center;
+    }
+    .stat-box .k { font-size: .78rem; color: var(--text-muted); font-weight: 600; text-transform: uppercase; letter-spacing: .04em; margin-bottom: 8px; }
+    .stat-box .v { font-size: 1.05rem; font-weight: 700; color: var(--text-main); }
+    .stack-gap { display: flex; flex-direction: column; gap: 18px; }
+</style>
+}
+
+<div class="profile-hero">
+    <div class="profile-hero-avatar">@PortalText.InitialsFrom(Model.FullName)</div>
+    <div class="profile-hero-text">
+        <h1>@Model.FullName</h1>
+        <p>Tələbə nömrəsi: <strong>@Model.StudentNumber</strong></p>
+    </div>
+</div>
+
+<div class="profile-grid">
+    <div class="info-card">
+        <h2>Şəxsi məlumatlarım</h2>
+        <div class="field-row">
+            <span class="field-label">Ata adı</span>
+            <div class="field-value">@Model.FatherName</div>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Cins</span>
+            <div><span class="pill-gender"><i class="ph ph-user"></i> @Model.GenderDisplay</span></div>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Doğum tarixi</span>
+            <div class="field-value">@Model.BirthDateDisplay</div>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Mobil telefon</span>
+            <div class="field-value">@Model.MobileNumber</div>
+        </div>
+        <div class="field-row">
+            <span class="field-label">Ünvan</span>
+            <div class="field-value">—</div>
+        </div>
+    </div>
+
+    <div class="stack-gap">
+        <div class="info-card">
+            <h2>Universitet məlumatları</h2>
+            <div class="stat-row">
+                <div class="stat-box">
+                    <div class="k">Kurs</div>
+                    <div class="v">@Model.CourseYearDisplay</div>
+                </div>
+                <div class="stat-box">
+                    <div class="k">Status</div>
+                    <div class="v">@Model.StatusDisplay</div>
+                </div>
+                <div class="stat-box">
+                    <div class="k">Təhsil növü</div>
+                    <div class="v">@Model.EducationTypeDisplay</div>
+                </div>
+            </div>
+        </div>
+        <div class="info-card">
+            <h2>Struktur</h2>
+            <div class="field-row">
+                <span class="field-label">Fakültə</span>
+                <div class="field-value">@Model.FacultyName</div>
+            </div>
+            <div class="field-row">
+                <span class="field-label">Kafedra / şöbə</span>
+                <div class="field-value">@Model.DepartmentName</div>
+            </div>
+            <div class="field-row">
+                <span class="field-label">Qruplar</span>
+                <div class="field-value">@Model.GroupNames</div>
+            </div>
+        </div>
+    </div>
+</div>

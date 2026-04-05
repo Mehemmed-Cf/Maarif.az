@@ -1,0 +1,19 @@
+@{
+    ViewData["Title"] = "Tələbə nömrəniz";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<div class="auth-logo">
+    <div class="logo-icon"><i class="feather icon-check-circle"></i></div>
+    <h4>Tələbə nömrəniz</h4>
+    <p>Bu məlumatı təhlükəsiz yerdə saxlayın</p>
+</div>
+
+<div style="text-align:center;padding:24px 0;">
+    <div style="font-size:13px;color:#8a8a8a;margin-bottom:8px;">Giriş üçün istifadə edin</div>
+    <div style="font-size:26px;font-weight:800;letter-spacing:.04em;color:#1a1a2e;">@ViewBag.RecoveredNumber</div>
+</div>
+
+<div class="auth-footer">
+    <a asp-action="Login" class="btn-auth" style="display:inline-block;text-align:center;text-decoration:none;">Daxil ol</a>
+</div>

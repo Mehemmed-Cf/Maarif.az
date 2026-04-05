@@ -1,9 +1,14 @@
-﻿@using Application.Modules.StudentsModule.Commands.StudentLoginCommand
+@using Application.Modules.StudentsModule.Commands.StudentLoginCommand
 @model StudentLoginRequest
 
 @{
     ViewData["Title"] = "Daxil ol";
     Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+@if (TempData["AuthInfo"] is string info)
+{
+    <div class="alert alert-success" style="margin-bottom:16px;">@info</div>
 }
 
 <div asp-validation-summary="All" class="alert alert-danger"></div>
@@ -27,6 +32,12 @@
 
 <div class="auth-footer">
     Hesabınız yoxdur? <a asp-action="Register">Qeydiyyat</a>
+    &nbsp;·&nbsp;
+    <a asp-action="TeacherLogin">Müəllim girişi</a>
+    <br /><br />
+    <a asp-action="ForgotStudentPassword">Şifrəni unutdum</a>
+    &nbsp;·&nbsp;
+    <a asp-action="RecoverStudentNumber">Nömrəmi unutdum</a>
 </div>
 
 @section Scripts {

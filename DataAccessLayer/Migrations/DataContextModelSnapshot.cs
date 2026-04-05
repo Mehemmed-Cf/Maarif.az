@@ -22,6 +22,61 @@ namespace DataAccessLayer.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
+            modelBuilder.Entity("Domain.Models.Entities.Building", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasMaxLength(100)
+                        .HasColumnType("nvarchar(100)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Buildings", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Name = "1-ci korpus"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Name = "2-ci korpus"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Name = "3-cü korpus"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Name = "4-cü korpus"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Name = "5-ci korpus"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Name = "6-cı korpus"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            Name = "7-ci korpus"
+                        });
+                });
+
             modelBuilder.Entity("Domain.Models.Entities.Department", b =>
                 {
                     b.Property<int>("Id")
@@ -206,6 +261,68 @@ namespace DataAccessLayer.Migrations
                     b.HasIndex("GroupId");
 
                     b.ToTable("LessonGroups", (string)null);
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.LessonSchedule", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<int?>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<int>("DayOfWeek")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("EndTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("GroupId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<int?>("LastModifiedBy")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LessonId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("LessonType")
+                        .HasColumnType("int");
+
+                    b.Property<int>("RoomId")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("StartTime")
+                        .HasColumnType("time");
+
+                    b.Property<int>("WeekType")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("GroupId");
+
+                    b.HasIndex("LessonId");
+
+                    b.HasIndex("RoomId");
+
+                    b.ToTable("LessonSchedules", (string)null);
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.Membership.AppRole", b =>
@@ -440,6 +557,46 @@ namespace DataAccessLayer.Migrations
                     b.ToTable("UserTokens", "Membership");
                 });
 
+            modelBuilder.Entity("Domain.Models.Entities.Room", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<int>("BuildingId")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<int?>("CreatedBy")
+                        .IsRequired()
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("DeletedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<int?>("DeletedBy")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime?>("LastModifiedAt")
+                        .HasColumnType("datetime");
+
+                    b.Property<int?>("LastModifiedBy")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Number")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("BuildingId");
+
+                    b.ToTable("Rooms", (string)null);
+                });
+
             modelBuilder.Entity("Domain.Models.Entities.Student", b =>
                 {
                     b.Property<int>("Id")
@@ -465,6 +622,10 @@ namespace DataAccessLayer.Migrations
 
                     b.Property<int?>("DepartmentId")
                         .HasColumnType("int");
+
+                    b.Property<string>("DocumentSerialNumber")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
 
                     b.Property<string>("EducationType")
                         .IsRequired()
@@ -525,6 +686,10 @@ namespace DataAccessLayer.Migrations
                     b.HasKey("Id");
 
                     b.HasIndex("DepartmentId");
+
+                    b.HasIndex("DocumentSerialNumber")
+                        .IsUnique()
+                        .HasFilter("[DocumentSerialNumber] IS NOT NULL");
 
                     b.HasIndex("FinCode")
                         .IsUnique();
@@ -640,12 +805,20 @@ namespace DataAccessLayer.Migrations
                     b.Property<int?>("DeletedBy")
                         .HasColumnType("int");
 
+                    b.Property<string>("DocumentSerialNumber")
+                        .HasMaxLength(40)
+                        .HasColumnType("nvarchar(40)");
+
                     b.Property<string>("Email")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
 
                     b.Property<decimal>("Experience")
                         .HasColumnType("decimal(5,2)");
+
+                    b.Property<string>("FinCode")
+                        .HasMaxLength(7)
+                        .HasColumnType("nvarchar(7)");
 
                     b.Property<string>("FullName")
                         .IsRequired()
@@ -662,14 +835,30 @@ namespace DataAccessLayer.Migrations
                         .HasMaxLength(20)
                         .HasColumnType("nvarchar(20)");
 
+                    b.Property<string>("TeacherNumber")
+                        .HasMaxLength(32)
+                        .HasColumnType("nvarchar(32)");
+
                     b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
+                    b.HasIndex("DocumentSerialNumber")
+                        .IsUnique()
+                        .HasFilter("[DocumentSerialNumber] IS NOT NULL");
+
                     b.HasIndex("Email")
                         .IsUnique()
                         .HasFilter("[Email] IS NOT NULL");
+
+                    b.HasIndex("FinCode")
+                        .IsUnique()
+                        .HasFilter("[FinCode] IS NOT NULL");
+
+                    b.HasIndex("TeacherNumber")
+                        .IsUnique()
+                        .HasFilter("[TeacherNumber] IS NOT NULL");
 
                     b.HasIndex("UserId");
 
@@ -751,6 +940,33 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Lesson");
                 });
 
+            modelBuilder.Entity("Domain.Models.Entities.LessonSchedule", b =>
+                {
+                    b.HasOne("Domain.Models.Entities.Group", "Group")
+                        .WithMany()
+                        .HasForeignKey("GroupId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Entities.Lesson", "Lesson")
+                        .WithMany("LessonSchedules")
+                        .HasForeignKey("LessonId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("Domain.Models.Entities.Room", "Room")
+                        .WithMany()
+                        .HasForeignKey("RoomId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Group");
+
+                    b.Navigation("Lesson");
+
+                    b.Navigation("Room");
+                });
+
             modelBuilder.Entity("Domain.Models.Entities.Membership.AppRoleClaim", b =>
                 {
                     b.HasOne("Domain.Models.Entities.Membership.AppRole", null)
@@ -800,6 +1016,17 @@ namespace DataAccessLayer.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.NoAction)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Domain.Models.Entities.Room", b =>
+                {
+                    b.HasOne("Domain.Models.Entities.Building", "Building")
+                        .WithMany("Rooms")
+                        .HasForeignKey("BuildingId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Building");
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.Student", b =>
@@ -861,6 +1088,11 @@ namespace DataAccessLayer.Migrations
                     b.Navigation("Teacher");
                 });
 
+            modelBuilder.Entity("Domain.Models.Entities.Building", b =>
+                {
+                    b.Navigation("Rooms");
+                });
+
             modelBuilder.Entity("Domain.Models.Entities.Department", b =>
                 {
                     b.Navigation("Groups");
@@ -887,6 +1119,8 @@ namespace DataAccessLayer.Migrations
             modelBuilder.Entity("Domain.Models.Entities.Lesson", b =>
                 {
                     b.Navigation("LessonGroups");
+
+                    b.Navigation("LessonSchedules");
                 });
 
             modelBuilder.Entity("Domain.Models.Entities.Student", b =>

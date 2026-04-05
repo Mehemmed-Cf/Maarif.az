@@ -1,4 +1,4 @@
-﻿@using Application.Modules.StudentsModule.Commands.StudentRegisterCommand
+@using Application.Modules.StudentsModule.Commands.StudentRegisterCommand
 @model StudentRegisterRequest
 @{
     ViewData["Title"] = "Qeydiyyat";
@@ -27,6 +27,8 @@
 
 <div class="auth-footer">
     Artıq hesabınız var? <a asp-action="Login">Daxil olun</a>
+    &nbsp;·&nbsp;
+    <a asp-action="TeacherRegister">Müəllim qeydiyyatı</a>
 </div>
 
 @section Scripts {

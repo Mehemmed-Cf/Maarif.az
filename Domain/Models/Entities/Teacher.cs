@@ -1,4 +1,4 @@
-﻿using Domain.Models.Concrates;
+using Domain.Models.Concrates;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Domain.Models.Entities
@@ -7,6 +7,12 @@ namespace Domain.Models.Entities
     {
         public int Id { get; set; }
         public string FullName { get; set; }
+        /// <summary>Set when the teacher self-registers via government verification; optional for admin-created rows.</summary>
+        public string? FinCode { get; set; }
+        /// <summary>Normalized document serial from self-registration; null for admin-created rows.</summary>
+        public string? DocumentSerialNumber { get; set; }
+        /// <summary>Login id (Identity user name); set on self-registration.</summary>
+        public string? TeacherNumber { get; set; }
         public string? MobileNumber { get; set; }
         public string? Email { get; set; }
         public DateTime BirthDate { get; set; }
