@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Data.SqlClient;
 using Presentation.AppCode.Diagnostics;
 using Presentation.AppCode.DI;
 using Presentation.AppCode.Pipeline;
@@ -156,6 +157,31 @@ internal class Program
             {
                 var context = services.GetRequiredService<DataContext>();
 
+                // #region agent log
+                // Render-safe schema self-heal for known 207 issue when migration history drifts.
+                logger.LogInformation("Applying critical schema fixes...");
+                await context.Database.ExecuteSqlRawAsync(@"
+IF OBJECT_ID(N'dbo.Students', N'U') IS NOT NULL
+BEGIN
+    IF COL_LENGTH(N'dbo.Students', N'FinCode') IS NULL
+    BEGIN
+        ALTER TABLE [dbo].[Students] ADD [FinCode] nvarchar(7) NULL;
+    END
+
+    IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = N'IX_Students_FinCode' AND object_id = OBJECT_ID(N'dbo.Students'))
+    BEGIN
+        CREATE UNIQUE INDEX [IX_Students_FinCode] ON [dbo].[Students] ([FinCode]) WHERE [FinCode] IS NOT NULL;
+    END
+END
+");
+                AgentDebugLog.Write(
+                    "H1-CONFIRMED",
+                    "Program.cs:startup-self-heal",
+                    "Startup schema fix executed",
+                    new { target = "Students.FinCode" },
+                    agentDebugLogPath);
+                // #endregion
+
                 // 1. Fix the schema (Error 207)
                 logger.LogInformation("Applying migrations...");
                 await context.Database.MigrateAsync();
@@ -173,6 +199,15 @@ internal class Program
             }
             catch (Exception ex)
             {
+                if (ex is SqlException sqlEx)
+                {
+                    AgentDebugLog.Write(
+                        "H1-CONFIRMED",
+                        "Program.cs:sql-exception",
+                        "Startup SQL exception",
+                        new { sqlNumber = sqlEx.Number, sqlEx.Message },
+                        agentDebugLogPath);
+                }
                 // #region agent log
                 AgentDebugLog.Write(
                     "H2-H4",

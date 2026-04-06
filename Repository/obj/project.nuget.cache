@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Fq4rs/XML0w=",
+  "dgSpecHash": "tunbJ8QvZ7I=",
   "success": true,
-  "projectFilePath": "c:\\Users\\user\\source\\repos\\Maarif\\Repository\\Repository.csproj",
+  "projectFilePath": "C:\\Users\\user\\source\\repos\\Maarif\\Repository\\Repository.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\user\\.nuget\\packages\\autofac\\9.1.0\\autofac.9.1.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\autofac.extensions.dependencyinjection\\10.0.0\\autofac.extensions.dependencyinjection.10.0.0.nupkg.sha512",
