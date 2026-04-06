@@ -4,10 +4,10 @@
 }
 
 <p class="text-center mb-4" style="color:#555;font-size:14px;line-height:1.6;">
-    Bu səhifəyə və ya bölməyə baxmaq üçün lazımi rolunuz yoxdur. Tələbə və ya müəllim hesabınız varsa, uyğun girişdən istifadə edin.
+    Bu səhifəyə və ya bölməyə baxmaq üçün lazımi rolunuz yoxdur. Əvvəl tələbə/müəllim kimi daxil olmusunuzsa, admin paneli üçün əvvəl çıxış lazımdır.
 </p>
 <div class="d-grid gap-2">
-    <a class="btn btn-auth text-center text-decoration-none d-flex align-items-center justify-content-center" asp-controller="Auth" asp-action="Login">Tələbə girişi</a>
+    <a class="btn btn-auth text-center text-decoration-none d-flex align-items-center justify-content-center" asp-controller="Auth" asp-action="EndSessionForAdmin">Çıxış et və admin girişi</a>
+    <a class="btn btn-outline-secondary text-center text-decoration-none d-flex align-items-center justify-content-center rounded" style="height:48px;border-radius:10px!important;" asp-controller="Auth" asp-action="Login">Tələbə girişi</a>
     <a class="btn btn-outline-secondary text-center text-decoration-none d-flex align-items-center justify-content-center rounded" style="height:48px;border-radius:10px!important;" asp-controller="Auth" asp-action="TeacherLogin">Müəllim girişi</a>
-    <a class="text-center mt-2 small" asp-controller="Auth" asp-action="AdminLogin">Admin girişi</a>
 </div>

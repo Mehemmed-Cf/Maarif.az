@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" Sdk="Microsoft.Docker.Sdk">
+  <PropertyGroup Label="Globals">
+    <ProjectVersion>2.1</ProjectVersion>
+    <DockerTargetOS>Linux</DockerTargetOS>
+    <!-- Same as docker-compose.yml `name:` — stops Visual Studio from creating a new hash-prefixed stack every F5 -->
+    <DockerComposeProjectName>maarif</DockerComposeProjectName>
+    <ProjectGuid>{C1D2E3F4-A5B6-7890-CDEF-123456789ABC}</ProjectGuid>
+    <DockerLaunchAction>LaunchBrowser</DockerLaunchAction>
+    <!-- docker-compose.yml maps 8080:8080; fixed URL so VS opens the site without resolving ServicePort -->
+    <DockerServiceUrl>http://localhost:8080</DockerServiceUrl>
+    <DockerServiceName>web</DockerServiceName>
+  </PropertyGroup>
+  <ItemGroup>
+    <None Include="docker-compose.yml" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="Presentation\Presentation.csproj" />
+  </ItemGroup>
+</Project>

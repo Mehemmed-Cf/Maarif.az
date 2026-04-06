@@ -46,6 +46,14 @@
                                 </div>
                                 
                                 <div asp-validation-summary="All" class="text-danger"></div>
+
+                                @if (ViewData["AlreadySignedInAsNonAdmin"] as bool? == true)
+                                {
+                                    <div class="alert alert-warning small m-b-20">
+                                        Hazırda başqa rol ilə daxil olmusunuz. Admin hesabı ilə davam etmək üçün
+                                        <a asp-action="EndSessionForAdmin">buradan çıxış edin</a>, sonra yenidən daxil olun.
+                                    </div>
+                                }
                                 
                                 <div class="form-group form-primary">
                                     <input type="email" asp-for="Email" class="form-control" required placeholder="Email">

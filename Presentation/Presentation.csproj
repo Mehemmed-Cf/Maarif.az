@@ -6,6 +6,8 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UserSecretsId>0425e49b-db08-465d-9f33-668fe5a5fd0f</UserSecretsId>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+		<DockerComposeProjectPath>..\docker-compose.yml</DockerComposeProjectPath>
+		<DockerComposeProjectName>maarif</DockerComposeProjectName>
 	</PropertyGroup>
 
 	<ItemGroup>

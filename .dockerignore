@@ -29,8 +29,8 @@ README.md
 !.git/packed-refs
 !.git/refs/heads/**
 
-appsettings.json
-appsettings.Development.json
+# Keep appsettings in the build context so `dotnet publish` inside Docker includes them.
+# Production secrets must come from environment variables (e.g. Render), not committed files.
 
 # Also ignore these to keep the Docker image small and fast
 bin/

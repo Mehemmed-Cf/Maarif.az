@@ -1,0 +1,13 @@
+c:\Users\user\source\repos\Maarif\Domain\bin\Release\net8.0\Domain.deps.json
+c:\Users\user\source\repos\Maarif\Domain\bin\Release\net8.0\Domain.dll
+c:\Users\user\source\repos\Maarif\Domain\bin\Release\net8.0\Domain.pdb
+c:\Users\user\source\repos\Maarif\Domain\obj\Release\net8.0\Domain.csproj.AssemblyReference.cache
+c:\Users\user\source\repos\Maarif\Domain\obj\Release\net8.0\Domain.GeneratedMSBuildEditorConfig.editorconfig
+c:\Users\user\source\repos\Maarif\Domain\obj\Release\net8.0\Domain.AssemblyInfoInputs.cache
+c:\Users\user\source\repos\Maarif\Domain\obj\Release\net8.0\Domain.AssemblyInfo.cs
+c:\Users\user\source\repos\Maarif\Domain\obj\Release\net8.0\Domain.csproj.CoreCompileInputs.cache
+c:\Users\user\source\repos\Maarif\Domain\obj\Release\net8.0\Domain.sourcelink.json
+c:\Users\user\source\repos\Maarif\Domain\obj\Release\net8.0\Domain.dll
+c:\Users\user\source\repos\Maarif\Domain\obj\Release\net8.0\refint\Domain.dll
+c:\Users\user\source\repos\Maarif\Domain\obj\Release\net8.0\Domain.pdb
+c:\Users\user\source\repos\Maarif\Domain\obj\Release\net8.0\ref\Domain.dll

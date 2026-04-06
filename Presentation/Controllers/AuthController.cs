@@ -16,6 +16,7 @@ using Infrastructure.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Presentation.AppCode;
 using Presentation.AppCode.Extensions;
@@ -190,23 +191,29 @@ namespace Presentation.Controllers
             return View();
         }
 
+        /// <summary>
+        /// Clears the app auth cookie so you can open admin login without being stuck
+        /// (e.g. after AccessDenied while still signed in as student/teacher or a stale session).
+        /// </summary>
+        [AllowAnonymous]
+        [HttpGet]
+        public async Task<IActionResult> EndSessionForAdmin()
+        {
+            await HttpContext.SignOutAsync(IdentityConstants.ApplicationScheme);
+            return RedirectToAction(nameof(AdminLogin));
+        }
+
         // ── Admin Login ──────────────────────────────────────────────
         
         [HttpGet]
         public IActionResult AdminLogin(string? returnUrl = null)
         {
-            if (User.Identity?.IsAuthenticated == true)
-            {
-                if (User.IsInRole("SUPERADMIN"))
-                    return RedirectToAction("Index", "Dashboard", new { area = "admin" });
-                if (User.IsInRole("STUDENT"))
-                    return RedirectToAction("Index", "Portal");
-                if (User.IsInRole("TEACHER"))
-                    return RedirectToAction("Index", "TeacherPortal");
-                return RedirectToAction(nameof(AccessDenied));
-            }
+            if (User.Identity?.IsAuthenticated == true && User.IsInRole("SUPERADMIN"))
+                return RedirectToAction("Index", "Dashboard", new { area = "admin" });
 
             ViewData["ReturnUrl"] = returnUrl;
+            ViewData["AlreadySignedInAsNonAdmin"] =
+                User.Identity?.IsAuthenticated == true && !User.IsInRole("SUPERADMIN");
             return View();
         }
 

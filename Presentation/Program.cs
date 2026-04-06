@@ -55,6 +55,9 @@ internal class Program
             });
         });
 
+        // Repositories inject DbContext; AddDbContext only registers DataContext.
+        builder.Services.AddScoped<DbContext>(sp => sp.GetRequiredService<DataContext>());
+
         builder.Services.AddCustomIdentity(builder.Configuration);
 
         // This scans the entire Assembly where your MappingProfile class is defined
@@ -160,7 +163,10 @@ internal class Program
             app.UseDeveloperExceptionPage();
         }
 
-        app.UseHttpsRedirection();
+        // Docker / Render: Kestrel often listens on HTTP only (see Dockerfile). HTTPS redirection breaks plain http://localhost:8080.
+        var aspNetUrls = builder.Configuration["ASPNETCORE_URLS"] ?? string.Empty;
+        if (aspNetUrls.Contains("https://", StringComparison.OrdinalIgnoreCase))
+            app.UseHttpsRedirection();
 
         app.UseStaticFiles();
 

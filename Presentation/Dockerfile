@@ -26,10 +26,11 @@ RUN dotnet restore "./Presentation/Presentation.csproj"
 # Copy everything else and build
 COPY . .
 WORKDIR "/src/Presentation"
-RUN dotnet build "./Presentation.csproj" -c $BUILD_CONFIGURATION -o /app/build
+# Docker context omits a full .git tree; SDK git tasks then fail with "Invalid reference: ''".
+RUN dotnet build "./Presentation.csproj" -c $BUILD_CONFIGURATION -o /app/build -p:EnableSourceControlManagerQueries=false
 
 FROM build AS publish
-RUN dotnet publish "./Presentation.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false
+RUN dotnet publish "./Presentation.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false -p:EnableSourceControlManagerQueries=false
 
 FROM base AS final
 WORKDIR /app

@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "c:\\Users\\user\\source\\repos\\Maarif\\Application\\Application.csproj": {}
+    "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Application.csproj": {}
   },
   "projects": {
-    "c:\\Users\\user\\source\\repos\\Maarif\\Application\\Application.csproj": {
+    "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Application.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\user\\source\\repos\\Maarif\\Application\\Application.csproj",
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Application.csproj",
         "projectName": "Application",
-        "projectPath": "c:\\Users\\user\\source\\repos\\Maarif\\Application\\Application.csproj",
+        "projectPath": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Application.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\user\\source\\repos\\Maarif\\Application\\obj\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -33,11 +33,11 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "c:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj": {
-                "projectPath": "c:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj"
+              "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj"
               },
-              "c:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Infrastructure.csproj": {
-                "projectPath": "c:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Infrastructure.csproj"
+              "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Infrastructure.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Infrastructure.csproj"
               }
             }
           }
@@ -111,14 +111,14 @@
         }
       }
     },
-    "c:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj": {
+    "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj",
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj",
         "projectName": "Domain",
-        "projectPath": "c:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj",
+        "projectPath": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\user\\source\\repos\\Maarif\\Domain\\obj\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -187,14 +187,14 @@
         }
       }
     },
-    "c:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Infrastructure.csproj": {
+    "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Infrastructure.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "c:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Infrastructure.csproj",
+        "projectUniqueName": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Infrastructure.csproj",
         "projectName": "Infrastructure",
-        "projectPath": "c:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Infrastructure.csproj",
+        "projectPath": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\Infrastructure.csproj",
         "packagesPath": "C:\\Users\\user\\.nuget\\packages\\",
-        "outputPath": "c:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\obj\\",
+        "outputPath": "C:\\Users\\user\\source\\repos\\Maarif\\Infrastructure\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -216,8 +216,8 @@
           "net8.0": {
             "targetAlias": "net8.0",
             "projectReferences": {
-              "c:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj": {
-                "projectPath": "c:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj"
+              "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj": {
+                "projectPath": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Domain.csproj"
               }
             }
           }

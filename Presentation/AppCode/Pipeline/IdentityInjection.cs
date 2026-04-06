@@ -13,6 +13,7 @@ namespace Presentation.AppCode.Pipeline
 
             services.AddIdentityCore<AppUser>()
              .AddRoles<AppRole>()
+             .AddSignInManager()
              .AddDefaultTokenProviders()
              .AddEntityFrameworkStores<DataContext>();
 
@@ -65,17 +66,13 @@ namespace Presentation.AppCode.Pipeline
                     options.SlidingExpiration = true;
                 });
 
-            services.AddScoped<SignInManager<AppUser>>();
-            services.AddScoped<UserManager<AppUser>>();
-            services.AddScoped<RoleManager<AppRole>>();
             services.AddScoped<IHttpContextAccessor, HttpContextAccessor>();
             services.AddScoped<IClaimsTransformation, AppClaimsTransformation>();
             services.AddScoped<IUserClaimsPrincipalFactory<AppUser>, UserClaimsPrincipalFactory<AppUser, AppRole>>(); //
 
             services.AddAuthorization(cfg =>
             {
-                cfg.AddPolicy("RequireSuperAdminRole", policy => policy.RequireRole("SUPERADMIN"));
-
+                // Register scanned policies first; RequireSuperAdminRole is re-applied below so it stays RequireRole(SUPERADMIN).
                 foreach (var item in AppClaimsTransformation.policies)
                 {
                     cfg.AddPolicy(item, p =>
@@ -87,6 +84,8 @@ namespace Presentation.AppCode.Pipeline
                         p.RequireAssertion(handler => handler.User.HasClaim(item, "1")); //
                     });
                 }
+
+                cfg.AddPolicy("RequireSuperAdminRole", policy => policy.RequireRole("SUPERADMIN"));
             });
 
             return services;
