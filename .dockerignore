@@ -28,3 +28,12 @@ README.md
 !.git/config
 !.git/packed-refs
 !.git/refs/heads/**
+
+appsettings.json
+appsettings.Development.json
+
+# Also ignore these to keep the Docker image small and fast
+bin/
+obj/
+.git/
+.vs/

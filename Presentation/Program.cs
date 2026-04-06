@@ -128,35 +128,70 @@ internal class Program
         using (var scope = app.Services.CreateScope())
         {
             var services = scope.ServiceProvider;
+            var logger = services.GetRequiredService<ILogger<Program>>();
+
             try
             {
                 var context = services.GetRequiredService<DataContext>();
 
-                // 1. Sync the schema (Fixes 'Invalid Column' errors)
+                // 1. Fix the schema (Error 207)
+                logger.LogInformation("Applying migrations...");
                 await context.Database.MigrateAsync();
 
-                // 2. Seed the data
+                // 2. Seed basic data
+                logger.LogInformation("Seeding data...");
                 var seeder = services.GetRequiredService<DataSeeder>();
                 await seeder.SeedAsync();
+
+                // 3. Seed Roles and Admin
+                logger.LogInformation("Seeding roles and admin...");
+                await RoleAndAdminSeeder.SeedAsync(services);
+
+                logger.LogInformation("Database sync complete.");
             }
             catch (Exception ex)
             {
-                var logger = services.GetRequiredService<ILogger<Program>>();
-                logger.LogError(ex, "An error occurred during database migration or seeding.");
-                // Optional: throw; if you want the container to restart on failure
+                logger.LogError(ex, "Database initialization failed.");
+                // If this fails, the app should probably stop
+                throw;
             }
         }
 
         //using (var scope = app.Services.CreateScope())
         //{
-        //    var seeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
-        //    await seeder.SeedAsync();
+        //    var services = scope.ServiceProvider;
+        //    try
+        //    {
+        //        var context = services.GetRequiredService<DataContext>();
+
+        //        // 1. Sync the schema (Fixes 'Invalid Column' errors)
+        //        await context.Database.MigrateAsync();
+
+        //        // 2. Seed the data
+        //        var seeder = services.GetRequiredService<DataSeeder>();
+        //        await seeder.SeedAsync();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        var logger = services.GetRequiredService<ILogger<Program>>();
+        //        logger.LogError(ex, "An error occurred during database migration or seeding.");
+        //        // Optional: throw; if you want the container to restart on failure
+        //    }
         //}
 
         //using (var scope = app.Services.CreateScope())
         //{
-        //    var dbContext = scope.ServiceProvider.GetRequiredService<DataContext>();
-        //    dbContext.Database.Migrate();
+        //    await RoleAndAdminSeeder.SeedAsync(scope.ServiceProvider);
+        //}
+
+        //using (var scope = app.Services.CreateScope())
+        //{
+        //    var db = scope.ServiceProvider.GetRequiredService<DataContext>();
+        //    db.Database.Migrate();  // applies all pending migrations
+
+        //    // your seeder below this if you have it
+        //    var seeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
+        //    await seeder.SeedAsync();
         //}
 
         if (!app.Environment.IsDevelopment())
@@ -168,11 +203,6 @@ internal class Program
         {
             app.UseDeveloperExceptionPage();
         }
-
-        //using (var scope = app.Services.GetRequiredService<IServiceScopeFactory>().CreateScope())
-        //{
-        //    await RoleAndAdminSeeder.SeedAsync(scope.ServiceProvider);
-        //}
 
         app.UseHttpsRedirection();
 
@@ -195,11 +225,6 @@ internal class Program
         app.MapControllerRoute(name: "areas", pattern: "{area:exists}/{controller=Dashboard}/{action=Index}/{id?}");
 
         app.MapControllerRoute(name: "default", pattern: "{controller=auth}/{action=login}/{id?}");
-
-        using (var scope = app.Services.CreateScope())
-        {
-            await RoleAndAdminSeeder.SeedAsync(scope.ServiceProvider);
-        }
 
         app.Run();
     }
