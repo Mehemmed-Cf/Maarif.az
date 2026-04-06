@@ -181,16 +181,29 @@ namespace Presentation.Controllers
             }
         }
 
+        // ── Access denied (wrong role / admin area) ───────────────────
+
+        [AllowAnonymous]
+        [HttpGet]
+        public IActionResult AccessDenied()
+        {
+            return View();
+        }
+
         // ── Admin Login ──────────────────────────────────────────────
         
         [HttpGet]
         public IActionResult AdminLogin(string? returnUrl = null)
         {
-            // Only skip the form for actual super-admins. Students/teachers share the same
-            // auth cookie — redirecting them here would show a dashboard they cannot use elsewhere.
-            if (User.Identity?.IsAuthenticated == true && User.IsInRole("SUPERADMIN"))
+            if (User.Identity?.IsAuthenticated == true)
             {
-                return RedirectToAction("Index", "Dashboard", new { area = "admin" });
+                if (User.IsInRole("SUPERADMIN"))
+                    return RedirectToAction("Index", "Dashboard", new { area = "admin" });
+                if (User.IsInRole("STUDENT"))
+                    return RedirectToAction("Index", "Portal");
+                if (User.IsInRole("TEACHER"))
+                    return RedirectToAction("Index", "TeacherPortal");
+                return RedirectToAction(nameof(AccessDenied));
             }
 
             ViewData["ReturnUrl"] = returnUrl;

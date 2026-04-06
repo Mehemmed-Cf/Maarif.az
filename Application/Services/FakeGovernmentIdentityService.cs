@@ -516,7 +516,8 @@ public partial class FakeGovernmentIdentityService : IGovernmentIdentityService
         CancellationToken ct = default)
     {
         var key = (serialNumber.Trim().ToUpper(), finCode.Trim().ToUpper());
-        _seed.TryGetValue(key, out var result);
+        if (!_seed.TryGetValue(key, out var result))
+            PilotTestIdentityData.Students.TryGetValue(key, out result);
 
         // Normalize FinCode to uppercase so it matches DB lookup
         if (result != null)

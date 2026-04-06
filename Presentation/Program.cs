@@ -11,8 +11,6 @@ using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
-using Microsoft.Data.SqlClient;
-using Presentation.AppCode.Diagnostics;
 using Presentation.AppCode.DI;
 using Presentation.AppCode.Pipeline;
 using Presentation.AppCode.Seeds;
@@ -22,9 +20,6 @@ internal class Program
     private static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
-
-        var agentDebugLogPath = Path.Combine(builder.Environment.ContentRootPath, "debug-b25443.log");
-        Environment.SetEnvironmentVariable("MAARIF_DEBUG_LOG_PATH", agentDebugLogPath);
 
         builder.Host.UseServiceProviderFactory(new MaarifServiceProviderFactory());
 
@@ -42,23 +37,12 @@ internal class Program
 
         });
 
-        builder.Services.AddControllers(cfg =>
-        {
-            var policy = new AuthorizationPolicyBuilder()
-                              .RequireAuthenticatedUser()
-                              .Build();
-
-            cfg.Filters.Add(new AuthorizeFilter(policy));
-        });
-
         string? connectionString = builder.Configuration.GetConnectionString("cString");
 
         if (string.IsNullOrWhiteSpace(connectionString))
             throw new InvalidOperationException("Connection string 'cString' was not found.");
 
-        builder.Services.AddSingleton(_ => new AgentSqlDebugInterceptor(agentDebugLogPath));
-
-        builder.Services.AddDbContext<DataContext>((sp, cfg) =>
+        builder.Services.AddDbContext<DataContext>(cfg =>
         {
             cfg.UseSqlServer(connectionString, sqlOptions =>
             {
@@ -69,7 +53,6 @@ internal class Program
 
                 sqlOptions.MigrationsHistoryTable("MigrationHistory");
             });
-            cfg.AddInterceptors(sp.GetRequiredService<AgentSqlDebugInterceptor>());
         });
 
         builder.Services.AddCustomIdentity(builder.Configuration);
@@ -108,7 +91,13 @@ internal class Program
 
         builder.Services.AddSingleton<IActionContextAccessor, ActionContextAccessor>();
 
-        builder.Services.AddControllersWithViews();
+        builder.Services.AddControllersWithViews(cfg =>
+        {
+            var policy = new AuthorizationPolicyBuilder()
+                .RequireAuthenticatedUser()
+                .Build();
+            cfg.Filters.Add(new AuthorizeFilter(policy));
+        });
 
         builder.Services.AddRouting(cfg => cfg.LowercaseUrls = true);
 
@@ -133,21 +122,6 @@ internal class Program
 
         var app = builder.Build();
 
-        // #region agent log
-        AgentDebugLog.Write(
-            "H-LOGPATH",
-            "Program.cs:start",
-            "Debug logging initialized",
-            new
-            {
-                contentRoot = builder.Environment.ContentRootPath,
-                currentDir = Directory.GetCurrentDirectory(),
-                configuredLogPath = agentDebugLogPath
-            },
-            agentDebugLogPath);
-        Console.Error.WriteLine($"[Maarif.SqlDebug] logPath={agentDebugLogPath}");
-        // #endregion
-
         using (var scope = app.Services.CreateScope())
         {
             var services = scope.ServiceProvider;
@@ -157,41 +131,13 @@ internal class Program
             {
                 var context = services.GetRequiredService<DataContext>();
 
-                // #region agent log
-                // Render-safe schema self-heal for known 207 issue when migration history drifts.
-                logger.LogInformation("Applying critical schema fixes...");
-                await context.Database.ExecuteSqlRawAsync(@"
-IF OBJECT_ID(N'dbo.Students', N'U') IS NOT NULL
-BEGIN
-    IF COL_LENGTH(N'dbo.Students', N'FinCode') IS NULL
-    BEGIN
-        ALTER TABLE [dbo].[Students] ADD [FinCode] nvarchar(7) NULL;
-    END
-
-    IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = N'IX_Students_FinCode' AND object_id = OBJECT_ID(N'dbo.Students'))
-    BEGIN
-        CREATE UNIQUE INDEX [IX_Students_FinCode] ON [dbo].[Students] ([FinCode]) WHERE [FinCode] IS NOT NULL;
-    END
-END
-");
-                AgentDebugLog.Write(
-                    "H1-CONFIRMED",
-                    "Program.cs:startup-self-heal",
-                    "Startup schema fix executed",
-                    new { target = "Students.FinCode" },
-                    agentDebugLogPath);
-                // #endregion
-
-                // 1. Fix the schema (Error 207)
                 logger.LogInformation("Applying migrations...");
                 await context.Database.MigrateAsync();
 
-                // 2. Seed basic data
                 logger.LogInformation("Seeding data...");
                 var seeder = services.GetRequiredService<DataSeeder>();
                 await seeder.SeedAsync();
 
-                // 3. Seed Roles and Admin
                 logger.LogInformation("Seeding roles and admin...");
                 await RoleAndAdminSeeder.SeedAsync(services);
 
@@ -199,71 +145,10 @@ END
             }
             catch (Exception ex)
             {
-                if (ex is SqlException sqlEx)
-                {
-                    AgentDebugLog.Write(
-                        "H1-CONFIRMED",
-                        "Program.cs:sql-exception",
-                        "Startup SQL exception",
-                        new { sqlNumber = sqlEx.Number, sqlEx.Message },
-                        agentDebugLogPath);
-                }
-                // #region agent log
-                AgentDebugLog.Write(
-                    "H2-H4",
-                    "Program.cs:database-init",
-                    "Database initialization failed",
-                    new
-                    {
-                        exMessage = ex.Message,
-                        exType = ex.GetType().FullName,
-                        inner = ex.InnerException?.Message,
-                        stack = ex.ToString().Length > 4000 ? ex.ToString()[..4000] + "…" : ex.ToString()
-                    },
-                    agentDebugLogPath);
-                // #endregion
                 logger.LogError(ex, "Database initialization failed.");
-                // If this fails, the app should probably stop
                 throw;
             }
         }
-
-        //using (var scope = app.Services.CreateScope())
-        //{
-        //    var services = scope.ServiceProvider;
-        //    try
-        //    {
-        //        var context = services.GetRequiredService<DataContext>();
-
-        //        // 1. Sync the schema (Fixes 'Invalid Column' errors)
-        //        await context.Database.MigrateAsync();
-
-        //        // 2. Seed the data
-        //        var seeder = services.GetRequiredService<DataSeeder>();
-        //        await seeder.SeedAsync();
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        var logger = services.GetRequiredService<ILogger<Program>>();
-        //        logger.LogError(ex, "An error occurred during database migration or seeding.");
-        //        // Optional: throw; if you want the container to restart on failure
-        //    }
-        //}
-
-        //using (var scope = app.Services.CreateScope())
-        //{
-        //    await RoleAndAdminSeeder.SeedAsync(scope.ServiceProvider);
-        //}
-
-        //using (var scope = app.Services.CreateScope())
-        //{
-        //    var db = scope.ServiceProvider.GetRequiredService<DataContext>();
-        //    db.Database.Migrate();  // applies all pending migrations
-
-        //    // your seeder below this if you have it
-        //    var seeder = scope.ServiceProvider.GetRequiredService<DataSeeder>();
-        //    await seeder.SeedAsync();
-        //}
 
         if (!app.Environment.IsDevelopment())
         {

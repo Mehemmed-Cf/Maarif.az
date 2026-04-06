@@ -1,11 +1,10 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Presentation.Areas.Admin.Controllers
 {
     [Area("Admin")]
-    [Authorize(Roles = "SUPERADMIN")]
+    [Authorize(Policy = "RequireSuperAdminRole")]
     public abstract class AdminBaseController : Controller
     {
 

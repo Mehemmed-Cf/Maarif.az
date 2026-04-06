@@ -1,4 +1,4 @@
-﻿using Microsoft.AspNetCore.Authentication.Cookies;
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Identity;
 using Domain.Models.Entities.Membership;
@@ -41,7 +41,7 @@ namespace Presentation.AppCode.Pipeline
                 //options.LoginPath = "/Login";
                 //options.AccessDeniedPath = "/NotAllowed";
                 options.LoginPath = "/auth/login";
-                options.AccessDeniedPath = "/auth/login";
+                options.AccessDeniedPath = "/auth/accessdenied";
                 options.SlidingExpiration = true;
             });
 
@@ -60,7 +60,7 @@ namespace Presentation.AppCode.Pipeline
                     options.Cookie.Name = "MyAppAuthCookie";
                     options.Cookie.HttpOnly = true;
                     options.LoginPath = "/auth/login";
-                    options.AccessDeniedPath = "/auth/login";
+                    options.AccessDeniedPath = "/auth/accessdenied";
                     options.ExpireTimeSpan = TimeSpan.FromMinutes(60);
                     options.SlidingExpiration = true;
                 });

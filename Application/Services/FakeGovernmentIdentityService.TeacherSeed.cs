@@ -1,3 +1,4 @@
+using Application.Services;
 using Domain.Models.Stables;
 using Domain.Models.ValueObjects;
 
@@ -181,7 +182,8 @@ public partial class FakeGovernmentIdentityService
         CancellationToken ct = default)
     {
         var key = (serialNumber.Trim().ToUpperInvariant(), finCode.Trim().ToUpperInvariant());
-        if (!_teacherSeed.TryGetValue(key, out var src))
+        if (!_teacherSeed.TryGetValue(key, out var src)
+            && !PilotTestIdentityData.Teachers.TryGetValue(key, out src))
             return Task.FromResult<TeacherGovernmentData?>(null);
 
         var fin = src.FinCode.Trim().ToUpperInvariant();
