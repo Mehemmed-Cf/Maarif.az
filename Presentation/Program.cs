@@ -22,8 +22,8 @@ internal class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
-        var agentDebugLogPath = Path.GetFullPath(
-            Path.Combine(builder.Environment.ContentRootPath, "..", "debug-b25443.log"));
+        var agentDebugLogPath = Path.Combine(builder.Environment.ContentRootPath, "debug-b25443.log");
+        Environment.SetEnvironmentVariable("MAARIF_DEBUG_LOG_PATH", agentDebugLogPath);
 
         builder.Host.UseServiceProviderFactory(new MaarifServiceProviderFactory());
 
@@ -131,6 +131,21 @@ internal class Program
         builder.Services.AddScoped<DataSeeder>();
 
         var app = builder.Build();
+
+        // #region agent log
+        AgentDebugLog.Write(
+            "H-LOGPATH",
+            "Program.cs:start",
+            "Debug logging initialized",
+            new
+            {
+                contentRoot = builder.Environment.ContentRootPath,
+                currentDir = Directory.GetCurrentDirectory(),
+                configuredLogPath = agentDebugLogPath
+            },
+            agentDebugLogPath);
+        Console.Error.WriteLine($"[Maarif.SqlDebug] logPath={agentDebugLogPath}");
+        // #endregion
 
         using (var scope = app.Services.CreateScope())
         {

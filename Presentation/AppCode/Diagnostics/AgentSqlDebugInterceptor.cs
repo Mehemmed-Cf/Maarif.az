@@ -10,9 +10,9 @@ public static class AgentDebugLog
     // #region agent log
     public static void Write(string hypothesisId, string location, string message, object data, string? logPath = null, string runId = "pre-fix")
     {
+        var path = logPath ?? ResolvePath();
         try
         {
-            var path = logPath ?? ResolvePath();
             var payload = new Dictionary<string, object?>
             {
                 ["sessionId"] = "b25443",
@@ -29,9 +29,9 @@ public static class AgentDebugLog
                 File.AppendAllText(path, line);
             }
         }
-        catch
+        catch (Exception ex)
         {
-            // ignore
+            Console.Error.WriteLine($"[Maarif.SqlDebug] write-failed path={path} err={ex.Message}");
         }
     }
 
@@ -40,9 +40,10 @@ public static class AgentDebugLog
         var env = Environment.GetEnvironmentVariable("MAARIF_DEBUG_LOG_PATH");
         if (!string.IsNullOrWhiteSpace(env))
             return env;
-        var root = Directory.GetCurrentDirectory();
-        var candidate = Path.GetFullPath(Path.Combine(root, "..", "debug-b25443.log"));
-        return candidate;
+
+        var rootCandidate = Path.Combine(Directory.GetCurrentDirectory(), "debug-b25443.log");
+        var tempCandidate = Path.Combine(Path.GetTempPath(), "debug-b25443.log");
+        return rootCandidate.Length > 0 ? rootCandidate : tempCandidate;
     }
     // #endregion
 }
