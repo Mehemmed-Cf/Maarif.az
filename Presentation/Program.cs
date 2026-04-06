@@ -11,6 +11,7 @@ using Microsoft.AspNetCore.Hosting.Server;
 using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
 using Microsoft.EntityFrameworkCore;
+using Presentation.AppCode.Diagnostics;
 using Presentation.AppCode.DI;
 using Presentation.AppCode.Pipeline;
 using Presentation.AppCode.Seeds;
@@ -20,6 +21,9 @@ internal class Program
     private static async Task Main(string[] args)
     {
         var builder = WebApplication.CreateBuilder(args);
+
+        var agentDebugLogPath = Path.GetFullPath(
+            Path.Combine(builder.Environment.ContentRootPath, "..", "debug-b25443.log"));
 
         builder.Host.UseServiceProviderFactory(new MaarifServiceProviderFactory());
 
@@ -51,7 +55,9 @@ internal class Program
         if (string.IsNullOrWhiteSpace(connectionString))
             throw new InvalidOperationException("Connection string 'cString' was not found.");
 
-        builder.Services.AddDbContext<DataContext>(cfg =>
+        builder.Services.AddSingleton(_ => new AgentSqlDebugInterceptor(agentDebugLogPath));
+
+        builder.Services.AddDbContext<DataContext>((sp, cfg) =>
         {
             cfg.UseSqlServer(connectionString, sqlOptions =>
             {
@@ -62,6 +68,7 @@ internal class Program
 
                 sqlOptions.MigrationsHistoryTable("MigrationHistory");
             });
+            cfg.AddInterceptors(sp.GetRequiredService<AgentSqlDebugInterceptor>());
         });
 
         builder.Services.AddCustomIdentity(builder.Configuration);
@@ -151,6 +158,20 @@ internal class Program
             }
             catch (Exception ex)
             {
+                // #region agent log
+                AgentDebugLog.Write(
+                    "H2-H4",
+                    "Program.cs:database-init",
+                    "Database initialization failed",
+                    new
+                    {
+                        exMessage = ex.Message,
+                        exType = ex.GetType().FullName,
+                        inner = ex.InnerException?.Message,
+                        stack = ex.ToString().Length > 4000 ? ex.ToString()[..4000] + "…" : ex.ToString()
+                    },
+                    agentDebugLogPath);
+                // #endregion
                 logger.LogError(ex, "Database initialization failed.");
                 // If this fails, the app should probably stop
                 throw;
@@ -229,5 +250,3 @@ internal class Program
         app.Run();
     }
 }
-
-
