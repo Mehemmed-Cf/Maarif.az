@@ -12,6 +12,18 @@ namespace DataAccessLayer.Migrations
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            // Students.FinCode + unique index (root-cause from runtime logs)
+            migrationBuilder.Sql(@"
+IF COL_LENGTH(N'dbo.Students', N'FinCode') IS NULL
+BEGIN
+    ALTER TABLE [dbo].[Students] ADD [FinCode] nvarchar(7) NULL;
+END
+IF NOT EXISTS (SELECT 1 FROM sys.indexes WHERE name = N'IX_Students_FinCode' AND object_id = OBJECT_ID(N'dbo.Students'))
+BEGIN
+    CREATE UNIQUE INDEX [IX_Students_FinCode] ON [dbo].[Students] ([FinCode]) WHERE [FinCode] IS NOT NULL;
+END
+");
+
             // Students.DocumentSerialNumber + filtered unique index (matches DocumentSerialNumberForRegistration)
             migrationBuilder.Sql(@"
 IF COL_LENGTH(N'dbo.Students', N'DocumentSerialNumber') IS NULL
