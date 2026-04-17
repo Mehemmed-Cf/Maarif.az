@@ -21,6 +21,22 @@ namespace Repository
                     .ThenInclude(d => d.Faculty)
                 .Include(s => s.Lessons)
                     .ThenInclude(l => l.Teacher)
+                .Include(s => s.Topics)
+                .Include(s => s.Materials)
+                .Include(s => s.Literatures)
+                .FirstOrDefaultAsync(s => s.Id == id, ct);
+        }
+
+        public async Task<Subject?> GetByIdWithDetailsTrackedAsync(int id, CancellationToken ct = default)
+        {
+            return await db.Set<Subject>()
+                .Include(s => s.Department)
+                    .ThenInclude(d => d.Faculty)
+                .Include(s => s.Lessons)
+                    .ThenInclude(l => l.Teacher)
+                .Include(s => s.Topics)
+                .Include(s => s.Materials)
+                .Include(s => s.Literatures)
                 .FirstOrDefaultAsync(s => s.Id == id, ct);
         }
     }

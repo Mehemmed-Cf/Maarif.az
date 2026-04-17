@@ -1,0 +1,18 @@
+﻿using Domain.Models.Concrates;
+
+namespace Domain.Models.Entities
+{
+    public class Department : AuditableEntity
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public int FacultyId { get; set; }
+        public Faculty Faculty { get; set; }
+
+        public ICollection<global::Domain.Models.Entities.Teacher.TeacherDepartment> TeacherDepartments { get; set; }
+        public ICollection<global::Domain.Models.Entities.Student.Student> Students { get; set; }
+        public ICollection<Group> Groups { get; set; }
+        public ICollection<global::Domain.Models.Entities.Subject.Subject> Subjects { get; set; }
+    }
+}

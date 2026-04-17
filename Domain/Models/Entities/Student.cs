@@ -29,5 +29,6 @@ namespace Domain.Models.Entities
         // Use: student.Department.Faculty or join through Department in queries.
 
         public ICollection<StudentGroup> StudentGroups { get; set; }
+        public ICollection<Attendance> Attendances { get; set; }
     }
 }

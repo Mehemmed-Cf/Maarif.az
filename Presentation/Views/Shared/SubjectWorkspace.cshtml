@@ -1,0 +1,355 @@
+@model Presentation.AppCode.ViewModels.SubjectWorkspacePageViewModel
+@using Application.Modules.SubjectsModule.Queries.SubjectGetByIdQuery
+@{
+    Layout = "~/Views/Shared/_AcademicPortalLayout.cshtml";
+    var s = Model.Workspace.Subject;
+    var nav = Model.Workspace.NavSubjects;
+    var portalController = Model.IsTeacher ? "TeacherPortal" : "Portal";
+    var materialAuthor = !string.IsNullOrWhiteSpace(s.LectureTeacher)
+        ? s.LectureTeacher
+        : (!string.IsNullOrWhiteSpace(s.SeminarTeacher) ? s.SeminarTeacher : "—");
+}
+@section Head {
+<style>
+    .sw-layout { display: flex; gap: 28px; align-items: flex-start; flex-wrap: wrap; }
+    .sw-nav {
+        width: 280px; flex-shrink: 0;
+        background: var(--bg-surface); border: 1px solid var(--border); border-radius: 16px;
+        padding: 12px; max-height: calc(100vh - 200px); overflow-y: auto;
+    }
+    .sw-nav-title {
+        display: flex; align-items: center; gap: 10px; padding: 12px 14px;
+        font-weight: 700; font-size: .95rem; border: 1px solid var(--border); border-radius: 12px; margin-bottom: 8px;
+    }
+    .sw-nav a {
+        display: block; padding: 12px 14px; border-radius: 12px; text-decoration: none; color: var(--text-main);
+        font-weight: 500; font-size: .92rem; margin-bottom: 4px; transition: background .15s, color .15s;
+    }
+    .sw-nav a:hover { background: var(--border); }
+    .sw-nav a.active { background: var(--primary); color: #fff; font-weight: 600; }
+    .sw-main { flex: 1; min-width: 0; }
+    .sw-tabs {
+        display: flex; flex-wrap: wrap; gap: 4px; border-bottom: 2px solid var(--border); margin-bottom: 24px;
+    }
+    .sw-tab {
+        display: inline-flex; align-items: center; gap: 8px; padding: 12px 16px; border: none; background: none;
+        font-family: inherit; font-size: .88rem; font-weight: 600; color: var(--text-muted); cursor: pointer;
+        border-bottom: 3px solid transparent; margin-bottom: -2px;
+    }
+    .sw-tab:hover { color: var(--text-main); }
+    .sw-tab.active { color: var(--primary); border-bottom-color: var(--primary); }
+    .sw-tab[disabled], .sw-tab.muted { opacity: .45; cursor: not-allowed; }
+    .sw-tab-link {
+        display: inline-flex; align-items: center; gap: 8px; padding: 12px 16px;
+        font-size: .88rem; font-weight: 600; color: var(--text-muted); text-decoration: none;
+        border-bottom: 3px solid transparent; margin-bottom: -2px;
+    }
+    .sw-tab-link:hover { color: var(--primary); }
+    .sw-pane { display: none; }
+    .sw-pane.active { display: block; }
+    .sw-header-card {
+        background: var(--bg-surface); border: 1px solid var(--border); border-radius: 16px; padding: 24px;
+        margin-bottom: 20px;
+    }
+    .sw-header-top { display: flex; justify-content: space-between; align-items: flex-start; gap: 16px; flex-wrap: wrap; }
+    .sw-header-top h1 { font-size: 1.45rem; font-weight: 700; letter-spacing: -.02em; }
+    .sw-term-badge {
+        background: var(--primary-light); color: var(--primary); font-weight: 700; font-size: .82rem;
+        padding: 8px 14px; border-radius: 999px;
+    }
+    .sw-meta-grid {
+        display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 14px; margin-top: 20px;
+    }
+    .sw-meta-tile {
+        display: flex; gap: 12px; align-items: flex-start; padding: 14px 16px; border: 1px solid var(--border);
+        border-radius: 14px; background: #fafbfc;
+    }
+    .sw-meta-tile i { font-size: 1.35rem; color: var(--primary); margin-top: 2px; }
+    .sw-meta-tile .label { font-size: .72rem; font-weight: 700; text-transform: uppercase; color: var(--text-muted); letter-spacing: .04em; }
+    .sw-meta-tile .value { font-size: .9rem; font-weight: 600; color: var(--text-main); margin-top: 4px; }
+    .sw-two-col { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px; margin-top: 8px; }
+    .sw-panel { background: var(--bg-surface); border: 1px solid var(--border); border-radius: 14px; padding: 18px 20px; }
+    .sw-panel h3 { font-size: 1rem; font-weight: 700; margin-bottom: 12px; }
+    .sw-panel p, .sw-panel ol { font-size: .92rem; line-height: 1.55; color: var(--text-main); }
+    .sw-panel ol { padding-left: 1.2rem; }
+    .sw-accordion { border: 1px solid var(--border); border-radius: 12px; margin-bottom: 10px; overflow: hidden; }
+    .sw-accordion summary {
+        list-style: none; cursor: pointer; padding: 14px 18px; font-weight: 600; display: flex; justify-content: space-between; align-items: center;
+        background: #f8fafc;
+    }
+    .sw-accordion summary::-webkit-details-marker { display: none; }
+    .sw-accordion .body { padding: 14px 18px; border-top: 1px solid var(--border); font-size: .9rem; }
+    .sw-table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; }
+    table.sw-table { width: 100%; border-collapse: collapse; font-size: .88rem; }
+    table.sw-table th, table.sw-table td { padding: 12px 14px; text-align: left; border-bottom: 1px solid var(--border); }
+    table.sw-table th { background: #f1f5f9; font-weight: 700; font-size: .75rem; text-transform: uppercase; letter-spacing: .04em; color: var(--text-muted); }
+    table.sw-table tr:last-child td { border-bottom: none; }
+    .sw-link { color: var(--primary); font-weight: 600; text-decoration: none; }
+    .sw-link:hover { text-decoration: underline; }
+    .sw-icon-btn {
+        display: inline-flex; align-items: center; justify-content: center; width: 36px; height: 36px;
+        border-radius: 999px; background: #fef9c3; color: #854d0e; text-decoration: none;
+    }
+    .sw-icon-btn:hover { filter: brightness(1.05); }
+    .sw-muted { font-size: .88rem; color: var(--text-muted); padding: 20px 0; }
+    .sw-grades { display: grid; grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); gap: 12px; }
+    .sw-grade { padding: 12px 14px; border-radius: 12px; border: 1px solid var(--border); background: #fafbfc; }
+    .sw-grade .g-label { font-size: .75rem; color: var(--text-muted); font-weight: 600; }
+    .sw-grade .g-val { font-size: 1.25rem; font-weight: 800; color: var(--primary); margin-top: 4px; }
+</style>
+}
+
+<div class="sw-layout">
+    <aside class="sw-nav">
+        <div class="sw-nav-title"><i class="ph ph-books"></i> Fənlər</div>
+        @foreach (var item in nav)
+        {
+            <a asp-controller="@portalController" asp-action="Subject" asp-route-id="@item.Id"
+               class="@(item.Id == s.Id ? "active" : null)">@item.Name</a>
+        }
+    </aside>
+    <div class="sw-main">
+        <div class="sw-tabs" role="tablist">
+            <button type="button" class="sw-tab active" data-sw-tab="about"><i class="ph ph-info"></i> Dərs haqqında</button>
+            <button type="button" class="sw-tab" data-sw-tab="materials"><i class="ph ph-folder-open"></i> Dərs materialları</button>
+            <button type="button" class="sw-tab" data-sw-tab="grades"><i class="ph ph-chart-bar"></i> Qiymətləndirmə</button>
+            <a class="sw-tab-link" asp-controller="Attendance" asp-action="@(Model.IsTeacher ? "Index" : "Student")"><i class="ph ph-check-circle"></i> Davamiyyət</a>
+            <button type="button" class="sw-tab muted" disabled title="Tezliklə"><i class="ph ph-chart-line-up"></i> Cari müvəffəqiyyət</button>
+            <button type="button" class="sw-tab muted" disabled title="Tezliklə"><i class="ph ph-scroll"></i> İmtahan nəticəsi</button>
+        </div>
+
+        <div id="sw-pane-about" class="sw-pane active">
+            <div class="sw-header-card">
+                <div class="sw-header-top">
+                    <h1>@s.Name</h1>
+                    @if (!string.IsNullOrWhiteSpace(s.Term))
+                    {
+                        <span class="sw-term-badge">@s.Term</span>
+                    }
+                </div>
+                <div class="sw-meta-grid">
+                    <div class="sw-meta-tile">
+                        <i class="ph ph-chalkboard-teacher"></i>
+                        <div>
+                            <div class="label">Müəllimlər</div>
+                            <div class="value">
+                                Mühazirə: @(s.LectureTeacher ?? "—")<br />
+                                Seminar: @(s.SeminarTeacher ?? "—")<br />
+                                Laboratoriya: @(s.LabTeacher ?? "—")
+                            </div>
+                        </div>
+                    </div>
+                    <div class="sw-meta-tile">
+                        <i class="ph ph-users-three"></i>
+                        <div>
+                            <div class="label">Qrup</div>
+                            <div class="value">@s.GroupName</div>
+                        </div>
+                    </div>
+                    <div class="sw-meta-tile">
+                        <i class="ph ph-student"></i>
+                        <div>
+                            <div class="label">Tələbələrin sayı</div>
+                            <div class="value">@s.StudentCount</div>
+                        </div>
+                    </div>
+                    <div class="sw-meta-tile">
+                        <i class="ph ph-certificate"></i>
+                        <div>
+                            <div class="label">Kredit</div>
+                            <div class="value">@s.Credits</div>
+                        </div>
+                    </div>
+                    <div class="sw-meta-tile">
+                        <i class="ph ph-clock"></i>
+                        <div>
+                            <div class="label">Saatlar</div>
+                            <div class="value">@s.TotalHours</div>
+                        </div>
+                    </div>
+                    <div class="sw-meta-tile">
+                        <i class="ph ph-calendar-dots"></i>
+                        <div>
+                            <div class="label">Həftə</div>
+                            <div class="value">@s.WeekCount</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="sw-two-col">
+                <div class="sw-panel">
+                    <h3>Fənnin məqsədi</h3>
+                    <p>@(string.IsNullOrWhiteSpace(s.Purpose) ? "—" : s.Purpose)</p>
+                </div>
+                <div class="sw-panel">
+                    <h3>Müəllimin metodları</h3>
+                    @if (string.IsNullOrWhiteSpace(s.TeacherMethods))
+                    {
+                        <p>—</p>
+                    }
+                    else
+                    {
+                        var lines = s.TeacherMethods.Split(new[] { '\r', '\n' }, StringSplitOptions.RemoveEmptyEntries);
+                        if (lines.Length > 1)
+                        {
+                            <ol>
+                                @foreach (var line in lines)
+                                {
+                                    <li>@line.Trim()</li>
+                                }
+                            </ol>
+                        }
+                        else
+                        {
+                            <p>@s.TeacherMethods</p>
+                        }
+                    }
+                </div>
+            </div>
+
+            <div class="sw-two-col" style="margin-top: 20px;">
+                <div class="sw-panel">
+                    <h3>Sillabus linki</h3>
+                    @if (string.IsNullOrWhiteSpace(s.SyllabusUrl))
+                    {
+                        <p class="sw-muted">—</p>
+                    }
+                    else
+                    {
+                        <a class="sw-link" href="@s.SyllabusUrl" target="_blank" rel="noopener noreferrer">@s.SyllabusUrl</a>
+                    }
+                </div>
+                <div class="sw-panel">
+                    <h3>Qiymətləndirmə üsulu</h3>
+                    <p class="sw-muted" style="margin-bottom: 12px;">Yalnız məlumat (redaktə portalda deyil).</p>
+                    <div class="sw-grades">
+                        <div class="sw-grade"><div class="g-label">Sərbəst iş</div><div class="g-val">@s.FreeWorkScore</div></div>
+                        <div class="sw-grade"><div class="g-label">Məşğələ</div><div class="g-val">@s.SeminarScore</div></div>
+                        <div class="sw-grade"><div class="g-label">Laboratoriya</div><div class="g-val">@s.LabScore</div></div>
+                        <div class="sw-grade"><div class="g-label">Davamiyyət</div><div class="g-val">@s.AttendanceScore</div></div>
+                        <div class="sw-grade"><div class="g-label">İmtahan</div><div class="g-val">@s.ExamScore</div></div>
+                    </div>
+                </div>
+            </div>
+
+            @if (s.Literatures.Count > 0)
+            {
+                <details class="sw-accordion" style="margin-top: 20px;">
+                    <summary>Ədəbiyyat <i class="ph ph-caret-down"></i></summary>
+                    <div class="body">
+                        <div class="sw-table-wrap">
+                            <table class="sw-table">
+                                <thead><tr><th>Tip</th><th>Müəllif</th><th>Ad</th><th>Nəşriyyat</th><th>İl</th></tr></thead>
+                                <tbody>
+                                @foreach (var lit in s.Literatures)
+                                {
+                                    <tr>
+                                        <td>@lit.Type</td>
+                                        <td>@lit.Author</td>
+                                        <td>@lit.BookName</td>
+                                        <td>@(lit.Publisher ?? "—")</td>
+                                        <td>@(lit.PublicationYear?.ToString() ?? "—")</td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </details>
+            }
+
+            @if (s.Topics.Count > 0)
+            {
+                <details class="sw-accordion">
+                    <summary>Mövzular <i class="ph ph-caret-down"></i></summary>
+                    <div class="body">
+                        <div class="sw-table-wrap">
+                            <table class="sw-table">
+                                <thead><tr><th>Həftə</th><th>Mövzu</th><th>Metodlar</th></tr></thead>
+                                <tbody>
+                                @foreach (var t in s.Topics)
+                                {
+                                    <tr>
+                                        <td>@t.WeekNumber</td>
+                                        <td>@t.TopicName</td>
+                                        <td>@(t.TeachingMethods ?? "—")</td>
+                                    </tr>
+                                }
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </details>
+            }
+        </div>
+
+        <div id="sw-pane-materials" class="sw-pane">
+            <div class="sw-table-wrap">
+                <table class="sw-table">
+                    <thead>
+                        <tr>
+                            <th style="width:48px;">Sıra</th>
+                            <th>Mövzu</th>
+                            <th>Müəllif</th>
+                            <th>Tarix</th>
+                            <th style="width:72px;">Baxış</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    @{ var matIdx = 0; }
+                    @foreach (var m in s.Materials)
+                    {
+                        matIdx++;
+                        <tr>
+                            <td>@matIdx</td>
+                            <td>@m.Title</td>
+                            <td>@materialAuthor</td>
+                            <td>@m.CreatedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                            <td>
+                                @if (!string.IsNullOrWhiteSpace(m.FileUrl))
+                                {
+                                    <a class="sw-icon-btn" href="@m.FileUrl" target="_blank" rel="noopener noreferrer" title="Baxış"><i class="ph ph-eye"></i></a>
+                                }
+                                else { <span>—</span> }
+                            </td>
+                        </tr>
+                    }
+                    @if (s.Materials.Count == 0)
+                    {
+                        <tr><td colspan="5" class="sw-muted">Material yoxdur.</td></tr>
+                    }
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <div id="sw-pane-grades" class="sw-pane">
+            <p class="sw-muted">Qiymətləndirmə üzrə əlavə funksionallıq tezliklə əlavə olunacaq. Ağırlıqlar “Dərs haqqında” bölməsində göstərilir.</p>
+            <div class="sw-grades" style="max-width: 640px;">
+                <div class="sw-grade"><div class="g-label">Sərbəst iş balı</div><div class="g-val">@s.FreeWorkScore</div></div>
+                <div class="sw-grade"><div class="g-label">Məşğələ balı</div><div class="g-val">@s.SeminarScore</div></div>
+                <div class="sw-grade"><div class="g-label">Laboratoriya balı</div><div class="g-val">@s.LabScore</div></div>
+                <div class="sw-grade"><div class="g-label">Davamiyyət balı</div><div class="g-val">@s.AttendanceScore</div></div>
+                <div class="sw-grade"><div class="g-label">İmtahan balı</div><div class="g-val">@s.ExamScore</div></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+(function () {
+    var tabs = document.querySelectorAll('[data-sw-tab]');
+    function show(id) {
+        document.querySelectorAll('.sw-pane').forEach(function (p) { p.classList.remove('active'); });
+        document.querySelectorAll('.sw-tab[data-sw-tab]').forEach(function (t) { t.classList.remove('active'); });
+        var pane = document.getElementById('sw-pane-' + id);
+        if (pane) pane.classList.add('active');
+        var tab = document.querySelector('.sw-tab[data-sw-tab="' + id + '"]');
+        if (tab) tab.classList.add('active');
+    }
+    tabs.forEach(function (btn) {
+        btn.addEventListener('click', function () { show(btn.getAttribute('data-sw-tab')); });
+    });
+})();
+</script>

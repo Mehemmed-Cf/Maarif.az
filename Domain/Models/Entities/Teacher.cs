@@ -35,6 +35,7 @@ namespace Domain.Models.Entities
 
         public ICollection<TeacherDepartment> TeacherDepartments { get; set; }
         public ICollection<Lesson> Lessons { get; set; }
+        public ICollection<Attendance> MarkedAttendances { get; set; }
 
         // Helper navigation — not a direct FK, reached via Lessons → LessonGroups
         [NotMapped]

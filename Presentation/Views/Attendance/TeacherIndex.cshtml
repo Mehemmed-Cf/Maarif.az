@@ -1,0 +1,246 @@
+@model Presentation.AppCode.ViewModels.TeacherAttendanceIndexViewModel
+@using Application.Modules.LessonSchedulesModule.Queries.GetScheduleByGroup
+@{
+    var scheduleOptions = Model.Days
+        .SelectMany(d => d.Lessons)
+        .OrderBy(l => l.DayOfWeek)
+        .ThenBy(l => l.StartTime)
+        .ToList();
+}
+
+<style>
+    .attendance-shell {
+        display: grid;
+        gap: 24px;
+    }
+    .attendance-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: var(--shadow-card);
+        padding: 24px;
+    }
+    .attendance-card h2 {
+        margin-bottom: 8px;
+        font-size: 1.15rem;
+    }
+    .attendance-card p {
+        color: var(--text-muted);
+        margin-bottom: 18px;
+    }
+    .quick-form {
+        display: grid;
+        grid-template-columns: 1.3fr 180px auto;
+        gap: 12px;
+        align-items: end;
+    }
+    .field {
+        display: flex;
+        flex-direction: column;
+        gap: 6px;
+    }
+    .field label {
+        font-size: .85rem;
+        font-weight: 600;
+        color: var(--text-main);
+    }
+    .field select, .field input {
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 12px 14px;
+        font: inherit;
+        background: #fff;
+    }
+    .btn-primary-solid {
+        border: none;
+        border-radius: 12px;
+        padding: 12px 18px;
+        background: var(--primary);
+        color: #fff;
+        font-weight: 600;
+        cursor: pointer;
+    }
+    .btn-primary-solid:hover {
+        background: var(--primary-hover);
+    }
+    .session-table, .schedule-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .session-table th, .session-table td,
+    .schedule-table th, .schedule-table td {
+        padding: 12px 10px;
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+        vertical-align: middle;
+    }
+    .status-chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: .75rem;
+        font-weight: 700;
+    }
+    .status-chip.present {
+        background: #ecfdf5;
+        color: #15803d;
+    }
+    .status-chip.absent {
+        background: #fef2f2;
+        color: #b91c1c;
+    }
+    .status-chip.locked {
+        background: #eff6ff;
+        color: #1d4ed8;
+    }
+    .status-chip.open {
+        background: #fff7ed;
+        color: #c2410c;
+    }
+    .action-link {
+        color: var(--primary);
+        font-weight: 600;
+        text-decoration: none;
+    }
+    .action-link:hover {
+        text-decoration: underline;
+    }
+    .empty-state {
+        color: var(--text-muted);
+        font-size: .95rem;
+        padding: 12px 0 4px;
+    }
+    @@media (max-width: 960px) {
+        .quick-form {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="attendance-shell">
+    <section class="attendance-card">
+        <h2>Davamiyyəti aç</h2>
+        <p>Müəllim dərs başladıqda uyğun cədvəli və tarixi seçib qrup üzrə davamiyyəti qeyd edə bilər.</p>
+
+        <form asp-action="Session" method="get" class="quick-form">
+            <div class="field">
+                <label for="lessonScheduleId">Dərs cədvəli</label>
+                <select id="lessonScheduleId" name="lessonScheduleId" required>
+                    <option value="">Seçin</option>
+                    @foreach (var lesson in scheduleOptions)
+                    {
+                        <option value="@lesson.Id">
+                            @lesson.SubjectName - @lesson.GroupName (@lesson.DayOfWeek, @lesson.StartTime.ToString(@"hh\:mm"))
+                        </option>
+                    }
+                </select>
+            </div>
+            <div class="field">
+                <label for="sessionDate">Dərs tarixi</label>
+                <input id="sessionDate" name="sessionDate" type="date" value="@DateTime.Today.ToString("yyyy-MM-dd")" required />
+            </div>
+            <button type="submit" class="btn-primary-solid">Sessiyanı aç</button>
+        </form>
+    </section>
+
+    <section class="attendance-card">
+        <h2>Cari həftə dərsləri</h2>
+        <p>Bu siyahı müəllimin həftəlik cədvəlindən qurulur. Buradan bugünkü davamiyyəti bir kliklə aça bilərsiniz.</p>
+
+        @if (scheduleOptions.Count == 0)
+        {
+            <div class="empty-state">Bu müəllim üçün aktiv dərs cədvəli tapılmadı.</div>
+        }
+        else
+        {
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>Fənn</th>
+                        <th>Qrup</th>
+                        <th>Gün</th>
+                        <th>Saat</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var lesson in scheduleOptions)
+                    {
+                        <tr>
+                            <td>@lesson.SubjectName</td>
+                            <td>@lesson.GroupName</td>
+                            <td>@lesson.DayOfWeek</td>
+                            <td>@lesson.StartTime.ToString(@"hh\:mm") - @lesson.EndTime.ToString(@"hh\:mm")</td>
+                            <td>
+                                <a asp-action="Session"
+                                   asp-route-lessonScheduleId="@lesson.Id"
+                                   asp-route-sessionDate="@DateTime.Today.ToString("yyyy-MM-dd")"
+                                   class="action-link">
+                                    Bugünkü sessiyanı aç
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </section>
+
+    <section class="attendance-card">
+        <h2>Qeyd edilmiş sessiyalar</h2>
+        <p>Əvvəl qeyd olunmuş davamiyyət sessiyaları burada görünür. Kilid vaxtı keçdikdə sessiya müəllim üçün bağlanır.</p>
+
+        @if (Model.Sessions.Count == 0)
+        {
+            <div class="empty-state">Hələ heç bir davamiyyət sessiyası qeydə alınmayıb.</div>
+        }
+        else
+        {
+            <table class="session-table">
+                <thead>
+                    <tr>
+                        <th>Tarix</th>
+                        <th>Fənn</th>
+                        <th>Qrup</th>
+                        <th>İştirak</th>
+                        <th>Vəziyyət</th>
+                        <th></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var session in Model.Sessions)
+                    {
+                        <tr>
+                            <td>@session.SessionDate.ToString("yyyy-MM-dd")</td>
+                            <td>@session.SubjectName</td>
+                            <td>@session.GroupName</td>
+                            <td>
+                                <span class="status-chip present">Present: @session.PresentCount</span>
+                                <span class="status-chip absent">Absent: @session.AbsentCount</span>
+                            </td>
+                            <td>
+                                @if (session.HasLockedRecords)
+                                {
+                                    <span class="status-chip locked">Locked</span>
+                                }
+                                else
+                                {
+                                    <span class="status-chip open">Editable</span>
+                                }
+                            </td>
+                            <td>
+                                <a asp-action="Session"
+                                   asp-route-lessonScheduleId="@session.LessonScheduleId"
+                                   asp-route-sessionDate="@session.SessionDate.ToString("yyyy-MM-dd")"
+                                   class="action-link">
+                                    Aç
+                                </a>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        }
+    </section>
+</div>

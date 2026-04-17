@@ -22,6 +22,8 @@ namespace DataAccessLayer.Migrations
         public DbSet<StudentGroup> StudentGroups { get; set; }
         public DbSet<LessonGroup> LessonGroups { get; set; }
         public DbSet<Domain.Models.Entities.LessonSchedule> LessonSchedules { get; set; }
+        public DbSet<Attendance> Attendances { get; set; }
+        public DbSet<AttendanceAudit> AttendanceAudits { get; set; }
         public DbSet<TeacherDepartment> TeacherDepartments { get; set; }
         public DbSet<Building> Buildings { get; set; }
         public DbSet<Room> Rooms { get; set; }
@@ -62,6 +64,16 @@ namespace DataAccessLayer.Migrations
                 .HasOne(lg => lg.Group)
                 .WithMany(g => g.LessonGroups)
                 .HasForeignKey(lg => lg.GroupId);
+
+            modelBuilder.Entity<StudentGroup>()
+                .HasOne(sg => sg.Student)
+                .WithMany(s => s.StudentGroups)
+                .HasForeignKey(sg => sg.StudentId);
+
+            modelBuilder.Entity<StudentGroup>()
+                .HasOne(sg => sg.Group)
+                .WithMany(g => g.StudentGroups)
+                .HasForeignKey(sg => sg.GroupId);
 
             modelBuilder.Entity<Building>().HasData(
                 new Building { Id = 1, Name = "1-ci korpus" },

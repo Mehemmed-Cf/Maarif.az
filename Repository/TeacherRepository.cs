@@ -34,6 +34,8 @@ namespace Repository
                     .ThenInclude(d => d.Faculty)
                 .Include(t => t.Lessons)
                     .ThenInclude(l => l.LessonGroups)
+                .Include(t => t.Lessons)
+                    .ThenInclude(l => l.Subject)
                 .FirstOrDefaultAsync(t => t.UserId == userId, ct);
     }
 }

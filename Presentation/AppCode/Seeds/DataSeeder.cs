@@ -5,17 +5,21 @@ using Application.Modules.LessonSchedulesModule.Commands.LessonScheduleAddComman
 using Application.Modules.LessonsModule.Commands.LessonAddCommand;
 using Application.Modules.RoomsModule.Commands.RoomAddCommand;
 using Application.Modules.StudentsModule.Commands.StudentRegisterCommand;
+using Application.Modules.SubjectsModule;
 using Application.Modules.SubjectsModule.Commands.SubjectAddCommand;
 using Application.Modules.TeachersModule.Commands.TeacherRegisterCommand;
 using Application.Repositories;
+using Domain.Models.Entities;
 using Domain.Models.Stables;
 using Infrastructure.Exceptions;
 using MediatR;
+using Microsoft.Data.SqlClient;
 
 namespace Presentation.AppCode.Seeds
 {
     public class DataSeeder
     {
+        private readonly ILogger<DataSeeder> logger;
         private readonly IMediator mediator;
         private readonly IFacultyRepository facultyRepository;
         private readonly IStudentRepository studentRepository;
@@ -24,10 +28,14 @@ namespace Presentation.AppCode.Seeds
         private readonly ITeacherRepository teacherRepository;
         private readonly IRoomRepository roomRepository;
         private readonly ISubjectRepository subjectRepository;
+        private readonly ISubjectTopicRepository subjectTopicRepository;
+        private readonly ISubjectMaterialRepository subjectMaterialRepository;
+        private readonly ISubjectLiteratureRepository subjectLiteratureRepository;
         private readonly ILessonRepository lessonRepository;
         private readonly ILessonScheduleRepository lessonScheduleRepository;
 
         public DataSeeder(
+            ILogger<DataSeeder> logger,
             IMediator mediator,
             IFacultyRepository facultyRepository,
             IStudentRepository studentRepository,
@@ -36,9 +44,13 @@ namespace Presentation.AppCode.Seeds
             ITeacherRepository teacherRepository,
             IRoomRepository roomRepository,
             ISubjectRepository subjectRepository,
+            ISubjectTopicRepository subjectTopicRepository,
+            ISubjectMaterialRepository subjectMaterialRepository,
+            ISubjectLiteratureRepository subjectLiteratureRepository,
             ILessonRepository lessonRepository,
             ILessonScheduleRepository lessonScheduleRepository)
         {
+            this.logger = logger;
             this.mediator = mediator;
             this.facultyRepository = facultyRepository;
             this.studentRepository = studentRepository;
@@ -47,28 +59,64 @@ namespace Presentation.AppCode.Seeds
             this.teacherRepository = teacherRepository;
             this.roomRepository = roomRepository;
             this.subjectRepository = subjectRepository;
+            this.subjectTopicRepository = subjectTopicRepository;
+            this.subjectMaterialRepository = subjectMaterialRepository;
+            this.subjectLiteratureRepository = subjectLiteratureRepository;
             this.lessonRepository = lessonRepository;
             this.lessonScheduleRepository = lessonScheduleRepository;
         }
 
         public async Task SeedAsync()
         {
-            await SeedFacultiesAsync();
-            await SeedDepartmentsAsync();
-            await SeedTeachersAsync();
-            await SeedStudentsAsync();
-            await SeedGroupsAsync();
-            await SeedRoomsAsync();
-            await SeedSubjectsAsync();
-            await SeedLessonsAsync();
-            await SeedLessonSchedulesAsync();
+            await RunSeederStepAsync(nameof(SeedFacultiesAsync), SeedFacultiesAsync);
+            await RunSeederStepAsync(nameof(SeedDepartmentsAsync), SeedDepartmentsAsync);
+            await RunSeederStepAsync(nameof(SeedTeachersAsync), SeedTeachersAsync);
+            await RunSeederStepAsync(nameof(SeedStudentsAsync), SeedStudentsAsync);
+            await RunSeederStepAsync(nameof(SeedGroupsAsync), SeedGroupsAsync);
+            await RunSeederStepAsync(nameof(SeedRoomsAsync), SeedRoomsAsync);
+            await RunSeederStepAsync(nameof(SeedSubjectsAsync), SeedSubjectsAsync);
+            await RunSeederStepAsync(nameof(SeedSubjectContentsAsync), SeedSubjectContentsAsync);
+            await RunSeederStepAsync(nameof(SeedLessonsAsync), SeedLessonsAsync);
+            await RunSeederStepAsync(nameof(SeedLessonSchedulesAsync), SeedLessonSchedulesAsync);
+        }
+
+        private async Task RunSeederStepAsync(string stepName, Func<Task> step)
+        {
+            try
+            {
+                await step().ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                logger.LogError(ex, "Data seeder step {StepName} failed; later steps will still run.", stepName);
+            }
+        }
+
+        /// <summary>Duplicate key / unique index violations (including filtered unique indexes after soft-delete).</summary>
+        private static bool IsSqlUniqueOrDuplicateKey(Exception ex)
+        {
+            for (var e = ex; e != null; e = e.InnerException)
+            {
+                if (e is SqlException sql && (sql.Number == 2601 || sql.Number == 2627))
+                    return true;
+            }
+
+            return false;
+        }
+
+        private static bool IsSqlInvalidColumn(Exception ex)
+        {
+            for (var e = ex; e != null; e = e.InnerException)
+            {
+                if (e is SqlException sql && sql.Number == 207)
+                    return true;
+            }
+
+            return false;
         }
 
         private async Task SeedFacultiesAsync()
         {
-            if (facultyRepository.GetAll().Any())
-                return;
-
             var faculties = new List<string>
             {
                 "Transport və Logistika",
@@ -81,7 +129,22 @@ namespace Presentation.AppCode.Seeds
 
             foreach (var name in faculties)
             {
-                await mediator.Send(new FacultyAddRequest { Name = name });
+                // Idempotent by name: do not skip entire seed when DB already has other faculty rows.
+                if (facultyRepository.GetAll().Any(f => f.Name == name))
+                    continue;
+
+                try
+                {
+                    await mediator.Send(new FacultyAddRequest { Name = name }).ConfigureAwait(false);
+                }
+                catch (Exception ex) when (IsSqlUniqueOrDuplicateKey(ex))
+                {
+                    logger.LogInformation(ex, "Faculty seed skipped (already exists): {Name}", name);
+                }
+                catch (Exception ex)
+                {
+                    logger.LogWarning(ex, "Faculty seed failed for {Name}", name);
+                }
             }
         }
 
@@ -95,13 +158,36 @@ namespace Presentation.AppCode.Seeds
                 .OrderBy(f => f.Id)
                 .ToList();
 
+            const string transportName = "Transport və Logistika";
+            const string energyName = "Energetika";
+            const string mechanicalName = "Maşınqayırma və Metallurgiya";
+            const string itName = "İnformasiya Texnologiyaları və Telekommunikasiya";
+            const string specialName = "Xüsusi Texnika və Texnologiya";
+            const string economicsName = "Sənaye İqtisadiyyatı və İdarəetmə";
+
+            var requiredNames = new[]
+            {
+                transportName, energyName, mechanicalName, itName, specialName, economicsName
+            };
+
+            foreach (var required in requiredNames)
+            {
+                if (facultyList.All(f => f.Name != required))
+                {
+                    logger.LogWarning(
+                        "Department seed skipped: faculty {FacultyName} not found. Ensure faculty seed ran successfully.",
+                        required);
+                    return;
+                }
+            }
+
             // Map by name to be safe
-            var transport = facultyList.First(f => f.Name == "Transport və Logistika").Id;
-            var energy = facultyList.First(f => f.Name == "Energetika").Id;
-            var mechanical = facultyList.First(f => f.Name == "Maşınqayırma və Metallurgiya").Id;
-            var it = facultyList.First(f => f.Name == "İnformasiya Texnologiyaları və Telekommunikasiya").Id;
-            var special = facultyList.First(f => f.Name == "Xüsusi Texnika və Texnologiya").Id;
-            var economics = facultyList.First(f => f.Name == "Sənaye İqtisadiyyatı və İdarəetmə").Id;
+            var transport = facultyList.First(f => f.Name == transportName).Id;
+            var energy = facultyList.First(f => f.Name == energyName).Id;
+            var mechanical = facultyList.First(f => f.Name == mechanicalName).Id;
+            var it = facultyList.First(f => f.Name == itName).Id;
+            var special = facultyList.First(f => f.Name == specialName).Id;
+            var economics = facultyList.First(f => f.Name == economicsName).Id;
 
             var departments = new List<DepartmentAddRequest>
             {
@@ -141,7 +227,18 @@ namespace Presentation.AppCode.Seeds
 
             foreach (var request in departments)
             {
-                await mediator.Send(request);
+                try
+                {
+                    await mediator.Send(request).ConfigureAwait(false);
+                }
+                catch (Exception ex) when (IsSqlUniqueOrDuplicateKey(ex))
+                {
+                    logger.LogInformation(ex, "Department seed skipped (duplicate): {Name}", request.Name);
+                }
+                catch (Exception ex)
+                {
+                    logger.LogWarning(ex, "Department seed failed: {Name}", request.Name);
+                }
             }
         }
 
@@ -182,20 +279,32 @@ namespace Presentation.AppCode.Seeds
 
                 try
                 {
-                    await mediator.Send(request);
+                    await mediator.Send(request).ConfigureAwait(false);
                 }
                 catch (ConflictException)
                 {
                     // Already registered — skip
                 }
+                catch (Exception ex) when (IsSqlUniqueOrDuplicateKey(ex))
+                {
+                    logger.LogInformation(ex, "Teacher seed skipped (DB unique constraint): {Fin}", request.FinCode);
+                }
+                catch (Exception ex) when (IsSqlInvalidColumn(ex))
+                {
+                    logger.LogError(
+                        ex,
+                        "Teacher seed failed for {Fin}: database schema is missing columns (run migrations).",
+                        request.FinCode);
+                    return;
+                }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Teacher seed failed for {request.FinCode}: {ex.Message}");
+                    logger.LogWarning(ex, "Teacher seed failed for {Fin}", request.FinCode);
                 }
             }
         }
 
-        public async Task SeedStudentsAsync()
+        private async Task SeedStudentsAsync()
         {
             if (studentRepository.GetAll().Any())
                 return;
@@ -258,16 +367,27 @@ namespace Presentation.AppCode.Seeds
             {
                 try
                 {
-                    await mediator.Send(request);
+                    await mediator.Send(request).ConfigureAwait(false);
                 }
                 catch (ConflictException)
                 {
                     // Already registered — skip
                 }
+                catch (Exception ex) when (IsSqlUniqueOrDuplicateKey(ex))
+                {
+                    logger.LogInformation(ex, "Student seed skipped (DB unique constraint): {Fin}", request.FinCode);
+                }
+                catch (Exception ex) when (IsSqlInvalidColumn(ex))
+                {
+                    logger.LogError(
+                        ex,
+                        "Student seed failed for {Fin}: database schema is missing columns (run migrations).",
+                        request.FinCode);
+                    return;
+                }
                 catch (Exception ex)
                 {
-                    // Log and continue — don't let one failure stop the rest
-                    Console.WriteLine($"Seed failed for {request.FinCode}: {ex.Message}");
+                    logger.LogWarning(ex, "Student seed failed for {Fin}", request.FinCode);
                 }
             }
         }
@@ -299,11 +419,15 @@ namespace Presentation.AppCode.Seeds
 
                 try
                 {
-                    await mediator.Send(request);
+                    await mediator.Send(request).ConfigureAwait(false);
+                }
+                catch (Exception ex) when (IsSqlUniqueOrDuplicateKey(ex))
+                {
+                    logger.LogInformation(ex, "Group seed skipped (duplicate) department {DeptId}", dept.Id);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Group seed failed for department {dept.Id} ({dept.Name}): {ex.Message}");
+                    logger.LogWarning(ex, "Group seed failed for department {DeptId} ({DeptName})", dept.Id, dept.Name);
                 }
             }
         }
@@ -328,11 +452,15 @@ namespace Presentation.AppCode.Seeds
             {
                 try
                 {
-                    await mediator.Send(request);
+                    await mediator.Send(request).ConfigureAwait(false);
+                }
+                catch (Exception ex) when (IsSqlUniqueOrDuplicateKey(ex))
+                {
+                    logger.LogInformation(ex, "Room seed skipped (duplicate) {Building}-{Number}", request.BuildingId, request.Number);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Room seed failed {request.BuildingId}-{request.Number}: {ex.Message}");
+                    logger.LogWarning(ex, "Room seed failed {Building}-{Number}", request.BuildingId, request.Number);
                 }
             }
         }
@@ -346,6 +474,96 @@ namespace Presentation.AppCode.Seeds
             return prefix + departmentName[..max];
         }
 
+        private static SubjectAddRequest BuildSeedSubjectAddRequest(int departmentId, string departmentName)
+        {
+            var title = SubjectTitleForDepartment(departmentName);
+            return new SubjectAddRequest
+            {
+                Name = title,
+                DepartmentId = departmentId,
+                Term = "2026 Yaz",
+                GroupName = $"SEED-D{departmentId}-qrup",
+                LectureTeacher = "Seed: Mühazirə müəllimi",
+                SeminarTeacher = "Seed: Seminar müəllimi",
+                LabTeacher = "yoxdur",
+                StudentCount = 30,
+                Credits = 5,
+                TotalHours = 60,
+                WeekCount = 15,
+                Purpose = $"Seed fənn üçün qısa məqsəd: {departmentName} üzrə nümunə kurikulum.",
+                TeacherMethods = "Mühazirə, seminar, praktiki tapşırıqlar (seed).",
+                SyllabusUrl = "https://example.edu/seed/syllabus.pdf",
+                FreeWorkScore = 10,
+                SeminarScore = 10,
+                LabScore = 10,
+                AttendanceScore = 10,
+                ExamScore = 50,
+                Topics = new List<SubjectTopicRowDto>
+                {
+                    new()
+                    {
+                        WeekNumber = 1,
+                        TopicName = "Giriş və təşkilati məsələlər",
+                        TeachingMethods = "Mühazirə, müzakirə",
+                        Materials = "Təqdimat, silabus",
+                        Equipment = "Proyektor"
+                    },
+                    new()
+                    {
+                        WeekNumber = 2,
+                        TopicName = "Əsas anlayışlar",
+                        TeachingMethods = "Seminar, tapşırıq",
+                        Materials = "PDF materiallar",
+                        Equipment = "Kompyuter laboratoriyası"
+                    },
+                    new()
+                    {
+                        WeekNumber = 3,
+                        TopicName = "Tətbiqi nümunələr",
+                        TeachingMethods = "Qrup işi",
+                        Materials = "Kəsiyyə, nümunə suallar",
+                        Equipment = "-"
+                    }
+                },
+                Materials = new List<SubjectMaterialRowDto>
+                {
+                    new()
+                    {
+                        Title = "Silabus (seed)",
+                        Description = "Avtomatik əlavə olunmuş nümunə silabus.",
+                        FileUrl = "https://example.edu/seed/subjects/syllabus.pdf",
+                        MaterialType = "Syllabus"
+                    },
+                    new()
+                    {
+                        Title = "Mühazirə qeydləri — həftə 1–2",
+                        Description = "Seed məzmunu.",
+                        FileUrl = "https://example.edu/seed/subjects/lecture-notes.pdf",
+                        MaterialType = "LectureNote"
+                    }
+                },
+                Literatures = new List<SubjectLiteratureRowDto>
+                {
+                    new()
+                    {
+                        Type = "Əsas",
+                        Author = "Seed Müəllif",
+                        BookName = "Əsas dərsliyi (nümunə)",
+                        Publisher = "Seed nəşriyyat",
+                        PublicationYear = 2024
+                    },
+                    new()
+                    {
+                        Type = "Köməkçi",
+                        Author = "Komissiya",
+                        BookName = "Metodiki tövsiyələr",
+                        Publisher = "-",
+                        PublicationYear = 2023
+                    }
+                }
+            };
+        }
+
         private async Task SeedSubjectsAsync()
         {
             var departments = departmentRepository.GetAll().OrderBy(d => d.Id).ToList();
@@ -357,15 +575,84 @@ namespace Presentation.AppCode.Seeds
 
                 try
                 {
-                    await mediator.Send(new SubjectAddRequest
-                    {
-                        Name = SubjectTitleForDepartment(dept.Name),
-                        DepartmentId = dept.Id
-                    });
+                    var request = BuildSeedSubjectAddRequest(dept.Id, dept.Name);
+                    await mediator.Send(request).ConfigureAwait(false);
+                }
+                catch (Exception ex) when (IsSqlUniqueOrDuplicateKey(ex))
+                {
+                    logger.LogInformation(ex, "Subject seed skipped (duplicate) department {DeptId}", dept.Id);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Subject seed failed for department {dept.Id}: {ex.Message}");
+                    logger.LogWarning(ex, "Subject seed failed for department {DeptId}", dept.Id);
+                }
+            }
+        }
+
+        /// <summary>
+        /// Idempotent: subjects created by older seeders (name + department only) get sample topics, materials, and literature.
+        /// </summary>
+        private async Task SeedSubjectContentsAsync()
+        {
+            foreach (var subject in subjectRepository.GetAll().OrderBy(s => s.Id).ToList())
+            {
+                if (subjectTopicRepository.GetAll(t => t.SubjectId == subject.Id).Any())
+                    continue;
+
+                try
+                {
+                    var request = BuildSeedSubjectAddRequest(subject.DepartmentId, subject.Name);
+                    foreach (var row in request.Topics)
+                    {
+                        await subjectTopicRepository.AddAsync(new SubjectTopic
+                        {
+                            SubjectId = subject.Id,
+                            WeekNumber = row.WeekNumber,
+                            TopicName = row.TopicName,
+                            TeachingMethods = row.TeachingMethods,
+                            Materials = row.Materials,
+                            Equipment = row.Equipment
+                        }, CancellationToken.None).ConfigureAwait(false);
+                    }
+
+                    foreach (var row in request.Materials)
+                    {
+                        await subjectMaterialRepository.AddAsync(new SubjectMaterial
+                        {
+                            SubjectId = subject.Id,
+                            Title = row.Title,
+                            Description = row.Description,
+                            FileUrl = row.FileUrl,
+                            MaterialType = row.MaterialType
+                        }, CancellationToken.None).ConfigureAwait(false);
+                    }
+
+                    foreach (var row in request.Literatures)
+                    {
+                        await subjectLiteratureRepository.AddAsync(new SubjectLiterature
+                        {
+                            SubjectId = subject.Id,
+                            Type = row.Type,
+                            Author = row.Author,
+                            BookName = row.BookName,
+                            Publisher = row.Publisher,
+                            PublicationYear = row.PublicationYear
+                        }, CancellationToken.None).ConfigureAwait(false);
+                    }
+
+                    await subjectTopicRepository.SaveAsync(CancellationToken.None).ConfigureAwait(false);
+                    logger.LogInformation(
+                        "Subject content seed applied for subject {SubjectId} ({SubjectName}).",
+                        subject.Id,
+                        subject.Name);
+                }
+                catch (Exception ex) when (IsSqlUniqueOrDuplicateKey(ex))
+                {
+                    logger.LogInformation(ex, "Subject content seed skipped (duplicate) subject {SubjectId}", subject.Id);
+                }
+                catch (Exception ex)
+                {
+                    logger.LogWarning(ex, "Subject content seed failed for subject {SubjectId}", subject.Id);
                 }
             }
         }
@@ -396,11 +683,15 @@ namespace Presentation.AppCode.Seeds
                     {
                         TeacherId = teacher.Id,
                         SubjectId = subject.Id
-                    });
+                    }).ConfigureAwait(false);
+                }
+                catch (Exception ex) when (IsSqlUniqueOrDuplicateKey(ex))
+                {
+                    logger.LogInformation(ex, "Lesson seed skipped (duplicate) dept {DeptId}", dept.Id);
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Lesson seed failed dept {dept.Id}: {ex.Message}");
+                    logger.LogWarning(ex, "Lesson seed failed dept {DeptId}", dept.Id);
                 }
             }
         }
@@ -415,7 +706,7 @@ namespace Presentation.AppCode.Seeds
 
             if (roomIds.Count == 0)
             {
-                Console.WriteLine("LessonSchedule seed skipped: no rooms with Number > 0.");
+                logger.LogInformation("LessonSchedule seed skipped: no rooms with Number > 0.");
                 return;
             }
 
@@ -462,12 +753,23 @@ namespace Presentation.AppCode.Seeds
                             RoomId = roomId,
                             LessonType = slot.Type,
                             WeekType = slot.Week
-                        });
+                        }).ConfigureAwait(false);
+                    }
+                    catch (Exception ex) when (IsSqlUniqueOrDuplicateKey(ex))
+                    {
+                        logger.LogInformation(
+                            ex,
+                            "LessonSchedule seed skipped (duplicate) group {GroupId} {Day}",
+                            group.Id,
+                            slot.Dow);
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine(
-                            $"LessonSchedule seed failed group {group.Id} {slot.Dow}: {ex.Message}");
+                        logger.LogWarning(
+                            ex,
+                            "LessonSchedule seed failed group {GroupId} {Day}",
+                            group.Id,
+                            slot.Dow);
                     }
                 }
             }

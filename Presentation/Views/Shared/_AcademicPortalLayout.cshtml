@@ -169,13 +169,21 @@
             <a asp-controller="@portalController" asp-action="Index" class="nav-item @(active == "schedule" ? "active" : "")"><i class="ph ph-calendar-blank"></i>Dərs cədvəli</a>
             @if (isTeacher)
             {
+                <a asp-controller="Attendance" asp-action="Index" class="nav-item @(active == "attendance" ? "active" : "")"><i class="ph ph-check-square"></i>Davamiyyət</a>
+            }
+            else
+            {
+                <a asp-controller="Attendance" asp-action="Student" class="nav-item @(active == "attendance" ? "active" : "")"><i class="ph ph-check-square"></i>Davamiyyət</a>
+            }
+            @if (isTeacher)
+            {
                 <a asp-controller="Auth" asp-action="TeacherChangePassword" class="nav-item @(active == "password" ? "active" : "")"><i class="ph ph-key"></i>Şifrəni dəyiş</a>
             }
             else
             {
                 <a asp-controller="Auth" asp-action="StudentChangePassword" class="nav-item @(active == "password" ? "active" : "")"><i class="ph ph-key"></i>Şifrəni dəyiş</a>
             }
-            <span class="nav-item muted"><i class="ph ph-books"></i>Fənlər</span>
+            <a asp-controller="@portalController" asp-action="Subjects" class="nav-item @(active == "subjects" ? "active" : "")"><i class="ph ph-books"></i>Fənlər</a>
             <span class="nav-item muted"><i class="ph ph-clipboard-text"></i>Tapşırıqlar</span>
         </nav>
         <div class="sidebar-footer">

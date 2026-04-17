@@ -1,0 +1,156 @@
+@model Presentation.AppCode.ViewModels.AdminAttendanceEditViewModel
+@using Domain.Models.Stables
+@{
+    ViewData["Title"] = "Edit Attendance";
+    var adminIsPresent = Model.Form.Status == AttendanceStatus.Present;
+}
+
+<style>
+    .admin-attendance-legend { margin-bottom: 1rem; font-size: .9rem; color: #64748b; }
+    .admin-attendance-legend .pill {
+        display: inline-block; min-width: 40px; padding: 3px 8px; border-radius: 999px;
+        font-weight: 700; font-size: .72rem; margin-right: 6px; color: #fff;
+    }
+    .admin-attendance-legend .pill.on { background: linear-gradient(135deg, #22c55e, #16a34a); }
+    .admin-attendance-legend .pill.off { background: linear-gradient(135deg, #f87171, #dc2626); }
+    .admin-toggle-wrap { display: flex; align-items: center; gap: 14px; margin-top: 6px; }
+    .admin-attendance-toggle {
+        position: relative; width: 112px; height: 40px; border-radius: 999px; border: none;
+        padding: 0; cursor: pointer; font: inherit; box-shadow: inset 0 1px 3px rgba(0,0,0,.12);
+    }
+    .admin-attendance-toggle.present { background: linear-gradient(90deg, #fecaca 0%, #86efac 42%, #22c55e 100%); }
+    .admin-attendance-toggle.absent { background: linear-gradient(90deg, #ef4444 0%, #fca5a5 55%, #fecaca 100%); }
+    .admin-toggle-thumb {
+        position: absolute; top: 4px; width: 48px; height: 32px; border-radius: 999px;
+        background: #fff; box-shadow: 0 2px 8px rgba(0,0,0,.18);
+        display: flex; align-items: center; justify-content: center; font-weight: 800; font-size: .72rem;
+        transition: left .22s cubic-bezier(.4, 0, .2, 1);
+    }
+    .admin-attendance-toggle.present .admin-toggle-thumb { left: calc(100% - 52px); color: #15803d; }
+    .admin-attendance-toggle.absent .admin-toggle-thumb { left: 4px; color: #b91c1c; }
+    .admin-toggle-caption { font-size: .9rem; color: #475569; min-width: 8rem; }
+</style>
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Edit Attendance</h4>
+                    <span>Admin override for attendance records, including locked sessions.</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-controller="Dashboard" asp-action="Index"><i class="feather icon-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-action="Index">Attendance</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Edit</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Attendance Override</h5>
+                    <span>Student attendance can be corrected here; changes are written to the audit trail (including overrides on locked sessions).</span>
+                </div>
+                <div class="card-block">
+                    <div asp-validation-summary="All" class="text-danger"></div>
+
+                    <div class="row mb-4">
+                        <div class="col-sm-4">
+                            <label class="control-label text-primary">Student</label>
+                            <p class="form-control">@Model.Attendance.StudentFullName (@Model.Attendance.StudentNumber)</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="control-label text-primary">Subject</label>
+                            <p class="form-control">@Model.Attendance.SubjectName</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="control-label text-primary">Session Date</label>
+                            <p class="form-control">@Model.Attendance.SessionDate.ToString("yyyy-MM-dd")</p>
+                        </div>
+                    </div>
+
+                    <form asp-action="Edit" method="post">
+                        @Html.AntiForgeryToken()
+                        <input asp-for="Form.AttendanceId" type="hidden" />
+                        <input asp-for="Form.Status" type="hidden" id="adminAttendanceStatusHidden" />
+
+                        <div class="form-group">
+                            <label class="control-label">Status</label>
+                            <div class="admin-attendance-legend">
+                                <span><span class="pill on">i/e</span> Present / iştirak edir</span>
+                                <span><span class="pill off">q/b</span> Absent / iştirak etmir</span>
+                            </div>
+                            <div class="admin-toggle-wrap">
+                                <button type="button"
+                                        id="adminAttendanceToggle"
+                                        class="admin-attendance-toggle @(adminIsPresent ? "present" : "absent")"
+                                        data-present="@(adminIsPresent ? "true" : "false")"
+                                        aria-pressed="@(adminIsPresent ? "true" : "false")">
+                                    <span class="admin-toggle-thumb">@(adminIsPresent ? "i/e" : "q/b")</span>
+                                </button>
+                                <span class="admin-toggle-caption" id="adminAttendanceToggleCaption">
+                                    @(adminIsPresent ? "Present (iştirak edir)" : "Absent (iştirak etmir)")
+                                </span>
+                            </div>
+                            <span asp-validation-for="Form.Status" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group">
+                            <label asp-for="Form.Note" class="control-label">Audit note</label>
+                            <textarea asp-for="Form.Note" class="form-control" rows="4" placeholder="Optional explanation for the override"></textarea>
+                            <span asp-validation-for="Form.Note" class="text-danger"></span>
+                        </div>
+
+                        <div class="form-group text-right m-t-20">
+                            <a class="btn btn-info" asp-action="Details" asp-route-id="@Model.Attendance.Id">
+                                <i class="fa fa-eye"></i> Details
+                            </a>
+                            <button class="btn btn-warning" type="submit">
+                                <i class="fa fa-save"></i> Save Override
+                            </button>
+                            <a class="btn btn-primary" asp-action="Index">
+                                <i class="fa fa-arrow-left"></i> Back to List
+                            </a>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script>
+    (function () {
+        var btn = document.getElementById('adminAttendanceToggle');
+        var hidden = document.getElementById('adminAttendanceStatusHidden');
+        var cap = document.getElementById('adminAttendanceToggleCaption');
+        if (!btn || !hidden) return;
+        btn.addEventListener('click', function () {
+            var isPresent = btn.getAttribute('data-present') === 'true';
+            var next = !isPresent;
+            btn.setAttribute('data-present', next ? 'true' : 'false');
+            btn.setAttribute('aria-pressed', next ? 'true' : 'false');
+            btn.classList.toggle('present', next);
+            btn.classList.toggle('absent', !next);
+            hidden.value = next ? '1' : '0';
+            btn.querySelector('.admin-toggle-thumb').textContent = next ? 'i/e' : 'q/b';
+            if (cap) cap.textContent = next ? 'Present (iştirak edir)' : 'Absent (iştirak etmir)';
+        });
+    })();
+</script>

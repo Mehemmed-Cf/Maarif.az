@@ -14,7 +14,11 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("Application")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
+<<<<<<< HEAD
 [assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+7d3ddc606487cf52194e99b0b3a8f3a065f1f772")]
+=======
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+8b071571491550d56769afbb9748e21d4965814a")]
+>>>>>>> d494ec92 (Added Attendance and detached docker and Superadmin role for faster development)
 [assembly: System.Reflection.AssemblyProductAttribute("Application")]
 [assembly: System.Reflection.AssemblyTitleAttribute("Application")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

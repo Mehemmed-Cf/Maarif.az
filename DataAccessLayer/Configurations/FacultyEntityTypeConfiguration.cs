@@ -1,9 +1,9 @@
+using DataAccessLayer.Extensions;
 using Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
-namespace DataAccessLayer.Configurations
-{
+namespace DataAccessLayer.Configurations{
     public class FacultyConfiguration : IEntityTypeConfiguration<Faculty>
     {
         public void Configure(EntityTypeBuilder<Faculty> builder)
@@ -18,7 +18,7 @@ namespace DataAccessLayer.Configurations
 
             builder.HasQueryFilter(f => f.DeletedAt == null);
 
-            builder.HasIndex(f => f.Name).IsUnique();
+            builder.HasIndex(f => f.Name).IsUniqueWhenNotDeleted();
         }
     }
 }

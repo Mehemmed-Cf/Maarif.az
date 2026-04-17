@@ -1,0 +1,140 @@
+@model Application.Modules.AttendanceModule.AttendanceDetailsDto
+@{
+    ViewData["Title"] = "Attendance Details";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Attendance Details</h4>
+                    <span>Record details and audit history for a single attendance entry.</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-controller="Dashboard" asp-action="Index"><i class="feather icon-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-action="Index">Attendance</a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Details</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Main Information</h5>
+                    <span>Current attendance state for the selected student and session.</span>
+                </div>
+                <div class="card-block">
+                    <div class="row mb-4">
+                        <div class="col-sm-4">
+                            <label class="control-label text-primary">Student</label>
+                            <p class="form-control">@Model.StudentFullName (@Model.StudentNumber)</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="control-label text-primary">Subject</label>
+                            <p class="form-control">@Model.SubjectName</p>
+                        </div>
+                        <div class="col-sm-4">
+                            <label class="control-label text-primary">Group</label>
+                            <p class="form-control">@Model.GroupName</p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-sm-3">
+                            <label class="control-label text-primary">Teacher</label>
+                            <p class="form-control">@Model.TeacherFullName</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="control-label text-primary">Session Date</label>
+                            <p class="form-control">@Model.SessionDate.ToString("yyyy-MM-dd")</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="control-label text-primary">Status</label>
+                            <p class="form-control">@Model.Status</p>
+                        </div>
+                        <div class="col-sm-3">
+                            <label class="control-label text-primary">Locked</label>
+                            <p class="form-control">@(Model.IsLocked ? "Yes" : "No")</p>
+                        </div>
+                    </div>
+
+                    <div class="row mb-4">
+                        <div class="col-sm-6">
+                            <label class="control-label text-primary">Marked At</label>
+                            <p class="form-control">@Model.MarkedAt.ToString("yyyy-MM-dd HH:mm")</p>
+                        </div>
+                        <div class="col-sm-6">
+                            <label class="control-label text-primary">Lock At</label>
+                            <p class="form-control">@Model.LockAt.ToString("yyyy-MM-dd HH:mm")</p>
+                        </div>
+                    </div>
+
+                    <h4 class="sub-title">Audit Trail</h4>
+                    @if (Model.AuditLogs == null || !Model.AuditLogs.Any())
+                    {
+                        <div class="alert alert-info">
+                            <i class="feather icon-info mr-2"></i> No audit history exists for this attendance record.
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th>Changed At</th>
+                                        <th>Old Status</th>
+                                        <th>New Status</th>
+                                        <th>User Id</th>
+                                        <th>Admin Override</th>
+                                        <th>Was Locked</th>
+                                        <th>Note</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var audit in Model.AuditLogs)
+                                    {
+                                        <tr>
+                                            <td>@audit.ChangedAt.ToString("yyyy-MM-dd HH:mm")</td>
+                                            <td>@audit.OldStatus</td>
+                                            <td>@audit.NewStatus</td>
+                                            <td>@audit.ChangedByUserId</td>
+                                            <td>@(audit.WasAdminOverride ? "Yes" : "No")</td>
+                                            <td>@(audit.WasLockedBeforeChange ? "Yes" : "No")</td>
+                                            <td>@(string.IsNullOrWhiteSpace(audit.Note) ? "-" : audit.Note)</td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+                    }
+
+                    <div class="form-group text-right m-t-20">
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.Id">
+                            <i class="fa fa-pencil"></i> Edit Attendance
+                        </a>
+                        <a class="btn btn-primary" asp-action="Index">
+                            <i class="fa fa-arrow-left"></i> Back to List
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

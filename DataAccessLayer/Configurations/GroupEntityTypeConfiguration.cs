@@ -1,3 +1,4 @@
+using DataAccessLayer.Extensions;
 using Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -19,7 +20,7 @@ namespace DataAccessLayer.Configurations
             builder.Property(g => g.Year)
                    .IsRequired();
 
-            // StudentCount is [NotMapped] — EF ignores it automatically.
+            // StudentCount is [NotMapped]  EF ignores it automatically.
 
             builder.HasQueryFilter(g => g.DeletedAt == null);
 
@@ -30,7 +31,7 @@ namespace DataAccessLayer.Configurations
 
             builder.HasIndex(g => g.DepartmentId);
             // A group name like "IT-101" should be unique within a department
-            builder.HasIndex(g => new { g.DepartmentId, g.Name }).IsUnique();
+            builder.HasIndex(g => new { g.DepartmentId, g.Name }).IsUniqueWhenNotDeleted();
         }
     }
 }

@@ -47,7 +47,7 @@ namespace Application.Modules.StudentsModule.Commands.StudentLoginCommand
                 .CheckPasswordAsync(user, request.Password);
 
             if (!passwordValid)
-                throw new UnauthorizedException("Şifrə yanlışdır.");
+                throw new UnauthorizedException("Şifrə və ya tələbə nömrəsi yanlışdır.");
 
             // 4. Sign in — this sets the auth cookie
             await signInManager.SignInAsync(user, isPersistent: false);

@@ -27,6 +27,21 @@
         "ASPNETCORE_ENVIRONMENT": "Development",
         "ConnectionStrings__cString": "Server=127.0.0.1,1444;Database=MaarifDb;User Id=sa;Password=YourStrong@Password123;TrustServerCertificate=True;Encrypt=False;MultipleActiveResultSets=True"
       }
+<<<<<<< HEAD
+=======
+    },
+    "Container (Dockerfile)": {
+      "commandName": "Docker",
+      "launchBrowser": true,
+      "launchUrl": "http://localhost:5102",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development",
+        "ConnectionStrings__cString": "Server=host.docker.internal,1444;Database=MaarifDB;User Id=sa;Password=YourStrong@Password123;TrustServerCertificate=True;Encrypt=False;",
+        "ASPNETCORE_HTTP_PORTS": "8080"
+      },
+      "publishAllPorts": false,
+      "useSSL": false
+>>>>>>> d494ec92 (Added Attendance and detached docker and Superadmin role for faster development)
     }
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",

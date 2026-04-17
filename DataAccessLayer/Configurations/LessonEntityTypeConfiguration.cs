@@ -1,3 +1,4 @@
+using DataAccessLayer.Extensions;
 using Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -25,7 +26,7 @@ namespace DataAccessLayer.Configurations
                    .OnDelete(DeleteBehavior.Restrict);
 
             // A teacher should not teach the same subject twice as separate lesson records
-            builder.HasIndex(l => new { l.TeacherId, l.SubjectId }).IsUnique();
+            builder.HasIndex(l => new { l.TeacherId, l.SubjectId }).IsUniqueWhenNotDeleted();
             builder.HasIndex(l => l.SubjectId);
         }
     }

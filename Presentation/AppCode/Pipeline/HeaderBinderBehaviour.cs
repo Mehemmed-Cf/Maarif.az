@@ -16,6 +16,9 @@ namespace Presentation.AppCode.Pipeline
         }
         public Task<TRespose> Handle(TRequest request, RequestHandlerDelegate<TRespose> next, CancellationToken cancellationToken)
         {
+            var httpContext = ctx.HttpContext;
+            if (httpContext is null)
+                return next();
 
             var properties = request.GetType()
                 .GetProperties()
@@ -25,7 +28,7 @@ namespace Presentation.AppCode.Pipeline
             foreach (var property in properties)
             {
 
-                if (!ctx.HttpContext.Request.Headers.TryGetValue(property.Name, out StringValues values))
+                if (!httpContext.Request.Headers.TryGetValue(property.Name, out StringValues values))
                     continue;
 
                 property.SetValue(request, values.FirstOrDefault());

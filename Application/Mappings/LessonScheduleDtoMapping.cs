@@ -23,6 +23,7 @@ namespace Application.Mappings
             {
                 Id = s.Id,
                 LessonId = s.LessonId,
+                SubjectId = s.Lesson.SubjectId,
                 SubjectName = s.Lesson.Subject.Name,
                 TeacherFullName = s.Lesson.Teacher.FullName,
                 GroupId = s.GroupId,

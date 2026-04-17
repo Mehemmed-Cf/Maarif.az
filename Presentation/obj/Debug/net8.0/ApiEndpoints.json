@@ -1,1 +1,34 @@
-[]
+[
+  {
+    "ContainingType": "Presentation.Controllers.ApiAuthController",
+    "Method": "Login",
+    "RelativePath": "apiauth/login",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.Modules.StudentsModule.Commands.StudentLoginCommand.StudentLoginRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "Presentation.Controllers.ApiAuthController",
+    "Method": "Register",
+    "RelativePath": "apiauth/register",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "Application.Modules.StudentsModule.Commands.StudentRegisterCommand.StudentRegisterRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

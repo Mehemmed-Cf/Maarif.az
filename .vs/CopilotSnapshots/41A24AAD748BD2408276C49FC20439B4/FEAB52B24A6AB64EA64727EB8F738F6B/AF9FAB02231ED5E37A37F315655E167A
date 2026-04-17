@@ -1,0 +1,17 @@
+﻿using Domain.Models.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace DataAccessLayer.Configurations
+{
+    public class SubmissionEntityTypeConfiguration : IEntityTypeConfiguration<Submission>
+    {
+        public void Configure(EntityTypeBuilder<Submission> builder)
+        {
+            builder.HasKey(x => x.Id);
+
+            // Example Relations (Uncomment and adjust based on your actual properties)
+            // builder.HasMany(x => x.SubmissionFiles).WithOne().HasForeignKey(x => x.SubmissionId);
+        }
+    }
+}

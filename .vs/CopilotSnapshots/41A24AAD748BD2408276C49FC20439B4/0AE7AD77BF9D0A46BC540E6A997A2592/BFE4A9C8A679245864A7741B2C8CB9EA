@@ -1,0 +1,21 @@
+﻿using Domain.Models.Concrates;
+using StudentEntity = Domain.Models.Entities.Student.Student;
+using SubjectEntity = Domain.Models.Entities.Subject.Subject;
+using TeacherDepartmentEntity = Domain.Models.Entities.Teacher.TeacherDepartment;
+
+namespace Domain.Models.Entities
+{
+    public class Department : AuditableEntity
+    {
+        public int Id { get; set; }
+        public string Name { get; set; }
+
+        public int FacultyId { get; set; }
+        public Faculty Faculty { get; set; }
+
+        public ICollection<TeacherDepartmentEntity> TeacherDepartments { get; set; }
+        public ICollection<StudentEntity> Students { get; set; }
+        public ICollection<Group> Groups { get; set; }
+        public ICollection<SubjectEntity> Subjects { get; set; }
+    }
+}

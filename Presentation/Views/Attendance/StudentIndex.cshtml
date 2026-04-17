@@ -1,0 +1,103 @@
+@model IReadOnlyList<Application.Modules.AttendanceModule.StudentAttendanceListItemDto>
+
+<style>
+    .attendance-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: var(--shadow-card);
+        padding: 24px;
+    }
+    .attendance-card h2 {
+        margin-bottom: 8px;
+        font-size: 1.15rem;
+    }
+    .attendance-card p {
+        color: var(--text-muted);
+        margin-bottom: 18px;
+    }
+    .attendance-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .attendance-table th,
+    .attendance-table td {
+        padding: 13px 10px;
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+    }
+    .badge {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: .75rem;
+        font-weight: 700;
+    }
+    .badge.present {
+        background: #ecfdf5;
+        color: #15803d;
+    }
+    .badge.absent {
+        background: #fef2f2;
+        color: #b91c1c;
+    }
+    .badge.locked {
+        background: #eff6ff;
+        color: #1d4ed8;
+    }
+    .badge.open {
+        background: #fff7ed;
+        color: #c2410c;
+    }
+    .empty-state {
+        color: var(--text-muted);
+        font-size: .95rem;
+    }
+</style>
+
+<section class="attendance-card">
+    <h2>Davamiyyət tarixçəsi</h2>
+    <p>Tələbə olaraq öz sessiyalarınız üzrə present və absent qeydlərini burada izləyə bilərsiniz.</p>
+
+    @if (Model.Count == 0)
+    {
+        <div class="empty-state">Hələ sizə aid davamiyyət qeydi tapılmadı.</div>
+    }
+    else
+    {
+        <table class="attendance-table">
+            <thead>
+                <tr>
+                    <th>Tarix</th>
+                    <th>Fənn</th>
+                    <th>Müəllim</th>
+                    <th>Qrup</th>
+                    <th>Status</th>
+                    <th>Vəziyyət</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@item.SessionDate.ToString("yyyy-MM-dd")</td>
+                        <td>@item.SubjectName</td>
+                        <td>@item.TeacherFullName</td>
+                        <td>@item.GroupName</td>
+                        <td>
+                            <span class="badge @(item.Status == Domain.Models.Stables.AttendanceStatus.Present ? "present" : "absent")">
+                                @item.Status
+                            </span>
+                        </td>
+                        <td>
+                            <span class="badge @(item.IsLocked ? "locked" : "open")">
+                                @(item.IsLocked ? "Locked" : "Editable window")
+                            </span>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+</section>

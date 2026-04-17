@@ -1,3 +1,4 @@
+using DataAccessLayer.Extensions;
 using Domain.Models.Entities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
@@ -40,14 +41,13 @@ namespace DataAccessLayer.Configurations
 
             builder.HasQueryFilter(t => t.DeletedAt == null);
 
-            builder.HasIndex(t => t.Email).IsUnique();
+            builder.HasIndex(t => t.Email).IsUniqueWhenNotDeleted();
             builder.HasIndex(t => t.UserId);
-            builder.HasIndex(t => t.FinCode).IsUnique();
-            builder.HasIndex(t => t.TeacherNumber).IsUnique();
+            builder.HasIndex(t => t.FinCode).IsUniqueWhenNotDeleted();
+            builder.HasIndex(t => t.TeacherNumber).IsUniqueWhenNotDeleted();
 
             builder.HasIndex(t => t.DocumentSerialNumber)
-                .IsUnique()
-                .HasFilter("[DocumentSerialNumber] IS NOT NULL");
+                .IsUniqueWhenNotDeleted("[DocumentSerialNumber] IS NOT NULL");
         }
     }
 }

@@ -41,7 +41,7 @@ namespace Application.Modules.TeachersModule.Commands.TeacherLoginCommand
             var passwordValid = await userManager.CheckPasswordAsync(user, request.Password);
 
             if (!passwordValid)
-                throw new UnauthorizedException("Şifrə yanlışdır.");
+                throw new UnauthorizedException("Şifrə və ya müəllim nömrəsi yanlışdır.");
 
             await signInManager.SignInAsync(user, isPersistent: false);
 

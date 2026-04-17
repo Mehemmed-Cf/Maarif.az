@@ -7,9 +7,8 @@ using Infrastructure.Abstracts;
 using Infrastructure.Configurations;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Hosting.Server;
-using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.AspNetCore.Mvc.Infrastructure;
+using Microsoft.AspNetCore.Mvc.Authorization;
 using Microsoft.EntityFrameworkCore;
 using Presentation.AppCode.DI;
 using Presentation.AppCode.Pipeline;
@@ -163,10 +162,17 @@ internal class Program
             app.UseDeveloperExceptionPage();
         }
 
+<<<<<<< HEAD
         // Docker / Render: Kestrel often listens on HTTP only (see Dockerfile). HTTPS redirection breaks plain http://localhost:8080.
         var aspNetUrls = builder.Configuration["ASPNETCORE_URLS"] ?? string.Empty;
         if (aspNetUrls.Contains("https://", StringComparison.OrdinalIgnoreCase))
             app.UseHttpsRedirection();
+=======
+        if (!app.Environment.IsDevelopment())
+        {
+            app.UseHttpsRedirection();
+        }
+>>>>>>> d494ec92 (Added Attendance and detached docker and Superadmin role for faster development)
 
         app.UseStaticFiles();
 

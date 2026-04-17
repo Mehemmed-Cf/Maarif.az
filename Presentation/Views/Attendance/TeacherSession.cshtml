@@ -1,0 +1,377 @@
+@model Presentation.AppCode.ViewModels.TeacherAttendanceSessionViewModel
+@using Domain.Models.Stables
+
+<style>
+    .session-shell {
+        display: grid;
+        gap: 24px;
+    }
+    .session-card {
+        background: #fff;
+        border: 1px solid var(--border);
+        border-radius: 18px;
+        box-shadow: var(--shadow-card);
+        padding: 24px;
+    }
+    .session-meta {
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 14px;
+        margin-top: 18px;
+    }
+    .meta-box {
+        padding: 14px;
+        border: 1px solid var(--border);
+        border-radius: 14px;
+        background: #f8fafc;
+    }
+    .meta-box span {
+        display: block;
+        font-size: .8rem;
+        color: var(--text-muted);
+        margin-bottom: 6px;
+    }
+    .meta-box strong {
+        font-size: .95rem;
+        color: var(--text-main);
+    }
+    .notice {
+        padding: 14px 16px;
+        border-radius: 14px;
+        margin-top: 18px;
+        font-weight: 500;
+    }
+    .notice.locked {
+        background: #eff6ff;
+        color: #1d4ed8;
+    }
+    .notice.editable {
+        background: #ecfdf5;
+        color: #166534;
+        border: 1px solid #bbf7d0;
+    }
+    .attendance-legend {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px 24px;
+        margin: 20px 0 8px;
+        font-size: .88rem;
+        color: var(--text-muted);
+    }
+    .attendance-legend .pill {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 44px;
+        padding: 4px 10px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: .75rem;
+        margin-right: 8px;
+    }
+    .legend-present .pill {
+        background: linear-gradient(135deg, #22c55e, #16a34a);
+        color: #fff;
+    }
+    .legend-absent .pill {
+        background: linear-gradient(135deg, #f87171, #dc2626);
+        color: #fff;
+    }
+    .attendance-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+    .attendance-table th,
+    .attendance-table td {
+        padding: 14px 12px;
+        border-bottom: 1px solid var(--border);
+        text-align: left;
+        vertical-align: middle;
+    }
+    .record-chip {
+        display: inline-flex;
+        align-items: center;
+        padding: 6px 10px;
+        border-radius: 999px;
+        font-size: .75rem;
+        font-weight: 700;
+    }
+    .record-chip.new {
+        background: #f1f5f9;
+        color: #64748b;
+    }
+    .record-chip.saved {
+        background: #ecfdf5;
+        color: #15803d;
+    }
+    .status-readonly {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        min-width: 52px;
+        padding: 8px 12px;
+        border-radius: 999px;
+        font-weight: 800;
+        font-size: .78rem;
+        letter-spacing: .02em;
+    }
+    .status-readonly.present {
+        background: #dcfce7;
+        color: #166534;
+        border: 1px solid #86efac;
+    }
+    .status-readonly.absent {
+        background: #fee2e2;
+        color: #991b1b;
+        border: 1px solid #fca5a5;
+    }
+    .attendance-toggle-wrap {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+    }
+    .attendance-toggle {
+        position: relative;
+        width: 112px;
+        height: 40px;
+        border-radius: 999px;
+        border: none;
+        padding: 0;
+        cursor: pointer;
+        font: inherit;
+        outline: none;
+        transition: box-shadow .2s, transform .08s;
+        box-shadow: inset 0 1px 3px rgba(0,0,0,.12);
+    }
+    .attendance-toggle:active:not(:disabled) {
+        transform: scale(0.98);
+    }
+    .attendance-toggle:focus-visible {
+        box-shadow: 0 0 0 3px rgba(37, 99, 235, .35);
+    }
+    .attendance-toggle:disabled {
+        cursor: not-allowed;
+        opacity: .75;
+    }
+    .attendance-toggle.present {
+        background: linear-gradient(90deg, #fecaca 0%, #86efac 42%, #22c55e 100%);
+    }
+    .attendance-toggle.absent {
+        background: linear-gradient(90deg, #ef4444 0%, #fca5a5 55%, #fecaca 100%);
+    }
+    .toggle-thumb {
+        position: absolute;
+        top: 4px;
+        width: 48px;
+        height: 32px;
+        border-radius: 999px;
+        background: #fff;
+        box-shadow: 0 2px 8px rgba(0,0,0,.18);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: 800;
+        font-size: .72rem;
+        transition: left .22s cubic-bezier(.4, 0, .2, 1), color .15s;
+    }
+    .attendance-toggle.present .toggle-thumb {
+        left: calc(100% - 52px);
+        color: #15803d;
+    }
+    .attendance-toggle.absent .toggle-thumb {
+        left: 4px;
+        color: #b91c1c;
+    }
+    .toggle-caption {
+        font-size: .8rem;
+        color: var(--text-muted);
+        min-width: 7rem;
+    }
+    .toolbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 12px;
+        margin-top: 18px;
+    }
+    .btn-primary-solid, .btn-secondary-link {
+        border-radius: 12px;
+        padding: 12px 18px;
+        font-weight: 600;
+        text-decoration: none;
+    }
+    .btn-primary-solid {
+        border: none;
+        background: var(--primary);
+        color: #fff;
+        cursor: pointer;
+    }
+    .btn-primary-solid:hover {
+        background: var(--primary-hover);
+    }
+    .btn-primary-solid:disabled {
+        opacity: .6;
+        cursor: not-allowed;
+    }
+    .btn-secondary-link {
+        border: 1px solid var(--border);
+        color: var(--text-main);
+        background: #fff;
+    }
+    .validation-summary-errors ul {
+        margin: 12px 0 0;
+        padding-left: 18px;
+        color: #b91c1c;
+    }
+    @@media (max-width: 960px) {
+        .session-meta {
+            grid-template-columns: 1fr 1fr;
+        }
+    }
+</style>
+
+<div class="session-shell">
+    <section class="session-card">
+        <h2>@Model.SubjectName</h2>
+        <p>@Model.GroupName qrupu üçün @Model.SessionDate.ToString("yyyy-MM-dd") tarixli davamiyyət sessiyası.</p>
+
+        <div class="session-meta">
+            <div class="meta-box">
+                <span>Müəllim</span>
+                <strong>@Model.TeacherFullName</strong>
+            </div>
+            <div class="meta-box">
+                <span>Otaq</span>
+                <strong>@Model.RoomDisplay</strong>
+            </div>
+            <div class="meta-box">
+                <span>Gün və saat</span>
+                <strong>@Model.DayOfWeek, @Model.StartTime.ToString(@"hh\:mm") - @Model.EndTime.ToString(@"hh\:mm")</strong>
+            </div>
+            <div class="meta-box">
+                <span>Kilid vaxtı</span>
+                <strong>@(Model.SessionLockAt?.ToString("yyyy-MM-dd HH:mm") ?? "Hələ qeyd edilməyib")</strong>
+            </div>
+        </div>
+
+        @if (Model.IsSessionLocked)
+        {
+            <div class="notice locked">
+                Bu sessiya kilidlənib. Müəllim olaraq artıq redaktə etmək olmur.
+            </div>
+        }
+        else
+        {
+            <div class="notice editable">
+                Hər tələbə üçün yaşıl <strong>i/e</strong> (iştirak edir) və ya qırmızı <strong>q/b</strong> (iştirak etmir) seçin; dəyişdirmək üçün düyməni sürüşdürün.
+            </div>
+        }
+    </section>
+
+    <section class="session-card">
+        <h2>Tələbələr</h2>
+        <p>Form göndərildikdə bütün qrup üzrə sessiya yadda saxlanır.</p>
+
+        <div class="attendance-legend">
+            <span class="legend-present"><span class="pill">i/e</span>İştirak edir (yaşıl)</span>
+            <span class="legend-absent"><span class="pill">q/b</span>İştirak etmir (qırmızı)</span>
+        </div>
+
+        <div asp-validation-summary="All"></div>
+
+        <form method="post" asp-action="Session">
+            @Html.AntiForgeryToken()
+            <input type="hidden" name="LessonScheduleId" value="@Model.LessonScheduleId" />
+            <input type="hidden" name="SessionDate" value="@Model.SessionDate.ToString("yyyy-MM-dd")" />
+
+            <table class="attendance-table">
+                <thead>
+                    <tr>
+                        <th>Tələbə</th>
+                        <th>Nömrə</th>
+                        <th>Davamiyyət</th>
+                        <th>Qeyd</th>
+                        <th>Kilid</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @for (var i = 0; i < Model.Students.Count; i++)
+                    {
+                        var student = Model.Students[i];
+                        var isPresent = student.Status == AttendanceStatus.Present;
+                        <tr data-row-index="@i">
+                            <td>
+                                <input type="hidden" name="Students[@i].StudentId" value="@student.StudentId" />
+                                <strong>@student.StudentFullName</strong>
+                            </td>
+                            <td>@student.StudentNumber</td>
+                            <td>
+                                @if (Model.IsSessionLocked)
+                                {
+                                    <input type="hidden" name="Students[@i].Status" value="@((int)student.Status)" />
+                                    <span class="status-readonly @(isPresent ? "present" : "absent")">@(isPresent ? "i/e" : "q/b")</span>
+                                }
+                                else
+                                {
+                                    <input type="hidden" name="Students[@i].Status" value="@((int)student.Status)" class="js-status-input" />
+                                    <div class="attendance-toggle-wrap">
+                                        <button type="button"
+                                                class="attendance-toggle js-attendance-toggle @(isPresent ? "present" : "absent")"
+                                                aria-pressed="@(isPresent ? "true" : "false")"
+                                                data-present="@(isPresent ? "true" : "false")">
+                                            <span class="toggle-thumb">@(isPresent ? "i/e" : "q/b")</span>
+                                        </button>
+                                        <span class="toggle-caption js-toggle-caption">@(isPresent ? "İştirak edir" : "İştirak etmir")</span>
+                                    </div>
+                                }
+                            </td>
+                            <td>
+                                @if (student.HasRecord)
+                                {
+                                    <span class="record-chip saved">Yadda saxlanıb</span>
+                                }
+                                else
+                                {
+                                    <span class="record-chip new">Yeni</span>
+                                }
+                            </td>
+                            <td>@(student.HasRecord ? student.LockAt.ToString("yyyy-MM-dd HH:mm") : "-")</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+
+            <div class="toolbar">
+                <a asp-action="Index" class="btn-secondary-link">Geri</a>
+                <button type="submit" class="btn-primary-solid" disabled="@Model.IsSessionLocked">Davamiyyəti yadda saxla</button>
+            </div>
+        </form>
+    </section>
+</div>
+
+@if (!Model.IsSessionLocked)
+{
+    <script>
+        (function () {
+            document.querySelectorAll('.js-attendance-toggle').forEach(function (btn) {
+                btn.addEventListener('click', function () {
+                    var row = btn.closest('tr');
+                    var hidden = row.querySelector('.js-status-input');
+                    var caption = row.querySelector('.js-toggle-caption');
+                    var isPresent = btn.getAttribute('data-present') === 'true';
+                    var nextPresent = !isPresent;
+                    btn.setAttribute('data-present', nextPresent ? 'true' : 'false');
+                    btn.setAttribute('aria-pressed', nextPresent ? 'true' : 'false');
+                    btn.classList.toggle('present', nextPresent);
+                    btn.classList.toggle('absent', !nextPresent);
+                    hidden.value = nextPresent ? '1' : '0';
+                    var thumb = btn.querySelector('.toggle-thumb');
+                    thumb.textContent = nextPresent ? 'i/e' : 'q/b';
+                    if (caption) {
+                        caption.textContent = nextPresent ? 'İştirak edir' : 'İştirak etmir';
+                    }
+                });
+            });
+        })();
+    </script>
+}

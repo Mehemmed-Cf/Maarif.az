@@ -9,6 +9,7 @@ namespace Domain.Models.Entities
         public Teacher Teacher { get; set; }
         public int SubjectId { get; set; }
         public Subject Subject { get; set; }
+        public bool HasLaboratory { get; set; }
         public ICollection<LessonGroup> LessonGroups { get; set; }
         public ICollection<LessonSchedule> LessonSchedules { get; set; }
     }

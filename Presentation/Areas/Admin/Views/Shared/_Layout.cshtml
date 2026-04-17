@@ -85,7 +85,7 @@
                             <a class="mobile-menu" id="mobile-collapse" href="#!">
                                 <i class="feather icon-menu"></i>
                             </a>
-                            <a asp-controller="Dashboard" asp-action="index">
+                            <a asp-area="Admin" asp-controller="Dashboard" asp-action="index">
                                 <img class="img-fluid" src="~/admin/images/logo.png" alt="Theme-Logo" />
                             </a>
                             <a class="mobile-options">
@@ -351,7 +351,7 @@
                                 <div class="pcoded-navigatio-lavel">Navigation</div>
                                 <ul class="pcoded-item pcoded-left-item">
                                     <li>
-                                        <a asp-controller="Dashboard" asp-action="index">
+                                        <a asp-area="Admin" asp-controller="Dashboard" asp-action="index">
                                             <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                             <span class="pcoded-mtext">Dashboard</span>
                                         </a>
@@ -368,56 +368,62 @@
                                             @* class="active" *@
 
                                             <li>
-                                                <a asp-controller="Faculties" asp-action="index">
+                                                <a asp-area="Admin" asp-controller="Faculties" asp-action="index">
                                                     <span class="pcoded-mtext">Faculties</span>
                                                 </a>
                                             </li>
 
                                             <li>
-                                                <a asp-controller="Departments" asp-action="index">
+                                                <a asp-area="Admin" asp-controller="Departments" asp-action="index">
                                                     <span class="pcoded-mtext">Departments</span>
                                                 </a>
                                             </li>
 
                                             <li>
-                                                <a asp-controller="Groups" asp-action="index">
+                                                <a asp-area="Admin" asp-controller="Groups" asp-action="index">
                                                     <span class="pcoded-mtext">Groups</span>
                                                 </a>
                                             </li>
 
 
                                             <li>
-                                                <a asp-controller="Rooms" asp-action="index">
+                                                <a asp-area="Admin" asp-controller="Rooms" asp-action="index">
                                                     <span class="pcoded-mtext">Rooms</span>
                                                 </a>
                                             </li>
 
                                             <li>
-                                                <a asp-controller="Lessons" asp-action="index">
+                                                <a asp-area="Admin" asp-controller="Lessons" asp-action="index">
                                                     <span class="pcoded-mtext">Lessons</span>
                                                 </a>
                                             </li>
 
                                             <li>
-                                                <a asp-controller="LessonSchedules" asp-action="index">
+                                                <a asp-area="Admin" asp-controller="LessonSchedules" asp-action="index">
                                                     <span class="pcoded-mtext">Lesson Schedules</span>
                                                 </a>
                                             </li>
 
                                             <li>
-                                                <a asp-controller="Subjects" asp-action="index">
+                                                <a asp-area="Admin" asp-controller="Attendance" asp-action="index">
+                                                    <span class="pcoded-mtext">Attendance</span>
+                                                </a>
+                                            </li>
+
+                                            <li>
+                                                <a asp-area="Admin" asp-controller="Subjects" asp-action="index">
                                                     <span class="pcoded-mtext">Subjects</span>
                                                 </a>
                                             </li>
 
                                             <li>
-                                                <a asp-controller="Teachers" asp-action="index">
+                                                <a asp-area="Admin" asp-controller="Teachers" asp-action="index">
                                                     <span class="pcoded-mtext">Teachers</span>
                                                 </a>
                                             </li>
 
                                             <li>
-                                                <a asp-controller="Students" asp-action="index">
+                                                <a asp-area="Admin" asp-controller="Students" asp-action="index">
                                                     <span class="pcoded-mtext">Students</span>
                                                 </a>
                                             </li>

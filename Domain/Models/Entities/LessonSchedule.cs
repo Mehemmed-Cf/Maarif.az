@@ -17,5 +17,6 @@ namespace Domain.Models.Entities
         public Room Room { get; set; }
         public LessonType LessonType { get; set; }  // Məşğələ, Laboratoriya, Mühazirə
         public WeekType WeekType { get; set; }       // Upper, Lower, Both
+        public ICollection<Attendance> Attendances { get; set; }
     }
 }

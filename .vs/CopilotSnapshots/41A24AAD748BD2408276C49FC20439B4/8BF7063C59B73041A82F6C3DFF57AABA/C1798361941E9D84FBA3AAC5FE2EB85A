@@ -1,0 +1,18 @@
+﻿using Domain.Models.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace DataAccessLayer.Configurations
+{
+    public class AssignmentEntityTypeConfiguration : IEntityTypeConfiguration<Assignment>
+    {
+        public void Configure(EntityTypeBuilder<Assignment> builder)
+        {
+            builder.HasKey(x => x.Id);
+            
+            // Example Relations (Uncomment and adjust based on your actual properties)
+            // builder.HasMany(x => x.AssignmentFiles).WithOne().HasForeignKey(x => x.AssignmentId);
+            // builder.HasMany(x => x.Submissions).WithOne().HasForeignKey(x => x.AssignmentId);
+        }
+    }
+}

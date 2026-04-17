@@ -1,0 +1,69 @@
+<!--@using Application.Modules.StudentsModule.Commands.StudentLoginCommand
+@model StudentLoginRequest
+
+@{
+    ViewData["Title"] = "Daxil ol";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}-->
+
+<div id="alertBox"></div>
+
+<form id="loginForm">
+    <div class="form-group">
+        <label for="StudentNumber">Tələbə nömrəsi</label>
+        <input type="text" class="form-control" id="StudentNumber"
+               placeholder="202506181" />
+    </div>
+
+    <div class="form-group">
+        <label for="Password">Şifrə</label>
+        <input type="password" class="form-control" id="Password" />
+    </div>
+
+    <button type="submit" class="btn-auth">Daxil ol</button>
+</form>
+
+<div class="auth-footer">
+    Hesabınız yoxdur? <a href="/Auth/Register">Qeydiyyat</a>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const studentNumber = document.getElementById("StudentNumber").value;
+            const password = document.getElementById("Password").value;
+
+            const response = await fetch("/ApiAuth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    studentNumber: studentNumber,
+                    password: password
+                })
+            });
+
+            console.log("Response status:", response.status);
+
+            const data = await response.json();
+
+            console.log("Response data:", data);
+
+            const alertBox = document.getElementById("alertBox");
+
+            if (response.ok) {
+                alertBox.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+
+                // redirect manually
+                setTimeout(() => {
+                    window.location.href = "/Portal/Index";
+                }, 1000);
+            } else {
+                alertBox.innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
+            }
+        });
+    </script>
+}

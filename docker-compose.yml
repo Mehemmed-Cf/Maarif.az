@@ -9,12 +9,19 @@ services:
     build:
       context: .
       dockerfile: Presentation/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ConnectionStrings__cString: Server=tcp:sql-server,1433;Database=MaarifDB;User Id=sa;Password=YourStrong@Password123;Integrated Security=False;TrustServerCertificate=True;Encrypt=False;Connect Timeout=30;
     ports:
+<<<<<<< HEAD
       - "8080:8080"
     environment:
       ASPNETCORE_ENVIRONMENT: Development
       # Hostname "sql-server" is the Compose service name (same Docker network).
       ConnectionStrings__cString: "Server=sql-server,1433;Database=MaarifDb;User Id=sa;Password=YourStrong@Password123;TrustServerCertificate=True;Encrypt=False;MultipleActiveResultSets=True"
+=======
+      - "5102:8080"
+>>>>>>> d494ec92 (Added Attendance and detached docker and Superadmin role for faster development)
     depends_on:
       sql-server:
         condition: service_healthy

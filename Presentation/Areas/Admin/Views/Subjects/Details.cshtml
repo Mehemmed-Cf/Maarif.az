@@ -1,7 +1,7 @@
 ﻿@using Application.Modules.SubjectsModule.Queries.SubjectGetByIdQuery
 @model SubjectGetByIdResponseDto
 @{
-    ViewData["Title"] = "Details";
+    ViewData["Title"] = "Subject details";
 }
 
 <div class="page-header">
@@ -9,11 +9,8 @@
         <div class="col-lg-8">
             <div class="page-header-title">
                 <div class="d-inline">
-                    <h4>Basic Form Inputs</h4>
-                    <span>
-                        Lorem ipsum dolor sit <code>amet</code>, consectetur
-                        adipisicing elit
-                    </span>
+                    <h4>@Model.Name</h4>
+                    <span>@Model.Term · @Model.GroupName</span>
                 </div>
             </div>
         </div>
@@ -21,13 +18,13 @@
             <div class="page-header-breadcrumb">
                 <ul class="breadcrumb-title">
                     <li class="breadcrumb-item" style="float: left;">
-                        <a href="../index.html"> <i class="feather icon-home"></i> </a>
+                        <a asp-area="Admin" asp-controller="Dashboard" asp-action="Index"><i class="feather icon-home"></i></a>
                     </li>
                     <li class="breadcrumb-item" style="float: left;">
-                        <a href="#!">Form Components</a>
+                        <a asp-action="Index">Subjects</a>
                     </li>
                     <li class="breadcrumb-item" style="float: left;">
-                        <a href="#!">Form Components</a>
+                        <a href="#!">Details</a>
                     </li>
                 </ul>
             </div>
@@ -35,91 +32,191 @@
     </div>
 </div>
 
-
 <div class="page-body">
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Basic Form Inputs</h5>
-                    <span>
-                        Add class of <code>.form-control</code> with
-                        <code>&lt;input&gt;</code> tag
-                    </span>
-
-
-                    <div class="card-header-right">
-                        <i class="icofont icofont-spinner-alt-5"></i>
-                    </div>
-
+                    <h5>Subject overview</h5>
+                    <span>Department, teaching staff, statistics, and linked lessons.</span>
                 </div>
                 <div class="card-block">
-                    <h4 class="sub-title">Basic Inputs</h4>
-
-                    <div class="card-block">
-                        <h4 class="sub-title">Subject Information</h4>
-                        <div class="row">
-                            <div class="col-sm-6">
-                                <label class="control-label">Subject Name</label>
-                                <p class="form-control">@Model.Name</p>
-                            </div>
-                            <div class="col-sm-6">
-                                <label class="control-label">Department</label>
-                                @* Note: Check if Department is null to avoid crash *@
-                                <p class="form-control">@(Model.Department?.Name ?? "No Department")</p>
-                            </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label class="control-label text-primary">Department</label>
+                            <p class="form-control">@(Model.Department?.Name ?? "-")</p>
                         </div>
-
-                        <hr />
-
-                        <div class="row">
-                            <div class="col-md-12">
-                                <h4 class="sub-title">Assigned Lessons / Teachers</h4>
-                                <div class="border p-3 bg-light rounded">
-                                    <ul class="list-unstyled">
-                                        @foreach (var lesson in Model.Lessons)
-                                        {
-                                            <li>
-                                                <i class="feather icon-book text-primary mr-2"></i>
-                                                <strong>Lesson ID:</strong> @lesson.Id - 
-                                                <strong>Teacher:</strong> @lesson.TeacherFullName
-                                            </li>
-                                        }
-                                    </ul>
-                                </div>
-                            </div>
+                        <div class="col-md-4">
+                            <label class="control-label text-primary">Faculty</label>
+                            <p class="form-control">@(Model.Department?.FacultyName ?? "-")</p>
                         </div>
+                        <div class="col-md-4">
+                            <label class="control-label text-primary">Syllabus URL</label>
+                            <p class="form-control">@(string.IsNullOrWhiteSpace(Model.SyllabusUrl) ? "-" : Model.SyllabusUrl)</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-3">
+                            <label class="control-label text-primary">Credits</label>
+                            <p class="form-control">@Model.Credits</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label text-primary">Total hours</label>
+                            <p class="form-control">@Model.TotalHours</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label text-primary">Weeks</label>
+                            <p class="form-control">@Model.WeekCount</p>
+                        </div>
+                        <div class="col-md-3">
+                            <label class="control-label text-primary">Students</label>
+                            <p class="form-control">@Model.StudentCount</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-4">
+                            <label class="control-label text-primary">Lecture teacher</label>
+                            <p class="form-control">@(Model.LectureTeacher ?? "-")</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="control-label text-primary">Seminar teacher</label>
+                            <p class="form-control">@(Model.SeminarTeacher ?? "-")</p>
+                        </div>
+                        <div class="col-md-4">
+                            <label class="control-label text-primary">Lab teacher</label>
+                            <p class="form-control">@(Model.LabTeacher ?? "-")</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label class="control-label text-primary">Purpose</label>
+                            <p class="form-control" style="min-height:4rem;">@(Model.Purpose ?? "-")</p>
+                        </div>
+                    </div>
+                    <div class="row mb-3">
+                        <div class="col-md-12">
+                            <label class="control-label text-primary">Teacher methods</label>
+                            <p class="form-control" style="min-height:4rem;">@(Model.TeacherMethods ?? "-")</p>
+                        </div>
+                    </div>
+                    <div class="row mb-4">
+                        <div class="col-md-12">
+                            <label class="control-label text-primary">Grading weights</label>
+                            <p class="form-control">
+                                Free @Model.FreeWorkScore · Seminar @Model.SeminarScore · Lab @Model.LabScore ·
+                                Attendance @Model.AttendanceScore · Exam @Model.ExamScore
+                            </p>
+                        </div>
+                    </div>
+
+                    <h4 class="sub-title">Lessons</h4>
+                    <div class="table-responsive mb-4">
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-light">
+                                <tr><th>Lesson Id</th><th>Teacher</th></tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var lesson in Model.Lessons)
+                                {
+                                    <tr>
+                                        <td>@lesson.Id</td>
+                                        <td>@lesson.TeacherFullName</td>
+                                    </tr>
+                                }
+                                @if (!Model.Lessons.Any())
+                                {
+                                    <tr><td colspan="2">No lessons linked.</td></tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4 class="sub-title">Topics (weekly plan)</h4>
+                    <div class="table-responsive mb-4">
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Week</th>
+                                    <th>Topic</th>
+                                    <th>Methods</th>
+                                    <th>Didactic materials</th>
+                                    <th>Equipment</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var t in Model.Topics)
+                                {
+                                    <tr>
+                                        <td>@t.WeekNumber</td>
+                                        <td>@t.TopicName</td>
+                                        <td>@(t.TeachingMethods ?? "-")</td>
+                                        <td>@(t.Materials ?? "-")</td>
+                                        <td>@(t.Equipment ?? "-")</td>
+                                    </tr>
+                                }
+                                @if (!Model.Topics.Any())
+                                {
+                                    <tr><td colspan="5">No topics yet.</td></tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4 class="sub-title">Materials</h4>
+                    <div class="table-responsive mb-4">
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-light">
+                                <tr><th>Title</th><th>Type</th><th>File / URL</th><th>Description</th></tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var m in Model.Materials)
+                                {
+                                    <tr>
+                                        <td>@m.Title</td>
+                                        <td>@m.MaterialType</td>
+                                        <td><a href="@m.FileUrl" target="_blank" rel="noopener">@m.FileUrl</a></td>
+                                        <td>@(m.Description ?? "-")</td>
+                                    </tr>
+                                }
+                                @if (!Model.Materials.Any())
+                                {
+                                    <tr><td colspan="4">No materials yet.</td></tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <h4 class="sub-title">Literature</h4>
+                    <div class="table-responsive mb-4">
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-light">
+                                <tr><th>Type</th><th>Author</th><th>Title</th><th>Publisher</th><th>Year</th></tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var l in Model.Literatures)
+                                {
+                                    <tr>
+                                        <td>@l.Type</td>
+                                        <td>@l.Author</td>
+                                        <td>@l.BookName</td>
+                                        <td>@(l.Publisher ?? "-")</td>
+                                        <td>@(l.PublicationYear?.ToString() ?? "-")</td>
+                                    </tr>
+                                }
+                                @if (!Model.Literatures.Any())
+                                {
+                                    <tr><td colspan="5">No literature rows yet.</td></tr>
+                                }
+                            </tbody>
+                        </table>
                     </div>
 
                     <div class="form-group text-right m-0">
-                        <input type="hidden" class="form-control" asp-for="Id">
-                        <a class="btn btn-sm btn-warning" asp-action="edit" asp-route-id="@Model.Id">Edit</a>
-                        <a class="btn btn-sm btn-primary" asp-action="index">Cancel</a>
+                        <a class="btn btn-warning" asp-action="Edit" asp-route-id="@Model.Id"><i class="fa fa-pencil"></i> Edit</a>
+                        <a class="btn btn-primary" asp-action="Index"><i class="fa fa-arrow-left"></i> Back</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-@section addcss {
-    <link rel="stylesheet" href="~/libs/single-image-chooser/single-image-chooser.css" />
-}
-
-@section addjs {
-    <script src="~/libs/ckeditor5/ckeditor.min.js"></script>
-    <script src="~/libs/single-image-chooser/single-image-chooser.js"></script>
-    <script>
-        $(document).ready(function () {
-
-            $('#cover-image').singleImageChooser();
-
-            ClassicEditor
-                .create(document.querySelector('#body-editor'))
-                .then(editor => { })
-                .catch(error => { console.error(error); });
-
-        });
-    </script>
-}

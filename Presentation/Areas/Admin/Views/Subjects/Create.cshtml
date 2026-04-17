@@ -1,7 +1,14 @@
-﻿@using Application.Modules.SubjectsModule.Commands.SubjectAddCommand
+﻿@using Application.Modules.SubjectsModule
+@using Application.Modules.SubjectsModule.Commands.SubjectAddCommand
 @model SubjectAddRequest
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create subject";
+    var topicRows = Model.Topics.ToList();
+    while (topicRows.Count < 8) topicRows.Add(new SubjectTopicRowDto());
+    var materialRows = Model.Materials.ToList();
+    while (materialRows.Count < 6) materialRows.Add(new SubjectMaterialRowDto());
+    var litRows = Model.Literatures.ToList();
+    while (litRows.Count < 6) litRows.Add(new SubjectLiteratureRowDto());
 }
 
 <div class="page-header">
@@ -9,11 +16,8 @@
         <div class="col-lg-8">
             <div class="page-header-title">
                 <div class="d-inline">
-                    <h4>Basic Form Inputs</h4>
-                    <span>
-                        Lorem ipsum dolor sit <code>amet</code>, consectetur
-                        adipisicing elit
-                    </span>
+                    <h4>Create subject</h4>
+                    <span>Add a subject with optional topics, materials, and literature rows.</span>
                 </div>
             </div>
         </div>
@@ -21,87 +25,165 @@
             <div class="page-header-breadcrumb">
                 <ul class="breadcrumb-title">
                     <li class="breadcrumb-item" style="float: left;">
-                        <a href="../index.html"> <i class="feather icon-home"></i> </a>
+                        <a asp-controller="Dashboard" asp-action="Index"><i class="feather icon-home"></i></a>
                     </li>
                     <li class="breadcrumb-item" style="float: left;">
-                        <a href="#!">Form Components</a>
+                        <a asp-action="Index">Subjects</a>
                     </li>
-                    <li class="breadcrumb-item" style="float: left;">
-                        <a href="#!">Form Components</a>
-                    </li>
+                    <li class="breadcrumb-item" style="float: left;"><a href="#!">Create</a></li>
                 </ul>
             </div>
         </div>
     </div>
 </div>
 
-
 <div class="page-body">
     <div class="row">
         <div class="col-sm-12">
             <div class="card">
                 <div class="card-header">
-                    <h5>Basic Form Inputs</h5>
-                    <span>
-                        Add class of <code>.form-control</code> with
-                        <code>&lt;input&gt;</code> tag
-                    </span>
-
-
-                    <div class="card-header-right">
-                        <i class="icofont icofont-spinner-alt-5"></i>
-                    </div>
-
+                    <h5>New subject</h5>
+                    <span>Term and group default to seed values if left empty.</span>
                 </div>
                 <div class="card-block">
-                    <h4 class="sub-title">Basic Inputs</h4>
+                    <div asp-validation-summary="All" class="text-danger"></div>
                     <form asp-action="Create" method="post">
-                        <div class="form-group">
-                            <label asp-for="Name">Subject Adı</label>
-                            <input type="text" class="form-control" asp-for="Name"
-                                   placeholder="Məsələn: LogisticsAndSupplyChain">
-                            <span asp-validation-for="Name" class="text-danger"></span>
+                        <h4 class="sub-title">Core</h4>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Name"></label>
+                                    <input asp-for="Name" class="form-control" />
+                                    <span asp-validation-for="Name" class="text-danger"></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="DepartmentId">Department</label>
+                                    <select asp-for="DepartmentId" class="form-control" asp-items="ViewBag.Departments">
+                                        <option value="">-- Select --</option>
+                                    </select>
+                                    <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="Term"></label>
+                                    <input asp-for="Term" class="form-control" placeholder="e.g. 2026 Yaz" />
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label asp-for="GroupName"></label>
+                                    <input asp-for="GroupName" class="form-control" />
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="form-group">
-                            <label asp-for="DepartmentId">Departament</label>
-                            <select class="form-control" asp-for="DepartmentId"
-                                    asp-items="ViewBag.Departments">
-                                <option value="">-- Departament seçin --</option>
-                            </select>
-                            <span asp-validation-for="DepartmentId" class="text-danger"></span>
+                        <h4 class="sub-title">Teachers & stats</h4>
+                        <div class="row">
+                            <div class="col-md-4"><div class="form-group"><label asp-for="LectureTeacher"></label><input asp-for="LectureTeacher" class="form-control" /></div></div>
+                            <div class="col-md-4"><div class="form-group"><label asp-for="SeminarTeacher"></label><input asp-for="SeminarTeacher" class="form-control" /></div></div>
+                            <div class="col-md-4"><div class="form-group"><label asp-for="LabTeacher"></label><input asp-for="LabTeacher" class="form-control" /></div></div>
+                        </div>
+                        <div class="row">
+                            <div class="col-md-3"><div class="form-group"><label asp-for="StudentCount"></label><input asp-for="StudentCount" class="form-control" type="number" min="0" value="0" /></div></div>
+                            <div class="col-md-3"><div class="form-group"><label asp-for="Credits"></label><input asp-for="Credits" class="form-control" type="number" min="0" value="0" /></div></div>
+                            <div class="col-md-3"><div class="form-group"><label asp-for="TotalHours"></label><input asp-for="TotalHours" class="form-control" type="number" min="0" value="0" /></div></div>
+                            <div class="col-md-3"><div class="form-group"><label asp-for="WeekCount"></label><input asp-for="WeekCount" class="form-control" type="number" min="0" value="0" /></div></div>
+                        </div>
+
+                        <h4 class="sub-title">Descriptions</h4>
+                        <div class="form-group"><label asp-for="Purpose"></label><textarea asp-for="Purpose" class="form-control" rows="2"></textarea></div>
+                        <div class="form-group"><label asp-for="TeacherMethods"></label><textarea asp-for="TeacherMethods" class="form-control" rows="2"></textarea></div>
+                        <div class="form-group"><label asp-for="SyllabusUrl"></label><input asp-for="SyllabusUrl" class="form-control" /></div>
+
+                        <h4 class="sub-title">Grading weights</h4>
+                        <div class="row">
+                            <div class="col-md-2"><div class="form-group"><label asp-for="FreeWorkScore"></label><input asp-for="FreeWorkScore" class="form-control" type="number" min="0" value="0" /></div></div>
+                            <div class="col-md-2"><div class="form-group"><label asp-for="SeminarScore"></label><input asp-for="SeminarScore" class="form-control" type="number" min="0" value="0" /></div></div>
+                            <div class="col-md-2"><div class="form-group"><label asp-for="LabScore"></label><input asp-for="LabScore" class="form-control" type="number" min="0" value="0" /></div></div>
+                            <div class="col-md-3"><div class="form-group"><label asp-for="AttendanceScore"></label><input asp-for="AttendanceScore" class="form-control" type="number" min="0" value="0" /></div></div>
+                            <div class="col-md-3"><div class="form-group"><label asp-for="ExamScore"></label><input asp-for="ExamScore" class="form-control" type="number" min="0" value="50" /></div></div>
+                        </div>
+
+                        <h4 class="sub-title">Topics</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr>
+                                        <th style="width:90px;">Week</th>
+                                        <th>Topic name *</th>
+                                        <th>Teaching methods</th>
+                                        <th>Didactic materials</th>
+                                        <th>Equipment</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @for (var i = 0; i < topicRows.Count; i++)
+                                    {
+                                        <tr>
+                                            <td><input class="form-control form-control-sm" name="Topics[@i].WeekNumber" type="number" value="@topicRows[i].WeekNumber" /></td>
+                                            <td><input class="form-control form-control-sm" name="Topics[@i].TopicName" value="@topicRows[i].TopicName" /></td>
+                                            <td><input class="form-control form-control-sm" name="Topics[@i].TeachingMethods" value="@topicRows[i].TeachingMethods" /></td>
+                                            <td><input class="form-control form-control-sm" name="Topics[@i].Materials" value="@topicRows[i].Materials" /></td>
+                                            <td><input class="form-control form-control-sm" name="Topics[@i].Equipment" value="@topicRows[i].Equipment" /></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4 class="sub-title">Materials</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr><th>Title *</th><th>Type</th><th>File URL *</th><th>Description</th></tr>
+                                </thead>
+                                <tbody>
+                                    @for (var i = 0; i < materialRows.Count; i++)
+                                    {
+                                        <tr>
+                                            <td><input class="form-control form-control-sm" name="Materials[@i].Title" value="@materialRows[i].Title" /></td>
+                                            <td><input class="form-control form-control-sm" name="Materials[@i].MaterialType" value="@materialRows[i].MaterialType" /></td>
+                                            <td><input class="form-control form-control-sm" name="Materials[@i].FileUrl" value="@materialRows[i].FileUrl" /></td>
+                                            <td><input class="form-control form-control-sm" name="Materials[@i].Description" value="@materialRows[i].Description" /></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <h4 class="sub-title">Literature</h4>
+                        <div class="table-responsive">
+                            <table class="table table-bordered">
+                                <thead class="table-light">
+                                    <tr><th>Type</th><th>Author *</th><th>Book *</th><th>Publisher</th><th style="width:100px;">Year</th></tr>
+                                </thead>
+                                <tbody>
+                                    @for (var i = 0; i < litRows.Count; i++)
+                                    {
+                                        <tr>
+                                            <td><input class="form-control form-control-sm" name="Literatures[@i].Type" value="@litRows[i].Type" /></td>
+                                            <td><input class="form-control form-control-sm" name="Literatures[@i].Author" value="@litRows[i].Author" /></td>
+                                            <td><input class="form-control form-control-sm" name="Literatures[@i].BookName" value="@litRows[i].BookName" /></td>
+                                            <td><input class="form-control form-control-sm" name="Literatures[@i].Publisher" value="@litRows[i].Publisher" /></td>
+                                            <td><input class="form-control form-control-sm" name="Literatures[@i].PublicationYear" type="number" value="@(litRows[i].PublicationYear?.ToString() ?? "")" /></td>
+                                        </tr>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
 
                         <div class="form-group text-right">
-                            <a asp-action="Index" class="btn btn-sm btn-primary">Ləğv et</a>
-                            <button type="submit" class="btn btn-sm btn-success">Yadda saxla</button>
+                            <a asp-action="Index" class="btn btn-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-success">Save</button>
                         </div>
                     </form>
-
                 </div>
             </div>
         </div>
     </div>
 </div>
-
-
-@section addcss {
-    <link rel="stylesheet" href="~/libs/single-image-chooser/single-image-chooser.css" />
-}
-
-@section addjs {
-    <script src="~/libs/ckeditor5/ckeditor.min.js"></script>
-    <script src="~/libs/single-image-chooser/single-image-chooser.js"></script>
-    <script>
-        $(document).ready(function () {
-
-            $('#cover-image').singleImageChooser();
-
-            ClassicEditor
-                .create(document.querySelector('#body-editor'))
-                .then(editor => { })
-                .catch(error => { console.error(error); });
-
-        });
-    </script>
-}

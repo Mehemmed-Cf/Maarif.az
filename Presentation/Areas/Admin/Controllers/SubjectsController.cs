@@ -3,6 +3,7 @@ using Application.Modules.SubjectsModule.Commands.SubjectEditCommand;
 using Application.Modules.SubjectsModule.Commands.SubjectRemoveCommand;
 using Application.Modules.SubjectsModule.Queries.SubjectGetAllQuery;
 using Application.Modules.SubjectsModule.Queries.SubjectGetByIdQuery;
+using Application.Modules.SubjectsModule.Queries.SubjectGetForEditQuery;
 using Application.Repositories;
 using Domain.Models.Entities;
 using MediatR;
@@ -45,7 +46,7 @@ namespace Presentation.Areas.Admin.Controllers
         public IActionResult Create()
         {
             PopulateViewBags();
-            return View();
+            return View(new SubjectAddRequest());
         }
 
         [HttpPost]
@@ -63,14 +64,9 @@ namespace Presentation.Areas.Admin.Controllers
 
         public async Task<IActionResult> Edit([FromRoute] SubjectGetByIdRequest request)
         {
-            PopulateViewBags();
-
-            var response = await mediator.Send(request);
-
-            PopulateViewBags(response.Department.Id);
-
-
-            return View(response);
+            var form = await mediator.Send(new SubjectGetForEditRequest { Id = request.Id });
+            PopulateViewBags(form.DepartmentId);
+            return View(form);
         }
 
         [HttpPost]

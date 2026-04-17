@@ -1,0 +1,18 @@
+@{
+    Layout = "~/Views/Shared/_AcademicPortalLayout.cshtml";
+    ViewBag.Title = "Fənlər";
+}
+<div class="portal-empty-state">
+    <p class="lead">Cədvəlinizdə hələ fənn yoxdur.</p>
+    <p class="text-muted">Qrup və dərs cədvəli təyin olunduqda fənlər burada görünəcək.</p>
+    <a class="btn-portal-primary" asp-controller="@(ViewBag.PortalIsTeacher as bool? == true ? "TeacherPortal" : "Portal")" asp-action="Index">Dərs cədvəlinə qayıt</a>
+</div>
+<style>
+    .portal-empty-state { max-width: 480px; padding: 2rem 0; }
+    .portal-empty-state .lead { font-size: 1.1rem; font-weight: 600; margin-bottom: .5rem; }
+    .btn-portal-primary {
+        display: inline-block; margin-top: 1rem; padding: .65rem 1.25rem;
+        background: var(--primary); color: #fff; text-decoration: none; border-radius: 10px; font-weight: 600;
+    }
+    .btn-portal-primary:hover { background: var(--primary-hover); color: #fff; }
+</style>

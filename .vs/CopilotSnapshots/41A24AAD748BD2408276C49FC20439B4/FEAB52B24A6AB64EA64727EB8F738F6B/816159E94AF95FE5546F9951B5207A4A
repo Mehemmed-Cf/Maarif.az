@@ -1,0 +1,33 @@
+﻿using Domain.Models.Entities;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata.Builders;
+
+namespace DataAccessLayer.Configurations
+{
+    public class SubmissionEntityTypeConfiguration : IEntityTypeConfiguration<Submission>
+    {
+        public void Configure(EntityTypeBuilder<Submission> builder)
+        {
+            builder.HasKey(x => x.Id);
+
+            builder.Property(x => x.AssignmentId).IsRequired();
+            builder.Property(x => x.StudentId).IsRequired();
+            
+            builder.Property(x => x.Note).HasMaxLength(2000).IsRequired(false);
+            builder.Property(x => x.LinkUrl).HasMaxLength(500).IsRequired(false);
+            
+            builder.Property(x => x.Grade).IsRequired(false);
+            builder.Property(x => x.SubmissionDate).IsRequired();
+            
+            builder.Property(x => x.GradedAt).IsRequired(false);
+            builder.Property(x => x.GradedByUserId).IsRequired(false);
+
+            builder.Property(x => x.Status)
+                   .IsRequired()
+                   .HasConversion<int>(); // Storing enum as int
+
+            // If you have a navigation property for SubmissionFiles on Submission entity, uncomment this:
+            // builder.HasMany(x => x.SubmissionFiles).WithOne().HasForeignKey(x => x.SubmissionId).OnDelete(DeleteBehavior.Cascade);
+        }
+    }
+}

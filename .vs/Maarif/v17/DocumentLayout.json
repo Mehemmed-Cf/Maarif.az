@@ -3,21 +3,31 @@
   "WorkspaceRootPath": "C:\\Users\\user\\source\\repos\\Maarif\\",
   "Documents": [
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Sdks\\Microsoft.Docker.Sdk\\build\\Microsoft.VisualStudio.Docker.Compose.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C1D2E3F4-A5B6-7890-CDEF-123456789ABC}|docker-compose.dcproj|c:\\users\\user\\source\\repos\\maarif\\docker-compose.dcproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
       "RelativeMoniker": "D:0:0:{C1D2E3F4-A5B6-7890-CDEF-123456789ABC}|docker-compose.dcproj|solutionrelative:docker-compose.dcproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+=======
+      "AbsoluteMoniker": "D:0:0:{D2BE9C5A-5250-4DD0-8E91-68060073B5F9}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\user\\source\\repos\\maarif\\dataaccesslayer\\migrations\\20260417221216_assigmentconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2BE9C5A-5250-4DD0-8E91-68060073B5F9}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\migrations\\20260417221216_assigmentconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\submission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\submission.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> d494ec92 (Added Attendance and detached docker and Superadmin role for faster development)
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\submissionsmodule\\queries\\getsubmissionsbyassignment\\getsubmissionsbyassignmentqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\submissionsmodule\\queries\\getsubmissionsbyassignment\\getsubmissionsbyassignmentqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\assignmentsmodule\\queries\\getassignmentsbylesson\\getassignmentsbylessonqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\assignmentsmodule\\queries\\getassignmentsbylesson\\getassignmentsbylessonqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
@@ -52,14 +62,106 @@
     {
       "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\areas\\admin\\controllers\\adminbasecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\controllers\\adminbasecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{D2BE9C5A-5250-4DD0-8E91-68060073B5F9}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\user\\source\\repos\\maarif\\dataaccesslayer\\configurations\\submissionentitytypeconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2BE9C5A-5250-4DD0-8E91-68060073B5F9}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\configurations\\submissionentitytypeconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> d494ec92 (Added Attendance and detached docker and Superadmin role for faster development)
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\areas\\admin\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|c:\\users\\user\\source\\repos\\maarif\\domain\\models\\entities\\submissionfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AE7CAA00-996E-41E3-9619-8247671711CD}|Domain\\Domain.csproj|solutionrelative:domain\\models\\entities\\submissionfile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+<<<<<<< HEAD
       "AbsoluteMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\areas\\admin\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CB776517-3B79-4139-847B-19108846129B}|Presentation\\Presentation.csproj|solutionrelative:presentation\\areas\\admin\\controllers\\departmentscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+=======
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\repositories\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\repositories\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\repositories\\iattendancerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\repositories\\iattendancerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\repositories\\iassignmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\repositories\\iassignmentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\repositories\\isubmissionfilerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\repositories\\isubmissionfilerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\repositories\\iassignmentfilerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\repositories\\iassignmentfilerepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\submissionsmodule\\commands\\submitassignment\\submitassignmentcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\submissionsmodule\\commands\\submitassignment\\submitassignmentcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\submissionsmodule\\commands\\submitassignment\\submitassignmentcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\submissionsmodule\\commands\\submitassignment\\submitassignmentcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\submissionsmodule\\commands\\submitassignment\\submitassignmentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\submissionsmodule\\commands\\submitassignment\\submitassignmentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\AppData\\Local\\Temp\\VisualStudio\\copilot-vs\\plan-ad4aa241-8b74-40d2-8276-c49fc20439b4.md||{EFC0BB08-EA7D-40C6-A696-C870411A895B}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\assignmentsmodule\\commands\\createassignment\\createassignmentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\assignmentsmodule\\commands\\createassignment\\createassignmentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\assignmentsmodule\\commands\\createassignment\\createassignmentcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\assignmentsmodule\\commands\\createassignment\\createassignmentcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\assignmentsmodule\\commands\\createassignment\\createassignmentcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\assignmentsmodule\\commands\\createassignment\\createassignmentcommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\assignmentsmodule\\commands\\gradesubmission\\gradesubmissioncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\assignmentsmodule\\commands\\gradesubmission\\gradesubmissioncommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\assignmentsmodule\\commands\\gradesubmission\\gradesubmissioncommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\assignmentsmodule\\commands\\gradesubmission\\gradesubmissioncommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\assignmentsmodule\\commands\\gradesubmission\\gradesubmissioncommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\assignmentsmodule\\commands\\gradesubmission\\gradesubmissioncommandvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\assignmentsmodule\\queries\\getassignmentsbylesson\\getassignmentsbylessonquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\assignmentsmodule\\queries\\getassignmentsbylesson\\getassignmentsbylessonquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\submissionsmodule\\queries\\getsubmissionsbyassignment\\getsubmissionsbyassignmentquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\submissionsmodule\\queries\\getsubmissionsbyassignment\\getsubmissionsbyassignmentquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\submissionsmodule\\queries\\getmysubmission\\getmysubmissionquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\submissionsmodule\\queries\\getmysubmission\\getmysubmissionquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\submissionsmodule\\queries\\getmysubmission\\getmysubmissionqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A38B4C72-438D-4D15-B982-A442B21CFADA}|Application\\Application.csproj|solutionrelative:application\\modules\\submissionsmodule\\queries\\getmysubmission\\getmysubmissionqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2BE9C5A-5250-4DD0-8E91-68060073B5F9}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\user\\source\\repos\\maarif\\dataaccesslayer\\configurations\\assignmententitytypeconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2BE9C5A-5250-4DD0-8E91-68060073B5F9}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\configurations\\assignmententitytypeconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2BE9C5A-5250-4DD0-8E91-68060073B5F9}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\user\\source\\repos\\maarif\\dataaccesslayer\\configurations\\assignmentfileentitytypeconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2BE9C5A-5250-4DD0-8E91-68060073B5F9}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\configurations\\assignmentfileentitytypeconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D2BE9C5A-5250-4DD0-8E91-68060073B5F9}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\user\\source\\repos\\maarif\\dataaccesslayer\\configurations\\submissionfileentitytypeconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D2BE9C5A-5250-4DD0-8E91-68060073B5F9}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\configurations\\submissionfileentitytypeconfiguration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+>>>>>>> d494ec92 (Added Attendance and detached docker and Superadmin role for faster development)
     }
   ],
   "DocumentGroupContainers": [
@@ -69,34 +171,28 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
+<<<<<<< HEAD
           "SelectedChildIndex": 6,
+=======
+          "SelectedChildIndex": 0,
+>>>>>>> d494ec92 (Added Attendance and detached docker and Superadmin role for faster development)
           "Children": [
             {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{3ae79031-e1bc-11d0-8f78-00a0c9110057}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:129:0:{1fc202d4-d401-403c-9834-5b218574bb67}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{40ea2e6b-2121-4bb8-a43e-c83c04b51041}"
-            },
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "20260417221216_AssigmentConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Migrations\\20260417221216_AssigmentConfiguration.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\Migrations\\20260417221216_AssigmentConfiguration.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Migrations\\20260417221216_AssigmentConfiguration.cs",
+              "RelativeToolTip": "DataAccessLayer\\Migrations\\20260417221216_AssigmentConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T22:12:18.722Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 0,
               "Title": "Microsoft.VisualStudio.Docker.Compose.targets",
               "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Sdks\\Microsoft.Docker.Sdk\\build\\Microsoft.VisualStudio.Docker.Compose.targets",
@@ -180,10 +276,23 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
               "WhenOpened": "2026-04-06T12:22:01.129Z"
+=======
+              "DocumentIndex": 25,
+              "Title": "AssignmentEntityTypeConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Configurations\\AssignmentEntityTypeConfiguration.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\Configurations\\AssignmentEntityTypeConfiguration.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Configurations\\AssignmentEntityTypeConfiguration.cs",
+              "RelativeToolTip": "DataAccessLayer\\Configurations\\AssignmentEntityTypeConfiguration.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T22:05:05.086Z",
+              "EditorCaption": ""
+>>>>>>> d494ec92 (Added Attendance and detached docker and Superadmin role for faster development)
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
+<<<<<<< HEAD
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\appsettings.json",
               "RelativeDocumentMoniker": "Presentation\\appsettings.json",
@@ -261,12 +370,99 @@
               "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Controllers\\DashboardController.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\DashboardController.cs",
               "RelativeToolTip": "Presentation\\Areas\\Admin\\Controllers\\DashboardController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+=======
+              "Title": "SubmissionEntityTypeConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Configurations\\SubmissionEntityTypeConfiguration.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\Configurations\\SubmissionEntityTypeConfiguration.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Configurations\\SubmissionEntityTypeConfiguration.cs",
+              "RelativeToolTip": "DataAccessLayer\\Configurations\\SubmissionEntityTypeConfiguration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T23:05:02.015Z"
+              "WhenOpened": "2026-04-17T22:03:18.108Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "GetAssignmentsByLessonQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AssignmentsModule\\Queries\\GetAssignmentsByLesson\\GetAssignmentsByLessonQueryHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\AssignmentsModule\\Queries\\GetAssignmentsByLesson\\GetAssignmentsByLessonQueryHandler.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AssignmentsModule\\Queries\\GetAssignmentsByLesson\\GetAssignmentsByLessonQueryHandler.cs",
+              "RelativeToolTip": "Application\\Modules\\AssignmentsModule\\Queries\\GetAssignmentsByLesson\\GetAssignmentsByLessonQueryHandler.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAA5wBUAAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T21:42:37.731Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "GetSubmissionsByAssignmentQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\SubmissionsModule\\Queries\\GetSubmissionsByAssignment\\GetSubmissionsByAssignmentQueryHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\SubmissionsModule\\Queries\\GetSubmissionsByAssignment\\GetSubmissionsByAssignmentQueryHandler.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\SubmissionsModule\\Queries\\GetSubmissionsByAssignment\\GetSubmissionsByAssignmentQueryHandler.cs",
+              "RelativeToolTip": "Application\\Modules\\SubmissionsModule\\Queries\\GetSubmissionsByAssignment\\GetSubmissionsByAssignmentQueryHandler.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAA5wBEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T21:44:30.515Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Submission.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Submission.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\Submission.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\Submission.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\Submission.cs",
+              "ViewState": "AgIAAAcAAAAAAAAAAAA8wBMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T22:02:27.949Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "AssignmentFileEntityTypeConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Configurations\\AssignmentFileEntityTypeConfiguration.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\Configurations\\AssignmentFileEntityTypeConfiguration.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Configurations\\AssignmentFileEntityTypeConfiguration.cs",
+              "RelativeToolTip": "DataAccessLayer\\Configurations\\AssignmentFileEntityTypeConfiguration.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T22:05:33.877Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "SubmissionFileEntityTypeConfiguration.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Configurations\\SubmissionFileEntityTypeConfiguration.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\Configurations\\SubmissionFileEntityTypeConfiguration.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Configurations\\SubmissionFileEntityTypeConfiguration.cs",
+              "RelativeToolTip": "DataAccessLayer\\Configurations\\SubmissionFileEntityTypeConfiguration.cs",
+              "ViewState": "AgIAABoAAAAAAAAAAABRwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T22:05:51.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "SubmissionFile.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\SubmissionFile.cs",
+              "RelativeDocumentMoniker": "Domain\\Models\\Entities\\SubmissionFile.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Domain\\Models\\Entities\\SubmissionFile.cs",
+              "RelativeToolTip": "Domain\\Models\\Entities\\SubmissionFile.cs",
+>>>>>>> d494ec92 (Added Attendance and detached docker and Superadmin role for faster development)
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T22:03:07.639Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+<<<<<<< HEAD
               "DocumentIndex": 14,
               "Title": "DepartmentsController.cs",
               "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\DepartmentsController.cs",
@@ -276,6 +472,252 @@
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-05T23:05:05.596Z"
+=======
+              "DocumentIndex": 6,
+              "Title": "IStudentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Repositories\\IStudentRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Repositories\\IStudentRepository.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Repositories\\IStudentRepository.cs",
+              "RelativeToolTip": "Application\\Repositories\\IStudentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T22:02:16.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IAttendanceRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Repositories\\IAttendanceRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Repositories\\IAttendanceRepository.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Repositories\\IAttendanceRepository.cs",
+              "RelativeToolTip": "Application\\Repositories\\IAttendanceRepository.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T22:02:10.009Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "ISubmissionFileRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Repositories\\ISubmissionFileRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Repositories\\ISubmissionFileRepository.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Repositories\\ISubmissionFileRepository.cs",
+              "RelativeToolTip": "Application\\Repositories\\ISubmissionFileRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T22:02:06.805Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "IAssignmentRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Repositories\\IAssignmentRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Repositories\\IAssignmentRepository.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Repositories\\IAssignmentRepository.cs",
+              "RelativeToolTip": "Application\\Repositories\\IAssignmentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T22:02:02.958Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "IAssignmentFileRepository.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Repositories\\IAssignmentFileRepository.cs",
+              "RelativeDocumentMoniker": "Application\\Repositories\\IAssignmentFileRepository.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Repositories\\IAssignmentFileRepository.cs",
+              "RelativeToolTip": "Application\\Repositories\\IAssignmentFileRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T22:02:01.758Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "plan-ad4aa241-8b74-40d2-8276-c49fc20439b4.md",
+              "DocumentMoniker": "C:\\Users\\user\\AppData\\Local\\Temp\\VisualStudio\\copilot-vs\\plan-ad4aa241-8b74-40d2-8276-c49fc20439b4.md",
+              "RelativeDocumentMoniker": "..\\..\\..\\AppData\\Local\\Temp\\VisualStudio\\copilot-vs\\plan-ad4aa241-8b74-40d2-8276-c49fc20439b4.md",
+              "ToolTip": "C:\\Users\\user\\AppData\\Local\\Temp\\VisualStudio\\copilot-vs\\plan-ad4aa241-8b74-40d2-8276-c49fc20439b4.md",
+              "RelativeToolTip": "..\\..\\..\\AppData\\Local\\Temp\\VisualStudio\\copilot-vs\\plan-ad4aa241-8b74-40d2-8276-c49fc20439b4.md",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001818|",
+              "WhenOpened": "2026-04-17T21:39:47.787Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "SubmitAssignmentCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\SubmissionsModule\\Commands\\SubmitAssignment\\SubmitAssignmentCommandHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\SubmissionsModule\\Commands\\SubmitAssignment\\SubmitAssignmentCommandHandler.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\SubmissionsModule\\Commands\\SubmitAssignment\\SubmitAssignmentCommandHandler.cs",
+              "RelativeToolTip": "Application\\Modules\\SubmissionsModule\\Commands\\SubmitAssignment\\SubmitAssignmentCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAQAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T21:43:24.561Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "SubmitAssignmentCommand.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\SubmissionsModule\\Commands\\SubmitAssignment\\SubmitAssignmentCommand.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\SubmissionsModule\\Commands\\SubmitAssignment\\SubmitAssignmentCommand.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\SubmissionsModule\\Commands\\SubmitAssignment\\SubmitAssignmentCommand.cs",
+              "RelativeToolTip": "Application\\Modules\\SubmissionsModule\\Commands\\SubmitAssignment\\SubmitAssignmentCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T21:43:09.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "SubmitAssignmentCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\SubmissionsModule\\Commands\\SubmitAssignment\\SubmitAssignmentCommandValidator.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\SubmissionsModule\\Commands\\SubmitAssignment\\SubmitAssignmentCommandValidator.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\SubmissionsModule\\Commands\\SubmitAssignment\\SubmitAssignmentCommandValidator.cs",
+              "RelativeToolTip": "Application\\Modules\\SubmissionsModule\\Commands\\SubmitAssignment\\SubmitAssignmentCommandValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T21:43:48.01Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "CreateAssignmentCommand.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AssignmentsModule\\Commands\\CreateAssignment\\CreateAssignmentCommand.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\AssignmentsModule\\Commands\\CreateAssignment\\CreateAssignmentCommand.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AssignmentsModule\\Commands\\CreateAssignment\\CreateAssignmentCommand.cs",
+              "RelativeToolTip": "Application\\Modules\\AssignmentsModule\\Commands\\CreateAssignment\\CreateAssignmentCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T21:40:18.368Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "CreateAssignmentCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AssignmentsModule\\Commands\\CreateAssignment\\CreateAssignmentCommandHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\AssignmentsModule\\Commands\\CreateAssignment\\CreateAssignmentCommandHandler.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AssignmentsModule\\Commands\\CreateAssignment\\CreateAssignmentCommandHandler.cs",
+              "RelativeToolTip": "Application\\Modules\\AssignmentsModule\\Commands\\CreateAssignment\\CreateAssignmentCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T21:40:34.887Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "CreateAssignmentCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AssignmentsModule\\Commands\\CreateAssignment\\CreateAssignmentCommandValidator.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\AssignmentsModule\\Commands\\CreateAssignment\\CreateAssignmentCommandValidator.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AssignmentsModule\\Commands\\CreateAssignment\\CreateAssignmentCommandValidator.cs",
+              "RelativeToolTip": "Application\\Modules\\AssignmentsModule\\Commands\\CreateAssignment\\CreateAssignmentCommandValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T21:40:51.367Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "GradeSubmissionCommand.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AssignmentsModule\\Commands\\GradeSubmission\\GradeSubmissionCommand.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\AssignmentsModule\\Commands\\GradeSubmission\\GradeSubmissionCommand.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AssignmentsModule\\Commands\\GradeSubmission\\GradeSubmissionCommand.cs",
+              "RelativeToolTip": "Application\\Modules\\AssignmentsModule\\Commands\\GradeSubmission\\GradeSubmissionCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T21:41:17.92Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "GetMySubmissionQueryHandler.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\SubmissionsModule\\Queries\\GetMySubmission\\GetMySubmissionQueryHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\SubmissionsModule\\Queries\\GetMySubmission\\GetMySubmissionQueryHandler.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\SubmissionsModule\\Queries\\GetMySubmission\\GetMySubmissionQueryHandler.cs",
+              "RelativeToolTip": "Application\\Modules\\SubmissionsModule\\Queries\\GetMySubmission\\GetMySubmissionQueryHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T21:45:01.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "GetMySubmissionQuery.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\SubmissionsModule\\Queries\\GetMySubmission\\GetMySubmissionQuery.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\SubmissionsModule\\Queries\\GetMySubmission\\GetMySubmissionQuery.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\SubmissionsModule\\Queries\\GetMySubmission\\GetMySubmissionQuery.cs",
+              "RelativeToolTip": "Application\\Modules\\SubmissionsModule\\Queries\\GetMySubmission\\GetMySubmissionQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T21:44:47.398Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "GetSubmissionsByAssignmentQuery.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\SubmissionsModule\\Queries\\GetSubmissionsByAssignment\\GetSubmissionsByAssignmentQuery.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\SubmissionsModule\\Queries\\GetSubmissionsByAssignment\\GetSubmissionsByAssignmentQuery.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\SubmissionsModule\\Queries\\GetSubmissionsByAssignment\\GetSubmissionsByAssignmentQuery.cs",
+              "RelativeToolTip": "Application\\Modules\\SubmissionsModule\\Queries\\GetSubmissionsByAssignment\\GetSubmissionsByAssignmentQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T21:44:15.589Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "GetAssignmentsByLessonQuery.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AssignmentsModule\\Queries\\GetAssignmentsByLesson\\GetAssignmentsByLessonQuery.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\AssignmentsModule\\Queries\\GetAssignmentsByLesson\\GetAssignmentsByLessonQuery.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AssignmentsModule\\Queries\\GetAssignmentsByLesson\\GetAssignmentsByLessonQuery.cs",
+              "RelativeToolTip": "Application\\Modules\\AssignmentsModule\\Queries\\GetAssignmentsByLesson\\GetAssignmentsByLessonQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T21:42:19.32Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "GradeSubmissionCommandValidator.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AssignmentsModule\\Commands\\GradeSubmission\\GradeSubmissionCommandValidator.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\AssignmentsModule\\Commands\\GradeSubmission\\GradeSubmissionCommandValidator.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AssignmentsModule\\Commands\\GradeSubmission\\GradeSubmissionCommandValidator.cs",
+              "RelativeToolTip": "Application\\Modules\\AssignmentsModule\\Commands\\GradeSubmission\\GradeSubmissionCommandValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T21:41:49.756Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "GradeSubmissionCommandHandler.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AssignmentsModule\\Commands\\GradeSubmission\\GradeSubmissionCommandHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\AssignmentsModule\\Commands\\GradeSubmission\\GradeSubmissionCommandHandler.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\AssignmentsModule\\Commands\\GradeSubmission\\GradeSubmissionCommandHandler.cs",
+              "RelativeToolTip": "Application\\Modules\\AssignmentsModule\\Commands\\GradeSubmission\\GradeSubmissionCommandHandler.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-04-17T21:41:33.425Z",
+              "EditorCaption": ""
+>>>>>>> d494ec92 (Added Attendance and detached docker and Superadmin role for faster development)
             }
           ]
         }

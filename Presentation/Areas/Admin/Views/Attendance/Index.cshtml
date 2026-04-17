@@ -1,0 +1,90 @@
+@model IReadOnlyList<Application.Modules.AttendanceModule.AdminAttendanceListItemDto>
+@{
+    ViewData["Title"] = "Attendance";
+}
+
+<div class="page-header">
+    <div class="row align-items-end">
+        <div class="col-lg-8">
+            <div class="page-header-title">
+                <div class="d-inline">
+                    <h4>Attendance</h4>
+                    <span>Teacher-marked attendance records with lock status and admin access.</span>
+                </div>
+            </div>
+        </div>
+        <div class="col-lg-4">
+            <div class="page-header-breadcrumb">
+                <ul class="breadcrumb-title">
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a asp-controller="Dashboard" asp-action="Index"><i class="feather icon-home"></i></a>
+                    </li>
+                    <li class="breadcrumb-item" style="float: left;">
+                        <a href="#!">Attendance</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="page-body">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="card">
+                <div class="card-header">
+                    <h5>Attendance Records</h5>
+                    <span>All session-level student attendance entries.</span>
+                </div>
+                <div class="card-block">
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-striped">
+                            <thead class="table-light">
+                                <tr>
+                                    <th>Date</th>
+                                    <th>Subject</th>
+                                    <th>Group</th>
+                                    <th>Student</th>
+                                    <th>Teacher</th>
+                                    <th>Status</th>
+                                    <th>Locked</th>
+                                    <th class="text-right">Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model)
+                                {
+                                    <tr>
+                                        <td>@item.SessionDate.ToString("yyyy-MM-dd")</td>
+                                        <td>@item.SubjectName</td>
+                                        <td>@item.GroupName</td>
+                                        <td>@item.StudentFullName (@item.StudentNumber)</td>
+                                        <td>@item.TeacherFullName</td>
+                                        <td>
+                                            <span class="badge @(item.Status == Domain.Models.Stables.AttendanceStatus.Present ? "badge-success" : "badge-danger")">
+                                                @item.Status
+                                            </span>
+                                        </td>
+                                        <td>
+                                            <span class="badge @(item.IsLocked ? "badge-primary" : "badge-warning")">
+                                                @(item.IsLocked ? "Locked" : "Editable")
+                                            </span>
+                                        </td>
+                                        <td class="text-right">
+                                            <a class="btn btn-sm btn-info" asp-action="Details" asp-route-id="@item.AttendanceId">
+                                                <i class="fa fa-eye"></i>
+                                            </a>
+                                            <a class="btn btn-sm btn-warning" asp-action="Edit" asp-route-id="@item.AttendanceId">
+                                                <i class="fa fa-pencil"></i>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

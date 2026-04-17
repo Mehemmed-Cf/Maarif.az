@@ -8,6 +8,7 @@ namespace Application.Modules.LessonSchedulesModule.Queries.GetScheduleByGroup
     {
         public int Id { get; set; }
         public int LessonId { get; set; }
+        public int SubjectId { get; set; }
         public string SubjectName { get; set; }
         public string TeacherFullName { get; set; }
         public int GroupId { get; set; }

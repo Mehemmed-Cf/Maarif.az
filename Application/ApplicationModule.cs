@@ -1,5 +1,6 @@
 ﻿using Application.Services;
 using Autofac;
+using FluentValidation;
 using FluentValidation.AspNetCore;
 using Infrastructure.Abstracts;
 
@@ -26,6 +27,10 @@ namespace Application
             builder.RegisterType<ValidatorInterceptor>()
                 .As<IValidatorInterceptor>()
                 .SingleInstance();
+
+            builder.RegisterAssemblyTypes(typeof(IApplicationReferance).Assembly)
+                .AsClosedTypesOf(typeof(IValidator<>))
+                .InstancePerLifetimeScope();
         }
     }
 }

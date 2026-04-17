@@ -1,3 +1,4 @@
+using DataAccessLayer.Extensions;
 using Domain.Models.Entities;
 using Domain.Models.Stables;
 using Microsoft.EntityFrameworkCore;
@@ -27,12 +28,10 @@ namespace DataAccessLayer.Configurations
             builder.Property(s => s.DocumentSerialNumber)
                 .HasMaxLength(40);
 
-            builder.HasIndex(s => s.FinCode)
-            .IsUnique();  // one student per FIN, enforced at DB level too
+            builder.HasIndex(s => s.FinCode).IsUniqueWhenNotDeleted();
 
             builder.HasIndex(s => s.DocumentSerialNumber)
-                .IsUnique()
-                .HasFilter("[DocumentSerialNumber] IS NOT NULL");
+                .IsUniqueWhenNotDeleted("[DocumentSerialNumber] IS NOT NULL");
 
             builder.Property(s => s.StudentNumber)
                    .IsRequired()
@@ -61,14 +60,14 @@ namespace DataAccessLayer.Configurations
             builder.HasQueryFilter(s => s.DeletedAt == null);
 
             // Department is the single source of truth for faculty.
-            // No FacultyId column here — derive via Department.Faculty when needed.
+            // No FacultyId column here  derive via Department.Faculty when needed.
             builder.HasOne(s => s.Department)
                    .WithMany(d => d.Students)
                    .HasForeignKey(s => s.DepartmentId)
                    .IsRequired(false)
                    .OnDelete(DeleteBehavior.Restrict);
 
-            builder.HasIndex(s => s.StudentNumber).IsUnique();
+            builder.HasIndex(s => s.StudentNumber).IsUniqueWhenNotDeleted();
             builder.HasIndex(s => s.DepartmentId);
             builder.HasIndex(s => s.UserId);
         }

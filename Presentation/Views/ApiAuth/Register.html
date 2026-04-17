@@ -1,0 +1,86 @@
+@* @using Application.Modules.StudentsModule.Commands.StudentRegisterCommand
+@model StudentRegisterRequest
+@{
+    ViewData["Title"] = "Qeydiyyat";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+} *@
+
+
+<div id="alertBox"></div>
+
+<form id="registerForm">
+    <div class="form-group">
+        <label for="SerialNumber">Sənədin seriya nömrəsi</label>
+        <input type="text" class="form-control" id="SerialNumber"
+               placeholder="AZE1234567" autocomplete="off" />
+    </div>
+
+    <div class="form-group">
+        <label for="FinCode">FİN kod</label>
+        <input type="text" class="form-control" id="FinCode"
+               placeholder="ABC1234" autocomplete="off" maxlength="7" />
+        <div class="small-hint">7 simvol — hərf və rəqəmlərdən ibarət</div>
+    </div>
+
+    <button type="submit" class="btn-auth">Şəxsi kabinet yarat</button>
+</form>
+
+<div class="auth-footer">
+    Artıq hesabınız var? <a href="/Auth/Login">Daxil olun</a>
+    &nbsp;·&nbsp;
+    <a href="/Auth/TeacherRegister">Müəllim qeydiyyatı</a>
+    <br /><br />
+    <a href="/Auth/ForgotStudentPassword">Şifrəni unutdum</a>
+    &nbsp;·&nbsp;
+    <a href="/Auth/RecoverStudentNumber">Nömrəmi unutdum</a>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("registerForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const serialNumber = document.getElementById("SerialNumber").value;
+            const finCode = document.getElementById("FinCode").value;
+
+            const response = await fetch("/ApiAuth/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    serialNumber: serialNumber,
+                    finCode: finCode
+                })
+            });
+
+            console.log("Response status:", response.status);
+
+            const data = await response.json();
+
+            console.log("Response data:", data);
+
+            const alertBox = document.getElementById("alertBox");
+
+            if (response.ok) {
+                alertBox.innerHTML = `
+                    <div class="alert alert-success">
+                        ${data.message}<br />
+                        <strong>Tələbə nömrəsi:</strong> ${data.studentNumber}<br />
+                        <strong>Şifrə:</strong> ${data.defaultPassword}
+                    </div>
+                `;
+
+                setTimeout(() => {
+                    window.location.href = "/Auth/Login";
+                }, 2500);
+            } else {
+                alertBox.innerHTML = `
+                    <div class="alert alert-danger">
+                        ${data.message || "Qeydiyyat zamanı xəta baş verdi."}
+                    </div>
+                `;
+            }
+        });
+    </script>
+}
