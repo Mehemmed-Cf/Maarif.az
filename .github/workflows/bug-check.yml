@@ -15,9 +15,51 @@ jobs:
           fetch-depth: 2
 
       - name: Get diff
-        id: diff
         run: |
           git diff HEAD~1 HEAD > diff.txt
-          echo "DIFF<<EOF" >> $GITHUB_OUTPUT
-          cat diff.txt >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHU
+
+      - name: Run AI review
+        env:
+          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+        run: |
+          python3 <<EOF
+import os
+import requests
+
+with open("diff.txt", "r") as f:
+    diff = f.read()
+
+prompt = f"""
+You are a senior engineer reviewing a git diff.
+
+Find ONLY real, high-confidence bugs.
+
+Rules:
+- Max 5 issues
+- Ignore low-value noise
+- Focus on crashes, data loss, security, major logic bugs
+- If nothing critical: say "No critical issues found"
+
+Diff:
+{diff[:12000]}
+"""
+
+response = requests.post(
+    "https://api.openai.com/v1/chat/completions",
+    headers={
+        "Authorization": f"Bearer {os.environ['OPENAI_API_KEY']}",
+        "Content-Type": "application/json"
+    },
+    json={
+        "model": "gpt-4o-mini",
+        "messages": [
+            {"role": "system", "content": "You are a strict senior code reviewer."},
+            {"role": "user", "content": prompt}
+        ],
+        "temperature": 0.2
+    }
+)
+
+print("\n=== AI REVIEW ===\n")
+print(response.json()["choices"][0]["message"]["content"])
+EOF
