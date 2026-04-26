@@ -6,13 +6,7 @@
 		<ImplicitUsings>enable</ImplicitUsings>
 		<UserSecretsId>0425e49b-db08-465d-9f33-668fe5a5fd0f</UserSecretsId>
 		<DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
-<<<<<<< HEAD
-		<DockerComposeProjectPath>..\docker-compose.yml</DockerComposeProjectPath>
-		<DockerComposeProjectName>maarif</DockerComposeProjectName>
-=======
-		<!-- Optional: only used when the "Container (Dockerfile)" launch profile runs in Visual Studio. -->
 		<DockerfileRunArguments>-p 5102:8080</DockerfileRunArguments>
->>>>>>> d494ec92 (Added Attendance and detached docker and Superadmin role for faster development)
 	</PropertyGroup>
 
 	<ItemGroup>

@@ -1,0 +1,23 @@
+name: AI Bug Review
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 2
+
+      - name: Get diff
+        id: diff
+        run: |
+          git diff HEAD~1 HEAD > diff.txt
+          echo "DIFF<<EOF" >> $GITHUB_OUTPUT
+          cat diff.txt >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHU
