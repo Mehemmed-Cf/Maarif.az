@@ -9,11 +9,13 @@ using Application.Modules.SubjectsModule;
 using Application.Modules.SubjectsModule.Commands.SubjectAddCommand;
 using Application.Modules.TeachersModule.Commands.TeacherRegisterCommand;
 using Application.Repositories;
+using DataAccessLayer.Migrations;
 using Domain.Models.Entities;
 using Domain.Models.Stables;
 using Infrastructure.Exceptions;
 using MediatR;
 using Microsoft.Data.SqlClient;
+using Microsoft.EntityFrameworkCore;
 
 namespace Presentation.AppCode.Seeds
 {
@@ -33,6 +35,8 @@ namespace Presentation.AppCode.Seeds
         private readonly ISubjectLiteratureRepository subjectLiteratureRepository;
         private readonly ILessonRepository lessonRepository;
         private readonly ILessonScheduleRepository lessonScheduleRepository;
+        private readonly DataContext db;
+        private readonly IAttendanceRepository attendanceRepository;
 
         public DataSeeder(
             ILogger<DataSeeder> logger,
@@ -48,7 +52,9 @@ namespace Presentation.AppCode.Seeds
             ISubjectMaterialRepository subjectMaterialRepository,
             ISubjectLiteratureRepository subjectLiteratureRepository,
             ILessonRepository lessonRepository,
-            ILessonScheduleRepository lessonScheduleRepository)
+            ILessonScheduleRepository lessonScheduleRepository,
+            DataContext db,
+            IAttendanceRepository attendanceRepository)
         {
             this.logger = logger;
             this.mediator = mediator;
@@ -64,6 +70,8 @@ namespace Presentation.AppCode.Seeds
             this.subjectLiteratureRepository = subjectLiteratureRepository;
             this.lessonRepository = lessonRepository;
             this.lessonScheduleRepository = lessonScheduleRepository;
+            this.db = db;
+            this.attendanceRepository = attendanceRepository;
         }
 
         public async Task SeedAsync()
@@ -78,6 +86,10 @@ namespace Presentation.AppCode.Seeds
             await RunSeederStepAsync(nameof(SeedSubjectContentsAsync), SeedSubjectContentsAsync);
             await RunSeederStepAsync(nameof(SeedLessonsAsync), SeedLessonsAsync);
             await RunSeederStepAsync(nameof(SeedLessonSchedulesAsync), SeedLessonSchedulesAsync);
+            await RunSeederStepAsync(nameof(SeedLessonGroupsAsync), SeedLessonGroupsAsync);
+            await RunSeederStepAsync(nameof(SeedSubjectCatalogMetadataAsync), SeedSubjectCatalogMetadataAsync);
+            await RunSeederStepAsync(nameof(SeedAdditionalLessonSchedulesAsync), SeedAdditionalLessonSchedulesAsync);
+            await RunSeederStepAsync(nameof(SeedAttendanceSessionsAsync), SeedAttendanceSessionsAsync);
         }
 
         private async Task RunSeederStepAsync(string stepName, Func<Task> step)
@@ -772,6 +784,379 @@ namespace Presentation.AppCode.Seeds
                             slot.Dow);
                     }
                 }
+            }
+        }
+
+        /// <summary>
+        /// Links each department group to that department's primary lesson (portal group counts, mixed lessons).
+        /// </summary>
+        private async Task SeedLessonGroupsAsync()
+        {
+            var groups = await db.Groups.AsNoTracking().OrderBy(g => g.Id).ToListAsync().ConfigureAwait(false);
+            foreach (var group in groups)
+            {
+                var subject = await db.Subjects
+                    .OrderBy(s => s.Id)
+                    .FirstOrDefaultAsync(s => s.DepartmentId == group.DepartmentId)
+                    .ConfigureAwait(false);
+                if (subject is null)
+                    continue;
+
+                var lesson = await db.Lessons
+                    .OrderBy(l => l.Id)
+                    .FirstOrDefaultAsync(l => l.SubjectId == subject.Id)
+                    .ConfigureAwait(false);
+                if (lesson is null)
+                    continue;
+
+                var exists = await db.LessonGroups.AnyAsync(lg => lg.LessonId == lesson.Id && lg.GroupId == group.Id)
+                    .ConfigureAwait(false);
+                if (exists)
+                    continue;
+
+                db.LessonGroups.Add(new LessonGroup { LessonId = lesson.Id, GroupId = group.Id });
+            }
+
+            try
+            {
+                await db.SaveChangesAsync().ConfigureAwait(false);
+            }
+            catch (Exception ex) when (IsSqlUniqueOrDuplicateKey(ex))
+            {
+                logger.LogInformation(ex, "LessonGroup seed skipped (duplicate).");
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, "LessonGroup seed failed.");
+            }
+        }
+
+        /// <summary>
+        /// Backfills subject header fields (teachers, counts, purpose) when older rows were created empty.
+        /// </summary>
+        private async Task SeedSubjectCatalogMetadataAsync()
+        {
+            var subjects = await db.Subjects
+                .Include(s => s.Department)
+                .OrderBy(s => s.Id)
+                .ToListAsync()
+                .ConfigureAwait(false);
+
+            var changed = false;
+            foreach (var subject in subjects)
+            {
+                if (subject.Department is null)
+                    continue;
+
+                var template = BuildSeedSubjectAddRequest(subject.DepartmentId, subject.Department.Name);
+                void FillIfEmpty()
+                {
+                    if (string.IsNullOrWhiteSpace(subject.LectureTeacher))
+                    {
+                        subject.LectureTeacher = template.LectureTeacher;
+                        changed = true;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(subject.SeminarTeacher))
+                    {
+                        subject.SeminarTeacher = template.SeminarTeacher;
+                        changed = true;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(subject.LabTeacher))
+                    {
+                        subject.LabTeacher = template.LabTeacher;
+                        changed = true;
+                    }
+
+                    if (subject.StudentCount <= 0)
+                    {
+                        subject.StudentCount = template.StudentCount;
+                        changed = true;
+                    }
+
+                    if (subject.Credits <= 0)
+                    {
+                        subject.Credits = template.Credits;
+                        changed = true;
+                    }
+
+                    if (subject.TotalHours <= 0)
+                    {
+                        subject.TotalHours = template.TotalHours;
+                        changed = true;
+                    }
+
+                    if (subject.WeekCount <= 0)
+                    {
+                        subject.WeekCount = template.WeekCount;
+                        changed = true;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(subject.Purpose))
+                    {
+                        subject.Purpose = template.Purpose;
+                        changed = true;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(subject.TeacherMethods))
+                    {
+                        subject.TeacherMethods = template.TeacherMethods;
+                        changed = true;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(subject.SyllabusUrl))
+                    {
+                        subject.SyllabusUrl = template.SyllabusUrl;
+                        changed = true;
+                    }
+
+                    if (subject.FreeWorkScore <= 0 && template.FreeWorkScore > 0)
+                    {
+                        subject.FreeWorkScore = template.FreeWorkScore;
+                        changed = true;
+                    }
+
+                    if (subject.SeminarScore <= 0 && template.SeminarScore > 0)
+                    {
+                        subject.SeminarScore = template.SeminarScore;
+                        changed = true;
+                    }
+
+                    if (subject.LabScore <= 0 && template.LabScore > 0)
+                    {
+                        subject.LabScore = template.LabScore;
+                        changed = true;
+                    }
+
+                    if (subject.AttendanceScore <= 0 && template.AttendanceScore > 0)
+                    {
+                        subject.AttendanceScore = template.AttendanceScore;
+                        changed = true;
+                    }
+
+                    if (subject.ExamScore <= 0 && template.ExamScore > 0)
+                    {
+                        subject.ExamScore = template.ExamScore;
+                        changed = true;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(subject.Term))
+                    {
+                        subject.Term = template.Term ?? "2026 Yaz";
+                        changed = true;
+                    }
+
+                    if (string.IsNullOrWhiteSpace(subject.GroupName))
+                    {
+                        subject.GroupName = template.GroupName ?? $"SEED-D{subject.DepartmentId}-qrup";
+                        changed = true;
+                    }
+                }
+
+                FillIfEmpty();
+            }
+
+            if (!changed)
+                return;
+
+            try
+            {
+                await db.SaveChangesAsync().ConfigureAwait(false);
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, "Subject catalog metadata seed failed.");
+            }
+        }
+
+        /// <summary>
+        /// Adds more weekly slots per group (Tue/Thu/Sat) when the base Mon/Wed/Fri set already exists.
+        /// </summary>
+        private async Task SeedAdditionalLessonSchedulesAsync()
+        {
+            var roomIds = await db.Rooms.AsNoTracking()
+                .Where(r => r.Number > 0)
+                .OrderBy(r => r.Id)
+                .Select(r => r.Id)
+                .ToListAsync()
+                .ConfigureAwait(false);
+
+            if (roomIds.Count == 0)
+                return;
+
+            var extras = new (DayOfWeek Dow, TimeSpan Start, TimeSpan End, LessonType Type, WeekType Week)[]
+            {
+                (DayOfWeek.Tuesday, new TimeSpan(10, 0, 0), new TimeSpan(11, 30, 0), LessonType.Mühazirə, WeekType.Both),
+                (DayOfWeek.Thursday, new TimeSpan(13, 0, 0), new TimeSpan(14, 30, 0), LessonType.Məşğələ, WeekType.Upper),
+                (DayOfWeek.Saturday, new TimeSpan(9, 0, 0), new TimeSpan(10, 30, 0), LessonType.Laboratoriya, WeekType.Lower)
+            };
+
+            var groups = await db.Groups.AsNoTracking().OrderBy(g => g.Id).ToListAsync().ConfigureAwait(false);
+            var roomIndex = 0;
+
+            foreach (var group in groups)
+            {
+                var subject = await db.Subjects
+                    .OrderBy(s => s.Id)
+                    .FirstOrDefaultAsync(s => s.DepartmentId == group.DepartmentId)
+                    .ConfigureAwait(false);
+                if (subject is null)
+                    continue;
+
+                var lesson = await db.Lessons
+                    .OrderBy(l => l.Id)
+                    .FirstOrDefaultAsync(l => l.SubjectId == subject.Id)
+                    .ConfigureAwait(false);
+                if (lesson is null)
+                    continue;
+
+                foreach (var slot in extras)
+                {
+                    var exists = await db.LessonSchedules.AnyAsync(ls =>
+                            ls.LessonId == lesson.Id
+                            && ls.GroupId == group.Id
+                            && ls.DayOfWeek == slot.Dow
+                            && ls.StartTime == slot.Start
+                            && ls.WeekType == slot.Week)
+                        .ConfigureAwait(false);
+                    if (exists)
+                        continue;
+
+                    var roomId = roomIds[roomIndex % roomIds.Count];
+                    roomIndex++;
+
+                    try
+                    {
+                        await mediator.Send(new LessonScheduleAddRequest
+                        {
+                            LessonId = lesson.Id,
+                            GroupId = group.Id,
+                            DayOfWeek = slot.Dow,
+                            StartTime = slot.Start,
+                            EndTime = slot.End,
+                            RoomId = roomId,
+                            LessonType = slot.Type,
+                            WeekType = slot.Week
+                        }).ConfigureAwait(false);
+                    }
+                    catch (Exception ex) when (IsSqlUniqueOrDuplicateKey(ex))
+                    {
+                        logger.LogInformation(
+                            ex,
+                            "Extra LessonSchedule skipped (duplicate) group {GroupId} {Day}",
+                            group.Id,
+                            slot.Dow);
+                    }
+                    catch (Exception ex)
+                    {
+                        logger.LogWarning(
+                            ex,
+                            "Extra LessonSchedule failed group {GroupId} {Day}",
+                            group.Id,
+                            slot.Dow);
+                    }
+                }
+            }
+        }
+
+        private static DateTime MostRecentOccurrenceOnOrBefore(DayOfWeek dow, DateTime todayUtcDate)
+        {
+            var diff = ((int)todayUtcDate.DayOfWeek - (int)dow + 7) % 7;
+            return todayUtcDate.Date.AddDays(-diff);
+        }
+
+        /// <summary>
+        /// Seeds attendance for past weeks. The <b>most recent session</b> of the <b>highest LessonSchedule Id</b>
+        /// is left without rows so a teacher can open attendance and mark it manually.
+        /// </summary>
+        private async Task SeedAttendanceSessionsAsync()
+        {
+            var schedules = await db.LessonSchedules
+                .AsNoTracking()
+                .Include(ls => ls.Lesson)
+                .Include(ls => ls.Group)
+                    .ThenInclude(g => g.StudentGroups)
+                .OrderBy(ls => ls.Id)
+                .ToListAsync()
+                .ConfigureAwait(false);
+
+            if (schedules.Count == 0)
+                return;
+
+            var openScheduleId = schedules.Max(ls => ls.Id);
+            var today = DateTime.UtcNow.Date;
+            const int weeksOfHistory = 4;
+
+            var toAdd = new List<Attendance>();
+
+            foreach (var schedule in schedules)
+            {
+                if (schedule.Lesson is null || schedule.Group?.StudentGroups is null || schedule.Group.StudentGroups.Count == 0)
+                    continue;
+
+                var teacherId = schedule.Lesson.TeacherId;
+                var sessionDates = new List<DateTime>();
+                var anchor = MostRecentOccurrenceOnOrBefore(schedule.DayOfWeek, today);
+                for (var i = 0; i < weeksOfHistory; i++)
+                    sessionDates.Add(anchor.AddDays(-7 * i));
+
+                foreach (var sessionDate in sessionDates)
+                {
+                    if (schedule.Id == openScheduleId && sessionDate == sessionDates[0])
+                        continue;
+
+                    var norm = sessionDate.Date;
+                    var studentLinks = schedule.Group.StudentGroups.ToList();
+                    for (var si = 0; si < studentLinks.Count; si++)
+                    {
+                        var sg = studentLinks[si];
+                        var exists = await attendanceRepository
+                            .GetByUniqueKeyAsync(schedule.Id, sg.StudentId, norm, CancellationToken.None)
+                            .ConfigureAwait(false);
+                        if (exists is not null)
+                            continue;
+
+                        var markedAt = norm.Add(schedule.StartTime);
+                        if (markedAt.Kind == DateTimeKind.Unspecified)
+                            markedAt = DateTime.SpecifyKind(markedAt, DateTimeKind.Utc);
+
+                        toAdd.Add(new Attendance
+                        {
+                            StudentId = sg.StudentId,
+                            LessonScheduleId = schedule.Id,
+                            SessionDate = norm,
+                            Status = si % 3 == 0 ? AttendanceStatus.Absent : AttendanceStatus.Present,
+                            MarkedAt = markedAt,
+                            LockAt = markedAt.AddDays(30),
+                            IsLocked = true,
+                            MarkedByTeacherId = teacherId
+                        });
+                    }
+                }
+            }
+
+            if (toAdd.Count == 0)
+                return;
+
+            foreach (var row in toAdd)
+                await attendanceRepository.AddAsync(row, CancellationToken.None).ConfigureAwait(false);
+
+            try
+            {
+                await attendanceRepository.SaveAsync(CancellationToken.None).ConfigureAwait(false);
+                logger.LogInformation(
+                    "Attendance seed added {Count} rows; open session: LessonScheduleId {OpenId} (most recent week, no rows).",
+                    toAdd.Count,
+                    openScheduleId);
+            }
+            catch (Exception ex) when (IsSqlUniqueOrDuplicateKey(ex))
+            {
+                logger.LogInformation(ex, "Attendance seed skipped (duplicate keys).");
+            }
+            catch (Exception ex)
+            {
+                logger.LogWarning(ex, "Attendance seed failed.");
             }
         }
     }

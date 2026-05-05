@@ -6,9 +6,68 @@
     Layout = "~/Views/Shared/_AuthLayout.cshtml";
 }-->
 
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+
+    :root {
+        --exam-bg: #f7f9fc;
+        --exam-primary: #2c5aa0;
+        --exam-accent: #1c8adb;
+        --exam-text: #1f2937;
+    }
+
+    /* Performance note: keep this inline for exam demo, but use minified external CSS in production. */
+    body {
+        font-family: 'Inter', sans-serif;
+        background-color: var(--exam-bg);
+        color: var(--exam-text);
+    }
+
+    .exam-card {
+        background: #fff;
+        border: 1px solid #dbe4f0;
+        border-radius: 10px;
+        padding: 16px;
+        margin-top: 16px;
+    }
+
+    .exam-button {
+        background: var(--exam-primary);
+        color: #fff;
+        border: none;
+        padding: 10px 14px;
+        border-radius: 6px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
+    }
+
+        .exam-button:hover {
+            background: var(--exam-accent);
+            transform: translateY(-2px);
+        }
+
+    .night-mode {
+        background: #111827;
+        color: #f9fafb;
+    }
+
+    @media (max-width: 768px) {
+        .exam-card {
+            padding: 10px;
+        }
+    }
+</style>
+
+<header class="exam-card">
+    <h2>API Login Demo</h2>
+    <nav>
+        <a href="/ApiAuthPages/Login">Login page</a> |
+        <a href="/ApiAuthPages/Register">Register page</a>
+    </nav>
+</header>
+
 <div id="alertBox"></div>
 
-<form id="loginForm">
+<form id="loginForm" method="post">
     <div class="form-group">
         <label for="StudentNumber">Tələbə nömrəsi</label>
         <input type="text" class="form-control" id="StudentNumber"
@@ -27,8 +86,93 @@
     Hesabınız yoxdur? <a href="/Auth/Register">Qeydiyyat</a>
 </div>
 
+<section class="exam-card">
+    <article>
+        <h3>Exam HTML Examples</h3>
+        <p>Simple semantic content with image, list, and table.</p>
+        <img src="./images/image.png" alt="Exam demo image" />
+
+        <ul>
+            <li>Razor + HTML page</li>
+            <li>Simple JavaScript calculations</li>
+            <li>Basic CSS responsive behavior</li>
+        </ul>
+
+        <table border="1" cellpadding="6">
+            <thead>
+                <tr>
+                    <th>Technology</th>
+                    <th>Status</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>HTML</td>
+                    <td>Ready</td>
+                </tr>
+                <tr>
+                    <td>CSS</td>
+                    <td>Ready</td>
+                </tr>
+                <tr>
+                    <td>JavaScript</td>
+                    <td>Ready</td>
+                </tr>
+            </tbody>
+        </table>
+    </article>
+</section>
+
+<section class="exam-card">
+    <button id="toggleThemeButton" type="button" class="exam-button">Toggle dark mode</button>
+    <button id="changeTextButton" type="button" class="exam-button">Change heading text</button>
+    <p id="domText">DOM text before button click.</p>
+</section>
+
+<footer class="exam-card">
+    <small>Footer semantic element for exam requirement.</small>
+</footer>
+
 @section Scripts {
     <script>
+        function salamPlusX(x) {
+            const result = "Salam" + x;
+            console.log(result);
+            return result;
+        }
+
+        function cube(x) {
+            return x * x * x;
+        }
+
+        function f(x) {
+            return x * x * x;
+        }
+
+        const x = 4;
+        let a = x + 4 + "4";
+        console.log(a);
+        console.log("sqrt:", Math.sqrt(x));
+        console.log("x^2:", x * x);
+        console.log("triangle area:", (10 * x) / 2);
+        console.log("f(x)=x^3:", f(x));
+        console.log("cube(x):", cube(x));
+        salamPlusX(x);
+
+        const xValues = [1, 2, 3, 4, 5];
+        xValues.forEach(function (value) {
+            const y = 7 * value - 3;
+            console.log("Y = 7x - 3 for x =", value, "is", y);
+        });
+
+        document.getElementById("toggleThemeButton").addEventListener("click", function () {
+            document.body.classList.toggle("night-mode");
+        });
+
+        document.getElementById("changeTextButton").addEventListener("click", function () {
+            document.getElementById("domText").textContent = "DOM text updated from JavaScript.";
+        });
+
         document.getElementById("loginForm").addEventListener("submit", async function (e) {
             e.preventDefault();
 

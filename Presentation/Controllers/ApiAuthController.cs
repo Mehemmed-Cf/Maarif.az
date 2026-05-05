@@ -1,5 +1,4 @@
 ﻿using Application.Modules.StudentsModule.Commands.StudentLoginCommand;
-using Application.Modules.StudentsModule.Commands.StudentRegisterCommand;
 using Infrastructure.Exceptions;
 using MediatR;
 using Microsoft.AspNetCore.Authorization;
@@ -17,33 +16,6 @@ namespace Presentation.Controllers
         public ApiAuthController(IMediator mediator)
         {
             this.mediator = mediator;
-        }
-
-        [HttpPost("Register")]
-        public async Task<IActionResult> Register([FromBody] StudentRegisterRequest request)
-        {
-            if (!ModelState.IsValid)
-                return ValidationProblem(ModelState);
-
-            try
-            {
-                var result = await mediator.Send(request);
-
-                return Created(string.Empty, new
-                {
-                    message = "Student registered successfully.",
-                    studentNumber = result.StudentNumber,
-                    defaultPassword = result.DefaultPassword
-                });
-            }
-            catch (BadRequestException ex)
-            {
-                return BadRequest(new { message = ex.Message });
-            }
-            catch (ConflictException ex)
-            {
-                return Conflict(new { message = ex.Message });
-            }
         }
 
         [HttpPost("Login")]

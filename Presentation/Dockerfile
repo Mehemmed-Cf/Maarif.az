@@ -22,13 +22,6 @@ RUN dotnet restore "./Presentation/Presentation.csproj"
 
 COPY . .
 WORKDIR "/src/Presentation"
-<<<<<<< HEAD
-# Docker context omits a full .git tree; SDK git tasks then fail with "Invalid reference: ''".
-RUN dotnet build "./Presentation.csproj" -c $BUILD_CONFIGURATION -o /app/build -p:EnableSourceControlManagerQueries=false
-
-FROM build AS publish
-RUN dotnet publish "./Presentation.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false -p:EnableSourceControlManagerQueries=false
-=======
 # .dockerignore excludes .git — disable Git/SourceLink SCM queries so build does not fail
 RUN dotnet build "./Presentation.csproj" -c $BUILD_CONFIGURATION -o /app/build \
     /p:EnableSourceControlManagerQueries=false
@@ -36,7 +29,6 @@ RUN dotnet build "./Presentation.csproj" -c $BUILD_CONFIGURATION -o /app/build \
 FROM build AS publish
 RUN dotnet publish "./Presentation.csproj" -c $BUILD_CONFIGURATION -o /app/publish /p:UseAppHost=false \
     /p:EnableSourceControlManagerQueries=false
->>>>>>> d494ec92 (Added Attendance and detached docker and Superadmin role for faster development)
 
 FROM base AS final
 WORKDIR /app

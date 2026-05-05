@@ -15,6 +15,7 @@ using Presentation.AppCode.Pipeline;
 using Presentation.AppCode.Seeds;
 
 internal class Program
+
 {
     private static async Task Main(string[] args)
     {
@@ -148,7 +149,10 @@ internal class Program
             catch (Exception ex)
             {
                 logger.LogError(ex, "Database initialization failed.");
-                throw;
+                // In Development, still start Kestrel so Visual Studio can attach and you get a browser
+                // error instead of "Unable to connect to web server" when SQL is down or unreachable.
+                if (!app.Environment.IsDevelopment())
+                    throw;
             }
         }
 
@@ -162,17 +166,10 @@ internal class Program
             app.UseDeveloperExceptionPage();
         }
 
-<<<<<<< HEAD
-        // Docker / Render: Kestrel often listens on HTTP only (see Dockerfile). HTTPS redirection breaks plain http://localhost:8080.
-        var aspNetUrls = builder.Configuration["ASPNETCORE_URLS"] ?? string.Empty;
-        if (aspNetUrls.Contains("https://", StringComparison.OrdinalIgnoreCase))
-            app.UseHttpsRedirection();
-=======
         if (!app.Environment.IsDevelopment())
         {
             app.UseHttpsRedirection();
         }
->>>>>>> d494ec92 (Added Attendance and detached docker and Superadmin role for faster development)
 
         app.UseStaticFiles();
 

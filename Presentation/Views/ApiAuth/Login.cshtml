@@ -1,0 +1,276 @@
+@{
+    ViewData["Title"] = "API Login";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<style>
+    @@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    :root {
+        --api-bg: #f4f7fb;
+        --api-card: #ffffff;
+        --api-text: #1f2937;
+        --api-primary: #3b82f6;
+        --api-primary-hover: #2563eb;
+        --api-border: #dbe3ef;
+    }
+
+    /* Performance note: inline for demo; in production move to minified external CSS. */
+    .auth-wrapper {
+        max-width: 1100px !important;
+    }
+
+    .auth-card {
+        padding: 24px !important;
+    }
+
+    .api-page {
+        font-family: 'Inter', sans-serif;
+        color: var(--api-text);
+        background: var(--api-bg);
+        border-radius: 14px;
+        padding: 20px;
+    }
+
+    .api-topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .api-links a {
+        color: var(--api-primary);
+        text-decoration: none;
+        font-weight: 600;
+        margin-right: 10px;
+    }
+
+    .api-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .api-card {
+        background: var(--api-card);
+        border: 1px solid var(--api-border);
+        border-radius: 12px;
+        padding: 16px;
+    }
+
+    .api-actions {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+
+    .api-btn {
+        border: 0;
+        border-radius: 8px;
+        padding: 10px 14px;
+        color: #fff;
+        background: var(--api-primary);
+        transition: background-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .api-btn:hover {
+        background: var(--api-primary-hover);
+        transform: translateY(-1px);
+    }
+
+    .api-table {
+        width: 100%;
+        border-collapse: collapse;
+    }
+
+    .api-table th,
+    .api-table td {
+        border: 1px solid #cdd7e6;
+        padding: 8px;
+        text-align: left;
+    }
+
+    .api-page.dark {
+        background: #0f172a;
+        color: #e5e7eb;
+    }
+
+    .api-page.dark .api-card {
+        background: #1e293b;
+        border-color: #334155;
+    }
+
+    .api-page.dark .api-links a {
+        color: #93c5fd;
+    }
+
+    @@media (max-width: 900px) {
+        .api-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="api-page" id="apiPage">
+    <header class="api-topbar">
+        <div>
+            <h2 style="margin:0;">API Login Demo</h2>
+            <small>Simple and readable page for exam presentation.</small>
+        </div>
+        <nav class="api-links">
+            <a href="/ApiAuthPages/Login">Login</a>
+            <a href="/ApiAuthPages/Register">Register</a>
+        </nav>
+    </header>
+
+    <div id="alertBox"></div>
+
+    <main class="api-grid">
+        <section class="api-card">
+            <h3 style="margin-top:0;">Login Form</h3>
+            <form id="loginForm" method="post">
+                <div class="form-group">
+                    <label for="StudentNumber">Tələbə nömrəsi</label>
+                    <input type="text" class="form-control" id="StudentNumber" placeholder="202506181" />
+                </div>
+                <div class="form-group">
+                    <label for="Password">Şifrə</label>
+                    <input type="password" class="form-control" id="Password" />
+                </div>
+                <button type="submit" class="btn-auth">Daxil ol</button>
+            </form>
+            <div class="auth-footer">
+                Hesabınız yoxdur? <a href="/Auth/Register">Qeydiyyat</a>
+            </div>
+        </section>
+
+        <section class="api-card">
+            <article>
+                <h3 style="margin-top:0;">Exam HTML Examples</h3>
+                <p>Semantic elements, image, list, and table in one block.</p>
+                <img style="max-width:100%;border-radius:8px;" src="https://placehold.co/480x180?text=Maarif+Exam+Image" alt="Exam demo image" />
+                <ul style="margin-top:10px;">
+                    <li>Razor + HTML page</li>
+                    <li>Simple JavaScript calculations</li>
+                    <li>Responsive CSS behavior</li>
+                </ul>
+                <table class="api-table">
+                    <thead>
+                        <tr>
+                            <th>Technology</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>HTML</td>
+                            <td>Ready</td>
+                        </tr>
+                        <tr>
+                            <td>CSS</td>
+                            <td>Ready</td>
+                        </tr>
+                        <tr>
+                            <td>JavaScript</td>
+                            <td>Ready</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </article>
+        </section>
+
+        <section class="api-card">
+            <h3 style="margin-top:0;">DOM Demo</h3>
+            <div class="api-actions">
+                <button id="toggleThemeButton" type="button" class="api-btn">Toggle dark mode</button>
+                <button id="changeTextButton" type="button" class="api-btn">Change heading text</button>
+            </div>
+            <p id="domText" style="margin-top:12px;">DOM text before button click.</p>
+        </section>
+
+        <footer class="api-card">
+            <small>Footer semantic element for exam requirement.</small>
+        </footer>
+    </main>
+</div>
+
+@section Scripts {
+    <script>
+        function salamPlusX(x) {
+            const result = "Salam" + x;
+            console.log(result);
+            return result;
+        }
+
+        function cube(x) {
+            return x * x * x;
+        }
+
+        function f(x) {
+            return x * x * x;
+        }
+
+        const x = 4;
+        let a = x + 4 + "4";
+        console.log(a);
+        console.log("sqrt:", Math.sqrt(x));
+        console.log("x^2:", x * x);
+        console.log("triangle area:", (10 * x) / 2);
+        console.log("f(x)=x^3:", f(x));
+        console.log("cube(x):", cube(x));
+        salamPlusX(x);
+
+        const xValues = [1, 2, 3, 4, 5];
+        xValues.forEach(function (value) {
+            const y = 7 * value - 3;
+            console.log("Y = 7x - 3 for x =", value, "is", y);
+        });
+
+        document.getElementById("toggleThemeButton").addEventListener("click", function () {
+            document.getElementById("apiPage").classList.toggle("dark");
+        });
+
+        document.getElementById("changeTextButton").addEventListener("click", function () {
+            document.getElementById("domText").textContent = "DOM text updated from JavaScript.";
+        });
+
+        document.getElementById("loginForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const studentNumber = document.getElementById("StudentNumber").value;
+            const password = document.getElementById("Password").value;
+
+            const response = await fetch("/ApiAuth/login", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    studentNumber: studentNumber,
+                    password: password
+                })
+            });
+
+            console.log("Response status:", response.status);
+
+            const data = await response.json();
+
+            console.log("Response data:", data);
+
+            const alertBox = document.getElementById("alertBox");
+
+            if (response.ok) {
+                alertBox.innerHTML = `<div class="alert alert-success">${data.message}</div>`;
+
+                setTimeout(() => {
+                    window.location.href = "/Portal/Index";
+                }, 1000);
+            } else {
+                alertBox.innerHTML = `<div class="alert alert-danger">${data.message}</div>`;
+            }
+        });
+    </script>
+}

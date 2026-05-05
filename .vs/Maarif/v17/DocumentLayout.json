@@ -3,63 +3,44 @@
   "WorkspaceRootPath": "C:\\Users\\user\\source\\repos\\Maarif\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Sdks\\Microsoft.Docker.Sdk\\build\\Microsoft.VisualStudio.Docker.Compose.targets||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{3D23CB67-6332-438A-93C5-15C29DF7C3FA}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\user\\source\\repos\\maarif\\dataaccesslayer\\datacontexts\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3D23CB67-6332-438A-93C5-15C29DF7C3FA}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\datacontexts\\datacontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\Maarif\\docker-compose.dcproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:docker-compose.dcproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{CED66CEC-9655-4FAF-A469-2A5C630C2608}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\studentsmodule\\commands\\studentlogincommand\\studentloginresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CED66CEC-9655-4FAF-A469-2A5C630C2608}|Application\\Application.csproj|solutionrelative:application\\modules\\studentsmodule\\commands\\studentlogincommand\\studentloginresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CED66CEC-9655-4FAF-A469-2A5C630C2608}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\services\\pilottestidentitydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CED66CEC-9655-4FAF-A469-2A5C630C2608}|Application\\Application.csproj|solutionrelative:application\\services\\pilottestidentitydata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CED66CEC-9655-4FAF-A469-2A5C630C2608}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\studentsmodule\\commands\\studentlogincommand\\studentloginrequesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CED66CEC-9655-4FAF-A469-2A5C630C2608}|Application\\Application.csproj|solutionrelative:application\\modules\\studentsmodule\\commands\\studentlogincommand\\studentloginrequesthandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3D23CB67-6332-438A-93C5-15C29DF7C3FA}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\user\\source\\repos\\maarif\\dataaccesslayer\\migrations\\20260406144018_debugging.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D23CB67-6332-438A-93C5-15C29DF7C3FA}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\migrations\\20260406144018_debugging.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CED66CEC-9655-4FAF-A469-2A5C630C2608}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\modules\\studentsmodule\\commands\\studentlogincommand\\studentloginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CED66CEC-9655-4FAF-A469-2A5C630C2608}|Application\\Application.csproj|solutionrelative:application\\modules\\studentsmodule\\commands\\studentlogincommand\\studentloginrequest.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CED66CEC-9655-4FAF-A469-2A5C630C2608}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\services\\fakegovernmentidentityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CED66CEC-9655-4FAF-A469-2A5C630C2608}|Application\\Application.csproj|solutionrelative:application\\services\\fakegovernmentidentityservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{26BB4B99-E4DB-8D6F-9A99-39E9DFD5E68A}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\controllers\\apiauthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26BB4B99-E4DB-8D6F-9A99-39E9DFD5E68A}|Presentation\\Presentation.csproj|solutionrelative:presentation\\controllers\\apiauthcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Presentation\\Program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{26BB4B99-E4DB-8D6F-9A99-39E9DFD5E68A}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{26BB4B99-E4DB-8D6F-9A99-39E9DFD5E68A}|Presentation\\Presentation.csproj|solutionrelative:presentation\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\appsettings.Development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Presentation\\appsettings.Development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{26BB4B99-E4DB-8D6F-9A99-39E9DFD5E68A}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\views\\apiauth\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{26BB4B99-E4DB-8D6F-9A99-39E9DFD5E68A}|Presentation\\Presentation.csproj|solutionrelative:presentation\\views\\apiauth\\login.html||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{26BB4B99-E4DB-8D6F-9A99-39E9DFD5E68A}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{26BB4B99-E4DB-8D6F-9A99-39E9DFD5E68A}|Presentation\\Presentation.csproj|solutionrelative:presentation\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3D23CB67-6332-438A-93C5-15C29DF7C3FA}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\user\\source\\repos\\maarif\\dataaccesslayer\\migrations\\20260406133000_idempotentazureschemacolumns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D23CB67-6332-438A-93C5-15C29DF7C3FA}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\migrations\\20260406133000_idempotentazureschemacolumns.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{26BB4B99-E4DB-8D6F-9A99-39E9DFD5E68A}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{26BB4B99-E4DB-8D6F-9A99-39E9DFD5E68A}|Presentation\\Presentation.csproj|solutionrelative:presentation\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CED66CEC-9655-4FAF-A469-2A5C630C2608}|Application\\Application.csproj|c:\\users\\user\\source\\repos\\maarif\\application\\services\\fakegovernmentidentityservice.teacherseed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CED66CEC-9655-4FAF-A469-2A5C630C2608}|Application\\Application.csproj|solutionrelative:application\\services\\fakegovernmentidentityservice.teacherseed.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3D23CB67-6332-438A-93C5-15C29DF7C3FA}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\user\\source\\repos\\maarif\\dataaccesslayer\\migrations\\datacontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D23CB67-6332-438A-93C5-15C29DF7C3FA}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\migrations\\datacontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\AdminBaseController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Presentation\\Areas\\Admin\\Controllers\\AdminBaseController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3D23CB67-6332-438A-93C5-15C29DF7C3FA}|DataAccessLayer\\DataAccessLayer.csproj|c:\\users\\user\\source\\repos\\maarif\\dataaccesslayer\\migrations\\20260405213114_renderingmig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3D23CB67-6332-438A-93C5-15C29DF7C3FA}|DataAccessLayer\\DataAccessLayer.csproj|solutionrelative:dataaccesslayer\\migrations\\20260405213114_renderingmig.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\DashboardController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Presentation\\Areas\\Admin\\Controllers\\DashboardController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\DepartmentsController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Presentation\\Areas\\Admin\\Controllers\\DepartmentsController.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{26BB4B99-E4DB-8D6F-9A99-39E9DFD5E68A}|Presentation\\Presentation.csproj|c:\\users\\user\\source\\repos\\maarif\\presentation\\views\\apiauth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{26BB4B99-E4DB-8D6F-9A99-39E9DFD5E68A}|Presentation\\Presentation.csproj|solutionrelative:presentation\\views\\apiauth\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -98,63 +79,115 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "Microsoft.VisualStudio.Docker.Compose.targets",
-              "DocumentMoniker": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Sdks\\Microsoft.Docker.Sdk\\build\\Microsoft.VisualStudio.Docker.Compose.targets",
-              "RelativeDocumentMoniker": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Sdks\\Microsoft.Docker.Sdk\\build\\Microsoft.VisualStudio.Docker.Compose.targets",
-              "ToolTip": "C:\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Sdks\\Microsoft.Docker.Sdk\\build\\Microsoft.VisualStudio.Docker.Compose.targets",
-              "RelativeToolTip": "..\\..\\..\\..\\..\\Program Files\\Microsoft Visual Studio\\2022\\Community\\MSBuild\\Sdks\\Microsoft.Docker.Sdk\\build\\Microsoft.VisualStudio.Docker.Compose.targets",
-              "ViewState": "AgIAAOQBAAAAAAAAAAAuwLcBAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003801|",
-              "WhenOpened": "2026-04-06T20:14:34.609Z",
+              "Title": "DataContext.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\DataContexts\\DataContext.cs",
+              "RelativeDocumentMoniker": "DataAccessLayer\\DataContexts\\DataContext.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\DataContexts\\DataContext.cs",
+              "RelativeToolTip": "DataAccessLayer\\DataContexts\\DataContext.cs",
+              "ViewState": "AgIAAAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T07:03:05.482Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "docker-compose.dcproj",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\docker-compose.dcproj",
-              "RelativeDocumentMoniker": "docker-compose.dcproj",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\docker-compose.dcproj",
-              "RelativeToolTip": "docker-compose.dcproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001001|",
-              "WhenOpened": "2026-04-06T19:35:29.05Z"
+              "Title": "StudentLoginResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginResponseDto.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginResponseDto.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginResponseDto.cs",
+              "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-05-05T07:02:37.69Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "PilotTestIdentityData.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\PilotTestIdentityData.cs",
-              "RelativeDocumentMoniker": "Application\\Services\\PilotTestIdentityData.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\PilotTestIdentityData.cs",
-              "RelativeToolTip": "Application\\Services\\PilotTestIdentityData.cs",
-              "ViewState": "AgIAAAcAAAAAAAAAAAAqwA8AAABIAAAAAAAAAA==",
+              "Title": "StudentLoginRequestHandler.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequestHandler.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequestHandler.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequestHandler.cs",
+              "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequestHandler.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-06T16:07:30.605Z"
+              "WhenOpened": "2026-05-05T07:02:00.462Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "20260406144018_Debugging.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Migrations\\20260406144018_Debugging.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\Migrations\\20260406144018_Debugging.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Migrations\\20260406144018_Debugging.cs",
-              "RelativeToolTip": "DataAccessLayer\\Migrations\\20260406144018_Debugging.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "StudentLoginRequest.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequest.cs",
+              "RelativeDocumentMoniker": "Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequest.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequest.cs",
+              "RelativeToolTip": "Application\\Modules\\StudentsModule\\Commands\\StudentLoginCommand\\StudentLoginRequest.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAABIAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-06T14:40:18.856Z"
+              "WhenOpened": "2026-05-05T07:01:42.32Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Login.html",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\ApiAuth\\Login.html",
+              "RelativeDocumentMoniker": "Presentation\\Views\\ApiAuth\\Login.html",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\ApiAuth\\Login.html",
+              "RelativeToolTip": "Presentation\\Views\\ApiAuth\\Login.html",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001512|",
+              "WhenOpened": "2026-05-05T06:12:35.651Z"
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "FakeGovernmentIdentityService.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\FakeGovernmentIdentityService.cs",
-              "RelativeDocumentMoniker": "Application\\Services\\FakeGovernmentIdentityService.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\FakeGovernmentIdentityService.cs",
-              "RelativeToolTip": "Application\\Services\\FakeGovernmentIdentityService.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAgAAAAAAAAAA==",
+              "Title": "ApiAuthController.cs",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Controllers\\ApiAuthController.cs",
+              "RelativeDocumentMoniker": "Presentation\\Controllers\\ApiAuthController.cs",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Controllers\\ApiAuthController.cs",
+              "RelativeToolTip": "Presentation\\Controllers\\ApiAuthController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T22:56:55.679Z"
+              "WhenOpened": "2026-05-05T06:05:34.94Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "appsettings.Development.json",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\appsettings.Development.json",
+              "RelativeDocumentMoniker": "Presentation\\appsettings.Development.json",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\appsettings.Development.json",
+              "RelativeToolTip": "Presentation\\appsettings.Development.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABkAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-05T05:50:44.147Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\appsettings.json",
+              "RelativeDocumentMoniker": "Presentation\\appsettings.json",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\appsettings.json",
+              "RelativeToolTip": "Presentation\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-05-05T05:50:38.275Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\ApiAuth\\Login.cshtml",
+              "RelativeDocumentMoniker": "Presentation\\Views\\ApiAuth\\Login.cshtml",
+              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Views\\ApiAuth\\Login.cshtml",
+              "RelativeToolTip": "Presentation\\Views\\ApiAuth\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAPUAAAA8AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-04-27T08:50:11.924Z"
             },
             {
               "$type": "Document",
@@ -164,117 +197,10 @@
               "RelativeDocumentMoniker": "Presentation\\Program.cs",
               "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Program.cs",
               "RelativeToolTip": "Presentation\\Program.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAAALsAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAKAAAAAAAAAAAAAAAAAAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T05:37:59.465Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "Presentation\\appsettings.Development.json",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\appsettings.Development.json",
-              "RelativeToolTip": "Presentation\\appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-04-21T05:37:59.47Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\appsettings.json",
-              "RelativeDocumentMoniker": "Presentation\\appsettings.json",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\appsettings.json",
-              "RelativeToolTip": "Presentation\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAMAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2026-04-21T05:37:59.472Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "20260406133000_IdempotentAzureSchemaColumns.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Migrations\\20260406133000_IdempotentAzureSchemaColumns.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\Migrations\\20260406133000_IdempotentAzureSchemaColumns.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Migrations\\20260406133000_IdempotentAzureSchemaColumns.cs",
-              "RelativeToolTip": "DataAccessLayer\\Migrations\\20260406133000_IdempotentAzureSchemaColumns.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-06T14:41:32.074Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "FakeGovernmentIdentityService.TeacherSeed.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\FakeGovernmentIdentityService.TeacherSeed.cs",
-              "RelativeDocumentMoniker": "Application\\Services\\FakeGovernmentIdentityService.TeacherSeed.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Application\\Services\\FakeGovernmentIdentityService.TeacherSeed.cs",
-              "RelativeToolTip": "Application\\Services\\FakeGovernmentIdentityService.TeacherSeed.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T22:56:54.751Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "DataContextModelSnapshot.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Migrations\\DataContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\Migrations\\DataContextModelSnapshot.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Migrations\\DataContextModelSnapshot.cs",
-              "RelativeToolTip": "DataAccessLayer\\Migrations\\DataContextModelSnapshot.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-06T14:41:39.713Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "AdminBaseController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\AdminBaseController.cs",
-              "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Controllers\\AdminBaseController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\AdminBaseController.cs",
-              "RelativeToolTip": "Presentation\\Areas\\Admin\\Controllers\\AdminBaseController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T05:37:59.48Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "20260405213114_RenderingMig.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Migrations\\20260405213114_RenderingMig.cs",
-              "RelativeDocumentMoniker": "DataAccessLayer\\Migrations\\20260405213114_RenderingMig.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\DataAccessLayer\\Migrations\\20260405213114_RenderingMig.cs",
-              "RelativeToolTip": "DataAccessLayer\\Migrations\\20260405213114_RenderingMig.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-05T21:31:15.542Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "DashboardController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\DashboardController.cs",
-              "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Controllers\\DashboardController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\DashboardController.cs",
-              "RelativeToolTip": "Presentation\\Areas\\Admin\\Controllers\\DashboardController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T05:37:59.488Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 14,
-              "Title": "DepartmentsController.cs",
-              "DocumentMoniker": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\DepartmentsController.cs",
-              "RelativeDocumentMoniker": "Presentation\\Areas\\Admin\\Controllers\\DepartmentsController.cs",
-              "ToolTip": "C:\\Users\\user\\source\\repos\\Maarif\\Presentation\\Areas\\Admin\\Controllers\\DepartmentsController.cs",
-              "RelativeToolTip": "Presentation\\Areas\\Admin\\Controllers\\DepartmentsController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-21T05:37:59.49Z"
+              "WhenOpened": "2026-04-26T21:31:21.606Z",
+              "EditorCaption": ""
             }
           ]
         }

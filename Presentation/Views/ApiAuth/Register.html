@@ -35,8 +35,43 @@
     <a href="/Auth/RecoverStudentNumber">Nömrəmi unutdum</a>
 </div>
 
+<section class="exam-card" style="margin-top:16px;padding:12px;border:1px solid #dbe4f0;border-radius:8px;">
+    <h3>Extra Media and HTTP POST Demo</h3>
+    <video width="320" controls>
+        <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+        Your browser does not support video tag.
+    </video>
+    <br />
+    <audio controls>
+        <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+        Your browser does not support audio tag.
+    </audio>
+
+    <ol>
+        <li>Fill exam name</li>
+        <li>Fill score</li>
+        <li>Submit as POST to MVC action</li>
+    </ol>
+
+    <form method="post" action="/ApiAuthPages/PracticePost">
+        <label for="examName">Exam name</label>
+        <input id="examName" name="examName" type="text" required />
+        <label for="examScore">Score</label>
+        <input id="examScore" name="examScore" type="number" required />
+        <button type="submit">Send POST</button>
+    </form>
+
+    <button type="button" id="coercionAlertButton">Show coercion alert</button>
+</section>
+
 @section Scripts {
     <script>
+        document.getElementById("coercionAlertButton").addEventListener("click", function () {
+            var string1 = "Hello";
+            var intValue = 30;
+            alert(string1 + intValue);
+        });
+
         document.getElementById("registerForm").addEventListener("submit", async function (e) {
             e.preventDefault();
 

@@ -98,7 +98,7 @@ namespace Presentation.Areas.Admin.Controllers
         public async Task<IActionResult> Edit([FromRoute] StudentGetByIdRequest request)
         {
             PopulateViewBags();
-            var response = await mediator.Send(request);
+                var response = await mediator.Send(request);
 
             // View expects StudentGetByIdResponseDto
             PopulateViewBags(response.Department.Id);

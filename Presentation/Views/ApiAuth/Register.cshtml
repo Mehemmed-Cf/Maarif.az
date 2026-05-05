@@ -1,0 +1,204 @@
+@{
+    ViewData["Title"] = "API Register";
+    Layout = "~/Views/Shared/_AuthLayout.cshtml";
+}
+
+<style>
+    @@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+    .auth-wrapper {
+        max-width: 1100px !important;
+    }
+
+    .auth-card {
+        padding: 24px !important;
+    }
+
+    .api-page {
+        font-family: 'Inter', sans-serif;
+        color: #1f2937;
+        background: #f4f7fb;
+        border-radius: 14px;
+        padding: 20px;
+    }
+
+    .api-topbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 16px;
+    }
+
+    .api-links a {
+        color: #3b82f6;
+        text-decoration: none;
+        font-weight: 600;
+        margin-right: 10px;
+    }
+
+    .api-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+    }
+
+    .api-card {
+        background: #fff;
+        border: 1px solid #dbe3ef;
+        border-radius: 12px;
+        padding: 16px;
+    }
+
+    .api-inline-form {
+        display: grid;
+        gap: 8px;
+    }
+
+    .api-btn {
+        border: 0;
+        border-radius: 8px;
+        padding: 10px 14px;
+        color: #fff;
+        background: #3b82f6;
+        transition: background-color 0.25s ease, transform 0.25s ease;
+    }
+
+    .api-btn:hover {
+        background: #2563eb;
+        transform: translateY(-1px);
+    }
+
+    @@media (max-width: 900px) {
+        .api-grid {
+            grid-template-columns: 1fr;
+        }
+    }
+</style>
+
+<div class="api-page">
+    <header class="api-topbar">
+        <div>
+            <h2 style="margin:0;">API Register Demo</h2>
+            <small>Simple register + media + POST examples.</small>
+        </div>
+        <nav class="api-links">
+            <a href="/ApiAuthPages/Login">Login</a>
+            <a href="/ApiAuthPages/Register">Register</a>
+        </nav>
+    </header>
+
+    <div id="alertBox"></div>
+
+    <main class="api-grid">
+        <section class="api-card">
+            <h3 style="margin-top:0;">Register Form</h3>
+            <form id="registerForm">
+                <div class="form-group">
+                    <label for="SerialNumber">Sənədin seriya nömrəsi</label>
+                    <input type="text" class="form-control" id="SerialNumber"
+                           placeholder="AZE1234567" autocomplete="off" />
+                </div>
+
+                <div class="form-group">
+                    <label for="FinCode">FİN kod</label>
+                    <input type="text" class="form-control" id="FinCode"
+                           placeholder="ABC1234" autocomplete="off" maxlength="7" />
+                    <div class="small-hint">7 simvol — hərf və rəqəmlərdən ibarət</div>
+                </div>
+
+                <button type="submit" class="btn-auth">Şəxsi kabinet yarat</button>
+            </form>
+
+            <div class="auth-footer">
+                Artıq hesabınız var? <a href="/Auth/Login">Daxil olun</a>
+            </div>
+        </section>
+
+        <section class="api-card">
+            <h3 style="margin-top:0;">Media and POST Example</h3>
+            <video style="max-width:100%;" width="420" controls>
+                <source src="https://www.w3schools.com/html/mov_bbb.mp4" type="video/mp4">
+                Your browser does not support video tag.
+            </video>
+            <br /><br />
+            <audio controls>
+                <source src="https://www.w3schools.com/html/horse.mp3" type="audio/mpeg">
+                Your browser does not support audio tag.
+            </audio>
+
+            <ol style="margin-top:10px;">
+                <li>Fill exam name</li>
+                <li>Fill score</li>
+                <li>Submit as POST to MVC action</li>
+            </ol>
+
+            <form method="post" action="/ApiAuthPages/PracticePost" class="api-inline-form">
+                <label for="examName">Exam name</label>
+                <input id="examName" name="examName" type="text" required />
+                <label for="examScore">Score</label>
+                <input id="examScore" name="examScore" type="number" required />
+                <button type="submit" class="api-btn">Send POST</button>
+            </form>
+            <br />
+            <button type="button" id="coercionAlertButton" class="api-btn">Show coercion alert</button>
+        </section>
+    </main>
+</div>
+
+@section Scripts {
+    <script>
+        document.getElementById("coercionAlertButton").addEventListener("click", function () {
+            var string1 = "Hello";
+            var intValue = 30;
+            alert(string1 + intValue);
+        });
+
+        document.getElementById("registerForm").addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            const serialNumber = document.getElementById("SerialNumber").value;
+            const finCode = document.getElementById("FinCode").value;
+
+            const response = await fetch("/ApiAuth/register", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({
+                    serialNumber: serialNumber,
+                    finCode: finCode
+                })
+            });
+
+            console.log("Response status:", response.status);
+
+            const data = await response.json();
+
+            console.log("Response data:", data);
+
+            const alertBox = document.getElementById("alertBox");
+
+            if (response.ok) {
+                alertBox.innerHTML = `
+                    <div class="alert alert-success">
+                        ${data.message}<br />
+                        <strong>Tələbə nömrəsi:</strong> ${data.studentNumber}<br />
+                        <strong>Şifrə:</strong> ${data.defaultPassword}
+                    </div>
+                `;
+
+                setTimeout(() => {
+                    window.location.href = "/Auth/Login";
+                }, 2500);
+            } else {
+                alertBox.innerHTML = `
+                    <div class="alert alert-danger">
+                        ${data.message || "Qeydiyyat zamanı xəta baş verdi."}
+                    </div>
+                `;
+            }
+        });
+    </script>
+}
